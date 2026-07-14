@@ -1292,6 +1292,23 @@ document.querySelectorAll('.ind-tab').forEach(tab=>{
   const viewer = el.querySelector('spline-viewer');
   if(!viewer) return;
 
+  // Safari verwirft den WebGL-Kontext oft, wenn der Tab länger im
+  // Hintergrund lag (Speicher-/GPU-Entlastung). Der Player merkt das
+  // nicht selbst und rendert danach dauerhaft in einen kaputten
+  // Framebuffer (glClear/glDrawArrays-Fehler in der Konsole). Beim
+  // Zurückkehren zum Tab die Szene deshalb einmal sauber neu laden,
+  // statt zu versuchen, den kaputten Kontext zu reparieren.
+  let wasHidden = false;
+  document.addEventListener('visibilitychange', () => {
+    if(document.visibilityState === 'hidden'){ wasHidden = true; return; }
+    if(!wasHidden) return;
+    wasHidden = false;
+    const url = viewer.getAttribute('url');
+    if(!url) return; // auf Mobile bewusst entfernt, siehe Skript oben
+    viewer.removeAttribute('url');
+    requestAnimationFrame(() => viewer.setAttribute('url', url));
+  });
+
   // Der 3D-Player merkt selbst nicht, wenn sich die Größe seines
   // Containers ändert (Safari Tab-/Adressleiste ein-/ausblenden,
   // Fenster-Resize, Rotation) — er reagiert nur auf window "resize".
