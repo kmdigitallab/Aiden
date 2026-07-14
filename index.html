@@ -1,0 +1,1592 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>AIDEN — KI-Agenten, die Ihr Unternehmen wirklich entlasten</title>
+<meta name="description" content="AIDEN entwickelt Voice Agents, Social Media Agents und individuelle KI-Automatisierung für Praxen, Handwerksbetriebe, Immobilienbüros und Einzelunternehmen. In der EU gehostet, DSGVO- und EU-AI-Act-konform.">
+<link rel="canonical" href="https://aiden.ae/">
+<link rel="icon" href="images/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="images/favicon-16.png" sizes="16x16" type="image/png">
+<link rel="apple-touch-icon" href="images/favicon-180.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="AIDEN — KI-Agenten, die Ihr Unternehmen wirklich entlasten">
+<meta property="og:description" content="Voice Agents, Social Media Agents und individuelle KI-Automatisierung für Praxen, Handwerksbetriebe, Immobilienbüros und Einzelunternehmen. In der EU gehostet, DSGVO-konform.">
+<meta property="og:image" content="https://aiden.ae/images/aiden-logo.png">
+<meta property="og:locale" content="de_DE">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AIDEN — KI-Agenten, die Ihr Unternehmen wirklich entlasten">
+<meta name="twitter:description" content="Voice Agents, Social Media Agents und individuelle KI-Automatisierung. In der EU gehostet, DSGVO-konform.">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Organization","name":"AIDEN","url":"https://aiden.ae","logo":"https://aiden.ae/images/aiden-logo.png","sameAs":[]}
+</script>
+<script type="module" src="vendor/spline-viewer.js"></script>
+<style>
+:root{
+  --ink:#000000;
+  --ink-soft:#1a1a1a;
+  --paper:#ffffff;
+  --paper-2:#f2f2f2;
+  --gold:#cca300;
+  --gold-text:#8a6d00;
+  --gold-light:#ffda47;
+  --gold-dim:rgba(204,163,0,.16);
+  --muted:#5c5c5c;
+  --muted-on-ink:#b8b8b8;
+  --line:rgba(0,0,0,.10);
+  --line-on-ink:rgba(255,218,71,.14);
+  --r:22px;
+  --shadow:0 30px 70px rgba(0,0,0,.16);
+  --glass-bg:rgba(255,255,255,.08);
+  --glass-border:rgba(255,255,255,.16);
+  --glow-gold:0 0 40px rgba(204,163,0,.4);
+}
+*,*::before,*::after{box-sizing:border-box;}
+html{scroll-behavior:smooth;scroll-padding-top:150px;}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto;}*{animation-duration:.001ms!important;transition-duration:.001ms!important;}}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+/* Arabic: keep the same physical layout as DE/EN (nav, grids, icons stay put) —
+   only right-align and RTL-shape the actual text content, so nothing "flips". */
+body.is-rtl{font-family:"Segoe UI","Tahoma","Geeza Pro","Noto Sans Arabic",-apple-system,Arial,sans-serif;}
+body.is-rtl h1,body.is-rtl h2,body.is-rtl h3,body.is-rtl h4,
+body.is-rtl p,body.is-rtl .lead,
+body.is-rtl li,body.is-rtl .role,body.is-rtl .price-name,
+body.is-rtl .price-was,body.is-rtl .price-save,body.is-rtl .price-bestfor,body.is-rtl .price-extra,
+body.is-rtl .cf-tag,body.is-rtl .footer-tag,body.is-rtl .cf-bottom p{direction:rtl;text-align:right;}
+body.is-rtl .price-feats li,body.is-rtl .starter-list li,body.is-rtl .final-list span{direction:ltr;text-align:left;}
+body.is-rtl .price-feats li span,body.is-rtl .starter-list li span,body.is-rtl .final-list span span{direction:rtl;text-align:right;}
+body.is-rtl .eyebrow{direction:rtl;text-align:right;}
+.serif{font-family:"Iowan Old Style","Palatino Linotype","Book Antiqua",Georgia,serif;font-style:normal;}
+.mono{font-family:ui-monospace,"SF Mono","Cascadia Code","Roboto Mono",Menlo,Consolas,monospace;font-variant-numeric:tabular-nums;}
+img{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
+.wrap{max-width:1180px;margin:0 auto;padding:0 32px;}
+section{padding:clamp(5rem,10vw,9.5rem) 0;}
+@media(max-width:640px){.wrap{padding:0 20px;}}
+
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:.76rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-text);margin-bottom:1.1rem;}
+.eyebrow::before{content:'';width:24px;height:1px;background:var(--gold);}
+.on-ink .eyebrow{color:var(--gold-light);}
+
+h1,h2,h3,h4{margin:0;letter-spacing:-.01em;}
+.h-xl{font-size:clamp(2.6rem,5.6vw,4.6rem);font-weight:600;line-height:1.05;}
+.h-lg{font-size:clamp(1.9rem,3.9vw,3.2rem);font-weight:600;line-height:1.1;}
+.h-md{font-size:clamp(1.3rem,2vw,1.6rem);font-weight:600;}
+em{font-style:italic;color:var(--gold-text);}
+.on-ink em{color:var(--gold-light);text-shadow:0 0 28px rgba(233,217,168,.5);}
+
+.lead{font-size:clamp(1.02rem,1.4vw,1.2rem);color:var(--muted);max-width:620px;line-height:1.7;}
+.on-ink .lead{color:var(--muted-on-ink);}
+.hl{font-weight:700;font-style:italic;color:var(--ink);}
+.on-ink .hl,.ov-head .hl,.case .hl,.final-cta .hl,.starter-box .hl{color:var(--gold-light);}
+
+.btn{position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:.6rem;font-family:inherit;font-weight:600;font-size:.92rem;padding:.95rem 1.9rem;border-radius:var(--r);border:1px solid transparent;cursor:pointer;transition:transform .25s ease,box-shadow .25s ease,background .25s ease,border-color .25s ease;white-space:nowrap;}
+.btn-ripple{position:absolute;border-radius:50%;background:rgba(255,255,255,.5);transform:scale(0);animation:rippleAnim .6s ease-out forwards;pointer-events:none;}
+@keyframes rippleAnim{to{transform:scale(1);opacity:0;}}
+.btn-gold{background:var(--gold);color:#000000;box-shadow:0 10px 30px rgba(204,163,0,.4),0 0 26px rgba(204,163,0,.22);}
+.btn-gold:hover{transform:translateY(-1px);box-shadow:0 12px 28px rgba(204,163,0,.45),0 0 24px rgba(204,163,0,.26);}
+.btn-outline{background:transparent;color:var(--muted);border-color:var(--line);font-weight:500;box-shadow:none;}
+.btn-outline:hover{border-color:var(--ink);color:var(--ink);}
+.on-ink .btn-outline{color:var(--muted-on-ink);border-color:var(--line-on-ink);background:transparent;backdrop-filter:none;}
+.on-ink .btn-outline:hover{color:var(--paper);}
+.on-ink .btn-outline:hover{border-color:var(--gold-light);box-shadow:0 0 24px rgba(233,217,168,.2);}
+
+/* ── reveal ── */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1);}
+.reveal.vis{opacity:1;transform:none;}
+
+/* ── announcement bar ── */
+.announce{position:fixed;top:0;left:0;right:0;z-index:310;display:flex;align-items:center;justify-content:center;gap:.6rem;height:40px;padding:0 calc(44px + env(safe-area-inset-right, 0px)) 0 calc(16px + env(safe-area-inset-left, 0px));background:#000000;border-bottom:1px solid rgba(255,218,71,.14);font-size:.78rem;font-weight:600;color:var(--gold-light);transition:transform .4s ease,opacity .4s ease;}
+.announce.hidden{transform:translateY(-100%);opacity:0;pointer-events:none;}
+.announce-dot{width:6px;height:6px;border-radius:50%;background:#4ade80;box-shadow:0 0 8px rgba(74,222,128,.8);animation:announceDot 1.8s ease-in-out infinite;flex-shrink:0;}
+@keyframes announceDot{0%,100%{opacity:1;}50%{opacity:.4;}}
+.announce-link{flex-shrink:0;color:var(--gold-light);text-decoration:underline;text-underline-offset:2px;}
+.announce-close{position:absolute;right:12px;top:50%;transform:translateY(-50%);width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--muted-on-ink);background:transparent;border:none;cursor:pointer;transition:color .2s,background .2s;}
+.announce-close::after{content:'';position:absolute;inset:-11px;}
+.announce-close:hover{color:#fff;background:rgba(255,255,255,.08);}
+body.has-announce nav.site{top:54px;}
+@media(max-width:640px){.announce{font-size:.7rem;padding:0 38px 0 12px;}.announce span.announce-text{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;}}
+
+/* ── nav ── */
+nav.site{position:fixed;top:14px;left:calc(14px + env(safe-area-inset-left, 0px));right:calc(14px + env(safe-area-inset-right, 0px));z-index:300;height:72px;display:flex;align-items:center;background:rgba(255,255,255,.55);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border:1px solid transparent;border-radius:22px;box-shadow:0 8px 32px rgba(14,14,16,.08),inset 0 1px 0 rgba(255,255,255,.6);transition:background .3s,box-shadow .3s,border-color .3s,top .4s ease;}
+nav.site.scrolled{background:rgba(255,255,255,.75);box-shadow:0 12px 40px rgba(14,14,16,.12),inset 0 1px 0 rgba(255,255,255,.7);}
+nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;padding:1.5px;background:conic-gradient(from var(--na,0deg),rgba(204,163,0,.35),var(--gold) 30%,var(--gold-light) 50%,var(--gold) 70%,rgba(204,163,0,.35) 100%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:navOrbit 4s linear infinite;pointer-events:none;}
+@keyframes navOrbit{to{--na:360deg;}}
+@property --na{syntax:'<angle>';inherits:false;initial-value:0deg;}
+.nav-inner{max-width:1180px;margin:0 auto;padding:0 26px;width:100%;display:flex;align-items:center;justify-content:space-between;}
+.nav-right{display:flex;align-items:center;gap:.5rem;order:5;}
+@media(max-width:640px){
+  nav.site{top:10px;left:10px;right:10px;height:64px;border-radius:18px;}
+  /* Rotierender Rand ist auf mobilen Geräten (echtes iOS Safari) beim Scrollen
+     sichtbar ruckelig — deaktiviert. Blur bewusst leichter (8px statt 20px) und
+     mit höherer Deckkraft, um GPU-Last zu senken, aber Transparenz zu behalten. */
+  nav.site,nav.site.scrolled{background:rgba(255,255,255,.82);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);}
+  nav.site::before{display:none;}
+}
+.brand{display:flex;align-items:center;gap:.6rem;order:1;}
+.brand-logo{height:26px;width:auto;display:block;}
+.brand-tagline{font-size:.58rem;font-weight:600;letter-spacing:.12em;color:var(--ink);line-height:1.2;padding-top:2px;white-space:nowrap;}
+@media(max-width:900px){.brand-tagline{font-size:.5rem;letter-spacing:.08em;}}
+.nav-links{display:flex;gap:2.1rem;order:2;}
+.nav-links a{font-size:.86rem;font-weight:700;color:var(--ink);opacity:.78;transition:color .2s,opacity .2s;}
+.nav-links a:hover{color:var(--gold-text);opacity:1;}
+.nav-burger{position:relative;display:none;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;border:none;background:transparent;color:var(--ink);cursor:pointer;flex-shrink:0;}
+.nav-burger::after{content:'';position:absolute;inset:-7px;}
+.nav-burger:hover{background:rgba(14,14,16,.06);}
+.cta-short{display:none;}
+@media(max-width:900px){
+  .nav-links{display:none;}
+  .nav-burger{display:flex;}
+}
+.mobile-menu{display:none;flex-direction:column;gap:.2rem;width:100%;padding:.6rem 1.1rem 1.2rem;margin-top:.6rem;background:rgba(255,255,255,.98);border-top:1px solid var(--line);border-radius:0 0 18px 18px;}
+.mobile-menu-tagline{font-size:.68rem;font-weight:600;letter-spacing:.12em;color:var(--gold-text);padding:.6rem 0 .3rem;display:block;}
+.mobile-menu a{padding:.85rem 0;font-size:.95rem;font-weight:700;color:var(--ink);border-bottom:1px solid var(--line);}
+.mobile-menu a:last-child{border-bottom:none;}
+.mobile-menu.open{display:flex;}
+.lang-switch{display:flex;align-items:center;gap:2px;padding:3px;border-radius:100px;background:rgba(14,14,16,.05);border:1px solid var(--line);order:4;}
+.lang-btn{font-family:inherit;font-size:.7rem;font-weight:700;letter-spacing:.03em;color:var(--muted);background:transparent;border:none;border-radius:100px;padding:.4rem .7rem;cursor:pointer;transition:background .2s,color .2s;}
+.lang-btn:hover{color:var(--ink);}
+.lang-btn.active{background:var(--gold);color:#000000;}
+.btn-phone{display:flex;align-items:center;gap:.55rem;line-height:1.15;text-align:left;padding:.5rem 1.1rem;order:3;}
+.btn-phone span{font-size:.78rem;font-weight:600;}
+.mobile-menu-cta{display:none;}
+.mobile-menu-lang{display:none;}
+@media(max-width:900px){
+  nav.site{flex-wrap:wrap;height:auto;}
+  nav.site.menu-open .nav-inner{padding-bottom:0;}
+  .brand-logo{height:18px;}
+  .nav-right{gap:.4rem;}
+  .btn-phone{padding:.42rem .65rem;gap:0;order:1;}
+  .btn-phone svg{display:none;}
+  .btn-phone span{font-size:.66rem;}
+  .cta-full{display:none;}
+  .cta-short{display:inline;}
+  .lang-switch:not(.mobile-menu-lang){display:none;}
+  .nav-burger{width:30px;height:30px;order:2;}
+  .mobile-menu-cta{display:block;text-align:center;margin:1rem 0 .3rem;}
+  .mobile-menu-lang{display:flex;margin:.5rem 0 .2rem;align-self:flex-start;}
+}
+@media(max-width:340px){
+  .brand-tagline{display:none;}
+  .btn-phone{padding:.38rem .5rem;}
+  .btn-phone span{font-size:.6rem;}
+}
+
+/* ── cursor glow ── */
+.cursor-glow{position:fixed;top:0;left:0;width:190px;height:190px;margin:-95px 0 0 -95px;border-radius:50%;pointer-events:none;z-index:2000;background:radial-gradient(circle,rgba(204,163,0,.14),transparent 70%);opacity:0;transition:opacity .3s ease,width .35s ease,height .35s ease,margin .35s ease;}
+.cursor-glow.on{opacity:1;}
+.cursor-glow.big{width:260px;height:260px;margin:-130px 0 0 -130px;background:radial-gradient(circle,rgba(204,163,0,.2),transparent 70%);}
+.btn-gold,.btn-outline{transition:transform .18s ease,box-shadow .25s ease,background .25s ease,border-color .25s ease;}
+
+/* ── WhatsApp bubble ── */
+.wa-bubble{position:fixed;right:calc(22px + env(safe-area-inset-right, 0px));bottom:calc(22px + env(safe-area-inset-bottom, 0px));z-index:400;width:58px;height:58px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 26px rgba(37,211,102,.4);transition:transform .25s ease;}
+.wa-bubble:hover{transform:scale(1.03);}
+.wa-bubble::after{content:"";position:absolute;top:2px;right:2px;width:13px;height:13px;border-radius:50%;background:#e0333f;border:2px solid #fff;}
+.wa-bubble svg{width:30px;height:30px;}
+@media(max-width:768px){.wa-bubble{right:14px;bottom:14px;width:52px;height:52px;}}
+
+/* ── rating badge ── */
+.hero-rating{display:flex;align-items:center;gap:.5rem;margin-bottom:1rem;}
+.hero-rating .stars{display:flex;gap:2px;color:var(--gold-light);}
+.hero-rating .stars svg{width:15px;height:15px;fill:currentColor;}
+.hero-rating span{font-size:.8rem;color:var(--muted-on-ink);font-weight:500;}
+
+/* ── hero ── */
+.hero{position:relative;background:var(--ink);color:var(--paper);padding:calc(78px + 5rem) 0 5.5rem;overflow:hidden;}
+@media(max-width:640px){.hero{padding-top:calc(64px + 3.2rem);}}
+.hero-mesh{position:absolute;inset:0;z-index:0;pointer-events:none;background:radial-gradient(560px 400px at 82% 6%,rgba(204,163,0,.18),transparent 65%),radial-gradient(680px 480px at 8% 92%,rgba(204,163,0,.10),transparent 60%);}
+.hero-aurora{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;opacity:.55;}
+.hero-aurora span{position:absolute;border-radius:50%;filter:blur(70px);will-change:transform;}
+.hero-aurora span:nth-child(1){width:420px;height:420px;background:radial-gradient(circle,rgba(255,218,71,.22),transparent 70%);top:-8%;left:8%;animation:auroraDrift1 18s ease-in-out infinite alternate;}
+.hero-aurora span:nth-child(2){width:360px;height:360px;background:radial-gradient(circle,rgba(204,163,0,.16),transparent 70%);bottom:-10%;right:12%;animation:auroraDrift2 22s ease-in-out infinite alternate;}
+@keyframes auroraDrift1{to{transform:translate(60px,40px) scale(1.15);}}
+@keyframes auroraDrift2{to{transform:translate(-50px,-30px) scale(1.1);}}
+.hero-noise{position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.05;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+@media(prefers-reduced-motion:reduce){.hero-aurora span{animation:none;}}
+.hero-sparkles{position:absolute;inset:0;z-index:0;pointer-events:none;mask-image:radial-gradient(680px 460px at 26% 42%,#000 0%,#000 35%,transparent 78%);-webkit-mask-image:radial-gradient(680px 460px at 26% 42%,#000 0%,#000 35%,transparent 78%);}
+@media(prefers-reduced-motion:reduce){.hero-sparkles{display:none;}}
+.hero-robot{position:absolute;right:2%;bottom:2%;width:54%;height:70%;z-index:0;opacity:0;transform:scale(1.7);transform-origin:bottom right;transition:opacity 1.3s ease,transform 1.8s cubic-bezier(.16,1,.3,1);pointer-events:auto;}
+.hero-robot.in{opacity:.68;transform:scale(1);}
+.hero-robot spline-viewer{width:100%;height:100%;display:block;}
+.hero-robot-cover{position:absolute;right:0;bottom:0;width:38%;height:16%;min-width:300px;min-height:100px;background:var(--ink);-webkit-mask-image:linear-gradient(to top left,#000 55%,transparent 100%);mask-image:linear-gradient(to top left,#000 55%,transparent 100%);pointer-events:none;z-index:5;}
+@media(max-width:980px){
+  /* Nach Kundenwunsch: 3D-Roboter auf Mobile komplett deaktiviert (Performance/
+     Ruckeln). Auch im JS wird die Szene auf diesen Breiten gar nicht geladen. */
+  .hero-robot{display:none;}
+}
+.hero-inner{position:relative;z-index:1;max-width:840px;}
+.hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(1.5rem,4vw,3rem);align-items:center;}
+@media(max-width:980px){.hero-grid{grid-template-columns:1fr;}}
+
+/* ── pulse beams hub ── */
+.beams-wrap{position:relative;height:clamp(340px,38vw,460px);}
+.hero-halo{position:absolute;left:50%;top:52%;transform:translate(-50%,-50%);width:min(78%,420px);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(255,218,71,.16) 0%,rgba(204,163,0,.11) 42%,transparent 72%);pointer-events:none;z-index:0;animation:haloPulse 6s ease-in-out infinite;}
+.hero-halo::before{content:'';position:absolute;inset:6%;border-radius:50%;border:1px solid rgba(255,218,71,.16);}
+.hero-halo::after{content:'';position:absolute;inset:0;border-radius:50%;border:1px solid rgba(255,218,71,.1);}
+@keyframes haloPulse{0%,100%{opacity:.85;transform:translate(-50%,-50%) scale(1);}50%{opacity:1;transform:translate(-50%,-50%) scale(1.035);}}
+.node-label{position:absolute;transform:translate(-50%,-50%);z-index:1;display:flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:50%;background:rgba(255,218,71,.08);border:1px solid rgba(255,218,71,.18);}
+.node-label svg{color:var(--gold-light);flex-shrink:0;width:26px;height:26px;}
+.hub-pill{position:absolute;left:52%;top:2%;right:auto;transform:translateX(-50%);width:128px;height:48px;border-radius:100px;background:#000000;border:1px solid var(--line-on-ink);display:flex;align-items:center;justify-content:center;box-shadow:0 20px 50px rgba(0,0,0,.4);}
+.hub-pill::before{content:'';position:absolute;inset:-1px;border-radius:100px;padding:1px;background:conic-gradient(from var(--a,0deg),transparent 0 60%,var(--gold-light),transparent 75%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:hubSpin 4s linear infinite;}
+@keyframes hubSpin{to{--a:360deg;}}
+@media(max-width:980px){
+  /* Nach Kundenwunsch: Kontakt-Icon-Kreis auf Mobile komplett ausgeblendet
+     statt nur verkleinert — wirkte weiterhin zu dominant/leer. */
+  .beams-wrap{display:none;}
+}
+@property --a{syntax:'<angle>';inherits:false;initial-value:0deg;}
+.hub-pill span{position:relative;font-family:"Iowan Old Style",Georgia,serif;font-style:italic;font-size:1rem;background:linear-gradient(90deg,#fff,var(--gold-light));-webkit-background-clip:text;background-clip:text;color:transparent;}
+.hero .lead{max-width:600px;margin:1.5rem 0 2.3rem;}
+.hero-cta{display:flex;gap:.7rem;flex-wrap:wrap;margin-bottom:2rem;}
+.hero-cta .btn{padding:.78rem 1.4rem;font-size:.82rem;}
+.badges{display:flex;gap:1.6rem;flex-wrap:wrap;padding-top:1.6rem;border-top:1px solid var(--line-on-ink);}
+.badge{display:flex;align-items:center;gap:.55rem;font-size:.8rem;color:var(--muted-on-ink);}
+.badge svg{color:var(--gold-light);flex-shrink:0;}
+.badges.reveal{border-top:none;padding-top:0;gap:.7rem;}
+.badge-gold{background:rgba(233,217,168,.14);color:var(--gold-light);border:1px solid rgba(233,217,168,.3);backdrop-filter:blur(8px);font-weight:700;font-size:.72rem;letter-spacing:.02em;padding:.5rem .95rem;border-radius:100px;box-shadow:0 0 18px rgba(204,163,0,.15);}
+
+/* ── mobile-only Icon-Reihe (Ersatz für den Kontakt-Icon-Kreis) ── */
+.hero-icon-row{display:none;}
+@media(max-width:980px){
+  .hero-icon-row{
+    display:flex;align-items:center;justify-content:space-between;
+    position:relative;margin-top:2.2rem;padding:0 6px;
+  }
+  .hero-icon-row::before{
+    content:'';position:absolute;left:24px;right:24px;top:50%;height:1px;
+    background:rgba(255,218,71,.18);z-index:0;
+  }
+  .hero-icon-node{
+    position:relative;z-index:1;width:40px;height:40px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;flex-shrink:0;
+    background:rgba(255,218,71,.08);border:1px solid rgba(255,218,71,.18);
+    color:var(--gold-light);
+  }
+}
+
+/* ── trusted by ── */
+.trust-bar{padding:2.6rem 0;border-bottom:1px solid var(--line);border-top:1px solid var(--line);overflow:hidden;}
+.trust-bar-label{text-align:center;font-size:.74rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:1.6rem;}
+.trust-track-wrap{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);}
+.trust-track{display:flex;align-items:center;gap:clamp(2.4rem,5vw,4rem);width:max-content;animation:trustScroll 26s linear infinite;}
+.trust-track:hover{animation-play-state:paused;}
+.trust-track span{font-family:"Iowan Old Style",Georgia,serif;font-style:italic;font-size:1.15rem;color:var(--muted);opacity:.65;white-space:nowrap;transition:opacity .25s ease,color .25s ease;}
+.trust-track span:hover{opacity:1;color:var(--gold-text);}
+@keyframes trustScroll{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+@media(prefers-reduced-motion:reduce){.trust-track{animation:none;}}
+
+/* ── overview grid ── */
+.ov-head{max-width:680px;margin-bottom:3rem;}
+.ov-section{background:var(--ink);color:var(--paper);padding:5.5rem 0;}
+.ov-section .eyebrow{color:var(--gold-light);}
+.ov-section .lead{color:var(--muted-on-ink);}
+.ov-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem;margin-top:2.6rem;}
+.ov-card{background:var(--gold);color:var(--ink);border-radius:var(--r);padding:2rem 1.9rem;transition:transform .4s cubic-bezier(.22,.9,.24,1),box-shadow .4s ease;transform-style:preserve-3d;perspective:600px;}
+.ov-card:hover{transform:translateY(-3px);box-shadow:0 20px 40px rgba(0,0,0,.32);}
+.ov-icon{width:38px;height:38px;border-radius:8px;background:var(--ink);color:var(--gold-light);display:flex;align-items:center;justify-content:center;margin-bottom:1.2rem;transition:transform .4s cubic-bezier(.22,.9,.24,1),box-shadow .4s ease;animation:iconFloat 4s ease-in-out infinite;}
+.ov-card:hover .ov-icon{transform:translateY(-1px);box-shadow:0 0 16px rgba(255,218,71,.4);}
+@keyframes iconFloat{0%,100%{transform:translateY(0);}50%{transform:translateY(-3px);}}
+@media(prefers-reduced-motion:reduce){.ov-icon{animation:none;}}
+.ov-card h3{font-size:1.1rem;margin-bottom:.6rem;}
+.ov-card p{font-size:.9rem;color:rgba(14,14,16,.72);line-height:1.65;margin:0;}
+.ov-cta-row{text-align:center;margin-top:2.8rem;}
+.ov-num{display:block;font-family:"Iowan Old Style",Georgia,serif;font-style:italic;color:var(--gold);font-size:1.05rem;margin-bottom:1rem;}
+.ov-card.feat .ov-num{color:var(--gold-light);}
+@media(max-width:900px){.ov-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:600px){.ov-grid{grid-template-columns:1fr;}}
+
+/* ── industries ── */
+.ind-section{background:var(--paper-2);}
+.ind-tabs{display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:2.6rem;}
+.ind-tab{font-size:.82rem;font-weight:600;padding:.6rem 1.1rem;border-radius:100px;border:1px solid var(--line);background:transparent;color:var(--muted);cursor:pointer;transition:.2s;}
+.ind-tab.active,.ind-tab:hover{border-color:var(--gold);color:var(--ink);background:var(--gold-dim);}
+.ind-panel{display:none;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:clamp(1.8rem,4vw,3rem);}
+.ind-panel.active{display:grid;grid-template-columns:1.2fr 1fr;gap:2.5rem;align-items:center;}
+@media(max-width:800px){.ind-panel.active{grid-template-columns:1fr;}}
+.ind-panel h3{font-size:1.5rem;margin-bottom:.9rem;}
+.ind-panel p{color:var(--muted);font-size:.95rem;line-height:1.7;margin:0 0 1.4rem;}
+.ind-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.7rem;}
+.ind-list li{display:flex;gap:.7rem;align-items:flex-start;font-size:.9rem;}
+.ind-list svg{flex-shrink:0;color:var(--gold);margin-top:.2rem;}
+.ind-visual{background:var(--ink);border-radius:var(--r);padding:2rem;color:var(--paper);}
+.ind-visual .lbl{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-light);margin-bottom:.5rem;}
+.ind-visual .stat{font-family:"Iowan Old Style",Georgia,serif;font-style:italic;font-size:2.4rem;color:var(--gold-light);}
+
+/* ── case study ── */
+.case{background:var(--ink);color:var(--paper);}
+.case-head{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;flex-wrap:wrap;margin-bottom:3rem;}
+.case-stats{display:flex;gap:2.5rem;flex-wrap:wrap;}
+.case-stat{min-width:180px;}
+.case-stat b{display:block;font-family:"Iowan Old Style",Georgia,serif;font-style:italic;font-size:2.6rem;color:var(--gold-light);}
+.case-stat span{font-size:.78rem;color:var(--muted-on-ink);}
+.case-stat-bar{margin-top:.7rem;height:4px;border-radius:4px;background:rgba(255,255,255,.08);overflow:hidden;}
+.case-stat-bar i{display:block;height:100%;width:0;border-radius:4px;background:linear-gradient(90deg,var(--gold),var(--gold-light));transition:width 1.4s cubic-bezier(.22,.9,.24,1);}
+.case-stat-bar.vis i{width:var(--fill,0%);}
+.case-steps{display:grid;grid-template-columns:repeat(5,1fr);gap:1.1rem;}
+@media(max-width:980px){.case-steps{grid-template-columns:repeat(2,1fr);}}
+.case-step{background:rgba(255,255,255,.04);border:1px solid var(--line-on-ink);border-radius:var(--r);padding:1.8rem;min-width:0;transition:transform .4s cubic-bezier(.22,.9,.24,1),box-shadow .4s ease,border-color .3s ease;}
+.case-step:hover{transform:translateY(-3px);box-shadow:0 14px 28px rgba(0,0,0,.3),0 0 20px rgba(204,163,0,.1);border-color:rgba(204,163,0,.35);}
+.case-step .n{font-family:"Iowan Old Style",Georgia,serif;font-style:italic;color:var(--gold-light);font-size:1rem;display:block;margin-bottom:.9rem;}
+.case-step .tag{font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted-on-ink);margin-bottom:.3rem;}
+.case-step h4{font-size:.98rem;margin-bottom:.4rem;}
+.case-step p{font-size:.82rem;color:var(--muted-on-ink);line-height:1.6;margin:0;}
+
+/* ── trust / team ── */
+.trust-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-bottom:3.5rem;}
+@media(max-width:860px){.trust-grid{grid-template-columns:1fr;}}
+.trust-item{padding-top:1.6rem;border-top:1px solid var(--line);}
+.trust-item h3{font-size:1.05rem;margin-bottom:.6rem;}
+.trust-item p{font-size:.9rem;color:var(--muted);line-height:1.7;margin:0 0 .8rem;}
+.trust-item .payoff{font-size:.85rem;color:var(--ink);font-weight:600;}
+.trust-item .payoff em{font-weight:600;}
+
+.team-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;}
+@media(max-width:700px){.team-grid{grid-template-columns:1fr;}}
+.team-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:2.4rem;transition:transform .4s cubic-bezier(.22,.9,.24,1),box-shadow .4s ease,border-color .3s ease;}
+.team-card:hover{transform:translateY(-3px);box-shadow:0 18px 34px rgba(14,14,16,.09),0 0 22px rgba(204,163,0,.12);border-color:rgba(204,163,0,.4);}
+.team-av{width:72px;height:72px;border-radius:50%;background:linear-gradient(155deg,var(--gold),var(--gold-light));display:flex;align-items:center;justify-content:center;font-family:"Iowan Old Style",Georgia,serif;font-style:italic;font-size:1.3rem;color:var(--ink);margin-bottom:1.2rem;overflow:hidden;}
+.team-av img{width:100%;height:100%;object-fit:cover;display:block;}
+.team-card h4{font-size:1.1rem;margin-bottom:.15rem;}
+.team-card .role{font-size:.82rem;color:var(--gold-text);font-weight:600;margin-bottom:1rem;}
+.team-card p{font-size:.88rem;color:var(--muted);line-height:1.7;margin:0;}
+
+/* ── onboarding paths ── */
+/* ── problem section ── */
+.pain-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.1rem;margin-top:2.6rem;}
+@media(max-width:980px){.pain-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:560px){.pain-grid{grid-template-columns:1fr;}}
+.pain-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:1.9rem;transition:transform .4s cubic-bezier(.22,.9,.24,1),box-shadow .4s ease,border-color .3s ease;}
+.pain-card:hover{transform:translateY(-3px);box-shadow:0 18px 34px rgba(14,14,16,.09),0 0 20px rgba(220,60,60,.08);border-color:rgba(220,60,60,.25);}
+.pain-icon{width:40px;height:40px;border-radius:10px;background:rgba(220,60,60,.08);color:#c94b4b;display:flex;align-items:center;justify-content:center;margin-bottom:1.1rem;}
+.pain-card h3{font-size:1.02rem;margin-bottom:.5rem;}
+.pain-card p{font-size:.86rem;color:var(--muted);line-height:1.65;margin:0;}
+
+.path-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;}
+@media(max-width:860px){.path-grid{grid-template-columns:1fr;}}
+.path-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:clamp(2rem,3.4vw,2.9rem);transition:transform .4s cubic-bezier(.22,.9,.24,1),box-shadow .4s ease,border-color .3s ease;}
+.path-card:hover{transform:translateY(-3px);box-shadow:0 18px 34px rgba(14,14,16,.09),0 0 22px rgba(204,163,0,.12);border-color:rgba(204,163,0,.4);}
+.path-card h3{font-size:1.3rem;margin-bottom:.4rem;}
+.path-card>.sub{font-size:.85rem;color:var(--gold-text);font-weight:600;margin-bottom:1.6rem;}
+.path-step{display:grid;grid-template-columns:34px 1fr;gap:1rem;padding:1.1rem 0;border-bottom:1px solid var(--line);}
+.path-step:last-of-type{border-bottom:none;}
+.path-step .n{width:34px;height:34px;border-radius:50%;background:var(--gold-dim);color:var(--gold);display:flex;align-items:center;justify-content:center;font-family:"Iowan Old Style",Georgia,serif;font-style:italic;font-size:.95rem;}
+.path-step h4{font-size:.95rem;margin-bottom:.3rem;}
+.path-step p{font-size:.84rem;color:var(--muted);line-height:1.6;margin:0;}
+.path-payoff{margin-top:1.6rem;padding-top:1.4rem;border-top:1px solid var(--line);font-size:.85rem;color:var(--ink);font-weight:600;}
+
+/* ── pricing ── */
+.pricing-section{background:var(--paper-2);}
+.price-note{display:flex;align-items:center;gap:1rem;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:1.4rem 1.8rem;margin-bottom:2.6rem;max-width:640px;}
+.price-note svg{color:var(--gold);flex-shrink:0;}
+.price-note p{margin:0;font-size:.88rem;color:var(--muted);}
+.price-note strong{color:var(--ink);}
+.price-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;}
+@media(max-width:1180px){.price-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:640px){.price-grid{grid-template-columns:1fr;}}
+.price-card{position:relative;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:2.1rem;display:flex;flex-direction:column;
+  transition:transform .3s cubic-bezier(.22,.9,.24,1),box-shadow .45s cubic-bezier(.22,.9,.24,1),border-color .3s ease,opacity .25s linear;}
+.price-card:hover{transform:translateY(calc(var(--ty,0px) - 3px));box-shadow:0 18px 36px rgba(14,14,16,.12);border-color:var(--gold);}
+.price-scrub{opacity:var(--op,0);transform:translateY(var(--ty,46px));}
+.price-card.feat{border-color:var(--gold);box-shadow:0 24px 50px rgba(204,163,0,.16);animation:featPulse 3.2s ease-in-out infinite;}
+.price-card.feat:hover{animation-play-state:paused;box-shadow:0 32px 64px rgba(204,163,0,.32);}
+@keyframes featPulse{0%,100%{box-shadow:0 24px 50px rgba(204,163,0,.16);}50%{box-shadow:0 24px 58px rgba(204,163,0,.34);}}
+.price-tag{position:absolute;top:-12px;left:2.1rem;background:var(--gold);color:#000000;font-size:.68rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:.3rem .7rem;border-radius:100px;}
+.price-icon{width:44px;height:44px;border-radius:50%;background:var(--gold-dim);color:var(--gold);display:flex;align-items:center;justify-content:center;margin-bottom:1.3rem;transition:transform .4s cubic-bezier(.22,.9,.24,1),background .3s ease;}
+.price-card:hover .price-icon{transform:scale(1.04);background:var(--gold);color:#fff;}
+.price-name{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem;}
+.price-now{font-family:"Iowan Old Style",Georgia,serif;font-style:italic;font-size:2.5rem;color:var(--ink);}
+.price-now .unit{font-family:inherit;font-style:normal;font-size:1rem;color:var(--muted);}
+.price-was{font-size:.85rem;color:var(--muted);text-decoration:line-through;margin-top:.2rem;}
+.price-save{font-size:.8rem;color:var(--gold-text);font-weight:600;margin:.3rem 0 1.4rem;}
+.price-feats{list-style:none;margin:0 0 1.6rem;padding:0;display:flex;flex-direction:column;gap:.6rem;flex:1;}
+.price-feats li{display:flex;gap:.6rem;align-items:flex-start;font-size:.85rem;color:var(--ink);opacity:0;transform:translateX(-8px);transition:opacity .4s ease,transform .4s ease;}
+.price-card.vis .price-feats li{opacity:1;transform:none;}
+.price-feats li:nth-child(1){transition-delay:.1s;} .price-feats li:nth-child(2){transition-delay:.16s;}
+.price-feats li:nth-child(3){transition-delay:.22s;} .price-feats li:nth-child(4){transition-delay:.28s;}
+.price-feats li:nth-child(5){transition-delay:.34s;}
+.price-feats svg{flex-shrink:0;color:var(--ink);margin-top:.15rem;}
+.price-extra{font-size:.78rem;color:var(--muted);margin-top:auto;padding-top:1rem;border-top:1px solid var(--line);}
+.price-card .btn{margin-top:1.4rem;transform:translateY(0);}
+.price-bestfor{max-height:0;opacity:0;overflow:hidden;transition:max-height .4s cubic-bezier(.22,.9,.24,1),opacity .3s ease,margin .4s ease;font-size:.8rem;color:var(--gold-text);font-weight:600;}
+.price-card:hover .price-bestfor,.price-card:focus-within .price-bestfor{max-height:60px;opacity:1;margin-top:.7rem;}
+@media(hover:none){.price-bestfor{max-height:60px;opacity:1;margin-top:.7rem;}}
+
+.starter-box{background:linear-gradient(160deg,var(--ink),var(--ink-soft));color:var(--paper);border-radius:var(--r);padding:clamp(2rem,4vw,3rem);display:grid;grid-template-columns:1.1fr .9fr;gap:2.5rem;align-items:center;margin-bottom:3rem;}
+@media(max-width:860px){.starter-box{grid-template-columns:1fr;}}
+.starter-box .price-now{color:var(--gold-light);}
+.starter-list{list-style:none;margin:1.2rem 0 0;padding:0;display:flex;flex-direction:column;gap:.55rem;}
+.starter-list li{display:flex;gap:.6rem;font-size:.88rem;color:var(--muted-on-ink);}
+.starter-list svg{color:var(--gold-light);flex-shrink:0;margin-top:.15rem;}
+
+/* ── testimonials ── */
+.tst-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;}
+@media(max-width:900px){.tst-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:640px){.tst-grid{grid-template-columns:1fr;}}
+.tst-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:2.2rem;transition:transform .4s cubic-bezier(.22,.9,.24,1),box-shadow .4s ease,border-color .3s ease;}
+.tst-card:hover{transform:translateY(-3px);box-shadow:0 18px 34px rgba(14,14,16,.09),0 0 22px rgba(204,163,0,.12);border-color:rgba(204,163,0,.4);}
+.tst-card p{font-size:.92rem;color:var(--ink);line-height:1.7;font-style:italic;margin:0 0 1.2rem;}
+.tst-stars{display:flex;gap:3px;margin-bottom:1rem;color:var(--gold);filter:drop-shadow(0 0 4px rgba(204,163,0,.4));}
+.tst-person{display:flex;align-items:center;gap:.7rem;font-size:.82rem;}
+.tst-av{flex-shrink:0;width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:.8rem;letter-spacing:.02em;box-shadow:0 4px 12px rgba(184,145,47,.3);}
+.tst-person b{display:block;color:var(--ink);}
+.tst-person span{color:var(--muted);}
+
+/* ── faq ── */
+.faq-list{max-width:760px;margin:0 auto;}
+.faq-item{border-bottom:1px solid var(--line);}
+.faq-q{width:100%;display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.35rem 0;background:none;border:none;font-family:inherit;font-size:.98rem;font-weight:600;text-align:left;cursor:pointer;color:var(--ink);}
+.faq-ic{flex-shrink:0;width:26px;height:26px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:.85rem;color:var(--gold);transition:.3s;}
+.faq-item.open .faq-ic{transform:rotate(45deg);background:var(--gold);color:#fff;border-color:var(--gold);}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease;}
+.faq-a p{padding-bottom:1.3rem;font-size:.9rem;color:var(--muted);line-height:1.75;max-width:640px;margin:0;}
+.faq-item.open .faq-a{max-height:220px;}
+
+/* ── final cta ── */
+.final-cta{background:var(--ink);color:var(--paper);}
+.final-cta .wrap{text-align:center;}
+.final-cta .lead{max-width:520px;margin:1.1rem auto 2.2rem;}
+.final-cta .btn-outline{color:var(--muted-on-ink);border-color:var(--line-on-ink);}
+.final-cta .btn-outline:hover{color:var(--paper);border-color:var(--gold-light);box-shadow:0 0 24px rgba(233,217,168,.2);}
+.final-list{display:flex;justify-content:center;gap:2.2rem;flex-wrap:wrap;margin-top:2.6rem;font-size:.85rem;color:var(--muted-on-ink);}
+.final-list span{display:flex;align-items:center;gap:.5rem;}
+.final-list svg{color:var(--gold-light);}
+
+/* ── golden thread (LYP-Stil: gebogene SVG-Linie, scroll-gebunden) ── */
+.flow-thread{position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;overflow:visible;}
+@media(max-width:980px){.flow-thread{display:none;}}
+.flow-thread path{fill:none;stroke:url(#flowGrad);stroke-width:5;stroke-linecap:round;stroke-linejoin:round;
+  filter:drop-shadow(0 0 8px rgba(255,218,71,.7)) drop-shadow(0 0 22px rgba(204,163,0,.5));}
+.wrap,.hero-inner,.beams-wrap{position:relative;z-index:1;}
+
+/* ── content wrapper w/ cinematic footer reveal ── */
+.content{position:relative;z-index:10;background:var(--paper);margin-bottom:480px;box-shadow:0 40px 90px rgba(0,0,0,.14);}
+
+.cine-footer{position:fixed;left:0;bottom:0;width:100%;height:480px;z-index:0;overflow:hidden;background:#000000;display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:60px 32px 26px;}
+.cf-glow{position:absolute;top:-45%;left:50%;transform:translateX(-50%);width:1000px;height:560px;pointer-events:none;background:radial-gradient(ellipse,rgba(204,163,0,.22),transparent 70%);animation:cfGlowPulse 8s ease-in-out infinite;}
+@keyframes cfGlowPulse{0%,100%{opacity:.8;}50%{opacity:1;}}
+.cf-particles{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden;}
+.cf-particles span{position:absolute;bottom:-10px;width:3px;height:3px;border-radius:50%;background:rgba(255,218,71,.55);box-shadow:0 0 6px rgba(255,218,71,.7);animation:cfParticleRise linear infinite;}
+@keyframes cfParticleRise{to{transform:translateY(-520px);opacity:0;}}
+@media(prefers-reduced-motion:reduce){.cf-glow,.cf-particles span{animation:none;}}
+.cf-social{display:flex;gap:.6rem;margin-top:1.1rem;}
+.cf-social a{position:relative;width:34px;height:34px;border-radius:50%;border:1px solid var(--line-on-ink);display:flex;align-items:center;justify-content:center;color:var(--muted-on-ink);transition:color .2s,border-color .2s,transform .2s;}
+.cf-social a::after{content:'';position:absolute;inset:-5px;}
+.cf-social a:hover{color:var(--gold-light);border-color:var(--gold-light);transform:translateY(-1px);}
+.cf-top{position:relative;z-index:2;display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;max-width:1180px;width:100%;}
+.cf-brand{max-width:340px;}
+.cf-logo{display:flex;align-items:center;gap:.6rem;margin-bottom:6px;}
+.cf-brand-logo{height:32px;width:auto;flex-shrink:0;display:block;}
+.cf-brand-tagline{font-size:.6rem;font-weight:600;letter-spacing:.12em;color:var(--paper);opacity:.85;padding-top:2px;white-space:nowrap;}
+.cf-legal-name{font-size:.72rem;letter-spacing:.03em;color:var(--muted-on-ink);opacity:.75;margin:0 0 16px;}
+.cf-tag{font-size:.86rem;color:var(--muted-on-ink);line-height:1.7;}
+.cf-cols{display:flex;gap:56px;flex-wrap:wrap;}
+.cf-col h5{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-on-ink);margin-bottom:14px;font-weight:700;}
+.cf-col a{display:block;font-size:.86rem;color:rgba(255,255,255,.82);margin-bottom:10px;transition:color .15s;}
+.cf-col a:hover{color:var(--gold-light);}
+.cf-word{position:relative;z-index:1;text-align:center;font-family:"Iowan Old Style",Georgia,serif;font-style:italic;font-size:clamp(52px,13.5vw,190px);line-height:.85;user-select:none;pointer-events:none;background:linear-gradient(180deg,rgba(255,218,71,.16),rgba(255,255,255,0));-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 40px rgba(204,163,0,.12));}
+.cf-bottom{position:relative;z-index:2;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;max-width:1180px;width:100%;border-top:1px solid var(--line-on-ink);padding-top:18px;}
+.cf-bottom p{margin:0;font-size:.78rem;color:var(--muted-on-ink);}
+.cf-bottom a{font-size:.78rem;color:var(--muted-on-ink);}
+.cf-bottom a:hover{color:var(--gold-light);}
+@media(max-width:768px){
+  /* Fixed-Footer-Reveal-Trick verursacht auf echten iOS-Geräten sichtbare weiße
+     Rendering-Aussetzer beim schnellen Scrollen — auf Mobile daher normaler,
+     statisch positionierter Footer ohne Fixed/Parallax-Effekt. */
+  .content{margin-bottom:0;box-shadow:none;}
+  .cine-footer{position:relative;height:auto;padding:44px 20px 26px;overflow:hidden;}
+}
+</style>
+</head>
+<body class="has-announce">
+
+<div class="announce" id="announceBar">
+  <span class="announce-dot"></span>
+  <span class="announce-text" data-i18n="announce.text.plain">Aktuell nehmen wir neue Kunden auf &mdash; kostenloses Erstgespräch</span>
+  <a class="announce-link" data-i18n="announce.cta" href="https://calendar.app.google/LK3hdLKQ6pLztv4b8" target="_blank" rel="noopener">jetzt sichern</a>
+  <button class="announce-close" id="announceClose" aria-label="Schließen">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
+  </button>
+</div>
+
+<nav class="site" id="siteNav">
+  <div class="nav-inner">
+    <a href="#top" class="brand">
+      <img src="images/aiden-logo.png" alt="AIDEN" class="brand-logo" width="562" height="133">
+      <span class="brand-tagline">AIO – ALL IN ONE</span>
+    </a>
+    <div class="nav-links">
+      <a href="kundenportal.html" data-i18n="nav.portal">Kundenportal</a>
+      <a href="#voice" data-i18n="nav.voice">Voice Agents</a>
+      <a href="social-media-agent.html" data-i18n="nav.social">Social Media Agent</a>
+      <a href="#stimmen" data-i18n="nav.refs">Referenzen</a>
+    </div>
+    <div class="nav-right">
+      <a href="#pricing" class="btn btn-gold btn-phone">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span class="cta-full" data-i18n="nav.cta">Voice Agent<br>testen</span>
+        <span class="cta-short" data-i18n="nav.cta.mobile">Voice Agent</span>
+      </a>
+      <div class="lang-switch" id="langSwitch" role="group" aria-label="Sprache wählen">
+        <button type="button" class="lang-btn active" data-lang="de">DE</button>
+        <button type="button" class="lang-btn" data-lang="en">EN</button>
+        <button type="button" class="lang-btn" data-lang="ar">AR</button>
+      </div>
+      <button type="button" class="nav-burger" id="navBurger" aria-expanded="false" aria-controls="mobileMenu" aria-label="Menü öffnen">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="kundenportal.html" data-i18n="nav.portal">Kundenportal</a>
+    <a href="#voice" data-i18n="nav.voice">Voice Agents</a>
+    <a href="social-media-agent.html" data-i18n="nav.social">Social Media Agent</a>
+    <a href="#stimmen" data-i18n="nav.refs">Referenzen</a>
+    <a href="#pricing" class="btn btn-gold mobile-menu-cta" data-i18n="nav.cta.mobile">Voice Agent</a>
+    <div class="lang-switch mobile-menu-lang" role="group" aria-label="Sprache wählen">
+      <button type="button" class="lang-btn active" data-lang="de">DE</button>
+      <button type="button" class="lang-btn" data-lang="en">EN</button>
+      <button type="button" class="lang-btn" data-lang="ar">AR</button>
+    </div>
+  </div>
+</nav>
+
+<div class="content" id="content">
+  <svg class="flow-thread" id="flowThread" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="flowGrad" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="0"></linearGradient></defs><path id="flowPath"/></svg>
+
+  <!-- HERO -->
+  <header class="hero on-ink" id="top">
+    <div class="hero-mesh"></div>
+    <div class="hero-aurora" aria-hidden="true"><span></span><span></span></div>
+    <div class="hero-noise" aria-hidden="true"></div>
+    <canvas class="hero-sparkles" id="heroSparkles" aria-hidden="true"></canvas>
+    <div class="hero-robot" id="heroRobot" aria-hidden="true">
+      <spline-viewer id="heroSplineViewer" url="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"></spline-viewer>
+      <div class="hero-robot-cover" aria-hidden="true"></div>
+    </div>
+    <script>
+      /* Läuft synchron beim Parsen, bevor das deferred module-script die
+         Custom-Element-Definition registriert — verhindert auf Mobile, dass
+         die 3D-Szene überhaupt vom Server geladen wird (Performance). */
+      if (window.matchMedia('(max-width:980px)').matches) {
+        document.getElementById('heroSplineViewer').removeAttribute('url');
+      }
+    </script>
+    <div class="wrap hero-grid">
+      <div class="hero-inner">
+        <div class="hero-rating reveal">
+          <span class="stars">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </span>
+          <span data-i18n="hero.rating">5.0 von zufriedenen Kunden bewertet</span>
+        </div>
+        <div class="eyebrow reveal" data-i18n="hero.eyebrow">In der EU gehostet · DSGVO-konform · EU-AI-Act-konform</div>
+        <h1 class="h-xl serif reveal" style="transition-delay:.05s" data-i18n="hero.h1">KI-Agenten, die Ihr Unternehmen <em>wirklich</em> entlasten.</h1>
+        <p class="lead reveal" style="transition-delay:.1s" data-i18n="hero.lead">Ob verpasste Anrufe, fehlende Social-Media-Zeit oder wiederkehrende Aufgaben im Tagesgeschäft: AIDEN schafft <span class="hl">digitale Assistenten</span>, die dort übernehmen, wo heute <span class="hl">Zeit, Chancen und Energie</span> verloren gehen.</p>
+        <div class="hero-cta reveal" style="transition-delay:.15s">
+          <a href="#pricing" class="btn btn-gold" data-i18n="hero.cta1">VOICE AGENT anrufen &amp; testen</a>
+          <a href="social-media-agent.html" class="btn btn-outline" data-i18n="hero.cta2">SOCIAL MEDIA AGENT kennenlernen</a>
+        </div>
+        <div class="badges reveal" style="transition-delay:.2s">
+          <div class="badge badge-gold" data-i18n="hero.badge1">In der EU gehostet</div>
+          <div class="badge badge-gold" data-i18n="hero.badge2">DSGVO-konform</div>
+          <div class="badge badge-gold" data-i18n="hero.badge3">EU-AI-Act-konform</div>
+        </div>
+
+        <div class="hero-icon-row reveal" style="transition-delay:.25s" aria-hidden="true">
+          <span class="hero-icon-node"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+          <span class="hero-icon-node"><svg width="18" height="18" viewBox="0 0 32 32" fill="currentColor"><path d="M16.004 3.2c-7.07 0-12.8 5.73-12.8 12.8 0 2.26.6 4.38 1.64 6.22L3.2 28.8l6.76-1.6a12.74 12.74 0 0 0 6.04 1.53h.01c7.07 0 12.8-5.73 12.8-12.8s-5.73-12.73-12.8-12.73zm7.47 18.18c-.31.88-1.55 1.6-2.53 1.81-.68.14-1.56.26-4.53-.97-3.8-1.57-6.24-5.42-6.43-5.67-.19-.25-1.54-2.05-1.54-3.91s.97-2.78 1.31-3.16c.34-.38.75-.47 1-.47.25 0 .5.002.72.012.23.01.54-.09.84.64.31.75 1.05 2.6 1.14 2.79.09.19.15.41.03.66-.13.25-.19.4-.38.62-.19.22-.4.49-.57.66-.19.19-.39.4-.17.78.22.38.98 1.62 2.11 2.62 1.45 1.29 2.67 1.69 3.05 1.88.38.19.6.16.82-.1.22-.25.94-1.1 1.19-1.47.25-.38.5-.31.84-.19.34.13 2.17 1.02 2.54 1.21.38.19.63.28.72.44.09.16.09.94-.22 1.83z"/></svg></span>
+          <span class="hero-icon-node"><svg width="18" height="18" viewBox="0 0 240 240" fill="currentColor"><path d="M120 0a120 120 0 1 0 0 240 120 120 0 0 0 0-240zm54.6 81.8-18.4 86.7c-1.4 6.2-5 7.7-10.1 4.8l-28-20.6-13.5 13c-1.5 1.5-2.8 2.8-5.6 2.8l2-28.4 51.7-46.7c2.3-2 -.5-3.2-3.5-1.2l-63.9 40.2-27.5-8.6c-6-1.9-6.1-6 1.2-8.8l107.4-41.4c5-1.8 9.4 1.2 8.2 8.2z"/></svg></span>
+          <span class="hero-icon-node"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span>
+          <span class="hero-icon-node"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg></span>
+        </div>
+      </div>
+
+      <div class="beams-wrap reveal" style="transition-delay:.1s" id="beamsWrap">
+        <div class="hero-halo" aria-hidden="true"></div>
+        <div class="node-label" style="left:27.02%;top:18.39%;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+        <div class="node-label" style="left:72.98%;top:18.39%;"><svg width="26" height="26" viewBox="0 0 32 32" fill="currentColor"><path d="M16.004 3.2c-7.07 0-12.8 5.73-12.8 12.8 0 2.26.6 4.38 1.64 6.22L3.2 28.8l6.76-1.6a12.74 12.74 0 0 0 6.04 1.53h.01c7.07 0 12.8-5.73 12.8-12.8s-5.73-12.73-12.8-12.73zm7.47 18.18c-.31.88-1.55 1.6-2.53 1.81-.68.14-1.56.26-4.53-.97-3.8-1.57-6.24-5.42-6.43-5.67-.19-.25-1.54-2.05-1.54-3.91s.97-2.78 1.31-3.16c.34-.38.75-.47 1-.47.25 0 .5.002.72.012.23.01.54-.09.84.64.31.75 1.05 2.6 1.14 2.79.09.19.15.41.03.66-.13.25-.19.4-.38.62-.19.22-.4.49-.57.66-.19.19-.39.4-.17.78.22.38.98 1.62 2.11 2.62 1.45 1.29 2.67 1.69 3.05 1.88.38.19.6.16.82-.1.22-.25.94-1.1 1.19-1.47.25-.38.5-.31.84-.19.34.13 2.17 1.02 2.54 1.21.38.19.63.28.72.44.09.16.09.94-.22 1.83z"/></svg></div>
+        <div class="node-label" style="left:12.82%;top:62.07%;"><svg width="26" height="26" viewBox="0 0 240 240" fill="currentColor"><path d="M120 0a120 120 0 1 0 0 240 120 120 0 0 0 0-240zm54.6 81.8-18.4 86.7c-1.4 6.2-5 7.7-10.1 4.8l-28-20.6-13.5 13c-1.5 1.5-2.8 2.8-5.6 2.8l2-28.4 51.7-46.7c2.3-2 -.5-3.2-3.5-1.2l-63.9 40.2-27.5-8.6c-6-1.9-6.1-6 1.2-8.8l107.4-41.4c5-1.8 9.4 1.2 8.2 8.2z"/></svg></div>
+        <div class="node-label" style="left:87.18%;top:62.07%;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div>
+        <div class="node-label" style="left:50%;top:89.09%;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg></div>
+
+        <div class="hub-pill"><span>AIDEN</span></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- TRUSTED BY -->
+  <section class="trust-bar">
+    <div class="wrap">
+      <div class="trust-bar-label reveal" data-i18n="trust.label">Integriert mit den Tools, die Sie bereits nutzen</div>
+    </div>
+    <div class="trust-track-wrap reveal" style="transition-delay:.05s">
+      <div class="trust-track">
+        <span>OpenAI</span><span>WhatsApp</span><span>Telegram</span><span>Google Calendar</span><span>Microsoft 365</span><span>Meta</span>
+        <span>OpenAI</span><span>WhatsApp</span><span>Telegram</span><span>Google Calendar</span><span>Microsoft 365</span><span>Meta</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROBLEM -->
+  <section id="problem">
+    <div class="wrap">
+      <div class="eyebrow reveal" data-i18n="problem.eyebrow">Der Alltag ohne AIDEN</div>
+      <h2 class="h-lg serif reveal" style="max-width:640px;" data-i18n="problem.h2">Jeder verpasste Anruf ist ein Kunde, den Sie nicht kennenlernen.</h2>
+      <p class="lead reveal" style="margin-top:1rem;" data-i18n="problem.lead">So sieht der Alltag in vielen Unternehmen aus — bevor ein KI-Agent übernimmt.</p>
+      <div class="pain-grid">
+        <div class="pain-card reveal">
+          <div class="pain-icon"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/><line x1="1" y1="1" x2="23" y2="23"/></svg></div>
+          <h3 data-i18n="problem.c1.h">Verpasste Anrufe</h3>
+          <p data-i18n="problem.c1.p">Während eines Kundengesprächs klingelt das Telefon — und der nächste Kunde legt auf, bevor jemand abheben kann.</p>
+        </div>
+        <div class="pain-card reveal" style="transition-delay:.05s">
+          <div class="pain-icon"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
+          <h3 data-i18n="problem.c2.h">Keine Zeit für Social Media</h3>
+          <p data-i18n="problem.c2.p">Content-Planung bleibt liegen, weil das Tagesgeschäft vorgeht — die Sichtbarkeit leidet Woche für Woche.</p>
+        </div>
+        <div class="pain-card reveal" style="transition-delay:.1s">
+          <div class="pain-icon"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 1l4 4-4 4M3 11V9a4 4 0 014-4h14M7 23l-4-4 4-4M21 13v2a4 4 0 01-4 4H3"/></svg></div>
+          <h3 data-i18n="problem.c3.h">Wiederkehrende Aufgaben</h3>
+          <p data-i18n="problem.c3.p">Terminbestätigungen, Rückfragen, Erinnerungen — dieselben Handgriffe, jeden Tag, ohne dass sich das Team darauf konzentrieren kann, was wirklich zählt.</p>
+        </div>
+        <div class="pain-card reveal" style="transition-delay:.15s">
+          <div class="pain-icon"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/><circle cx="9" cy="7" r="4"/><path d="M1 21v-2a4 4 0 013-3.87"/></svg></div>
+          <h3 data-i18n="problem.c4.h">Leads gehen verloren</h3>
+          <p data-i18n="problem.c4.p">Interessenten melden sich, bekommen aber erst Stunden später eine Antwort — und haben sich bis dahin oft schon anders entschieden.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OVERVIEW -->
+  <section id="loesungen" class="ov-section">
+    <div class="wrap">
+      <div class="ov-head">
+        <div class="eyebrow reveal" data-i18n="ov.eyebrow">KI-Lösungen im Überblick</div>
+        <h2 class="h-lg serif reveal" data-i18n="ov.h2">Für mehr Erreichbarkeit, weniger Aufwand und bessere Abläufe.</h2>
+        <p class="lead reveal" style="margin-top:1rem;" data-i18n="ov.lead">AIDEN entwickelt digitale Assistenten, die genau dort unterstützen, wo im Unternehmensalltag <span class="hl">Zeit verloren geht</span>: bei Anrufen, Rückfragen, Terminen, Leads, Content und wiederkehrenden Aufgaben.</p>
+      </div>
+      <div class="ov-grid">
+        <div class="ov-card reveal" id="voice">
+          <div class="ov-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+          <h3 data-i18n="ov.c1.h">KI Voice Agents</h3>
+          <p data-i18n="ov.c1.p"><span class="hl">Verpassen Sie nie wieder einen Kunden.</span> Ihr KI-Agent nimmt Anrufe entgegen, qualifiziert Anfragen und bucht Termine in Echtzeit — 24/7, mit einem Lächeln.</p>
+        </div>
+        <div class="ov-card reveal" style="transition-delay:.05s" id="social">
+          <div class="ov-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 12h8M8 8h8M8 16h5"/></svg></div>
+          <h3 data-i18n="ov.c2.h">Social Media Agent</h3>
+          <p data-i18n="ov.c2.p">Erstellen, planen und veröffentlichen Sie Social-Media-Beiträge <span class="hl">vollautomatisch</span> — passend zu Ihrer Zielgruppe, Ihrer Marke und der jeweiligen Plattform.</p>
+        </div>
+        <div class="ov-card reveal" style="transition-delay:.1s">
+          <div class="ov-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 1l4 4-4 4M3 11V9a4 4 0 014-4h14M7 23l-4-4 4-4M21 13v2a4 4 0 01-4 4H3"/></svg></div>
+          <h3 data-i18n="ov.c3.h">Prozess-Automation</h3>
+          <p data-i18n="ov.c3.p">Automatisieren Sie wiederkehrende Aufgaben und Workflows. <span class="hl">Sparen Sie Zeit, reduzieren Sie Fehler</span> und entlasten Sie Ihr Team von manueller Arbeit.</p>
+        </div>
+        <div class="ov-card reveal">
+          <div class="ov-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/><circle cx="9" cy="7" r="4"/><path d="M1 21v-2a4 4 0 013-3.87"/></svg></div>
+          <h3 data-i18n="ov.c4.h">Lead-Management</h3>
+          <p data-i18n="ov.c4.p">Erfassen und qualifizieren Sie Leads sofort. <span class="hl">Verwandeln Sie jede Anfrage</span> automatisch in eine echte Verkaufschance.</p>
+        </div>
+        <div class="ov-card reveal" style="transition-delay:.05s">
+          <div class="ov-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+          <h3 data-i18n="ov.c5.h">Kundensupport</h3>
+          <p data-i18n="ov.c5.p"><span class="hl">Antworten Sie Kunden sofort</span> — jederzeit. Schneller, einheitlicher und professioneller Support, ohne zusätzliches Personal aufzubauen.</p>
+        </div>
+        <div class="ov-card reveal" style="transition-delay:.1s">
+          <div class="ov-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9M16.5 3.5a2.12 2.12 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
+          <h3 data-i18n="ov.c6.h">Individuelle Lösungen</h3>
+          <p data-i18n="ov.c6.p"><span class="hl">Maßgeschneiderte Systeme</span>, die genau auf Ihre Herausforderungen, Abläufe und Ziele abgestimmt sind.</p>
+        </div>
+      </div>
+      <div class="ov-cta-row reveal">
+        <a href="#kontakt" class="btn btn-gold" data-i18n="ov.cta">Individuelle Lösung finden</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- INDUSTRIES -->
+  <section class="ind-section" id="branchen">
+    <div class="wrap">
+      <div class="eyebrow reveal" data-i18n="ind.eyebrow">Für dein Business gemacht</div>
+      <h2 class="h-lg serif reveal" style="max-width:640px;margin-bottom:2.6rem;" data-i18n="ind.h2">Egal ob Praxis, Handwerksbetrieb, Immobilienbüro oder Einzelunternehmen.</h2>
+
+      <div class="ind-tabs reveal">
+        <button class="ind-tab active" data-tab="retail" data-i18n="ind.tab1">Einzelhandel</button>
+        <button class="ind-tab" data-tab="real-estate" data-i18n="ind.tab2">Immobilienbranche</button>
+        <button class="ind-tab" data-tab="craft" data-i18n="ind.tab3">Handwerksbetriebe</button>
+        <button class="ind-tab" data-tab="solo" data-i18n="ind.tab4">Einzelunternehmen</button>
+      </div>
+
+      <div class="ind-panel active" id="retail">
+        <div>
+          <h3 class="serif" data-i18n="ind.p1.h">Social Media endlich einfach — auch im hektischen Lebensmittelhandel</h3>
+          <p data-i18n="ind.p1.p">Social Media wurde bisher nur gemacht, wenn Zeit war — ohne Plan, ohne Recherche und ohne professionelle Bilder. Die Folge: <span class="hl">wenig Regelmäßigkeit, wenig Reichweite</span> und immer weniger Lust.</p>
+          <ul class="ind-list">
+            <li data-i18n="ind.p1.l1"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Regelmäßige Posts ohne Stress</li>
+            <li data-i18n="ind.p1.l2"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Relevante Inhalte, die Kunden interessieren</li>
+            <li data-i18n="ind.p1.l3"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Mehr Sichtbarkeit in unter 1 Stunde pro Woche</li>
+          </ul>
+        </div>
+        <div class="ind-visual"><div class="lbl" data-i18n="ind.p1.statlbl">Zeitaufwand pro Woche</div><div class="stat serif" data-i18n="ind.p1.statval">&lt; 1 Std.</div></div>
+      </div>
+
+      <div class="ind-panel" id="real-estate">
+        <div>
+          <h3 class="serif" data-i18n="ind.p2.h">Schnellere Vermarktung und Kundenbindung</h3>
+          <p data-i18n="ind.p2.p">Im hart umkämpften Immobilienmarkt <span class="hl">zählt jeder Vorteil</span>. Unsere Tools helfen Ihnen, Exposés professionell zu erstellen, Interessenten gezielt anzusprechen und den Verkaufsprozess zu beschleunigen.</p>
+          <ul class="ind-list">
+            <li data-i18n="ind.p2.l1"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Automatische Exposé-Generierung</li>
+            <li data-i18n="ind.p2.l2"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Gezieltes Lead-Management</li>
+            <li data-i18n="ind.p2.l3"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Transparente Kommunikation mit Kunden</li>
+          </ul>
+        </div>
+        <div class="ind-visual"><div class="lbl" data-i18n="ind.p2.statlbl">Fokus</div><div class="stat serif" data-i18n="ind.p2.statval">Lead-Speed</div></div>
+      </div>
+
+      <div class="ind-panel" id="craft">
+        <div>
+          <h3 class="serif" data-i18n="ind.p3.h">Auftragsverwaltung und Kundenkommunikation</h3>
+          <p data-i18n="ind.p3.p">Für Handwerksbetriebe ist es entscheidend, <span class="hl">den Überblick zu behalten</span> — über Aufträge, Angebote und Kunden. Unsere Lösung vereinfacht die Verwaltung und sorgt für zufriedene Kunden.</p>
+          <ul class="ind-list">
+            <li data-i18n="ind.common.l1"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Digitale Angebots- und Rechnungsstellung</li>
+            <li data-i18n="ind.common.l2"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Einfache Termin- und Ressourcenplanung</li>
+            <li data-i18n="ind.common.l3"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Verbesserte Kundenkommunikation</li>
+          </ul>
+        </div>
+        <div class="ind-visual"><div class="lbl" data-i18n="ind.p3.statlbl">Ergebnis</div><div class="stat serif" data-i18n="ind.p3.statval">Klarer Überblick</div></div>
+      </div>
+
+      <div class="ind-panel" id="solo">
+        <div>
+          <h3 class="serif" data-i18n="ind.p4.h">Alles unter Kontrolle</h3>
+          <p data-i18n="ind.p4.p">Als Einzelunternehmer bist du Manager, Verkäufer und Experte in einem. Wir helfen dir, <span class="hl">deine Zeit optimal zu nutzen</span> und den Überblick zu behalten.</p>
+          <ul class="ind-list">
+            <li data-i18n="ind.common.l1"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Digitale Angebots- und Rechnungsstellung</li>
+            <li data-i18n="ind.common.l2"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Einfache Termin- und Ressourcenplanung</li>
+            <li data-i18n="ind.common.l3"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Verbesserte Kundenkommunikation</li>
+          </ul>
+        </div>
+        <div class="ind-visual"><div class="lbl" data-i18n="ind.p4.statlbl">Rolle</div><div class="stat serif" data-i18n="ind.p4.statval">Alles in einem</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CASE STUDY -->
+  <section class="case" id="fallbeispiel">
+    <div class="wrap">
+      <div class="case-head">
+        <div>
+          <div class="eyebrow reveal" data-i18n="case.eyebrow">Kundenbeispiel · Praxis &amp; Kliniken</div>
+          <h2 class="h-lg serif reveal" style="max-width:600px;" data-i18n="case.h2">Nie wieder verpasste Patientenanrufe.</h2>
+        </div>
+        <div class="case-stats reveal">
+          <div class="case-stat"><b class="serif" data-count="62" data-suffix=" %">0 %</b><span data-i18n="case.stat1lbl">Mehr Patientenanrufe angenommen</span><div class="case-stat-bar" style="--fill:62%;"><i></i></div></div>
+          <div class="case-stat"><b class="serif">24/7</b><span data-i18n="case.stat2lbl">Erreichbarkeit — immer freundlich</span><div class="case-stat-bar" style="--fill:100%;"><i></i></div></div>
+        </div>
+      </div>
+      <p class="lead reveal" style="margin-bottom:2.6rem;" data-i18n="case.lead">Unerreichbarkeit ist ein großes Problem im Gesundheitswesen. Viele Praxen <span class="hl">verlieren durch verpasste Anrufe potenzielle Patienten</span> und belasten ihr Team unnötig. AIDEN bietet eine intelligente Lösung, die sicherstellt, dass <span class="hl">kein Anruf unbeantwortet bleibt</span>.</p>
+      <div class="case-steps">
+        <div class="case-step reveal"><span class="n serif">1</span><div class="tag" data-i18n="case.s1.tag">Vorher</div><h4 data-i18n="case.s1.h">Verpasste Anrufe</h4><p data-i18n="case.s1.p">Patienten riefen vergeblich an, da das Personal überlastet war oder außerhalb der Sprechzeiten keine Erreichbarkeit bestand.</p></div>
+        <div class="case-step reveal" style="transition-delay:.05s"><span class="n serif">2</span><div class="tag" data-i18n="case.s2.tag">Vorher</div><h4 data-i18n="case.s2.h">Überlastetes Personal</h4><p data-i18n="case.s2.p">Mitarbeiter hatten Mühe, Patienten zurückzurufen, was zu längeren Wartezeiten und Frustration führte.</p></div>
+        <div class="case-step reveal" id="caseStepNoLine" style="transition-delay:.1s"><span class="n serif">3</span><div class="tag" data-i18n="case.s3.tag">Mit AIDEN</div><h4 data-i18n="case.s3.h">Keine Anrufe mehr ins Leere</h4><p data-i18n="case.s3.p">Patientenanrufe werden automatisch angenommen und individuell beantwortet — mit Namen angesprochen, sofort gut aufgehoben.</p></div>
+        <div class="case-step reveal" style="transition-delay:.15s"><span class="n serif">4</span><div class="tag" data-i18n="case.s4.tag">Terminbuchung</div><h4 data-i18n="case.s4.h">Voller Kalender, leicht gemacht</h4><p data-i18n="case.s4.p">AIDEN bucht Termine via SMS, WhatsApp oder E-Mail und integriert sich nahtlos in den Praxiskalender.</p></div>
+        <div class="case-step reveal" style="transition-delay:.2s"><span class="n serif">5</span><div class="tag" data-i18n="case.s5.tag">Ergebnis</div><h4 data-i18n="case.s5.h">Zufriedene Patienten, entspanntes Team</h4><p data-i18n="case.s5.p">Die Praxis läuft entspannter und deutlich effizienter — das Team ist freundlich statt gestresst.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST / ÜBER UNS -->
+  <section id="ueber-uns">
+    <div class="wrap">
+      <div class="eyebrow reveal" data-i18n="trust2.eyebrow">Vertrauen entsteht nicht durch Technik allein</div>
+      <h2 class="h-lg serif reveal" style="max-width:680px;margin-bottom:1.4rem;" data-i18n="trust2.h2">KI-Lösungen mit Erfahrung, Strategie und echter Umsetzungskompetenz.</h2>
+      <p class="lead reveal" style="margin-bottom:3rem;" data-i18n="trust2.lead">Hinter AIDEN stehen Menschen, die Unternehmen verstehen: mit Erfahrung in Marketing, Vertrieb, Kundenkommunikation und künstlicher Intelligenz. <span class="hl">Genau diese Verbindung macht den Unterschied.</span></p>
+
+      <div class="trust-grid">
+        <div class="trust-item reveal">
+          <h3 data-i18n="trust2.i2.h">Mehr als 30 Jahre Marketing &amp; Vertrieb</h3>
+          <p data-i18n="trust2.i2.p">AIDEN verbindet langjährige Erfahrung in Marketing, Vertrieb, Kundenkommunikation und strategischer Umsetzung für Unternehmen.</p>
+          <p class="payoff" data-i18n="trust2.i2.payoff">Das bedeutet für Sie: <em>Ihr Agent wird mit Blick auf Zielgruppe, Kommunikation und echte Geschäftsprozesse entwickelt.</em></p>
+        </div>
+        <div class="trust-item reveal" style="transition-delay:.05s">
+          <h3 data-i18n="trust2.i1.h">Mehr als 13 Jahre KI-Erfahrung</h3>
+          <p data-i18n="trust2.i1.p">Dr. Irena Schindler bringt mehr als 13 Jahre Erfahrung im Bereich künstliche Intelligenz ein und ist der technologische Kopf hinter den KI-Agenten von AIDEN.</p>
+          <p class="payoff" data-i18n="trust2.i1.payoff">Das bedeutet für Sie: <em>Ihre Lösung basiert auf fundierter Erfahrung, nicht auf kurzfristigem KI-Hype.</em></p>
+        </div>
+      </div>
+
+      <div class="team-grid">
+        <div class="team-card reveal">
+          <div class="team-av"><img src="images/team-heidrun.jpg" alt="Heidrun Keim" loading="lazy" width="240" height="240"></div>
+          <h4>Heidrun Keim</h4>
+          <div class="role" data-i18n="team1.role">Geschäftsführerin xC Consultants / xC-KI</div>
+          <p data-i18n="team1.bio">Heidrun Keim bringt mehr als 35 Jahre Erfahrung in Marketing und Vertrieb ein. Sie sorgt dafür, dass KI-Lösungen nicht nur technisch möglich sind, sondern für Kunden verständlich, nutzbar und verkaufsstark werden.</p>
+        </div>
+        <div class="team-card reveal" style="transition-delay:.05s">
+          <div class="team-av"><img src="images/team-irena.jpg" alt="Dr. Irena Schindler" loading="lazy" width="240" height="240"></div>
+          <h4>Dr. Irena Schindler</h4>
+          <div class="role" data-i18n="team2.role">Geschäftsführerin AIDEN · KI-Expertin</div>
+          <p data-i18n="team2.bio">Dr. Irena Schindler sorgt dafür, dass aus Ideen stabile, intelligente und praxistaugliche KI-Agenten werden, die Unternehmen im Alltag wirklich entlasten.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ONBOARDING PATHS -->
+  <section class="ind-section" id="start">
+    <div class="wrap">
+      <div class="eyebrow reveal" data-i18n="start.eyebrow">So einfach starten Sie mit AIDEN</div>
+      <h2 class="h-lg serif reveal" style="max-width:640px;margin-bottom:2.8rem;" data-i18n="start.h2">Welcher Agent soll Ihr Unternehmen zuerst entlasten?</h2>
+
+      <div class="path-grid">
+        <div class="path-card reveal">
+          <h3 class="serif" data-i18n="start.p1.h">Voice Agent starten</h3>
+          <div class="sub" data-i18n="start.p1.sub">Tarif wählen. Agent einrichten. Anrufe automatisch entgegennehmen.</div>
+          <div class="path-step"><span class="n serif">1</span><div><h4 data-i18n="start.p1.s1.h">Tarif auswählen</h4><p data-i18n="start.p1.s1.p"><span class="hl">Starten Sie kostenlos</span>, per Prepaid oder mit einem passenden Monatstarif.</p></div></div>
+          <div class="path-step"><span class="n serif">2</span><div><h4 data-i18n="start.p1.s2.h">Agent einrichten</h4><p data-i18n="start.p1.s2.p">Definieren Sie Begrüßung, Fragen, Antworten, Weiterleitungen und Abläufe — vom Self-Service bis zur individuellen Anpassung.</p></div></div>
+          <div class="path-step"><span class="n serif">3</span><div><h4 data-i18n="start.p1.s3.h">Entlastung spüren</h4><p data-i18n="start.p1.s3.p">Der Agent nimmt Anrufe entgegen, erfasst Anliegen und <span class="hl">entlastet Ihr Team</span>.</p></div></div>
+          <div class="path-payoff" data-i18n="start.p1.payoff">Einfacher Einstieg. Schnell eingerichtet. Persönlich begleitet.</div>
+        </div>
+
+        <div class="path-card reveal" style="transition-delay:.05s">
+          <h3 class="serif" data-i18n="start.p2.h">Social Media Agent starten</h3>
+          <div class="sub" data-i18n="start.p2.sub">Kostenlosen Termin buchen oder direkt im Chat starten.</div>
+          <div class="path-step"><span class="n serif">1</span><div><h4 data-i18n="start.p2.s1.h">Termin buchen</h4><p data-i18n="start.p2.s1.p">Starten Sie mit einem kostenlosen Ersttermin oder stellen Sie Ihre Fragen direkt im Chat.</p></div></div>
+          <div class="path-step"><span class="n serif">2</span><div><h4 data-i18n="start.p2.s2.h">Ziele festlegen</h4><p data-i18n="start.p2.s2.p">Wir klären Zielgruppe, Kanäle, Themen, Tonalität und Content-Ziele.</p></div></div>
+          <div class="path-step"><span class="n serif">3</span><div><h4 data-i18n="start.p2.s3.h">Sichtbar werden</h4><p data-i18n="start.p2.s3.p">Der Agent unterstützt bei Recherche, Planung, Texten, Bildideen und Veröffentlichung — via WhatsApp oder Telegram.</p></div></div>
+          <div class="path-payoff" data-i18n="start.p2.payoff">Mehr Struktur. Weniger Content-Stress. Regelmäßig sichtbar.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="pricing-section" id="pricing">
+    <div class="wrap">
+      <div class="eyebrow reveal" data-i18n="pricing.eyebrow">Preise</div>
+      <h2 class="h-lg serif reveal" style="max-width:640px;" data-i18n="pricing.h2">Der Voice Agent, der erst kostet, wenn er arbeitet.</h2>
+
+      <div class="starter-box reveal">
+        <div>
+          <div class="eyebrow" style="color:var(--gold-light);" data-i18n="pricing.starter.eyebrow">Keine Fixkosten</div>
+          <h3 class="h-md serif" data-i18n="pricing.starter.h">Prepaid-Tarif: 0&nbsp;€ zum Starten</h3>
+          <p style="color:var(--muted-on-ink);font-size:.92rem;margin:.8rem 0 0;max-width:44ch;" data-i18n="pricing.starter.p">So starten Sie mit KI-Telefonie <span class="hl">ohne Kostenrisiko</span> und bleiben erreichbar, wenn gerade niemand ans Telefon gehen kann. Ideal für Einzelunternehmer, Freelancer und kleine Unternehmen.</p>
+        </div>
+        <div>
+          <div class="price-now serif">0&nbsp;€<span class="unit" data-i18n="pricing.starter.unit">&nbsp;Grundgebühr</span></div>
+          <ul class="starter-list">
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span data-i18n="pricing.starter.l1">15 kostenlose Testminuten inklusive</span></li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span data-i18n="pricing.starter.l2">Danach nur 0,69&nbsp;€ pro Minute</span></li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span data-i18n="pricing.starter.l3">Keine Kreditkarte, keine Vertragsbindung</span></li>
+          </ul>
+          <a href="tel:+4980319075984" class="btn btn-gold" style="margin-top:1.6rem;" data-i18n="pricing.starter.cta">24/7 Telefonannahme testen</a>
+        </div>
+      </div>
+
+      <div class="price-note reveal">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg>
+        <p data-i18n="pricing.note"><strong>Fünf Tarife stehen zur Auswahl</strong> — für alle, die den Voice Agent fest im Alltag nutzen möchten. Alle Monatspreise gelten bei 12 Monaten Laufzeit.</p>
+      </div>
+
+      <div class="price-grid">
+        <div class="price-card price-scrub">
+          <div class="price-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.5 20.1a7.5 7.5 0 0115 0"/></svg></div>
+          <div class="price-name" data-i18n="pc1.name">Einsteiger · Basic</div>
+          <div class="price-now serif">69&nbsp;€<span class="unit" data-i18n="pc.unit.month">&nbsp;/ Monat</span></div>
+          <div class="price-was mono" data-i18n="pc1.was">98&nbsp;€ / Monat</div>
+          <div class="price-save" data-i18n="pc1.save">Sie sparen 240&nbsp;€ im 1. Jahr</div>
+          <ul class="price-feats">
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span data-i18n="pc1.f1">100 Freiminuten</span></li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h4l2-8 4 16 2-8h8"/></svg><span data-i18n="pc.common.1ki">1 KI-Assistent</span></li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><text x="12" y="15.2" text-anchor="middle" font-size="7.5" font-weight="700" fill="currentColor" stroke="none" font-family="Arial,sans-serif">24</text></svg><span data-i18n="pc.common.247">24/7 Telefonannahme</span></li>
+            <li><svg width="15" height="15" viewBox="0 0 240 240" fill="currentColor"><path d="M120 0a120 120 0 1 0 0 240 120 120 0 0 0 0-240zm54.6 81.8-18.4 86.7c-1.4 6.2-5 7.7-10.1 4.8l-28-20.6-13.5 13c-1.5 1.5-2.8 2.8-5.6 2.8l2-28.4 51.7-46.7c2.3-2 -.5-3.2-3.5-1.2l-63.9 40.2-27.5-8.6c-6-1.9-6.1-6 1.2-8.8l107.4-41.4c5-1.8 9.4 1.2 8.2 8.2z"/></svg><span data-i18n="pc.common.telegram">Telegram Integration</span></li>
+            <li><svg width="15" height="15" viewBox="0 0 32 32" fill="currentColor"><path d="M16.004 3.2c-7.07 0-12.8 5.73-12.8 12.8 0 2.26.6 4.38 1.64 6.22L3.2 28.8l6.76-1.6a12.74 12.74 0 0 0 6.04 1.53h.01c7.07 0 12.8-5.73 12.8-12.8s-5.73-12.73-12.8-12.73zm7.47 18.18c-.31.88-1.55 1.6-2.53 1.81-.68.14-1.56.26-4.53-.97-3.8-1.57-6.24-5.42-6.43-5.67-.19-.25-1.54-2.05-1.54-3.91s.97-2.78 1.31-3.16c.34-.38.75-.47 1-.47.25 0 .5.002.72.012.23.01.54-.09.84.64.31.75 1.05 2.6 1.14 2.79.09.19.15.41.03.66-.13.25-.19.4-.38.62-.19.22-.4.49-.57.66-.19.19-.39.4-.17.78.22.38.98 1.62 2.11 2.62 1.45 1.29 2.67 1.69 3.05 1.88.38.19.6.16.82-.1.22-.25.94-1.1 1.19-1.47.25-.38.5-.31.84-.19.34.13 2.17 1.02 2.54 1.21.38.19.63.28.72.44.09.16.09.94-.22 1.83z"/></svg><span data-i18n="pc.common.whatsapp">WhatsApp Integration</span></li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6-6"/><path d="M8 9.5l1.3-1.3a3.5 3.5 0 0 1 5 5L13 14.5"/><path d="M16 14.5l-1.3 1.3a3.5 3.5 0 0 1-5-5L11 9.5"/></svg><span data-i18n="pc.common.api">API-Zugang</span></li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span data-i18n="pc.common.setup">Perfekte Einrichtung</span></li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><path d="M9.5 15.5l1.5 1.5 3-3"/></svg><span data-i18n="pc.common.booking">Terminbuchung</span></li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg><span data-i18n="pc.common.calendar">Kalender Integration</span></li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" stroke="none"><rect x="3" y="14" width="4" height="7" rx="1"/><rect x="10" y="9" width="4" height="12" rx="1"/><rect x="17" y="4" width="4" height="17" rx="1"/></svg><span data-i18n="pc.common.priority">Priorität-Support</span></li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg><span data-i18n="pc.common.email">Email Benachrichtigung</span></li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6.5c-1.6-1.1-4-1.6-6.5-1.1v13c2.5-.5 4.9 0 6.5 1.1 1.6-1.1 4-1.6 6.5-1.1v-13c-2.5-.5-4.9 0-6.5 1.1z"/><path d="M12 6.5v13"/></svg><span data-i18n="pc.common.kb">Wissensdatenbank</span></li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 21h4"/><path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/></svg><span data-i18n="pc.common.reminder">Terminerinnerung</span></li>
+          </ul>
+          <a href="checkout.html?plan=basic" class="btn btn-outline" data-i18n="pc1.cta">Basic wählen</a>
+          <div class="price-bestfor" data-i18n="pc1.bestfor">Am besten für: Einzelunternehmer &amp; Praxisstart</div>
+          <div class="price-extra mono" data-i18n="pc1.extra">Zusatzminute 0,39&nbsp;€</div>
+        </div>
+
+        <div class="price-card feat price-scrub">
+          <div class="price-tag" data-i18n="pc2.tag">Beliebtester Plan</div>
+          <div class="price-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.82m5.84-2.56v4.82a6 6 0 01-1.83-1.01l-4.01-4.01a6 6 0 01-1.01-1.83H7.5a6 6 0 017.38-5.84zM10.5 14.5L14 11"/></svg></div>
+          <div class="price-name" data-i18n="pc2.name">Comfort</div>
+          <div class="price-now serif">129&nbsp;€<span class="unit" data-i18n="pc.unit.month">&nbsp;/ Monat</span></div>
+          <div class="price-was mono" data-i18n="pc2.was">189&nbsp;€ / Monat</div>
+          <div class="price-save" data-i18n="pc2.save">Sie sparen 720&nbsp;€ im 1. Jahr</div>
+          <ul class="price-feats">
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span data-i18n="pc2.f1">200 Freiminuten</span></li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h4l2-8 4 16 2-8h8"/></svg><span data-i18n="pc.common.1ki">1 KI-Assistent</span></li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><text x="12" y="15.2" text-anchor="middle" font-size="7.5" font-weight="700" fill="currentColor" stroke="none" font-family="Arial,sans-serif">24</text></svg><span data-i18n="pc.common.247">24/7 Telefonannahme</span></li>
+            <li><svg width="15" height="15" viewBox="0 0 240 240" fill="currentColor"><path d="M120 0a120 120 0 1 0 0 240 120 120 0 0 0 0-240zm54.6 81.8-18.4 86.7c-1.4 6.2-5 7.7-10.1 4.8l-28-20.6-13.5 13c-1.5 1.5-2.8 2.8-5.6 2.8l2-28.4 51.7-46.7c2.3-2 -.5-3.2-3.5-1.2l-63.9 40.2-27.5-8.6c-6-1.9-6.1-6 1.2-8.8l107.4-41.4c5-1.8 9.4 1.2 8.2 8.2z"/></svg><span data-i18n="pc.common.telegram">Telegram Integration</span></li>
+            <li><svg width="15" height="15" viewBox="0 0 32 32" fill="currentColor"><path d="M16.004 3.2c-7.07 0-12.8 5.73-12.8 12.8 0 2.26.6 4.38 1.64 6.22L3.2 28.8l6.76-1.6a12.74 12.74 0 0 0 6.04 1.53h.01c7.07 0 12.8-5.73 12.8-12.8s-5.73-12.73-12.8-12.73zm7.47 18.18c-.31.88-1.55 1.6-2.53 1.81-.68.14-1.56.26-4.53-.97-3.8-1.57-6.24-5.42-6.43-5.67-.19-.25-1.54-2.05-1.54-3.91s.97-2.78 1.31-3.16c.34-.38.75-.47 1-.47.25 0 .5.002.72.012.23.01.54-.09.84.64.31.75 1.05 2.6 1.14 2.79.09.19.15.41.03.66-.13.25-.19.4-.38.62-.19.22-.4.49-.57.66-.19.19-.39.4-.17.78.22.38.98 1.62 2.11 2.62 1.45 1.29 2.67 1.69 3.05 1.88.38.19.6.16.82-.1.22-.25.94-1.1 1.19-1.47.25-.38.5-.31.84-.19.34.13 2.17 1.02 2.54 1.21.38.19.63.28.72.44.09.16.09.94-.22 1.83z"/></svg><span data-i18n="pc.common.whatsapp">WhatsApp Integration</span></li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6-6"/><path d="M8 9.5l1.3-1.3a3.5 3.5 0 0 1 5 5L13 14.5"/><path d="M16 14.5l-1.3 1.3a3.5 3.5 0 0 1-5-5L11 9.5"/></svg><span data-i18n="pc.common.api">API-Zugang</span></li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span data-i18n="pc.common.setup">Perfekte Einrichtung</span></li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><path d="M9.5 15.5l1.5 1.5 3-3"/></svg><span data-i18n="pc.common.booking">Terminbuchung</span></li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg><span data-i18n="pc.common.calendar">Kalender Integration</span></li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" stroke="none"><rect x="3" y="14" width="4" height="7" rx="1"/><rect x="10" y="9" width="4" height="12" rx="1"/><rect x="17" y="4" width="4" height="17" rx="1"/></svg><span data-i18n="pc.common.priority">Priorität-Support</span></li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg><span data-i18n="pc.common.email">Email Benachrichtigung</span></li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6.5c-1.6-1.1-4-1.6-6.5-1.1v13c2.5-.5 4.9 0 6.5 1.1 1.6-1.1 4-1.6 6.5-1.1v-13c-2.5-.5-4.9 0-6.5 1.1z"/><path d="M12 6.5v13"/></svg><span data-i18n="pc.common.kb">Wissensdatenbank</span></li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 21h4"/><path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/></svg><span data-i18n="pc.common.reminder">Terminerinnerung</span></li>
+          </ul>
+          <a href="checkout.html?plan=comfort" class="btn btn-gold" data-i18n="pc2.cta">Comfort wählen</a>
+          <div class="price-bestfor" data-i18n="pc2.bestfor">Am besten für: wachsende Teams mit mehreren Kanälen</div>
+          <div class="price-extra mono" data-i18n="pc2.extra">Zusatzminute 0,32&nbsp;€</div>
+        </div>
+
+        <div class="price-card price-scrub">
+          <div class="price-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h6.375M9 12h6.375m-6.375 5.25h6.375"/></svg></div>
+          <div class="price-name" data-i18n="pc3.name">Für größere Unternehmen · Premium</div>
+          <div class="price-now serif">249&nbsp;€<span class="unit" data-i18n="pc.unit.month">&nbsp;/ Monat</span></div>
+          <div class="price-was mono" data-i18n="pc3.was">399&nbsp;€ / Monat</div>
+          <div class="price-save" data-i18n="pc3.save">Sie sparen 1.800&nbsp;€ im 1. Jahr</div>
+          <ul class="price-feats">
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span data-i18n="pc3.f1">600 Freiminuten</span></li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h4l2-8 4 16 2-8h8"/></svg><span data-i18n="pc.common.3ki">3 KI-Assistenten</span></li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><text x="12" y="15.2" text-anchor="middle" font-size="7.5" font-weight="700" fill="currentColor" stroke="none" font-family="Arial,sans-serif">24</text></svg><span data-i18n="pc.common.247">24/7 Telefonannahme</span></li>
+            <li><svg width="15" height="15" viewBox="0 0 240 240" fill="currentColor"><path d="M120 0a120 120 0 1 0 0 240 120 120 0 0 0 0-240zm54.6 81.8-18.4 86.7c-1.4 6.2-5 7.7-10.1 4.8l-28-20.6-13.5 13c-1.5 1.5-2.8 2.8-5.6 2.8l2-28.4 51.7-46.7c2.3-2 -.5-3.2-3.5-1.2l-63.9 40.2-27.5-8.6c-6-1.9-6.1-6 1.2-8.8l107.4-41.4c5-1.8 9.4 1.2 8.2 8.2z"/></svg><span data-i18n="pc.common.telegram">Telegram Integration</span></li>
+            <li><svg width="15" height="15" viewBox="0 0 32 32" fill="currentColor"><path d="M16.004 3.2c-7.07 0-12.8 5.73-12.8 12.8 0 2.26.6 4.38 1.64 6.22L3.2 28.8l6.76-1.6a12.74 12.74 0 0 0 6.04 1.53h.01c7.07 0 12.8-5.73 12.8-12.8s-5.73-12.73-12.8-12.73zm7.47 18.18c-.31.88-1.55 1.6-2.53 1.81-.68.14-1.56.26-4.53-.97-3.8-1.57-6.24-5.42-6.43-5.67-.19-.25-1.54-2.05-1.54-3.91s.97-2.78 1.31-3.16c.34-.38.75-.47 1-.47.25 0 .5.002.72.012.23.01.54-.09.84.64.31.75 1.05 2.6 1.14 2.79.09.19.15.41.03.66-.13.25-.19.4-.38.62-.19.22-.4.49-.57.66-.19.19-.39.4-.17.78.22.38.98 1.62 2.11 2.62 1.45 1.29 2.67 1.69 3.05 1.88.38.19.6.16.82-.1.22-.25.94-1.1 1.19-1.47.25-.38.5-.31.84-.19.34.13 2.17 1.02 2.54 1.21.38.19.63.28.72.44.09.16.09.94-.22 1.83z"/></svg><span data-i18n="pc.common.whatsapp">WhatsApp Integration</span></li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6-6"/><path d="M8 9.5l1.3-1.3a3.5 3.5 0 0 1 5 5L13 14.5"/><path d="M16 14.5l-1.3 1.3a3.5 3.5 0 0 1-5-5L11 9.5"/></svg><span data-i18n="pc.common.api">API-Zugang</span></li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span data-i18n="pc.common.setup">Perfekte Einrichtung</span></li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><path d="M9.5 15.5l1.5 1.5 3-3"/></svg><span data-i18n="pc.common.booking">Terminbuchung</span></li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg><span data-i18n="pc.common.calendar">Kalender Integration</span></li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" stroke="none"><rect x="3" y="14" width="4" height="7" rx="1"/><rect x="10" y="9" width="4" height="12" rx="1"/><rect x="17" y="4" width="4" height="17" rx="1"/></svg><span data-i18n="pc.common.priority">Priorität-Support</span></li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg><span data-i18n="pc.common.email">Email Benachrichtigung</span></li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6.5c-1.6-1.1-4-1.6-6.5-1.1v13c2.5-.5 4.9 0 6.5 1.1 1.6-1.1 4-1.6 6.5-1.1v-13c-2.5-.5-4.9 0-6.5 1.1z"/><path d="M12 6.5v13"/></svg><span data-i18n="pc.common.kb">Wissensdatenbank</span></li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 21h4"/><path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/></svg><span data-i18n="pc.common.reminder">Terminerinnerung</span></li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12l4 4L15 7"/><path d="M9 12.5l3.5 3.5L22 6"/></svg><span data-i18n="pc.common.allfeat">Alle Funktionen</span></li>
+          </ul>
+          <a href="checkout.html?plan=premium" class="btn btn-outline" data-i18n="pc3.cta">Premium wählen</a>
+          <div class="price-bestfor" data-i18n="pc3.bestfor">Am besten für: größere Unternehmen mit hohem Anrufvolumen</div>
+          <div class="price-extra mono" data-i18n="pc3.extra">Zusatzminute 0,28&nbsp;€</div>
+        </div>
+
+        <div class="price-card price-scrub">
+          <div class="price-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M13 2L4.5 12.5H11L9.5 22L18 11.5H12.5L13 2z"/></svg></div>
+          <div class="price-name" data-i18n="pc4.name">Smarte Lösung</div>
+          <div class="price-now serif">2.349&nbsp;€<span class="unit" data-i18n="pc4.unit">&nbsp;einmalig</span></div>
+          <div class="price-was mono" data-i18n="pc4.was">4.536&nbsp;€ einmalig</div>
+          <div class="price-save" data-i18n="pc4.save">Sie sparen 2.187&nbsp;€ Einführungspreis</div>
+          <ul class="price-feats">
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span data-i18n="pc4.f2">800 Freiminuten</span></li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h4l2-8 4 16 2-8h8"/></svg><span data-i18n="pc4.f3">3 KI-Assistenten</span></li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><text x="12" y="15.2" text-anchor="middle" font-size="7.5" font-weight="700" fill="currentColor" stroke="none" font-family="Arial,sans-serif">24</text></svg><span data-i18n="pc.common.247">24/7 Telefonannahme</span></li>
+            <li><svg width="15" height="15" viewBox="0 0 240 240" fill="currentColor"><path d="M120 0a120 120 0 1 0 0 240 120 120 0 0 0 0-240zm54.6 81.8-18.4 86.7c-1.4 6.2-5 7.7-10.1 4.8l-28-20.6-13.5 13c-1.5 1.5-2.8 2.8-5.6 2.8l2-28.4 51.7-46.7c2.3-2 -.5-3.2-3.5-1.2l-63.9 40.2-27.5-8.6c-6-1.9-6.1-6 1.2-8.8l107.4-41.4c5-1.8 9.4 1.2 8.2 8.2z"/></svg><span data-i18n="pc.common.telegram">Telegram Integration</span></li>
+            <li><svg width="15" height="15" viewBox="0 0 32 32" fill="currentColor"><path d="M16.004 3.2c-7.07 0-12.8 5.73-12.8 12.8 0 2.26.6 4.38 1.64 6.22L3.2 28.8l6.76-1.6a12.74 12.74 0 0 0 6.04 1.53h.01c7.07 0 12.8-5.73 12.8-12.8s-5.73-12.73-12.8-12.73zm7.47 18.18c-.31.88-1.55 1.6-2.53 1.81-.68.14-1.56.26-4.53-.97-3.8-1.57-6.24-5.42-6.43-5.67-.19-.25-1.54-2.05-1.54-3.91s.97-2.78 1.31-3.16c.34-.38.75-.47 1-.47.25 0 .5.002.72.012.23.01.54-.09.84.64.31.75 1.05 2.6 1.14 2.79.09.19.15.41.03.66-.13.25-.19.4-.38.62-.19.22-.4.49-.57.66-.19.19-.39.4-.17.78.22.38.98 1.62 2.11 2.62 1.45 1.29 2.67 1.69 3.05 1.88.38.19.6.16.82-.1.22-.25.94-1.1 1.19-1.47.25-.38.5-.31.84-.19.34.13 2.17 1.02 2.54 1.21.38.19.63.28.72.44.09.16.09.94-.22 1.83z"/></svg><span data-i18n="pc.common.whatsapp">WhatsApp Integration</span></li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6-6"/><path d="M8 9.5l1.3-1.3a3.5 3.5 0 0 1 5 5L13 14.5"/><path d="M16 14.5l-1.3 1.3a3.5 3.5 0 0 1-5-5L11 9.5"/></svg><span data-i18n="pc.common.api">API-Zugang</span></li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span data-i18n="pc.common.setup">Perfekte Einrichtung</span></li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><path d="M9.5 15.5l1.5 1.5 3-3"/></svg><span data-i18n="pc.common.booking">Terminbuchung</span></li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg><span data-i18n="pc.common.calendar">Kalender Integration</span></li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" stroke="none"><rect x="3" y="14" width="4" height="7" rx="1"/><rect x="10" y="9" width="4" height="12" rx="1"/><rect x="17" y="4" width="4" height="17" rx="1"/></svg><span data-i18n="pc.common.priority">Priorität-Support</span></li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg><span data-i18n="pc.common.email">Email Benachrichtigung</span></li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6.5c-1.6-1.1-4-1.6-6.5-1.1v13c2.5-.5 4.9 0 6.5 1.1 1.6-1.1 4-1.6 6.5-1.1v-13c-2.5-.5-4.9 0-6.5 1.1z"/><path d="M12 6.5v13"/></svg><span data-i18n="pc.common.kb">Wissensdatenbank</span></li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 21h4"/><path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/></svg><span data-i18n="pc.common.reminder">Terminerinnerung</span></li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12l4 4L15 7"/><path d="M9 12.5l3.5 3.5L22 6"/></svg><span data-i18n="pc.common.allfeat">Alle Funktionen</span></li>
+          </ul>
+          <a href="checkout.html?plan=smart" class="btn btn-outline" data-i18n="pc4.cta">Smarte Lösung wählen</a>
+          <div class="price-bestfor" data-i18n="pc4.bestfor">Am besten für: planungssichere Budgets ohne laufende Kosten</div>
+          <div class="price-extra mono" data-i18n="pc4.extra">Einmalzahlung, kein Abo</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section id="stimmen">
+    <div class="wrap">
+      <div class="eyebrow reveal" data-i18n="tst.eyebrow">Unsere Kunden lieben uns</div>
+      <h2 class="h-lg serif reveal" style="max-width:640px;margin-bottom:2.8rem;" data-i18n="tst.h2">Gute Zusammenarbeit ist spürbar — in Beratung, Umsetzung und Ergebnis.</h2>
+      <div class="tst-grid">
+        <div class="tst-card reveal">
+          <div class="tst-stars"><svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+          <p data-i18n="tst1.quote">„AIDEN hat von Anfang an an mich und meine Ideen geglaubt. Ich habe mich nicht nur als Kunde gefühlt, sondern wirklich begleitet. Durch die Erfahrung und Beratung von AIDEN kann ich heute klar zeigen, wer ich bin und wofür meine Praxis steht."</p>
+          <div class="tst-person"><div class="tst-av" style="background:linear-gradient(155deg,var(--gold),var(--gold-light));">HD</div><div><b>Hector Fernandez Diarte</b><span data-i18n="tst1.role">Facharzt</span></div></div>
+        </div>
+        <div class="tst-card reveal" style="transition-delay:.05s">
+          <div class="tst-stars"><svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+          <p data-i18n="tst2.quote">„Ich habe die Zusammenarbeit mit AIDEN als sehr professionell, zuverlässig und angenehm erlebt. Besonders positiv empfand ich die gute Erreichbarkeit der Ansprechpartner. Rückfragen wurden schnell beantwortet."</p>
+          <div class="tst-person"><div class="tst-av" style="background:linear-gradient(155deg,var(--gold),var(--gold-light));">KK</div><div><b>Karin Kniese</b><span data-i18n="tst2.role">Psychotherapeutin</span></div></div>
+        </div>
+        <div class="tst-card reveal" style="transition-delay:.1s">
+          <div class="tst-stars"><svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+          <p data-i18n="tst3.quote">„Die Unterstützung von AIDEN ist ein Meilenstein in meiner Social Media Entwicklung. Ich bin absolut begeistert."</p>
+          <div class="tst-person"><div class="tst-av" style="background:linear-gradient(155deg,var(--gold),var(--gold-light));">JT</div><div><b>Jochen Timme</b><span data-i18n="tst3.role">LRS-Trainer</span></div></div>
+        </div>
+        <div class="tst-card reveal">
+          <div class="tst-stars"><svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+          <p data-i18n="tst4.quote">„,Es geht auch leicht' bringt es auf den Punkt. Kompetent, sympathisch, tolles Team!"</p>
+          <div class="tst-person"><div class="tst-av" style="background:linear-gradient(155deg,var(--gold),var(--gold-light));">SL</div><div><b>Silke Lippold</b><span data-i18n="tst4.role">Zertifizierter Coach &amp; Introvisionsberaterin</span></div></div>
+        </div>
+        <div class="tst-card reveal" style="transition-delay:.05s">
+          <div class="tst-stars"><svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+          <p data-i18n="tst5.quote">„Die Zusammenarbeit mit diesem Team war wirklich eine tolle Erfahrung. Sie haben uns super geholfen und alles klar und verständlich gemacht. Wir sind sehr zufrieden und können sie auf jeden Fall weiterempfehlen!"</p>
+          <div class="tst-person"><div class="tst-av" style="background:linear-gradient(155deg,var(--gold),var(--gold-light));">WS</div><div><b>Wieland Schorer</b><span data-i18n="tst5.role">Architekt</span></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="ind-section" id="faq">
+    <div class="wrap">
+      <div style="text-align:center;">
+        <div class="eyebrow reveal" style="justify-content:center;" data-i18n="faq.eyebrow">Häufige Fragen</div>
+        <h2 class="h-lg serif reveal" data-i18n="faq.h2">Antworten auf die wichtigsten Fragen zu AIDEN.</h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false" data-i18n="faq.q1">Wie kann ich mit AIDEN starten?<span class="faq-ic">+</span></button>
+          <div class="faq-a"><p data-i18n="faq.a1">Wählen Sie einen Voice-Agent-Tarif oder buchen Sie einen kostenlosen Ersttermin für den Social Media Agent — beide Wege sind in wenigen Minuten eingerichtet.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false" data-i18n="faq.q2">Für wen sind die KI-Agenten geeignet?<span class="faq-ic">+</span></button>
+          <div class="faq-a"><p data-i18n="faq.a2">Für Praxen, Handwerksbetriebe, Immobilienbüros, Einzelunternehmen und den Einzelhandel — überall dort, wo Anrufe, Content oder wiederkehrende Aufgaben Zeit kosten.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false" data-i18n="faq.q3">Muss ich technisches Vorwissen haben?<span class="faq-ic">+</span></button>
+          <div class="faq-a"><p data-i18n="faq.a3">Nein. Die Einrichtung reicht von Self-Service bis zur individuellen Anpassung durch unser Team — Sie werden persönlich begleitet.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false" data-i18n="faq.q4">Was ist der Social Media Agent?<span class="faq-ic">+</span></button>
+          <div class="faq-a"><p data-i18n="faq.a4">Ein digitaler Assistent, der Beiträge passend zu Ihrer Zielgruppe, Marke und Plattform erstellt, plant und veröffentlicht — via WhatsApp oder Telegram gesteuert.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false" data-i18n="faq.q5">Kann der Social Media Agent im Stil meines Unternehmens schreiben?<span class="faq-ic">+</span></button>
+          <div class="faq-a"><p data-i18n="faq.a5">Ja. Zielgruppe, Kanäle, Themen und Tonalität werden zu Beginn gemeinsam festgelegt, damit Ihr Content zu Ihrer Marke passt.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false" data-i18n="faq.q6">Kann ich Inhalte vor der Veröffentlichung prüfen?<span class="faq-ic">+</span></button>
+          <div class="faq-a"><p data-i18n="faq.a6">Ja, Beiträge werden zur Freigabe vorbereitet, bevor sie veröffentlicht werden.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false" data-i18n="faq.q7">Ist der Voice Agent rund um die Uhr erreichbar?<span class="faq-ic">+</span></button>
+          <div class="faq-a"><p data-i18n="faq.a7">Ja — 24/7, freundlich und in Echtzeit, auch außerhalb Ihrer Sprechzeiten.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false" data-i18n="faq.q8">Kann der Voice Agent Termine vereinbaren oder weiterleiten?<span class="faq-ic">+</span></button>
+          <div class="faq-a"><p data-i18n="faq.a8">Ja, per SMS, WhatsApp oder E-Mail, integriert in Ihren bestehenden Kalender.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false" data-i18n="faq.q9">Sind die KI-Agenten DSGVO-konform?<span class="faq-ic">+</span></button>
+          <div class="faq-a"><p data-i18n="faq.a9">Ja. AIDEN wird in der EU gehostet und ist DSGVO- sowie EU-AI-Act-konform.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final-cta" id="kontakt">
+    <div class="wrap">
+      <div class="eyebrow" style="justify-content:center;color:var(--gold-light);" data-i18n="final.eyebrow">Die Zukunft Ihres Unternehmens beginnt jetzt</div>
+      <h2 class="h-lg serif" data-i18n="final.h2">Es ist nicht die Frage, <em>ob</em> Sie KI nutzen — sondern <em>wann</em>.</h2>
+      <p class="lead" data-i18n="final.lead">Mehr Leads, weniger Aufwand, vollautomatisierte Prozesse — entwickelt, um Ihr Geschäft zu skalieren.</p>
+      <div class="hero-cta" style="justify-content:center;">
+        <a href="#pricing" class="btn btn-gold" data-i18n="final.cta1">Voice Agent starten</a>
+        <a href="https://calendar.app.google/LK3hdLKQ6pLztv4b8" target="_blank" rel="noopener" class="btn btn-outline" data-i18n="final.cta2">Kostenloses Erstgespräch buchen</a>
+      </div>
+      <div class="final-list">
+        <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span data-i18n="final.l1">Immer verfügbar</span></span>
+        <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span data-i18n="final.l2">Sofortige Antwort auf jede Anfrage</span></span>
+        <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span data-i18n="final.l3">Vollautomatisierte Prozesse</span></span>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /.content -->
+
+<!-- CINEMATIC FOOTER -->
+<footer class="cine-footer">
+  <div class="cf-glow"></div>
+  <div class="cf-particles" id="cfParticles" aria-hidden="true"></div>
+  <div class="cf-top">
+    <div class="cf-brand">
+      <div class="cf-logo">
+        <img src="images/aiden-logo-white.png" alt="AIDEN" class="cf-brand-logo" width="562" height="133">
+        <span class="cf-brand-tagline">AIO – ALL IN ONE</span>
+      </div>
+      <p class="cf-legal-name">Artificial Intelligence Developing Services LLC</p>
+      <p class="cf-tag" data-i18n="footer.tag">KI-Agenten, die Ihr Unternehmen wirklich entlasten — Voice Agent, Social Media Agent und individuelle KI-Automatisierung.</p>
+      <div class="cf-social">
+        <a href="#" aria-label="LinkedIn"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.49 6S0 4.88 0 3.5 1.12 1 2.49 1s2.49 1.12 2.49 2.5zM.5 8.5h4V23h-4V8.5zM8.5 8.5h3.83v1.98h.05c.53-1 1.84-2.06 3.79-2.06 4.06 0 4.81 2.67 4.81 6.14V23h-4v-6.6c0-1.57-.03-3.6-2.19-3.6-2.19 0-2.53 1.71-2.53 3.48V23h-4V8.5z"/></svg></a>
+        <a href="#" aria-label="Instagram"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
+        <a href="#" aria-label="X"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 2H22l-7.6 8.7L23.3 22h-7l-5.5-7.2L4.5 22H1.4l8.1-9.3L1 2h7.2l5 6.6L18.9 2zm-1.2 18h1.7L6.4 4H4.6l13.1 16z"/></svg></a>
+      </div>
+    </div>
+    <div class="cf-cols">
+      <div class="cf-col">
+        <h5 data-i18n="footer.col1.h">Produkte</h5>
+        <a href="#voice" data-i18n="footer.voice">Voice Agent</a>
+        <a href="social-media-agent.html" data-i18n="footer.social">Social Media Agent</a>
+        <a href="#pricing" data-i18n="footer.pricing">Preise</a>
+      </div>
+      <div class="cf-col">
+        <h5 data-i18n="footer.col2.h">Unternehmen</h5>
+        <a href="#ueber-uns" data-i18n="footer.about">Über uns</a>
+        <a href="#stimmen" data-i18n="footer.customers">Kunden</a>
+        <a href="#kontakt" data-i18n="footer.contact">Kontakt</a>
+      </div>
+      <div class="cf-col">
+        <h5 data-i18n="footer.col3.h">Rechtliches</h5>
+        <a href="impressum.html" data-i18n="footer.imprint">Impressum</a>
+        <a href="datenschutz.html" data-i18n="footer.privacy">Datenschutz</a>
+        <a href="agb.html" data-i18n="footer.terms">AGB</a>
+        <a href="widerrufsrecht.html">Widerrufsrecht</a>
+      </div>
+    </div>
+  </div>
+  <div class="cf-word">AIDEN</div>
+  <div class="cf-bottom">
+    <p data-i18n="footer.copyright">© 2026 AIDEN. Alle Rechte vorbehalten.</p>
+    <div style="display:flex;gap:18px;">
+      <a href="mailto:info@aiden.ae">info@aiden.ae</a>
+      <a href="tel:+971561155278">+971 56 115 5278</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Nav scroll state
+const nav=document.getElementById('siteNav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>20));
+
+// Mobile hamburger menu
+(function(){
+  const burger=document.getElementById('navBurger');
+  const menu=document.getElementById('mobileMenu');
+  if(!burger||!menu) return;
+  function closeMenu(){
+    menu.classList.remove('open');
+    burger.setAttribute('aria-expanded','false');
+  }
+  burger.addEventListener('click', ()=>{
+    const open=menu.classList.toggle('open');
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  menu.querySelectorAll('a').forEach(a=>a.addEventListener('click', closeMenu));
+  window.addEventListener('resize', ()=>{ if(window.innerWidth>900) closeMenu(); });
+})();
+
+// Scroll reveal
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('vis');obs.unobserve(x.target);}}),{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+// Industry tabs
+document.querySelectorAll('.ind-tab').forEach(tab=>{
+  tab.addEventListener('click',()=>{
+    document.querySelectorAll('.ind-tab').forEach(t=>t.classList.remove('active'));
+    document.querySelectorAll('.ind-panel').forEach(p=>p.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById(tab.dataset.tab).classList.add('active');
+  });
+});
+
+// Golden thread — eine durchgehende, sanft geschwungene Linie, die sich beim Scrollen zieht (wie bei LYP)
+(function(){
+  const content = document.getElementById('content');
+  const svg = document.getElementById('flowThread');
+  const path = document.getElementById('flowPath');
+  if(!content || !svg || !path) return;
+  if(window.matchMedia('(max-width:980px)').matches) return; // Performance: auf Mobile deaktiviert
+  const grad = document.getElementById('flowGrad');
+  let len = 0;
+  function build(){
+    const w = content.offsetWidth, h = content.offsetHeight;
+    svg.setAttribute('viewBox', '0 0 ' + w + ' ' + h);
+    const cx = w * 0.5, amp = w * 0.13, periods = 5.5, steps = 400, phase = Math.PI / 6;
+    let d = '';
+    for(let i = 0; i <= steps; i++){
+      const y = h * i / steps;
+      const x = cx + amp * Math.sin((i / steps) * periods * Math.PI * 2 + phase);
+      d += (i === 0 ? 'M' : 'L') + x.toFixed(1) + ' ' + y.toFixed(1) + ' ';
+    }
+    path.setAttribute('d', d.trim());
+
+    grad.setAttribute('y2', h);
+    const HI = 1, LO = 0.4, feather = 20;
+    const cTop = content.getBoundingClientRect().top + window.scrollY;
+    const blocks = [...content.querySelectorAll('.hero-inner,.wrap')].map(el=>{
+      const r = el.getBoundingClientRect(); const t = r.top + window.scrollY - cTop; return [t, t + r.height];
+    }).sort((a,b)=>a[0]-b[0]);
+    let stops = [[0, HI]];
+    blocks.forEach(([t,b])=>{
+      stops.push([(t-feather)/h, HI], [(t+feather)/h, LO], [(b-feather)/h, LO], [(b+feather)/h, HI]);
+    });
+    stops.push([1, HI]);
+    stops = stops.map(([o,a])=>[Math.max(0,Math.min(1,o)), a]).sort((x,y)=>x[0]-y[0]);
+
+    // Auf dunklen Sektionen den Faden zusaetzlich dezenter machen (weniger dominant)
+    const DARK_MAX = 0.18;
+    const darkRegions = [...content.querySelectorAll('header.hero,.ov-section,.case,.final-cta,.starter-box')].map(el=>{
+      const r = el.getBoundingClientRect(); const t = r.top + window.scrollY - cTop; return [t / h, (t + r.height) / h];
+    });
+    stops = stops.map(([o,a])=>{
+      const inDark = darkRegions.some(([s,e]) => o >= s && o <= e);
+      return [o, inDark ? Math.min(a, DARK_MAX) : a];
+    });
+
+    // An dieser einen Karte soll der Faden komplett verschwinden und danach wieder erscheinen
+    const noLineEl = document.getElementById('caseStepNoLine');
+    if(noLineEl){
+      const r = noLineEl.getBoundingClientRect();
+      const t = (r.top + window.scrollY - cTop - feather) / h;
+      const b = (r.top + window.scrollY - cTop + r.height + feather) / h;
+      stops.push([Math.max(0, t), 0], [Math.min(1, b), 0]);
+      stops.sort((x,y)=>x[0]-y[0]);
+    }
+
+    grad.innerHTML = stops.map(([o,a])=>'<stop offset="'+(o*100).toFixed(2)+'%" stop-color="#ffda47" stop-opacity="'+a+'"/>').join('');
+
+    len = path.getTotalLength();
+    path.style.strokeDasharray = len;
+    draw();
+  }
+  function draw(){
+    const h = content.offsetHeight;
+    const cTop = content.getBoundingClientRect().top + window.scrollY;
+    const head = (window.scrollY + window.innerHeight * 0.55) - cTop;
+    const prog = Math.max(0, Math.min(head / h, 1));
+    path.style.strokeDashoffset = (len * (1 - prog)).toFixed(1);
+  }
+  let ticking = false;
+  window.addEventListener('scroll', ()=>{ if(!ticking){ requestAnimationFrame(()=>{ draw(); ticking = false; }); ticking = true; } }, { passive: true });
+  window.addEventListener('resize', build);
+  build();
+})();
+
+// Hero robot — zoom-in reveal shortly after load
+(function(){
+  const el = document.getElementById('heroRobot');
+  if(!el) return;
+  setTimeout(()=>el.classList.add('in'), 300);
+
+  // The 3D scene streams from an external CDN (prod.spline.design). If the
+  // network blocks or fails to reach it (offline, restrictive proxy, ad
+  // blocker), the viewer's internal fetch rejects — swallow that specific,
+  // non-critical rejection so it never surfaces as an uncaught page error;
+  // the hero still works fine with just no robot rendered.
+  window.addEventListener('unhandledrejection', (e) => {
+    const msg = String((e.reason && e.reason.message) || e.reason || '');
+    const stack = String((e.reason && e.reason.stack) || '');
+    if(msg.includes('Failed to fetch') && (stack.includes('spline') || document.querySelector('spline-viewer'))){
+      e.preventDefault();
+    }
+  });
+
+  // Forward page-wide mouse position to the Spline canvas as synthetic pointer
+  // events, so a scene built with a "look at mouse" interaction reacts to the
+  // cursor anywhere on the page — not only while hovering the small viewer area.
+  const viewer = el.querySelector('spline-viewer');
+  if(!viewer) return;
+
+  // Spline-Logo/Badge im Shadow DOM ausblenden, sobald es geladen ist —
+  // die Szene lädt asynchron, daher per MutationObserver statt festem Timeout.
+  function hideSplineBadge(){
+    if(!viewer.shadowRoot) return false;
+    const badge = viewer.shadowRoot.querySelector('#logo, a[href*="spline.design"]');
+    if(badge){ badge.style.display = 'none'; return true; }
+    return false;
+  }
+  if(!hideSplineBadge() && viewer.shadowRoot){
+    new MutationObserver((_, obs) => { if(hideSplineBadge()) obs.disconnect(); })
+      .observe(viewer.shadowRoot, { childList: true, subtree: true });
+  }
+
+  if(window.matchMedia('(pointer:coarse)').matches) return;
+
+  function forward(type, e){
+    const target = viewer.shadowRoot ? (viewer.shadowRoot.querySelector('canvas') || viewer) : viewer;
+    const evt = new PointerEvent(type, {
+      bubbles: false, cancelable: true, composed: false,
+      clientX: e.clientX, clientY: e.clientY,
+      pointerId: 1, pointerType: 'mouse'
+    });
+    target.dispatchEvent(evt);
+  }
+  window.addEventListener('pointermove', (e) => { if(e.isTrusted) forward('pointermove', e); }, { passive: true });
+})();
+
+// Pricing cards — scroll-scrubbed reveal (progress tied directly to scroll position)
+(function(){
+  const grid = document.querySelector('.price-grid');
+  if(!grid) return;
+  const cards = [...grid.querySelectorAll('.price-scrub')];
+  const n = cards.length;
+  function update(){
+    const rect = grid.getBoundingClientRect();
+    const vh = window.innerHeight;
+    const start = vh * 0.96;
+    const end = vh * 0.42;
+    const overall = Math.max(0, Math.min(1, (start - rect.top) / (start - end)));
+    cards.forEach((card, i)=>{
+      const s = i / n, e = (i + 1) / n;
+      let local = (overall - s) / (e - s);
+      local = Math.max(0, Math.min(1, local));
+      const eased = 1 - Math.pow(1 - local, 3);
+      card.style.setProperty('--op', eased.toFixed(3));
+      card.style.setProperty('--ty', ((1 - eased) * 46).toFixed(1) + 'px');
+      card.classList.toggle('vis', eased > 0.4);
+    });
+  }
+  let ticking = false;
+  window.addEventListener('scroll', ()=>{ if(!ticking){ requestAnimationFrame(()=>{ update(); ticking = false; }); ticking = true; } }, { passive: true });
+  window.addEventListener('resize', update);
+  update();
+})();
+
+// Hero sparkles — ambient drifting particle field
+(function(){
+  const canvas = document.getElementById('heroSparkles');
+  if(!canvas || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const ctx = canvas.getContext('2d');
+  const hero = canvas.closest('.hero');
+  let w, h, dpr, particles;
+
+  function resize(){
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    w = hero.clientWidth; h = hero.clientHeight;
+    canvas.width = w * dpr; canvas.height = h * dpr;
+    canvas.style.width = w + 'px'; canvas.style.height = h + 'px';
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    const count = Math.round((w * h) / 9000);
+    particles = Array.from({length: count}, makeParticle);
+  }
+  function makeParticle(){
+    return {
+      x: Math.random() * w,
+      y: Math.random() * h,
+      r: Math.random() * 1.1 + 0.3,
+      baseA: Math.random() * 0.5 + 0.15,
+      phase: Math.random() * Math.PI * 2,
+      speed: Math.random() * 0.15 + 0.03,
+      vy: -(Math.random() * 0.12 + 0.03),
+      gold: Math.random() < 0.35
+    };
+  }
+  let t = 0;
+  let visible = true;
+  function tick(){
+    if(!visible) return;
+    t += 1;
+    ctx.clearRect(0,0,w,h);
+    particles.forEach(p=>{
+      p.y += p.vy;
+      if(p.y < -4){ p.y = h + 4; p.x = Math.random() * w; }
+      const tw = Math.sin(t * p.speed + p.phase) * 0.5 + 0.5;
+      const a = p.baseA * (0.4 + tw * 0.6);
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = p.gold ? `rgba(233,217,168,${a})` : `rgba(255,255,255,${a})`;
+      ctx.fill();
+    });
+    requestAnimationFrame(tick);
+  }
+  resize();
+  window.addEventListener('resize', resize);
+  new IntersectionObserver(([entry])=>{
+    visible = entry.isIntersecting;
+    if(visible) requestAnimationFrame(tick);
+  }, { threshold: 0 }).observe(hero);
+})();
+
+// FAQ accordion
+document.querySelectorAll('.faq-q').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const item=btn.parentElement;
+    const open=item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(i=>{i.classList.remove('open');i.querySelector('.faq-q').setAttribute('aria-expanded','false');});
+    if(!open){item.classList.add('open');btn.setAttribute('aria-expanded','true');}
+  });
+});
+
+// Cursor glow — soft light that follows the pointer, brightens over interactive elements
+(function(){
+  if(window.matchMedia('(pointer: coarse)').matches || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const glow = document.createElement('div');
+  glow.className = 'cursor-glow';
+  document.body.appendChild(glow);
+  let x = 0, y = 0, cx = 0, cy = 0;
+  window.addEventListener('mousemove', e=>{ x = e.clientX; y = e.clientY; glow.classList.add('on'); });
+  document.querySelectorAll('a,button,.price-card,.ov-card,.team-card,.tst-card,.path-card,.case-step').forEach(el=>{
+    el.addEventListener('mouseenter', ()=>glow.classList.add('big'));
+    el.addEventListener('mouseleave', ()=>glow.classList.remove('big'));
+  });
+  function raf(){
+    cx += (x - cx) * 0.16; cy += (y - cy) * 0.16;
+    glow.style.transform = `translate(${cx}px,${cy}px)`;
+    requestAnimationFrame(raf);
+  }
+  requestAnimationFrame(raf);
+})();
+
+// Magnetic buttons — CTA buttons subtly pull toward the cursor
+(function(){
+  if(window.matchMedia('(pointer: coarse)').matches || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  document.querySelectorAll('.btn-gold, .btn-outline').forEach(btn=>{
+    btn.addEventListener('mousemove', e=>{
+      const r = btn.getBoundingClientRect();
+      const mx = e.clientX - r.left - r.width/2, my = e.clientY - r.top - r.height/2;
+      const max = 6;
+      const tx = Math.max(-max, Math.min(max, mx * 0.08));
+      const ty = Math.max(-max, Math.min(max, my * 0.12));
+      btn.style.transform = `translate(${tx}px,${ty}px)`;
+    });
+    btn.addEventListener('mouseleave', ()=>{ btn.style.transform = ''; });
+  });
+})();
+
+// Announcement bar — dismissible, remembers choice for the session
+(function(){
+  const bar = document.getElementById('announceBar');
+  const btn = document.getElementById('announceClose');
+  if(!bar || !btn) return;
+  if(sessionStorage.getItem('aiden-announce-dismissed') === '1'){
+    bar.classList.add('hidden');
+    document.body.classList.remove('has-announce');
+    return;
+  }
+  btn.addEventListener('click', ()=>{
+    bar.classList.add('hidden');
+    document.body.classList.remove('has-announce');
+    sessionStorage.setItem('aiden-announce-dismissed', '1');
+  });
+})();
+
+// Footer particles — slow rising gold sparks
+(function(){
+  const wrap = document.getElementById('cfParticles');
+  if(!wrap || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const count = 22;
+  for(let i = 0; i < count; i++){
+    const p = document.createElement('span');
+    p.style.left = (Math.random() * 100) + '%';
+    p.style.animationDuration = (6 + Math.random() * 8) + 's';
+    p.style.animationDelay = (Math.random() * 10) + 's';
+    p.style.opacity = String(0.3 + Math.random() * 0.5);
+    wrap.appendChild(p);
+  }
+})();
+
+// Ripple effect — expanding circle from the click point on any .btn
+(function(){
+  document.querySelectorAll('.btn').forEach(btn=>{
+    btn.addEventListener('click', e=>{
+      const r = btn.getBoundingClientRect();
+      const size = Math.max(r.width, r.height) * 1.8;
+      const ripple = document.createElement('span');
+      ripple.className = 'btn-ripple';
+      ripple.style.width = ripple.style.height = size + 'px';
+      ripple.style.left = (e.clientX - r.left - size/2) + 'px';
+      ripple.style.top = (e.clientY - r.top - size/2) + 'px';
+      btn.appendChild(ripple);
+      ripple.addEventListener('animationend', ()=>ripple.remove());
+    });
+  });
+})();
+
+// Animated counters — count up once when scrolled into view
+(function(){
+  const els = document.querySelectorAll('[data-count]');
+  if(!els.length) return;
+  const io = new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(!entry.isIntersecting) return;
+      const el = entry.target;
+      const target = parseFloat(el.dataset.count);
+      const suffix = el.dataset.suffix || '';
+      const dur = 1400;
+      const start = performance.now();
+      function step(now){
+        const p = Math.min(1, (now - start) / dur);
+        const eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = Math.round(target * eased) + suffix;
+        if(p < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+      io.unobserve(el);
+    });
+  }, { threshold: .6 });
+  els.forEach(el=>io.observe(el));
+})();
+
+// KPI bars — fill in when scrolled into view
+(function(){
+  const bars = document.querySelectorAll('.case-stat-bar');
+  if(!bars.length) return;
+  const io = new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(!entry.isIntersecting) return;
+      entry.target.classList.add('vis');
+      io.unobserve(entry.target);
+    });
+  }, { threshold: .6 });
+  bars.forEach(el=>io.observe(el));
+})();
+</script>
+
+<a href="https://wa.me/971561155278" class="wa-bubble" aria-label="WhatsApp Kontakt" target="_blank" rel="noopener">
+  <svg viewBox="0 0 32 32" fill="#fff"><path d="M16.004 3.2c-7.07 0-12.8 5.73-12.8 12.8 0 2.26.6 4.38 1.64 6.22L3.2 28.8l6.76-1.6a12.74 12.74 0 0 0 6.04 1.53h.01c7.07 0 12.8-5.73 12.8-12.8s-5.73-12.73-12.8-12.73zm7.47 18.18c-.31.88-1.55 1.6-2.53 1.81-.68.14-1.56.26-4.53-.97-3.8-1.57-6.24-5.42-6.43-5.67-.19-.25-1.54-2.05-1.54-3.91s.97-2.78 1.31-3.16c.34-.38.75-.47 1-.47.25 0 .5.002.72.012.23.01.54-.09.84.64.31.75 1.05 2.6 1.14 2.79.09.19.15.41.03.66-.13.25-.19.4-.38.62-.19.22-.4.49-.57.66-.19.19-.39.4-.17.78.22.38.98 1.62 2.11 2.62 1.45 1.29 2.67 1.69 3.05 1.88.38.19.6.16.82-.1.22-.25.94-1.1 1.19-1.47.25-.38.5-.31.84-.19.34.13 2.17 1.02 2.54 1.21.38.19.63.28.72.44.09.16.09.94-.22 1.83z"/></svg>
+</a>
+
+<script>
+// Language switcher — German (default, from HTML) <-> English (from dictionary)
+(function(){
+const AIDEN_I18N_EN = {"nav.portal": "Customer Portal", "nav.voice": "Voice Agents", "nav.refs": "References", "nav.cta": "Voice Agent<br>test now", "nav.cta.mobile": "Voice Agent", "announce.text.plain": "Currently accepting new clients &mdash; free first consultation", "announce.cta": "book now", "hero.rating": "5.0 rated by happy customers", "hero.eyebrow": "Hosted in the EU · GDPR-compliant · EU AI Act-compliant", "hero.h1": "AI agents that <em>truly</em> take work off your hands.", "hero.lead": "Missed calls, no time for social media, or repetitive daily tasks: AIDEN builds <span class=\"hl\">digital assistants</span> that take over wherever <span class=\"hl\">time, opportunity and energy</span> get lost today.", "hero.cta1": "CALL &amp; TEST THE VOICE AGENT", "hero.cta2": "DISCOVER THE SOCIAL MEDIA AGENT", "hero.badge1": "Hosted in the EU", "hero.badge2": "GDPR-compliant", "hero.badge3": "EU AI Act-compliant", "trust.label": "Integrated with the tools you already use", "problem.eyebrow": "Everyday life without AIDEN", "problem.h2": "Every missed call is a customer you never got to meet.", "problem.lead": "This is what everyday life looks like in many businesses — before an AI agent takes over.", "problem.c1.h": "Missed calls", "problem.c1.p": "While you're on a call with one customer, the phone rings again — and the next caller hangs up before anyone can answer.", "problem.c2.h": "No time for social media", "problem.c2.p": "Content planning keeps getting pushed aside by daily business — visibility suffers week after week.", "problem.c3.h": "Repetitive tasks", "problem.c3.p": "Appointment confirmations, follow-up questions, reminders — the same tasks every day, leaving no room for the team to focus on what really matters.", "problem.c4.h": "Leads slip away", "problem.c4.p": "Prospects reach out but only hear back hours later — and by then they've often already decided to go elsewhere.", "ov.eyebrow": "AI solutions at a glance", "ov.h2": "For better availability, less effort and smoother workflows.", "ov.lead": "AIDEN builds digital assistants that step in exactly where <span class=\"hl\">time gets lost</span> in everyday business: calls, follow-ups, appointments, leads, content and repetitive tasks.", "ov.c1.h": "AI Voice Agents", "ov.c1.p": "<span class=\"hl\">Never miss a customer again.</span> Your AI agent answers calls, qualifies inquiries and books appointments in real time — 24/7, with a smile.", "ov.c2.h": "Social Media Agent", "ov.c2.p": "Create, schedule and publish social media posts <span class=\"hl\">fully automatically</span> — tailored to your audience, your brand and each platform.", "ov.c3.h": "Process automation", "ov.c3.p": "Automate recurring tasks and workflows. <span class=\"hl\">Save time, reduce errors</span> and free your team from manual work.", "ov.c4.h": "Lead management", "ov.c4.p": "<span class=\"hl\">Turn every inquiry</span> automatically into a real sales opportunity by capturing and qualifying leads instantly.", "ov.c5.h": "Customer support", "ov.c5.p": "<span class=\"hl\">Respond to customers instantly</span> — around the clock. Faster, more consistent and professional support without hiring extra staff.", "ov.c6.h": "Custom solutions", "ov.c6.p": "<span class=\"hl\">Tailor-made systems</span>, built precisely around your challenges, workflows and goals.", "ov.cta": "Find your custom solution", "ind.eyebrow": "Built for your business", "ind.h2": "Whether you run a practice, a trade business, a real estate office or a solo business.", "ind.tab1": "Retail", "ind.tab2": "Real Estate", "ind.tab3": "Trade Businesses", "ind.tab4": "Solo Businesses", "ind.p1.h": "Social media made easy — even in the busy grocery trade", "ind.p1.p": "Social media only happened when there was time — no plan, no research, no professional photos. The result: <span class=\"hl\">little consistency, little reach</span> and less and less motivation.", "ind.p1.l1": "Consistent posts without the stress", "ind.p1.l2": "Relevant content that customers actually care about", "ind.p1.l3": "More visibility in under 1 hour a week", "ind.p1.statlbl": "Time spent per week", "ind.p1.statval": "&lt; 1 hr", "ind.p2.h": "Faster marketing and stronger client relationships", "ind.p2.p": "In the fiercely competitive real estate market, <span class=\"hl\">every advantage counts</span>. Our tools help you create professional listings, target prospects precisely and speed up the sales process.", "ind.p2.l1": "Automatic listing generation", "ind.p2.l2": "Targeted lead management", "ind.p2.l3": "Transparent client communication", "ind.p2.statlbl": "Focus", "ind.p2.statval": "Lead speed", "ind.p3.h": "Job management and client communication", "ind.p3.p": "For trade businesses, <span class=\"hl\">staying on top of things</span> is essential — jobs, quotes and clients. Our solution simplifies the admin work and keeps customers happy.", "ind.p3.statlbl": "Result", "ind.p3.statval": "Total clarity", "ind.p4.h": "Everything under control", "ind.p4.p": "As a solo business owner, you're manager, salesperson and expert all in one. We help you <span class=\"hl\">make the most of your time</span> and stay on top of everything.", "ind.p4.statlbl": "Role", "ind.p4.statval": "All-in-one", "ind.common.l1": "Digital quotes and invoicing", "ind.common.l2": "Simple scheduling and resource planning", "ind.common.l3": "Improved customer communication", "case.eyebrow": "Customer example · Practices &amp; Clinics", "case.h2": "Never miss another patient call.", "case.stat1lbl": "More patient calls answered", "case.stat2lbl": "Availability — always friendly", "case.lead": "Being unreachable is a major problem in healthcare. Many practices <span class=\"hl\">lose potential patients through missed calls</span> and put unnecessary strain on their team. AIDEN offers an intelligent solution that ensures <span class=\"hl\">no call goes unanswered</span>.", "trust2.eyebrow": "Trust isn't built by technology alone", "trust2.h2": "AI solutions built on experience, strategy and real execution skill.", "trust2.lead": "Behind AIDEN are people who understand business: with experience in marketing, sales, customer communication and artificial intelligence. <span class=\"hl\">That exact combination is what makes the difference.</span>", "trust2.i1.h": "Over 13 years of AI experience", "trust2.i1.p": "Dr. Irena Schindler brings over 13 years of experience in artificial intelligence and is the technological mind behind AIDEN's AI agents.", "trust2.i1.payoff": "What that means for you: <em>your solution is built on solid experience, not short-lived AI hype.</em>", "trust2.i2.h": "Over 30 years of marketing &amp; sales", "trust2.i2.p": "AIDEN combines decades of experience in marketing, sales, customer communication and strategic execution for businesses.", "trust2.i2.payoff": "What that means for you: <em>your agent is built with your audience, communication and real business processes in mind.</em>", "team1.role": "Managing Director xC Consultants / xC-AI", "team1.bio": "Heidrun Keim brings over 35 years of experience in marketing and sales. She ensures AI solutions aren't just technically possible, but understandable, usable and sales-effective for clients.", "team2.role": "Managing Director AIDEN · AI Expert", "team2.bio": "Dr. Irena Schindler turns ideas into stable, intelligent, practical AI agents that genuinely take work off businesses' hands every day.", "start.eyebrow": "Getting started with AIDEN is this simple", "start.h2": "Which agent should take work off your hands first?", "start.p1.h": "Start the Voice Agent", "start.p1.sub": "Choose a plan. Set up your agent. Answer calls automatically.", "start.p1.s1.h": "Choose a plan", "start.p1.s1.p": "<span class=\"hl\">Start for free</span>, with prepaid or a monthly plan that fits.", "start.p1.s2.h": "Set up your agent", "start.p1.s2.p": "Define greetings, questions, answers, call routing and workflows — from self-service to fully custom setup.", "start.p1.s3.h": "Feel the relief", "start.p1.s3.p": "The agent answers calls, captures requests and <span class=\"hl\">takes the load off your team</span>.", "start.p1.payoff": "Easy to start. Quick to set up. Personally guided.", "start.p2.h": "Start the Social Media Agent", "start.p2.sub": "Book a free consultation or start directly in chat.", "start.p2.s1.h": "Book a consultation", "start.p2.s1.p": "Start with a free initial consultation or ask your questions directly in chat.", "start.p2.s2.h": "Define your goals", "start.p2.s2.p": "We clarify your audience, channels, topics, tone of voice and content goals.", "start.p2.s3.h": "Become visible", "start.p2.s3.p": "The agent helps with research, planning, copywriting, image ideas and publishing — via WhatsApp or Telegram.", "start.p2.payoff": "More structure. Less content stress. Consistently visible.", "case.s1.tag": "Before", "case.s1.h": "Missed calls", "case.s1.p": "Patients called in vain because staff were overloaded or the practice was unreachable outside office hours.", "case.s2.tag": "Before", "case.s2.h": "Overloaded staff", "case.s2.p": "Staff struggled to call patients back, leading to longer wait times and frustration.", "case.s3.tag": "With AIDEN", "case.s3.h": "No more unanswered calls", "case.s3.p": "Patient calls are answered automatically and personally — greeted by name, taken care of instantly.", "case.s4.tag": "Booking", "case.s4.h": "A full calendar, made easy", "case.s4.p": "AIDEN books appointments via SMS, WhatsApp or email and integrates seamlessly with your practice calendar.", "case.s5.tag": "Result", "case.s5.h": "Happy patients, a relaxed team", "case.s5.p": "The practice runs more calmly and far more efficiently — the team is friendly instead of stressed.", "pricing.eyebrow": "Pricing", "pricing.h2": "The Voice Agent that only costs you once it starts working.", "pricing.starter.eyebrow": "No fixed costs", "pricing.starter.h": "Prepaid plan: €0 to get started", "pricing.starter.p": "Start with AI telephony <span class=\"hl\">at no financial risk</span> and stay reachable even when no one can pick up the phone. Ideal for solo entrepreneurs, freelancers and small businesses.", "pricing.starter.unit": "&nbsp;base fee", "pricing.starter.l1": "15 free test minutes included", "pricing.starter.l2": "Then just &euro;0.69 per minute", "pricing.starter.l3": "No credit card, no contract commitment", "pricing.starter.cta": "Test 24/7 call answering", "pricing.note": "<strong>Five plans are available</strong> — for anyone who wants to use the Voice Agent as part of their everyday operations. All monthly prices apply with a 12-month term.", "pc1.name": "Starter · Basic", "pc1.was": "&euro;98 / month", "pc1.save": "You save &euro;240 in year 1", "pc1.f1": "100 free minutes", "pc1.f3": "24/7 call answering", "pc1.f4": "WhatsApp integration", "pc1.f5": "Telegram integration", "pc1.f6": "Appointment booking", "pc1.f7": "Calendar integration", "pc1.f8": "Appointment reminders", "pc1.cta": "Choose Basic", "pc1.bestfor": "Best for: solo entrepreneurs &amp; new practices", "pc1.extra": "Extra minute &euro;0.39", "pc.unit.month": "&nbsp;/ month", "pc.common.1ki": "1 AI assistant", "pc.common.email": "Email notifications", "pc2.tag": "Most popular plan", "pc2.name": "Comfort", "pc2.was": "&euro;189 / month", "pc2.save": "You save &euro;720 in year 1", "pc2.f1": "200 free minutes", "pc2.f3": "WhatsApp &amp; Telegram integration", "pc2.f4": "Appointment booking &amp; calendar integration", "pc2.f5": "<span class=\"hl\">Priority support</span>", "pc2.f6": "<span class=\"hl\">Knowledge base</span>", "pc2.f7": "<span class=\"hl\">API access</span>", "pc2.f8": "<span class=\"hl\">Perfect setup</span>", "pc2.cta": "Choose Comfort", "pc2.bestfor": "Best for: growing teams with multiple channels", "pc2.extra": "Extra minute &euro;0.32", "pc3.name": "For larger businesses · Premium", "pc3.was": "&euro;399 / month", "pc3.save": "You save &euro;1,800 in year 1", "pc3.f1": "600 free minutes", "pc.common.3ki": "3 AI assistants", "pc3.f3": "<span class=\"hl\">All features included</span>", "pc3.f4": "Priority support", "pc3.f5": "API access", "pc3.f6": "Knowledge base", "pc3.f7": "Perfect setup", "pc3.cta": "Choose Premium", "pc3.bestfor": "Best for: larger businesses with high call volume", "pc3.extra": "Extra minute &euro;0.28", "pc4.name": "Smart Solution", "pc4.unit": "&nbsp;one-time", "pc4.was": "&euro;4,536 one-time", "pc4.save": "You save &euro;2,187 introductory price", "pc4.f1": "<span class=\"hl\">24-month term</span>", "pc4.f2": "800 free minutes", "pc4.f3": "3 AI assistants", "pc4.f4": "<span class=\"hl\">All features</span>", "pc4.cta": "Choose Smart Solution", "pc4.bestfor": "Best for: predictable budgets with no ongoing costs", "pc4.extra": "One-time payment, no subscription", "tst.eyebrow": "Our customers love us", "tst.h2": "Great collaboration is something you can feel — in advice, execution and results.", "tst1.quote": "\"AIDEN believed in me and my ideas from day one. I never just felt like a customer — I felt genuinely supported. Thanks to AIDEN's experience and guidance, I can now clearly show who I am and what my practice stands for.\"", "tst1.role": "Specialist Physician", "tst2.quote": "\"I experienced working with AIDEN as very professional, reliable and pleasant. I particularly appreciated how easy it was to reach the team. Questions were answered quickly.\"", "tst2.role": "Psychotherapist", "tst3.quote": "\"AIDEN's support has been a milestone in my social media growth. I'm absolutely thrilled.\"", "tst3.role": "Learning Disabilities Coach", "tst4.quote": "\"'It can be easy' says it all. Competent, likeable, a great team!\"", "tst4.role": "Certified Coach &amp; Introvision Counselor", "tst5.quote": "\"Working with this team was truly a great experience. They helped us tremendously and explained everything clearly. We're very satisfied and can definitely recommend them!\"", "tst5.role": "Architect", "faq.eyebrow": "Frequently Asked Questions", "faq.h2": "Answers to the most important questions about AIDEN.", "faq.q1": "How do I get started with AIDEN?", "faq.a1": "Choose a Voice Agent plan or book a free initial consultation for the Social Media Agent — both paths are set up within minutes.", "faq.q2": "Who are the AI agents suitable for?", "faq.a2": "For practices, trade businesses, real estate offices, solo businesses and retail — anywhere that calls, content or repetitive tasks cost time.", "faq.q3": "Do I need any technical knowledge?", "faq.a3": "No. Setup ranges from self-service to fully custom configuration by our team — you'll be personally guided throughout.", "faq.q4": "What is the Social Media Agent?", "faq.a4": "A digital assistant that creates, schedules and publishes posts tailored to your audience, brand and platform — controlled via WhatsApp or Telegram.", "faq.q5": "Can the Social Media Agent write in my brand's style?", "faq.a5": "Yes. Your audience, channels, topics and tone of voice are defined together at the start, so your content matches your brand.", "faq.q6": "Can I review content before it's published?", "faq.a6": "Yes, posts are prepared for your approval before they go live.", "faq.q7": "Is the Voice Agent available around the clock?", "faq.a7": "Yes — 24/7, friendly and in real time, even outside your regular office hours.", "faq.q8": "Can the Voice Agent schedule or transfer appointments?", "faq.a8": "Yes, via SMS, WhatsApp or email, integrated with your existing calendar.", "faq.q9": "Are the AI agents GDPR-compliant?", "faq.a9": "Yes. AIDEN is hosted in the EU and is compliant with both GDPR and the EU AI Act.", "final.eyebrow": "The future of your business starts now", "final.h2": "The question isn't <em>if</em> you'll use AI — it's <em>when</em>.", "final.lead": "More leads, less effort, fully automated processes — built to scale your business.", "final.cta1": "Start the Voice Agent", "final.cta2": "Book a free consultation", "final.l1": "Always available", "final.l2": "Instant response to every inquiry", "final.l3": "Fully automated processes", "footer.tag": "AI agents that truly take work off your hands — Voice Agent, Social Media Agent and custom AI automation.", "footer.col1.h": "Products", "footer.voice": "Voice Agent", "footer.social": "Social Media Agent", "footer.pricing": "Pricing", "footer.col2.h": "Company", "footer.about": "About us", "footer.customers": "Customers", "footer.contact": "Contact", "footer.col3.h": "Legal", "footer.imprint": "Imprint", "footer.privacy": "Privacy Policy", "footer.terms": "Terms", "footer.copyright": "&copy; 2026 AIDEN. All rights reserved.", "pc.common.247": "24/7 call answering", "pc.common.telegram": "Telegram integration", "pc.common.whatsapp": "WhatsApp integration", "pc.common.api": "API access", "pc.common.setup": "Perfect setup", "pc.common.booking": "Appointment booking", "pc.common.calendar": "Calendar integration", "pc.common.priority": "Priority support", "pc.common.kb": "Knowledge base", "pc.common.reminder": "Appointment reminders", "pc.common.allfeat": "All features"};
+
+  const AIDEN_I18N_AR = {"nav.portal": "بوابة العملاء", "nav.voice": "الوكلاء الصوتيون", "nav.refs": "آراء العملاء", "nav.cta": "جرّب<br>الوكيل الصوتي", "nav.cta.mobile": "الوكيل الصوتي", "announce.text.plain": "نستقبل حاليًا عملاء جدد &mdash; استشارة أولى مجانية", "announce.cta": "احجز الآن", "hero.rating": "تقييم 5.0 من عملاء راضين", "hero.eyebrow": "استضافة في الاتحاد الأوروبي · متوافق مع GDPR · متوافق مع EU AI Act", "hero.h1": "وكلاء ذكاء اصطناعي <em>يخففون</em> العبء عن عملك فعليًا.", "hero.lead": "مكالمات فائتة، لا وقت لوسائل التواصل الاجتماعي، أو مهام يومية متكررة: يبني AIDEN <span class=\"hl\">مساعدين رقميين</span> يتولون المهام حيث يضيع اليوم <span class=\"hl\">الوقت والفرص والطاقة</span>.", "hero.cta1": "اتصل واختبر الوكيل الصوتي", "hero.cta2": "تعرّف على وكيل وسائل التواصل الاجتماعي", "hero.badge1": "استضافة في الاتحاد الأوروبي", "hero.badge2": "متوافق مع GDPR", "hero.badge3": "متوافق مع EU AI Act", "trust.label": "متكامل مع الأدوات التي تستخدمها بالفعل", "problem.eyebrow": "الحياة اليومية بدون AIDEN", "problem.h2": "كل مكالمة فائتة هي عميل لم تتح لك فرصة لقائه.", "problem.lead": "هكذا تبدو الحياة اليومية في العديد من الشركات — قبل أن يتولى وكيل ذكاء اصطناعي المهمة.", "problem.c1.h": "مكالمات فائتة", "problem.c1.p": "بينما أنت في مكالمة مع عميل، يرن الهاتف مجددًا — ويغلق المتصل التالي الخط قبل أن يجيب أحد.", "problem.c2.h": "لا وقت لوسائل التواصل الاجتماعي", "problem.c2.p": "يستمر تأجيل تخطيط المحتوى بسبب ضغط العمل اليومي — ويتراجع الظهور أسبوعًا بعد أسبوع.", "problem.c3.h": "مهام متكررة", "problem.c3.p": "تأكيدات المواعيد، الأسئلة المتابعة، التذكيرات — نفس المهام كل يوم، بلا مجال للفريق للتركيز على ما يهم فعلًا.", "problem.c4.h": "العملاء المحتملون يفلتون", "problem.c4.p": "يتواصل العملاء المحتملون لكن لا يتلقون ردًا إلا بعد ساعات — وبحلول ذلك الوقت غالبًا ما يكونون قد اختاروا جهة أخرى.", "ov.eyebrow": "حلول الذكاء الاصطناعي في لمحة", "ov.h2": "من أجل توفر أفضل، وجهد أقل، وسير عمل أكثر سلاسة.", "ov.lead": "يبني AIDEN مساعدين رقميين يتدخلون بالضبط حيث <span class=\"hl\">يضيع الوقت</span> في العمل اليومي: المكالمات، المتابعات، المواعيد، العملاء المحتملون، المحتوى والمهام المتكررة.", "ov.c1.h": "وكلاء صوتيون بالذكاء الاصطناعي", "ov.c1.p": "<span class=\"hl\">لا تفوّت عميلاً بعد الآن.</span> يجيب وكيلك الذكي على المكالمات، يؤهّل الاستفسارات ويحجز المواعيد فوريًا — على مدار الساعة، وبابتسامة.", "ov.c2.h": "وكيل وسائل التواصل الاجتماعي", "ov.c2.p": "أنشئ، جدول وانشر منشورات وسائل التواصل الاجتماعي <span class=\"hl\">بشكل آلي بالكامل</span> — مصممة خصيصًا لجمهورك وعلامتك التجارية وكل منصة.", "ov.c3.h": "أتمتة العمليات", "ov.c3.p": "أتمتة المهام وسير العمل المتكررة. <span class=\"hl\">وفّر الوقت، قلّل الأخطاء</span> وحرّر فريقك من العمل اليدوي.", "ov.c4.h": "إدارة العملاء المحتملين", "ov.c4.p": "<span class=\"hl\">حوّل كل استفسار</span> تلقائيًا إلى فرصة بيع حقيقية من خلال التقاط العملاء المحتملين وتأهيلهم فوريًا.", "ov.c5.h": "دعم العملاء", "ov.c5.p": "<span class=\"hl\">استجب للعملاء فورًا</span> — على مدار الساعة. دعم أسرع وأكثر اتساقًا واحترافية دون توظيف موظفين إضافيين.", "ov.c6.h": "حلول مخصصة", "ov.c6.p": "<span class=\"hl\">أنظمة مصممة خصيصًا</span>، مبنية بدقة حول تحدياتك وسير عملك وأهدافك.", "ov.cta": "اعثر على حلك المخصص", "ind.eyebrow": "مصمم لعملك", "ind.h2": "سواء كنت تدير عيادة، أو شركة حرفية، أو مكتب عقارات، أو عملاً فرديًا.", "ind.tab1": "تجارة التجزئة", "ind.tab2": "العقارات", "ind.tab3": "الشركات الحرفية", "ind.tab4": "الأعمال الفردية", "ind.p1.h": "وسائل التواصل الاجتماعي أصبحت سهلة — حتى في تجارة البقالة المزدحمة", "ind.p1.p": "كانت وسائل التواصل الاجتماعي تحدث فقط عندما يتوفر وقت — بلا خطة، بلا بحث، بلا صور احترافية. والنتيجة: <span class=\"hl\">اتساق قليل، وصول محدود</span> وتراجع مستمر في الحافز.", "ind.p1.l1": "منشورات منتظمة دون ضغط", "ind.p1.l2": "محتوى ذو صلة يهتم به العملاء فعلاً", "ind.p1.l3": "ظهور أكبر في أقل من ساعة أسبوعيًا", "ind.p1.statlbl": "الوقت المستغرق أسبوعيًا", "ind.p1.statval": "&lt; ساعة واحدة", "ind.p2.h": "تسويق أسرع وعلاقات أقوى مع العملاء", "ind.p2.p": "في سوق العقارات شديد التنافسية، <span class=\"hl\">كل ميزة تحسب</span>. تساعدك أدواتنا على إنشاء إعلانات احترافية، استهداف العملاء المحتملين بدقة وتسريع عملية البيع.", "ind.p2.l1": "إنشاء إعلانات تلقائي", "ind.p2.l2": "إدارة عملاء محتملين مستهدفة", "ind.p2.l3": "تواصل شفاف مع العملاء", "ind.p2.statlbl": "التركيز", "ind.p2.statval": "سرعة العميل المحتمل", "ind.p3.h": "إدارة المهام والتواصل مع العملاء", "ind.p3.p": "بالنسبة للشركات الحرفية، <span class=\"hl\">البقاء على اطلاع</span> أمر أساسي — المهام، عروض الأسعار والعملاء. يبسّط حلنا العمل الإداري ويُبقي العملاء راضين.", "ind.p3.statlbl": "النتيجة", "ind.p3.statval": "وضوح تام", "ind.p4.h": "كل شيء تحت السيطرة", "ind.p4.p": "بصفتك صاحب عمل فردي، أنت المدير والبائع والخبير في آنٍ واحد. نساعدك على <span class=\"hl\">الاستفادة القصوى من وقتك</span> والبقاء مطلعًا على كل شيء.", "ind.p4.statlbl": "الدور", "ind.p4.statval": "كل شيء في مكان واحد", "ind.common.l1": "عروض أسعار وفواتير رقمية", "ind.common.l2": "جدولة وتخطيط موارد بسيط", "ind.common.l3": "تواصل محسّن مع العملاء", "case.eyebrow": "مثال عميل · العيادات والمراكز الطبية", "case.h2": "لا تفوّت مكالمة مريض بعد الآن.", "case.stat1lbl": "المزيد من مكالمات المرضى التي تمت الإجابة عليها", "case.stat2lbl": "التوفر — ودود دائمًا", "case.lead": "عدم إمكانية الوصول مشكلة كبرى في الرعاية الصحية. تفقد العديد من العيادات <span class=\"hl\">مرضى محتملين بسبب المكالمات الفائتة</span> وتُثقل كاهل فريقها دون داعٍ. يقدم AIDEN حلاً ذكيًا يضمن <span class=\"hl\">عدم ترك أي مكالمة دون رد</span>.", "trust2.eyebrow": "الثقة لا تُبنى بالتقنية وحدها", "trust2.h2": "حلول ذكاء اصطناعي مبنية على الخبرة والاستراتيجية ومهارة التنفيذ الحقيقية.", "trust2.lead": "خلف AIDEN أشخاص يفهمون الأعمال: بخبرة في التسويق والمبيعات وتواصل العملاء والذكاء الاصطناعي. <span class=\"hl\">هذا المزيج تحديدًا هو ما يصنع الفرق.</span>", "trust2.i1.h": "أكثر من 13 عامًا من الخبرة في الذكاء الاصطناعي", "trust2.i1.p": "تجلب الدكتورة إيرينا شيندلر أكثر من 13 عامًا من الخبرة في الذكاء الاصطناعي، وهي العقل التقني وراء وكلاء AIDEN الذكيين.", "trust2.i1.payoff": "ما يعنيه هذا لك: <em>حلّك مبني على خبرة راسخة، وليس على ضجيج ذكاء اصطناعي عابر.</em>", "trust2.i2.h": "أكثر من 30 عامًا في التسويق والمبيعات", "trust2.i2.p": "يجمع AIDEN عقودًا من الخبرة في التسويق والمبيعات وتواصل العملاء والتنفيذ الاستراتيجي للشركات.", "trust2.i2.payoff": "ما يعنيه هذا لك: <em>وكيلك مُصمم مع مراعاة جمهورك وأسلوب تواصلك وعمليات عملك الفعلية.</em>", "team1.role": "المديرة التنفيذية xC Consultants / xC-AI", "team1.bio": "تجلب هايدرون كايم أكثر من 35 عامًا من الخبرة في التسويق والمبيعات. تحرص على ألا تكون حلول الذكاء الاصطناعي ممكنة تقنيًا فقط، بل مفهومة وقابلة للاستخدام وفعّالة تجاريًا للعملاء.", "team2.role": "المديرة التنفيذية AIDEN · خبيرة ذكاء اصطناعي", "team2.bio": "تحوّل الدكتورة إيرينا شيندلر الأفكار إلى وكلاء ذكاء اصطناعي مستقرين وذكيين وعمليين يخففون العبء عن الشركات فعليًا كل يوم.", "start.eyebrow": "البدء مع AIDEN بهذه البساطة", "start.h2": "أي وكيل يجب أن يخفف عنك العبء أولاً؟", "start.p1.h": "ابدأ الوكيل الصوتي", "start.p1.sub": "اختر باقة. أعدّ وكيلك. أجب على المكالمات تلقائيًا.", "start.p1.s1.h": "اختر باقة", "start.p1.s1.p": "<span class=\"hl\">ابدأ مجانًا</span>، بباقة مسبقة الدفع أو باقة شهرية تناسبك.", "start.p1.s2.h": "أعدّ وكيلك", "start.p1.s2.p": "حدّد التحيات والأسئلة والإجابات وتوجيه المكالمات وسير العمل — من الخدمة الذاتية إلى الإعداد المخصص بالكامل.", "start.p1.s3.h": "اشعر بالراحة", "start.p1.s3.p": "يجيب الوكيل على المكالمات، يلتقط الطلبات <span class=\"hl\">ويخفف العبء عن فريقك</span>.", "start.p1.payoff": "بداية سهلة. إعداد سريع. إرشاد شخصي.", "start.p2.h": "ابدأ وكيل وسائل التواصل الاجتماعي", "start.p2.sub": "احجز استشارة مجانية أو ابدأ مباشرة عبر الدردشة.", "start.p2.s1.h": "احجز استشارة", "start.p2.s1.p": "ابدأ باستشارة أولية مجانية أو اطرح أسئلتك مباشرة عبر الدردشة.", "start.p2.s2.h": "حدّد أهدافك", "start.p2.s2.p": "نوضح معًا جمهورك، القنوات، المواضيع، أسلوب التواصل وأهداف المحتوى.", "start.p2.s3.h": "كن مرئيًا", "start.p2.s3.p": "يساعد الوكيل في البحث والتخطيط وكتابة المحتوى وأفكار الصور والنشر — عبر واتساب أو تيليجرام.", "start.p2.payoff": "تنظيم أكبر. ضغط أقل بخصوص المحتوى. ظهور مستمر.", "case.s1.tag": "قبل", "case.s1.h": "مكالمات فائتة", "case.s1.p": "كان المرضى يتصلون دون جدوى لأن الموظفين كانوا مثقلين بالعمل أو لأن العيادة لم تكن متاحة خارج ساعات العمل.", "case.s2.tag": "قبل", "case.s2.h": "موظفون مُثقلون بالعمل", "case.s2.p": "كافح الموظفون لمعاودة الاتصال بالمرضى، مما أدى إلى فترات انتظار أطول وإحباط.", "case.s3.tag": "مع AIDEN", "case.s3.h": "لا مكالمات دون رد بعد الآن", "case.s3.p": "يتم الرد على مكالمات المرضى تلقائيًا وبشكل شخصي — يُستقبلون بالاسم، ويُهتم بهم فورًا.", "case.s4.tag": "الحجز", "case.s4.h": "تقويم ممتلئ، بكل سهولة", "case.s4.p": "يحجز AIDEN المواعيد عبر الرسائل النصية أو واتساب أو البريد الإلكتروني ويتكامل بسلاسة مع تقويم عيادتك.", "case.s5.tag": "النتيجة", "case.s5.h": "مرضى سعداء، فريق مرتاح", "case.s5.p": "تسير العيادة بهدوء وكفاءة أكبر بكثير — الفريق ودود بدلاً من متوتر.", "pricing.eyebrow": "الأسعار", "pricing.h2": "الوكيل الصوتي الذي لا يكلفك إلا عندما يبدأ العمل.", "pricing.starter.eyebrow": "بلا تكاليف ثابتة", "pricing.starter.h": "باقة مسبقة الدفع: ابدأ بـ 0 يورو", "pricing.starter.p": "ابدأ بالاتصال الهاتفي بالذكاء الاصطناعي <span class=\"hl\">دون أي مخاطرة مالية</span> وابقَ متاحًا حتى عندما لا يستطيع أحد الرد على الهاتف. مثالي لأصحاب الأعمال الفردية، والمستقلين، والشركات الصغيرة.", "pricing.starter.unit": "&nbsp;رسوم أساسية", "pricing.starter.l1": "15 دقيقة تجريبية مجانية مشمولة", "pricing.starter.l2": "بعدها فقط &euro;0.69 للدقيقة", "pricing.starter.l3": "بدون بطاقة ائتمان، بدون التزام تعاقدي", "pricing.starter.cta": "جرّب الرد على المكالمات على مدار الساعة", "pricing.note": "<strong>تتوفر خمس باقات</strong> — لكل من يرغب باستخدام الوكيل الصوتي كجزء ثابت من عمله اليومي. جميع الأسعار الشهرية تسري بمدة اشتراك 12 شهرًا.", "pc1.name": "المبتدئ · أساسي", "pc1.was": "&euro;98 / شهريًا", "pc1.save": "توفّر &euro;240 في السنة الأولى", "pc1.f1": "100 دقيقة مجانية", "pc1.f3": "الرد على المكالمات على مدار الساعة", "pc1.f4": "تكامل واتساب", "pc1.f5": "تكامل تيليجرام", "pc1.f6": "حجز المواعيد", "pc1.f7": "تكامل التقويم", "pc1.f8": "تذكير بالمواعيد", "pc1.cta": "اختر أساسي", "pc1.bestfor": "الأنسب لـ: أصحاب الأعمال الفردية والعيادات الجديدة", "pc1.extra": "الدقيقة الإضافية &euro;0.39", "pc.unit.month": "&nbsp;/ شهريًا", "pc.common.1ki": "مساعد ذكاء اصطناعي واحد", "pc.common.email": "إشعارات البريد الإلكتروني", "pc2.tag": "الباقة الأكثر شيوعًا", "pc2.name": "كومفورت", "pc2.was": "&euro;189 / شهريًا", "pc2.save": "توفّر &euro;720 في السنة الأولى", "pc2.f1": "200 دقيقة مجانية", "pc2.f3": "تكامل واتساب وتيليجرام", "pc2.f4": "حجز المواعيد وتكامل التقويم", "pc2.f5": "<span class=\"hl\">دعم ذو أولوية</span>", "pc2.f6": "<span class=\"hl\">قاعدة معرفية</span>", "pc2.f7": "<span class=\"hl\">وصول إلى API</span>", "pc2.f8": "<span class=\"hl\">إعداد مثالي</span>", "pc2.cta": "اختر كومفورت", "pc2.bestfor": "الأنسب لـ: الفرق النامية بعدة قنوات", "pc2.extra": "الدقيقة الإضافية &euro;0.32", "pc3.name": "للشركات الكبيرة · بريميوم", "pc3.was": "&euro;399 / شهريًا", "pc3.save": "توفّر &euro;1,800 في السنة الأولى", "pc3.f1": "600 دقيقة مجانية", "pc.common.3ki": "3 مساعدين ذكاء اصطناعي", "pc3.f3": "<span class=\"hl\">جميع الميزات مشمولة</span>", "pc3.f4": "دعم ذو أولوية", "pc3.f5": "وصول إلى API", "pc3.f6": "قاعدة معرفية", "pc3.f7": "إعداد مثالي", "pc3.cta": "اختر بريميوم", "pc3.bestfor": "الأنسب لـ: الشركات الكبيرة ذات حجم المكالمات المرتفع", "pc3.extra": "الدقيقة الإضافية &euro;0.28", "pc4.name": "الحل الذكي", "pc4.unit": "&nbsp;دفعة واحدة", "pc4.was": "&euro;4,536 دفعة واحدة", "pc4.save": "توفّر &euro;2,187 سعر إطلاق تمهيدي", "pc4.f1": "<span class=\"hl\">مدة 24 شهرًا</span>", "pc4.f2": "800 دقيقة مجانية", "pc4.f3": "3 مساعدين ذكاء اصطناعي", "pc4.f4": "<span class=\"hl\">جميع الميزات</span>", "pc4.cta": "اختر الحل الذكي", "pc4.bestfor": "الأنسب لـ: ميزانيات قابلة للتخطيط بلا تكاليف مستمرة", "pc4.extra": "دفعة واحدة، بلا اشتراك", "tst.eyebrow": "عملاؤنا يحبوننا", "tst.h2": "التعاون الجيد شيء تشعر به — في الاستشارة والتنفيذ والنتائج.", "tst1.quote": "«آمن AIDEN بي وبأفكاري منذ البداية. لم أشعر يومًا وكأنني مجرد عميل، بل شعرت بمرافقة حقيقية. بفضل خبرة AIDEN وإرشاده، أستطيع اليوم أن أُظهر بوضوح من أنا وما تمثله عيادتي.»", "tst1.role": "طبيب أخصائي", "tst2.quote": "«جربت التعاون مع AIDEN باعتباره احترافيًا وموثوقًا وممتعًا للغاية. أعجبني بشكل خاص سهولة التواصل مع الفريق. تمت الإجابة على الاستفسارات بسرعة.»", "tst2.role": "معالجة نفسية", "tst3.quote": "«كان دعم AIDEN علامة فارقة في نمو حضوري على وسائل التواصل الاجتماعي. أنا معجب للغاية.»", "tst3.role": "مدرب صعوبات التعلم", "tst4.quote": "«'الأمر يمكن أن يكون سهلاً' تلخص كل شيء. كفاءة، ودّية، وفريق رائع!»", "tst4.role": "مدربة معتمدة ومستشارة إنترو-فيجن", "tst5.quote": "«كان العمل مع هذا الفريق تجربة رائعة حقًا. ساعدونا كثيرًا وأوضحوا كل شيء بوضوح. نحن راضون جدًا ويمكننا التوصية بهم بكل تأكيد!»", "tst5.role": "مهندسة معمارية", "faq.eyebrow": "الأسئلة الشائعة", "faq.h2": "إجابات على أهم الأسئلة حول AIDEN.", "faq.q1": "كيف أبدأ مع AIDEN؟", "faq.a1": "اختر باقة للوكيل الصوتي أو احجز استشارة أولية مجانية لوكيل وسائل التواصل الاجتماعي — يتم إعداد كلا المسارين خلال دقائق.", "faq.q2": "لمن تناسب وكلاء الذكاء الاصطناعي؟", "faq.a2": "للعيادات والشركات الحرفية ومكاتب العقارات والأعمال الفردية وتجارة التجزئة — أينما تكلف المكالمات أو المحتوى أو المهام المتكررة وقتًا.", "faq.q3": "هل أحتاج إلى معرفة تقنية؟", "faq.a3": "لا. يتراوح الإعداد من الخدمة الذاتية إلى التكوين المخصص بالكامل من فريقنا — سيتم إرشادك شخصيًا طوال الوقت.", "faq.q4": "ما هو وكيل وسائل التواصل الاجتماعي؟", "faq.a4": "مساعد رقمي ينشئ ويجدول وينشر منشورات مصممة خصيصًا لجمهورك وعلامتك التجارية ومنصتك — يُتحكم به عبر واتساب أو تيليجرام.", "faq.q5": "هل يمكن لوكيل وسائل التواصل الاجتماعي الكتابة بأسلوب علامتي التجارية؟", "faq.a5": "نعم. يتم تحديد جمهورك وقنواتك ومواضيعك وأسلوب تواصلك معًا في البداية، بحيث يتطابق المحتوى مع علامتك التجارية.", "faq.q6": "هل يمكنني مراجعة المحتوى قبل نشره؟", "faq.a6": "نعم، يتم تجهيز المنشورات لموافقتك قبل نشرها.", "faq.q7": "هل الوكيل الصوتي متاح على مدار الساعة؟", "faq.a7": "نعم — على مدار الساعة، بودّية وفي الوقت الفعلي، حتى خارج ساعات عملك المعتادة.", "faq.q8": "هل يمكن للوكيل الصوتي جدولة المواعيد أو تحويلها؟", "faq.a8": "نعم، عبر الرسائل النصية أو واتساب أو البريد الإلكتروني، متكاملاً مع تقويمك الحالي.", "faq.q9": "هل وكلاء الذكاء الاصطناعي متوافقون مع GDPR؟", "faq.a9": "نعم. يستضاف AIDEN في الاتحاد الأوروبي ومتوافق مع كل من GDPR و EU AI Act.", "final.eyebrow": "مستقبل عملك يبدأ الآن", "final.h2": "السؤال ليس <em>إن كنت</em> ستستخدم الذكاء الاصطناعي — بل <em>متى</em>.", "final.lead": "عملاء محتملون أكثر، جهد أقل، عمليات آلية بالكامل — مبنية لتوسيع نطاق عملك.", "final.cta1": "ابدأ الوكيل الصوتي", "final.cta2": "احجز استشارة مجانية", "final.l1": "متاح دائمًا", "final.l2": "استجابة فورية لكل استفسار", "final.l3": "عمليات آلية بالكامل", "footer.tag": "وكلاء ذكاء اصطناعي يخففون العبء عن عملك فعليًا — الوكيل الصوتي، وكيل وسائل التواصل الاجتماعي وأتمتة ذكاء اصطناعي مخصصة.", "footer.col1.h": "المنتجات", "footer.voice": "الوكيل الصوتي", "footer.social": "وكيل وسائل التواصل الاجتماعي", "footer.pricing": "الأسعار", "footer.col2.h": "الشركة", "footer.about": "من نحن", "footer.customers": "العملاء", "footer.contact": "تواصل معنا", "footer.col3.h": "قانوني", "footer.imprint": "بيانات الناشر", "footer.privacy": "سياسة الخصوصية", "footer.terms": "الشروط والأحكام", "footer.copyright": "&copy; 2026 AIDEN. جميع الحقوق محفوظة.", "pc.common.247": "الرد على المكالمات على مدار الساعة", "pc.common.telegram": "تكامل تيليجرام", "pc.common.whatsapp": "تكامل واتساب", "pc.common.api": "وصول إلى API", "pc.common.setup": "إعداد مثالي", "pc.common.booking": "حجز المواعيد", "pc.common.calendar": "تكامل التقويم", "pc.common.priority": "دعم ذو أولوية", "pc.common.kb": "قاعدة معرفية", "pc.common.reminder": "تذكير بالمواعيد", "pc.common.allfeat": "جميع الميزات"};
+
+  const els = document.querySelectorAll('[data-i18n]');
+  const originalDE = new Map();
+  els.forEach(el => originalDE.set(el, el.innerHTML));
+
+  const DICTS = { en: AIDEN_I18N_EN, ar: AIDEN_I18N_AR };
+
+  function applyLanguage(lang){
+    const dict = DICTS[lang];
+    els.forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if(dict && dict[key] !== undefined){
+        el.innerHTML = dict[key];
+      } else {
+        el.innerHTML = originalDE.get(el);
+      }
+    });
+    document.documentElement.lang = lang;
+    document.body.classList.toggle('is-rtl', lang === 'ar');
+    document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+    try { localStorage.setItem('aiden-lang', lang); } catch(e){}
+  }
+
+  document.querySelectorAll('.lang-btn').forEach(btn=>{
+    btn.addEventListener('click', ()=> applyLanguage(btn.dataset.lang));
+  });
+
+  let initial = 'de';
+  try {
+    const saved = localStorage.getItem('aiden-lang');
+    if(saved === 'en' || saved === 'de' || saved === 'ar') initial = saved;
+  } catch(e){}
+  if(initial !== 'de') applyLanguage(initial);
+})();
+</script>
+</body>
+</html>
