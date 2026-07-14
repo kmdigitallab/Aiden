@@ -1300,7 +1300,9 @@ document.querySelectorAll('.ind-tab').forEach(tab=>{
   // sich automatisch neu einpasst statt auf der alten Größe zu bleiben.
   if('ResizeObserver' in window){
     let raf;
-    new ResizeObserver(() => {
+    new ResizeObserver((entries) => {
+      const r = entries[0].contentRect;
+      if(r.width <= 0 || r.height <= 0) return; // nie mit Nullgröße feuern (WebGL-Framebuffer-Fehler)
       cancelAnimationFrame(raf);
       raf = requestAnimationFrame(() => window.dispatchEvent(new Event('resize')));
     }).observe(el);
