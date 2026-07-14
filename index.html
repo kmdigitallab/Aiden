@@ -20,6 +20,8 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Organization","name":"AIDEN","url":"https://aiden.ae","logo":"https://aiden.ae/images/aiden-logo.png","sameAs":[]}
 </script>
+<link rel="preconnect" href="https://prod.spline.design" crossorigin>
+<link rel="dns-prefetch" href="https://prod.spline.design">
 <script type="module" src="vendor/spline-viewer.js"></script>
 <style>
 :root{
@@ -1289,6 +1291,24 @@ document.querySelectorAll('.ind-tab').forEach(tab=>{
   // cursor anywhere on the page — not only while hovering the small viewer area.
   const viewer = el.querySelector('spline-viewer');
   if(!viewer) return;
+
+  // Das Laden der Szene vom externen CDN schlägt gelegentlich (v.a. in
+  // Safari) ohne erkennbaren Fehler fehl — kein Canvas erscheint im
+  // Shadow DOM. Nach ein paar Sekunden nachsehen und die url neu setzen,
+  // um einen frischen Ladeversuch zu erzwingen, statt dauerhaft leer zu bleiben.
+  (function retryIfStalled(attempt){
+    if(attempt > 3) return;
+    setTimeout(() => {
+      if(viewer.shadowRoot && viewer.shadowRoot.querySelector('canvas')) return;
+      const url = viewer.getAttribute('url');
+      if(!url) return; // auf Mobile bewusst entfernt, siehe Skript oben
+      viewer.removeAttribute('url');
+      requestAnimationFrame(() => {
+        viewer.setAttribute('url', url);
+        retryIfStalled(attempt + 1);
+      });
+    }, 3500);
+  })(1);
 
   // Spline-Logo/Badge im Shadow DOM ausblenden, sobald es geladen ist —
   // die Szene lädt asynchron, daher per MutationObserver statt festem Timeout.
