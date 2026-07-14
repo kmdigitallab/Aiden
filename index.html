@@ -1292,6 +1292,20 @@ document.querySelectorAll('.ind-tab').forEach(tab=>{
   const viewer = el.querySelector('spline-viewer');
   if(!viewer) return;
 
+  // Der 3D-Player merkt selbst nicht, wenn sich die Größe seines
+  // Containers ändert (Safari Tab-/Adressleiste ein-/ausblenden,
+  // Fenster-Resize, Rotation) — er reagiert nur auf window "resize".
+  // Deshalb die tatsächliche Boxgröße beobachten und bei jeder
+  // Änderung ein synthetisches resize-Event feuern, damit der Player
+  // sich automatisch neu einpasst statt auf der alten Größe zu bleiben.
+  if('ResizeObserver' in window){
+    let raf;
+    new ResizeObserver(() => {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => window.dispatchEvent(new Event('resize')));
+    }).observe(el);
+  }
+
   // Das Laden der Szene vom externen CDN schlägt gelegentlich (v.a. in
   // Safari) ohne erkennbaren Fehler fehl — kein Canvas erscheint im
   // Shadow DOM. Nach ein paar Sekunden nachsehen und die url neu setzen,
