@@ -20,8 +20,6 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Organization","name":"AIDEN","url":"https://aiden.ae","logo":"https://aiden.ae/images/aiden-logo.png","sameAs":[]}
 </script>
-<link rel="preconnect" href="https://prod.spline.design" crossorigin>
-<link rel="dns-prefetch" href="https://prod.spline.design">
 <script type="module" src="vendor/spline-viewer.js"></script>
 <style>
 :root{
@@ -210,7 +208,7 @@ nav.site.scrolled{background:rgba(255,255,255,.75);box-shadow:0 12px 40px rgba(1
 @media(prefers-reduced-motion:reduce){.hero-aurora span{animation:none;}}
 .hero-sparkles{position:absolute;inset:0;z-index:0;pointer-events:none;mask-image:radial-gradient(680px 460px at 26% 42%,#000 0%,#000 35%,transparent 78%);-webkit-mask-image:radial-gradient(680px 460px at 26% 42%,#000 0%,#000 35%,transparent 78%);}
 @media(prefers-reduced-motion:reduce){.hero-sparkles{display:none;}}
-.hero-robot{position:absolute;right:2%;bottom:2%;width:54%;height:min(70vh,620px);z-index:0;opacity:0;transform:scale(1.7);transform-origin:bottom right;transition:opacity 1.3s ease,transform 1.8s cubic-bezier(.16,1,.3,1);pointer-events:auto;}
+.hero-robot{position:absolute;right:2%;bottom:2%;width:54%;height:70%;z-index:0;opacity:0;transform:scale(1.7);transform-origin:bottom right;transition:opacity 1.3s ease,transform 1.8s cubic-bezier(.16,1,.3,1);pointer-events:auto;}
 .hero-robot.in{opacity:.68;transform:scale(1);}
 .hero-robot spline-viewer{width:100%;height:100%;display:block;}
 .hero-robot-cover{position:absolute;right:0;bottom:0;width:38%;height:16%;min-width:300px;min-height:100px;background:var(--ink);-webkit-mask-image:linear-gradient(to top left,#000 55%,transparent 100%);mask-image:linear-gradient(to top left,#000 55%,transparent 100%);pointer-events:none;z-index:5;}
@@ -1291,57 +1289,6 @@ document.querySelectorAll('.ind-tab').forEach(tab=>{
   // cursor anywhere on the page — not only while hovering the small viewer area.
   const viewer = el.querySelector('spline-viewer');
   if(!viewer) return;
-
-  // Safari verwirft den WebGL-Kontext oft, wenn der Tab länger im
-  // Hintergrund lag (Speicher-/GPU-Entlastung). Der Player merkt das
-  // nicht selbst und rendert danach dauerhaft in einen kaputten
-  // Framebuffer (glClear/glDrawArrays-Fehler in der Konsole). Beim
-  // Zurückkehren zum Tab die Szene deshalb einmal sauber neu laden,
-  // statt zu versuchen, den kaputten Kontext zu reparieren.
-  let wasHidden = false;
-  document.addEventListener('visibilitychange', () => {
-    if(document.visibilityState === 'hidden'){ wasHidden = true; return; }
-    if(!wasHidden) return;
-    wasHidden = false;
-    const url = viewer.getAttribute('url');
-    if(!url) return; // auf Mobile bewusst entfernt, siehe Skript oben
-    viewer.removeAttribute('url');
-    requestAnimationFrame(() => viewer.setAttribute('url', url));
-  });
-
-  // Der 3D-Player merkt selbst nicht, wenn sich die Größe seines
-  // Containers ändert (Safari Tab-/Adressleiste ein-/ausblenden,
-  // Fenster-Resize, Rotation) — er reagiert nur auf window "resize".
-  // Deshalb die tatsächliche Boxgröße beobachten und bei jeder
-  // Änderung ein synthetisches resize-Event feuern, damit der Player
-  // sich automatisch neu einpasst statt auf der alten Größe zu bleiben.
-  if('ResizeObserver' in window){
-    let raf;
-    new ResizeObserver((entries) => {
-      const r = entries[0].contentRect;
-      if(r.width <= 0 || r.height <= 0) return; // nie mit Nullgröße feuern (WebGL-Framebuffer-Fehler)
-      cancelAnimationFrame(raf);
-      raf = requestAnimationFrame(() => window.dispatchEvent(new Event('resize')));
-    }).observe(el);
-  }
-
-  // Das Laden der Szene vom externen CDN schlägt gelegentlich (v.a. in
-  // Safari) ohne erkennbaren Fehler fehl — kein Canvas erscheint im
-  // Shadow DOM. Nach ein paar Sekunden nachsehen und die url neu setzen,
-  // um einen frischen Ladeversuch zu erzwingen, statt dauerhaft leer zu bleiben.
-  (function retryIfStalled(attempt){
-    if(attempt > 3) return;
-    setTimeout(() => {
-      if(viewer.shadowRoot && viewer.shadowRoot.querySelector('canvas')) return;
-      const url = viewer.getAttribute('url');
-      if(!url) return; // auf Mobile bewusst entfernt, siehe Skript oben
-      viewer.removeAttribute('url');
-      requestAnimationFrame(() => {
-        viewer.setAttribute('url', url);
-        retryIfStalled(attempt + 1);
-      });
-    }, 3500);
-  })(1);
 
   // Spline-Logo/Badge im Shadow DOM ausblenden, sobald es geladen ist —
   // die Szene lädt asynchron, daher per MutationObserver statt festem Timeout.
