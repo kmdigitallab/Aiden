@@ -105,20 +105,13 @@ body.has-announce nav.site{top:54px;}
 @media(max-width:640px){.announce{font-size:.7rem;padding:0 38px 0 12px;}.announce span.announce-text{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;}}
 
 /* ── nav ── */
-nav.site{position:fixed;top:14px;left:calc(14px + env(safe-area-inset-left, 0px));right:calc(14px + env(safe-area-inset-right, 0px));z-index:300;height:72px;display:flex;align-items:center;background:rgba(255,255,255,.55);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border:1px solid transparent;border-radius:22px;box-shadow:0 8px 32px rgba(14,14,16,.08),inset 0 1px 0 rgba(255,255,255,.6);transition:background .3s,box-shadow .3s,border-color .3s,top .4s ease;}
+nav.site{position:fixed;top:14px;left:calc(14px + env(safe-area-inset-left, 0px));right:calc(14px + env(safe-area-inset-right, 0px));z-index:300;height:72px;display:flex;align-items:center;background:rgba(255,255,255,.55);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border:1px solid rgba(204,163,0,.3);border-radius:22px;box-shadow:0 8px 32px rgba(14,14,16,.08),inset 0 1px 0 rgba(255,255,255,.6);transition:background .3s,box-shadow .3s,border-color .3s,top .4s ease;}
 nav.site.scrolled{background:rgba(255,255,255,.75);box-shadow:0 12px 40px rgba(14,14,16,.12),inset 0 1px 0 rgba(255,255,255,.7);}
-nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;padding:1.5px;background:conic-gradient(from var(--na,0deg),rgba(204,163,0,.35),var(--gold) 30%,var(--gold-light) 50%,var(--gold) 70%,rgba(204,163,0,.35) 100%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:navOrbit 4s linear infinite;pointer-events:none;}
-@keyframes navOrbit{to{--na:360deg;}}
-@property --na{syntax:'<angle>';inherits:false;initial-value:0deg;}
 .nav-inner{max-width:1180px;margin:0 auto;padding:0 26px;width:100%;display:flex;align-items:center;justify-content:space-between;}
 .nav-right{display:flex;align-items:center;gap:.5rem;order:5;}
 @media(max-width:640px){
   nav.site{top:10px;left:10px;right:10px;height:64px;border-radius:18px;}
-  /* Rotierender Rand ist auf mobilen Geräten (echtes iOS Safari) beim Scrollen
-     sichtbar ruckelig — deaktiviert. Blur bewusst leichter (8px statt 20px) und
-     mit höherer Deckkraft, um GPU-Last zu senken, aber Transparenz zu behalten. */
   nav.site,nav.site.scrolled{background:rgba(255,255,255,.82);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);}
-  nav.site::before{display:none;}
 }
 .brand{display:flex;align-items:center;gap:.6rem;order:1;}
 .brand-logo{height:26px;width:auto;display:block;}
@@ -230,20 +223,13 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
 @keyframes haloPulse{0%,100%{opacity:.85;transform:translate(-50%,-50%) scale(1);}50%{opacity:1;transform:translate(-50%,-50%) scale(1.035);}}
 .node-label{position:absolute;transform:translate(-50%,-50%);z-index:1;display:flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:50%;background:rgba(255,218,71,.08);border:1px solid rgba(255,218,71,.18);}
 .node-label svg{color:var(--gold-light);flex-shrink:0;width:26px;height:26px;}
-.hub-pill{position:absolute;left:52%;top:2%;right:auto;transform:translateX(-50%);width:128px;height:48px;border-radius:100px;background:#000000;border:1px solid var(--line-on-ink);display:flex;align-items:center;justify-content:center;box-shadow:0 20px 50px rgba(0,0,0,.4);}
-.hub-pill::before{content:'';position:absolute;inset:-1px;border-radius:100px;padding:1px;background:conic-gradient(from var(--a,0deg),transparent 0 60%,var(--gold-light),transparent 75%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:hubSpin 4s linear infinite;}
-@keyframes hubSpin{to{--a:360deg;}}
 @media(max-width:640px){
   /* Kreis war auf schmalen Screens mit fixer Mindesthöhe (340px) unproportional
      groß und wirkte leer — deutlich verkleinert. */
   .beams-wrap{height:clamp(220px,64vw,300px);}
   .node-label{width:40px;height:40px;}
   .node-label svg{width:20px;height:20px;}
-  .hub-pill{width:100px;height:38px;}
-  .hub-pill span{font-size:.85rem;}
 }
-@property --a{syntax:'<angle>';inherits:false;initial-value:0deg;}
-.hub-pill span{position:relative;font-family:"Iowan Old Style",Georgia,serif;font-style:italic;font-size:1rem;background:linear-gradient(90deg,#fff,var(--gold-light));-webkit-background-clip:text;background-clip:text;color:transparent;}
 .hero .lead{max-width:600px;margin:1.5rem 0 2.3rem;}
 .hero-cta{display:flex;gap:.7rem;flex-wrap:wrap;margin-bottom:2rem;}
 .hero-cta .btn{padding:.78rem 1.4rem;font-size:.82rem;}
@@ -502,8 +488,8 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
 
 <div class="announce" id="announceBar">
   <span class="announce-dot"></span>
-  <span class="announce-text">Aktuell nehmen wir neue Kunden auf &mdash; kostenloses Erstgespräch</span>
-  <a class="announce-link" href="https://calendar.app.google/LK3hdLKQ6pLztv4b8" target="_blank" rel="noopener">jetzt sichern</a>
+  <span class="announce-text" data-i18n="leg.announce.text">Aktuell nehmen wir neue Kunden auf &mdash; kostenloses Erstgespräch</span>
+  <a class="announce-link" data-i18n="leg.announce.cta" href="https://calendar.app.google/LK3hdLKQ6pLztv4b8" target="_blank" rel="noopener">jetzt sichern</a>
   <button class="announce-close" id="announceClose" aria-label="Schließen">
     <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
   </button>
@@ -516,43 +502,53 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
       <span class="brand-tagline">AIO – ALL IN ONE</span>
     </a>
     <div class="nav-links">
-      <a href="kundenportal.html">Kundenportal</a>
-      <a href="index.html#voice">Voice Agents</a>
-      <a href="social-media-agent.html">Social Media Agent</a>
-      <a href="index.html#stimmen">Referenzen</a>
+      <a href="kundenportal.html" data-i18n="leg.nav.portal">Kundenportal</a>
+      <a href="index.html#voice" data-i18n="leg.nav.voice">Voice Agents</a>
+      <a href="social-media-agent.html" data-i18n="leg.nav.social">Social Media Agent</a>
+      <a href="index.html#stimmen" data-i18n="leg.nav.refs">Referenzen</a>
     </div>
     <div class="nav-right">
       <a href="index.html#pricing" class="btn btn-gold btn-phone">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-        <span class="cta-full">Voice Agent<br>testen</span>
-        <span class="cta-short">Voice Agent</span>
+        <span class="cta-full" data-i18n="leg.nav.cta">Voice Agent<br>testen</span>
+        <span class="cta-short" data-i18n="leg.nav.cta.mobile">Voice Agent</span>
       </a>
+      <div class="lang-switch" id="langSwitch" role="group" aria-label="Sprache wählen">
+        <button type="button" class="lang-btn active" data-lang="de">DE</button>
+        <button type="button" class="lang-btn" data-lang="en">EN</button>
+        <button type="button" class="lang-btn" data-lang="ar">AR</button>
+      </div>
       <button type="button" class="nav-burger" id="navBurger" aria-expanded="false" aria-controls="mobileMenu" aria-label="Menü öffnen">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
       </button>
     </div>
   </div>
   <div class="mobile-menu" id="mobileMenu">
-    <a href="kundenportal.html">Kundenportal</a>
-    <a href="index.html#voice">Voice Agents</a>
-    <a href="social-media-agent.html">Social Media Agent</a>
-    <a href="index.html#stimmen">Referenzen</a>
-    <a href="index.html#pricing" class="btn btn-gold mobile-menu-cta">Voice Agent</a>
+    <a href="kundenportal.html" data-i18n="leg.nav.portal">Kundenportal</a>
+    <a href="index.html#voice" data-i18n="leg.nav.voice">Voice Agents</a>
+    <a href="social-media-agent.html" data-i18n="leg.nav.social">Social Media Agent</a>
+    <a href="index.html#stimmen" data-i18n="leg.nav.refs">Referenzen</a>
+    <a href="index.html#pricing" class="btn btn-gold mobile-menu-cta" data-i18n="leg.nav.cta.mobile">Voice Agent</a>
+    <div class="lang-switch mobile-menu-lang" role="group" aria-label="Sprache wählen">
+      <button type="button" class="lang-btn active" data-lang="de">DE</button>
+      <button type="button" class="lang-btn" data-lang="en">EN</button>
+      <button type="button" class="lang-btn" data-lang="ar">AR</button>
+    </div>
   </div>
 </nav>
 
 
 <div class="content" id="content">
-  
+
   <header class="legal-hero" id="top">
     <div class="legal-wrap">
-      <div class="eyebrow reveal" style="color:var(--gold-light);">Rechtliche Informationen</div>
-      <h1 class="h-lg serif reveal">Datenschutzerklärung</h1>
-      <p class="lead reveal" style="color:var(--muted-on-ink);">Der Schutz personenbezogener Daten ist uns wichtig. Mit dieser Datenschutzerklärung informieren wir darüber, welche personenbezogenen Daten wir im Zusammenhang mit unserer Website, unseren KI-Agenten, unseren digitalen Leistungen und der Kommunikation mit Interessenten und Kunden verarbeiten.</p>
-      <p class="legal-meta reveal">Stand: 01.06.2026</p>
+      <div class="eyebrow reveal" style="color:var(--gold-light);" data-i18n="ds.eyebrow">Rechtliche Informationen</div>
+      <h1 class="h-lg serif reveal" data-i18n="ds.h1">Datenschutzerklärung</h1>
+      <p class="lead reveal" style="color:var(--muted-on-ink);" data-i18n="ds.lead">Der Schutz personenbezogener Daten ist uns wichtig. Mit dieser Datenschutzerklärung informieren wir darüber, welche personenbezogenen Daten wir im Zusammenhang mit unserer Website, unseren KI-Agenten, unseren digitalen Leistungen und der Kommunikation mit Interessenten und Kunden verarbeiten.</p>
+      <p class="legal-meta reveal"><span data-i18n="ds.asof">Stand</span>: 01.06.2026</p>
       <a href="index.html" class="legal-back reveal">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-        Zurück zur Startseite
+        <span data-i18n="leg.back">Zurück zur Startseite</span>
       </a>
     </div>
   </header>
@@ -560,158 +556,158 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
   <section class="legal-body">
     <div class="legal-wrap">
 
-      <p class="reveal">Diese Datenschutzerklärung gilt für die Website AIDEN.AE sowie für die darüber angebotenen Leistungen, insbesondere KI Voice Agents, KI Social Media Agents und individuelle KI-Automatisierungen.</p>
+      <p class="reveal" data-i18n="ds.intro">Diese Datenschutzerklärung gilt für die Website AIDEN.AE sowie für die darüber angebotenen Leistungen, insbesondere KI Voice Agents, KI Social Media Agents und individuelle KI-Automatisierungen.</p>
 
-      <h2 class="reveal">1. Verantwortlicher</h2>
-      <p class="reveal">Verantwortlich für die Datenverarbeitung ist:</p>
+      <h2 class="reveal" data-i18n="ds.s1.h">1. Verantwortlicher</h2>
+      <p class="reveal" data-i18n="ds.s1.p1">Verantwortlich für die Datenverarbeitung ist:</p>
       <div class="legal-address reveal">
         <p><strong>AIDEN.AE</strong><br>
         Dubai Branch Building, Al Mankhool Area, Bur Dubai<br>
         Makani No.: 28511194466, Dubai, United Arab Emirates<br>
-        Vertreten durch: Dr. Irena Schindler<br>
-        E-Mail: <a href="mailto:info@aiden.ae">info@aiden.ae</a> · Telefon: <a href="tel:+971561155278">+971 56 115 5278</a><br>
-        Rechtlicher Firmenname: AIDEN AIO Artificial Intelligence Developing Services L.L.C.<br>
-        Lizenznummer: 1493367 · Registrierungsbehörde: Government of Dubai</p>
+        <span data-i18n="ds.s1.rep">Vertreten durch</span>: Dr. Irena Schindler<br>
+        <span data-i18n="ds.contact.email">E-Mail</span>: <a href="mailto:info@aiden.ae">info@aiden.ae</a> · <span data-i18n="ds.contact.phone">Telefon</span>: <a href="tel:+971561155278">+971 56 115 5278</a><br>
+        <span data-i18n="ds.s1.legalname">Rechtlicher Firmenname</span>: AIDEN AIO Artificial Intelligence Developing Services L.L.C.<br>
+        <span data-i18n="ds.s1.license">Lizenznummer</span>: 1493367 · <span data-i18n="ds.s1.authority">Registrierungsbehörde</span>: Government of Dubai</p>
       </div>
 
-      <h2 class="reveal">2. Allgemeine Hinweise zur Datenverarbeitung</h2>
-      <p class="reveal">Wir verarbeiten personenbezogene Daten nur, soweit dies für den Betrieb unserer Website, die Kommunikation mit Interessenten und Kunden, die Bereitstellung unserer Leistungen, die Vertragserfüllung, die technische Sicherheit, die Abrechnung oder die Erfüllung gesetzlicher Pflichten erforderlich ist.</p>
-      <p class="reveal">Personenbezogene Daten sind alle Informationen, die sich auf eine identifizierte oder identifizierbare Person beziehen. Dazu können zum Beispiel Name, Unternehmen, E-Mail-Adresse, Telefonnummer, IP-Adresse, Kommunikationsinhalte, Gesprächsdaten, Nutzungsdaten oder technische Informationen gehören.</p>
-      <p class="reveal">Unsere Leistungen richten sich überwiegend an Unternehmen, Selbstständige, Praxen, Dienstleister, Organisationen und gewerbliche Kunden im DACH-Markt sowie in den Vereinigten Arabischen Emiraten.</p>
+      <h2 class="reveal" data-i18n="ds.s2.h">2. Allgemeine Hinweise zur Datenverarbeitung</h2>
+      <p class="reveal" data-i18n="ds.s2.p1">Wir verarbeiten personenbezogene Daten nur, soweit dies für den Betrieb unserer Website, die Kommunikation mit Interessenten und Kunden, die Bereitstellung unserer Leistungen, die Vertragserfüllung, die technische Sicherheit, die Abrechnung oder die Erfüllung gesetzlicher Pflichten erforderlich ist.</p>
+      <p class="reveal" data-i18n="ds.s2.p2">Personenbezogene Daten sind alle Informationen, die sich auf eine identifizierte oder identifizierbare Person beziehen. Dazu können zum Beispiel Name, Unternehmen, E-Mail-Adresse, Telefonnummer, IP-Adresse, Kommunikationsinhalte, Gesprächsdaten, Nutzungsdaten oder technische Informationen gehören.</p>
+      <p class="reveal" data-i18n="ds.s2.p3">Unsere Leistungen richten sich überwiegend an Unternehmen, Selbstständige, Praxen, Dienstleister, Organisationen und gewerbliche Kunden im DACH-Markt sowie in den Vereinigten Arabischen Emiraten.</p>
 
-      <h2 class="reveal">3. Rechtsgrundlagen der Verarbeitung</h2>
-      <p class="reveal">Sofern die Datenschutz-Grundverordnung der Europäischen Union Anwendung findet, verarbeiten wir personenbezogene Daten insbesondere auf Grundlage folgender Rechtsgrundlagen:</p>
+      <h2 class="reveal" data-i18n="ds.s3.h">3. Rechtsgrundlagen der Verarbeitung</h2>
+      <p class="reveal" data-i18n="ds.s3.p1">Sofern die Datenschutz-Grundverordnung der Europäischen Union Anwendung findet, verarbeiten wir personenbezogene Daten insbesondere auf Grundlage folgender Rechtsgrundlagen:</p>
       <ul class="reveal">
-        <li>Art. 6 Abs. 1 lit. a DSGVO, wenn eine Einwilligung erteilt wurde</li>
-        <li>Art. 6 Abs. 1 lit. b DSGVO, wenn die Verarbeitung zur Vertragserfüllung oder zur Durchführung vorvertraglicher Maßnahmen erforderlich ist</li>
-        <li>Art. 6 Abs. 1 lit. c DSGVO, wenn wir rechtlich zur Verarbeitung verpflichtet sind</li>
-        <li>Art. 6 Abs. 1 lit. f DSGVO, wenn die Verarbeitung zur Wahrung berechtigter Interessen erforderlich ist</li>
+        <li data-i18n="ds.s3.l1">Art. 6 Abs. 1 lit. a DSGVO, wenn eine Einwilligung erteilt wurde</li>
+        <li data-i18n="ds.s3.l2">Art. 6 Abs. 1 lit. b DSGVO, wenn die Verarbeitung zur Vertragserfüllung oder zur Durchführung vorvertraglicher Maßnahmen erforderlich ist</li>
+        <li data-i18n="ds.s3.l3">Art. 6 Abs. 1 lit. c DSGVO, wenn wir rechtlich zur Verarbeitung verpflichtet sind</li>
+        <li data-i18n="ds.s3.l4">Art. 6 Abs. 1 lit. f DSGVO, wenn die Verarbeitung zur Wahrung berechtigter Interessen erforderlich ist</li>
       </ul>
-      <p class="reveal">Für Kunden und Nutzer in den Vereinigten Arabischen Emiraten erfolgt die Verarbeitung personenbezogener Daten im Einklang mit den jeweils anwendbaren Datenschutzbestimmungen der UAE, insbesondere dem UAE Personal Data Protection Law, soweit dieses Anwendung findet.</p>
+      <p class="reveal" data-i18n="ds.s3.p2">Für Kunden und Nutzer in den Vereinigten Arabischen Emiraten erfolgt die Verarbeitung personenbezogener Daten im Einklang mit den jeweils anwendbaren Datenschutzbestimmungen der UAE, insbesondere dem UAE Personal Data Protection Law, soweit dieses Anwendung findet.</p>
 
-      <h2 class="reveal">4. Erhebung von Daten beim Besuch der Website</h2>
-      <p class="reveal">Beim Besuch unserer Website können automatisch technische Daten verarbeitet werden. Dazu gehören insbesondere:</p>
+      <h2 class="reveal" data-i18n="ds.s4.h">4. Erhebung von Daten beim Besuch der Website</h2>
+      <p class="reveal" data-i18n="ds.s4.p1">Beim Besuch unserer Website können automatisch technische Daten verarbeitet werden. Dazu gehören insbesondere:</p>
       <ul class="reveal">
-        <li>IP-Adresse</li>
-        <li>Datum und Uhrzeit des Zugriffs</li>
-        <li>aufgerufene Seiten</li>
-        <li>Browsertyp und Browserversion</li>
-        <li>verwendetes Betriebssystem</li>
-        <li>Referrer-URL</li>
-        <li>Hostname des zugreifenden Rechners</li>
-        <li>technische Protokolldaten</li>
+        <li data-i18n="ds.s4.l1">IP-Adresse</li>
+        <li data-i18n="ds.s4.l2">Datum und Uhrzeit des Zugriffs</li>
+        <li data-i18n="ds.s4.l3">aufgerufene Seiten</li>
+        <li data-i18n="ds.s4.l4">Browsertyp und Browserversion</li>
+        <li data-i18n="ds.s4.l5">verwendetes Betriebssystem</li>
+        <li data-i18n="ds.s4.l6">Referrer-URL</li>
+        <li data-i18n="ds.s4.l7">Hostname des zugreifenden Rechners</li>
+        <li data-i18n="ds.s4.l8">technische Protokolldaten</li>
       </ul>
-      <p class="reveal">Diese Daten werden verarbeitet, um die Website technisch bereitzustellen, Sicherheit und Stabilität zu gewährleisten, Fehler zu analysieren und missbräuchliche Nutzung zu verhindern.</p>
+      <p class="reveal" data-i18n="ds.s4.p2">Diese Daten werden verarbeitet, um die Website technisch bereitzustellen, Sicherheit und Stabilität zu gewährleisten, Fehler zu analysieren und missbräuchliche Nutzung zu verhindern.</p>
 
-      <h2 class="reveal">5. Kontaktaufnahme</h2>
-      <p class="reveal">Wenn Sie uns per E-Mail, Telefon, Kontaktformular, Buchungstool, Chat oder über andere Kommunikationswege kontaktieren, verarbeiten wir die von Ihnen übermittelten Daten. Dazu können gehören: Name, Unternehmen, E-Mail-Adresse, Telefonnummer, Anliegen, Nachrichtentext, Terminwünsche, technische Kommunikationsdaten.</p>
-      <p class="reveal">Die Verarbeitung erfolgt zur Bearbeitung Ihrer Anfrage, zur Vorbereitung eines Angebots, zur Durchführung vorvertraglicher Maßnahmen oder zur Kommunikation im Rahmen bestehender Kundenbeziehungen.</p>
+      <h2 class="reveal" data-i18n="ds.s5.h">5. Kontaktaufnahme</h2>
+      <p class="reveal" data-i18n="ds.s5.p1">Wenn Sie uns per E-Mail, Telefon, Kontaktformular, Buchungstool, Chat oder über andere Kommunikationswege kontaktieren, verarbeiten wir die von Ihnen übermittelten Daten. Dazu können gehören: Name, Unternehmen, E-Mail-Adresse, Telefonnummer, Anliegen, Nachrichtentext, Terminwünsche, technische Kommunikationsdaten.</p>
+      <p class="reveal" data-i18n="ds.s5.p2">Die Verarbeitung erfolgt zur Bearbeitung Ihrer Anfrage, zur Vorbereitung eines Angebots, zur Durchführung vorvertraglicher Maßnahmen oder zur Kommunikation im Rahmen bestehender Kundenbeziehungen.</p>
 
-      <h2 class="reveal">6. Terminbuchung und Beratungsgespräche</h2>
-      <p class="reveal">Wenn Sie einen Termin mit uns buchen, können personenbezogene Daten verarbeitet werden, die für die Terminvereinbarung erforderlich sind, etwa Name, Unternehmen, E-Mail-Adresse, Telefonnummer, gewünschter Termin, Thema des Gesprächs, Meeting-Link und Kalenderdaten.</p>
-      <p class="reveal">Sofern Drittanbieter für Terminbuchung, Videokonferenzen oder Kalenderintegration genutzt werden, gelten ergänzend die Datenschutzbestimmungen des jeweiligen Anbieters.</p>
+      <h2 class="reveal" data-i18n="ds.s6.h">6. Terminbuchung und Beratungsgespräche</h2>
+      <p class="reveal" data-i18n="ds.s6.p1">Wenn Sie einen Termin mit uns buchen, können personenbezogene Daten verarbeitet werden, die für die Terminvereinbarung erforderlich sind, etwa Name, Unternehmen, E-Mail-Adresse, Telefonnummer, gewünschter Termin, Thema des Gesprächs, Meeting-Link und Kalenderdaten.</p>
+      <p class="reveal" data-i18n="ds.s6.p2">Sofern Drittanbieter für Terminbuchung, Videokonferenzen oder Kalenderintegration genutzt werden, gelten ergänzend die Datenschutzbestimmungen des jeweiligen Anbieters.</p>
 
-      <h2 class="reveal">7. Nutzung unserer KI Voice Agents</h2>
-      <p class="reveal">Bei Nutzung eines AIDEN KI Voice Agents können personenbezogene Daten verarbeitet werden, die während eines Telefonats oder einer sprachbasierten Kommunikation entstehen, etwa Telefonnummer, Name und Unternehmen (sofern genannt), Anliegen des Anrufers, Gesprächsinhalte, Terminwünsche, Rückrufwünsche, Service- oder Supportinformationen, technische Verbindungsdaten sowie Transkripte oder Zusammenfassungen, sofern aktiviert.</p>
-      <p class="reveal">Die Verarbeitung dient dazu, Anrufe entgegenzunehmen, Anliegen zu erfassen, Informationen bereitzustellen, Termine vorzubereiten, Rückrufwünsche aufzunehmen, Leads zu qualifizieren oder Kundenserviceprozesse zu unterstützen.</p>
-      <p class="reveal">Sofern Gespräche aufgezeichnet oder transkribiert werden, erfolgt dies nur nach Maßgabe der jeweils anwendbaren gesetzlichen Anforderungen. Der jeweilige Kunde ist dafür verantwortlich, Anrufer ordnungsgemäß zu informieren und, soweit erforderlich, Einwilligungen einzuholen.</p>
-      <p class="reveal"><strong>AIDEN Voice Agents sind nicht für Notrufe, medizinische Notfallentscheidungen oder sicherheitskritische Kommunikation vorgesehen.</strong></p>
+      <h2 class="reveal" data-i18n="ds.s7.h">7. Nutzung unserer KI Voice Agents</h2>
+      <p class="reveal" data-i18n="ds.s7.p1">Bei Nutzung eines AIDEN KI Voice Agents können personenbezogene Daten verarbeitet werden, die während eines Telefonats oder einer sprachbasierten Kommunikation entstehen, etwa Telefonnummer, Name und Unternehmen (sofern genannt), Anliegen des Anrufers, Gesprächsinhalte, Terminwünsche, Rückrufwünsche, Service- oder Supportinformationen, technische Verbindungsdaten sowie Transkripte oder Zusammenfassungen, sofern aktiviert.</p>
+      <p class="reveal" data-i18n="ds.s7.p2">Die Verarbeitung dient dazu, Anrufe entgegenzunehmen, Anliegen zu erfassen, Informationen bereitzustellen, Termine vorzubereiten, Rückrufwünsche aufzunehmen, Leads zu qualifizieren oder Kundenserviceprozesse zu unterstützen.</p>
+      <p class="reveal" data-i18n="ds.s7.p3">Sofern Gespräche aufgezeichnet oder transkribiert werden, erfolgt dies nur nach Maßgabe der jeweils anwendbaren gesetzlichen Anforderungen. Der jeweilige Kunde ist dafür verantwortlich, Anrufer ordnungsgemäß zu informieren und, soweit erforderlich, Einwilligungen einzuholen.</p>
+      <p class="reveal"><strong data-i18n="ds.s7.p4">AIDEN Voice Agents sind nicht für Notrufe, medizinische Notfallentscheidungen oder sicherheitskritische Kommunikation vorgesehen.</strong></p>
 
-      <h2 class="reveal">8. Nutzung unserer KI Social Media Agents</h2>
-      <p class="reveal">Bei Nutzung eines AIDEN KI Social Media Agents können personenbezogene Daten verarbeitet werden, die für Content-Erstellung, Planung, Freigabe, Veröffentlichung, Analyse oder Kommunikation erforderlich sind, etwa Unternehmensinformationen, Ansprechpartnerdaten, Markenunterlagen, Social-Media-Profile, Inhalte, Bilder, Texte und Kampagnendaten, Freigaben und Kommentare, Performance-Daten sowie Nachrichten oder Reaktionen, soweit angebunden.</p>
-      <p class="reveal">Der Kunde bleibt verantwortlich für die Prüfung und Freigabe von Inhalten, insbesondere wenn personenbezogene Daten, Kundenbilder, Mitarbeiterdaten, Gesundheitsdaten, sensible Informationen oder Inhalte Dritter verwendet werden.</p>
+      <h2 class="reveal" data-i18n="ds.s8.h">8. Nutzung unserer KI Social Media Agents</h2>
+      <p class="reveal" data-i18n="ds.s8.p1">Bei Nutzung eines AIDEN KI Social Media Agents können personenbezogene Daten verarbeitet werden, die für Content-Erstellung, Planung, Freigabe, Veröffentlichung, Analyse oder Kommunikation erforderlich sind, etwa Unternehmensinformationen, Ansprechpartnerdaten, Markenunterlagen, Social-Media-Profile, Inhalte, Bilder, Texte und Kampagnendaten, Freigaben und Kommentare, Performance-Daten sowie Nachrichten oder Reaktionen, soweit angebunden.</p>
+      <p class="reveal" data-i18n="ds.s8.p2">Der Kunde bleibt verantwortlich für die Prüfung und Freigabe von Inhalten, insbesondere wenn personenbezogene Daten, Kundenbilder, Mitarbeiterdaten, Gesundheitsdaten, sensible Informationen oder Inhalte Dritter verwendet werden.</p>
 
-      <h2 class="reveal">9. Individuelle KI-Automatisierungen</h2>
-      <p class="reveal">Bei individuellen KI-Automatisierungen können je nach Projekt verschiedene Datenarten verarbeitet werden, etwa Kundendaten, Leads, Kommunikationsdaten, Kalenderdaten, CRM-Daten, Supportanfragen, E-Mail-Inhalte, Prozessdaten, Dokumente, Wissensdatenbanken sowie interne Unternehmensinformationen.</p>
-      <p class="reveal">Der genaue Umfang der Verarbeitung ergibt sich aus dem jeweiligen Projekt, Angebot, Vertrag oder der technischen Konfiguration. Soweit AIDEN personenbezogene Daten im Auftrag eines Kunden verarbeitet, kann eine separate Vereinbarung zur Auftragsverarbeitung oder eine vergleichbare Datenschutzvereinbarung erforderlich sein.</p>
+      <h2 class="reveal" data-i18n="ds.s9.h">9. Individuelle KI-Automatisierungen</h2>
+      <p class="reveal" data-i18n="ds.s9.p1">Bei individuellen KI-Automatisierungen können je nach Projekt verschiedene Datenarten verarbeitet werden, etwa Kundendaten, Leads, Kommunikationsdaten, Kalenderdaten, CRM-Daten, Supportanfragen, E-Mail-Inhalte, Prozessdaten, Dokumente, Wissensdatenbanken sowie interne Unternehmensinformationen.</p>
+      <p class="reveal" data-i18n="ds.s9.p2">Der genaue Umfang der Verarbeitung ergibt sich aus dem jeweiligen Projekt, Angebot, Vertrag oder der technischen Konfiguration. Soweit AIDEN personenbezogene Daten im Auftrag eines Kunden verarbeitet, kann eine separate Vereinbarung zur Auftragsverarbeitung oder eine vergleichbare Datenschutzvereinbarung erforderlich sein.</p>
 
-      <h2 class="reveal">10. KI-Systeme und EU AI Act</h2>
-      <p class="reveal">Die von AIDEN angebotenen KI-Produkte werden mit dem Anspruch entwickelt, konfiguriert und betrieben, die Anforderungen des EU AI Act einzuhalten, soweit diese auf die jeweilige Leistung, den jeweiligen Markt und den konkreten Einsatzzweck anwendbar sind. AIDEN achtet insbesondere auf:</p>
+      <h2 class="reveal" data-i18n="ds.s10.h">10. KI-Systeme und EU AI Act</h2>
+      <p class="reveal" data-i18n="ds.s10.p1">Die von AIDEN angebotenen KI-Produkte werden mit dem Anspruch entwickelt, konfiguriert und betrieben, die Anforderungen des EU AI Act einzuhalten, soweit diese auf die jeweilige Leistung, den jeweiligen Markt und den konkreten Einsatzzweck anwendbar sind. AIDEN achtet insbesondere auf:</p>
       <ul class="reveal">
-        <li>Transparenz beim Einsatz von KI</li>
-        <li>nachvollziehbare Systemzwecke</li>
-        <li>klare Rollen zwischen Anbieter, Kunde und Nutzer</li>
-        <li>menschliche Überprüfung und Freigabe, soweit erforderlich</li>
-        <li>Schutz personenbezogener Daten</li>
-        <li>Vermeidung unzulässiger oder missbräuchlicher Nutzung</li>
-        <li>technische und organisatorische Sicherheitsmaßnahmen</li>
-        <li>Dokumentation relevanter Datenflüsse und Prozesse</li>
+        <li data-i18n="ds.s10.l1">Transparenz beim Einsatz von KI</li>
+        <li data-i18n="ds.s10.l2">nachvollziehbare Systemzwecke</li>
+        <li data-i18n="ds.s10.l3">klare Rollen zwischen Anbieter, Kunde und Nutzer</li>
+        <li data-i18n="ds.s10.l4">menschliche Überprüfung und Freigabe, soweit erforderlich</li>
+        <li data-i18n="ds.s10.l5">Schutz personenbezogener Daten</li>
+        <li data-i18n="ds.s10.l6">Vermeidung unzulässiger oder missbräuchlicher Nutzung</li>
+        <li data-i18n="ds.s10.l7">technische und organisatorische Sicherheitsmaßnahmen</li>
+        <li data-i18n="ds.s10.l8">Dokumentation relevanter Datenflüsse und Prozesse</li>
       </ul>
-      <p class="reveal">Wenn Nutzer direkt mit einem KI-System interagieren, soll dies transparent und verständlich erkennbar gemacht werden, soweit dies gesetzlich erforderlich ist.</p>
-      <p class="reveal">KI-generierte Inhalte können Fehler oder Ungenauigkeiten enthalten. Deshalb sind Kunden verpflichtet, KI-generierte Inhalte vor externer Nutzung zu prüfen, insbesondere bei rechtlichen, medizinischen, finanziellen, regulierten oder sensiblen Themen.</p>
+      <p class="reveal" data-i18n="ds.s10.p2">Wenn Nutzer direkt mit einem KI-System interagieren, soll dies transparent und verständlich erkennbar gemacht werden, soweit dies gesetzlich erforderlich ist.</p>
+      <p class="reveal" data-i18n="ds.s10.p3">KI-generierte Inhalte können Fehler oder Ungenauigkeiten enthalten. Deshalb sind Kunden verpflichtet, KI-generierte Inhalte vor externer Nutzung zu prüfen, insbesondere bei rechtlichen, medizinischen, finanziellen, regulierten oder sensiblen Themen.</p>
 
-      <h2 class="reveal">11. Cookies und vergleichbare Technologien</h2>
-      <p class="reveal">Unsere Website kann Cookies oder vergleichbare Technologien verwenden. Cookies sind kleine Textdateien, die auf dem Endgerät gespeichert werden. Sie können erforderlich sein, um die Website technisch bereitzustellen, Einstellungen zu speichern, Sicherheit zu gewährleisten, Nutzungsverhalten zu analysieren oder Marketingmaßnahmen zu unterstützen.</p>
-      <p class="reveal">Wir unterscheiden insbesondere zwischen technisch erforderlichen Cookies, funktionalen Cookies, Analyse-Cookies und Marketing-Cookies. Technisch erforderliche Cookies können ohne Einwilligung eingesetzt werden, sofern sie für den Betrieb der Website notwendig sind. Analyse- und Marketing-Cookies werden nur verwendet, wenn hierfür eine Einwilligung vorliegt, soweit eine solche gesetzlich erforderlich ist.</p>
-      <p class="reveal">Details zu eingesetzten Cookies, Laufzeiten und Anbietern sollten in einem separaten Cookie-Banner oder einer Cookie-Übersicht dargestellt werden.</p>
+      <h2 class="reveal" data-i18n="ds.s11.h">11. Cookies und vergleichbare Technologien</h2>
+      <p class="reveal" data-i18n="ds.s11.p1">Unsere Website kann Cookies oder vergleichbare Technologien verwenden. Cookies sind kleine Textdateien, die auf dem Endgerät gespeichert werden. Sie können erforderlich sein, um die Website technisch bereitzustellen, Einstellungen zu speichern, Sicherheit zu gewährleisten, Nutzungsverhalten zu analysieren oder Marketingmaßnahmen zu unterstützen.</p>
+      <p class="reveal" data-i18n="ds.s11.p2">Wir unterscheiden insbesondere zwischen technisch erforderlichen Cookies, funktionalen Cookies, Analyse-Cookies und Marketing-Cookies. Technisch erforderliche Cookies können ohne Einwilligung eingesetzt werden, sofern sie für den Betrieb der Website notwendig sind. Analyse- und Marketing-Cookies werden nur verwendet, wenn hierfür eine Einwilligung vorliegt, soweit eine solche gesetzlich erforderlich ist.</p>
+      <p class="reveal" data-i18n="ds.s11.p3">Details zu eingesetzten Cookies, Laufzeiten und Anbietern sollten in einem separaten Cookie-Banner oder einer Cookie-Übersicht dargestellt werden.</p>
 
-      <h2 class="reveal">12. Analyse- und Marketingtools</h2>
-      <p class="reveal">Soweit auf unserer Website Analyse- oder Marketingtools eingesetzt werden, erfolgt dies zur Verbesserung der Website, zur Auswertung von Reichweiten, zur Optimierung von Kampagnen oder zur gezielten Ansprache von Interessenten. Mögliche Anbieter können zum Beispiel Webanalyse-, Tracking-, Werbe- oder Social-Media-Plattformen sein.</p>
-      <p class="reveal">Der konkrete Einsatz solcher Tools erfolgt nur im Rahmen der jeweils anwendbaren gesetzlichen Vorgaben und, soweit erforderlich, auf Grundlage einer Einwilligung.</p>
+      <h2 class="reveal" data-i18n="ds.s12.h">12. Analyse- und Marketingtools</h2>
+      <p class="reveal" data-i18n="ds.s12.p1">Soweit auf unserer Website Analyse- oder Marketingtools eingesetzt werden, erfolgt dies zur Verbesserung der Website, zur Auswertung von Reichweiten, zur Optimierung von Kampagnen oder zur gezielten Ansprache von Interessenten. Mögliche Anbieter können zum Beispiel Webanalyse-, Tracking-, Werbe- oder Social-Media-Plattformen sein.</p>
+      <p class="reveal" data-i18n="ds.s12.p2">Der konkrete Einsatz solcher Tools erfolgt nur im Rahmen der jeweils anwendbaren gesetzlichen Vorgaben und, soweit erforderlich, auf Grundlage einer Einwilligung.</p>
 
-      <h2 class="reveal">13. Newsletter und werbliche Kommunikation</h2>
-      <p class="reveal">Wenn Sie sich für einen Newsletter, Produktinformationen oder werbliche Kommunikation anmelden, verarbeiten wir Ihre Kontaktdaten zum Versand entsprechender Informationen. Sie können Ihre Einwilligung jederzeit mit Wirkung für die Zukunft widerrufen.</p>
-      <p class="reveal">Sofern wir Bestandskunden per E-Mail über ähnliche eigene Leistungen informieren, erfolgt dies nur im Rahmen der jeweils anwendbaren gesetzlichen Vorgaben.</p>
+      <h2 class="reveal" data-i18n="ds.s13.h">13. Newsletter und werbliche Kommunikation</h2>
+      <p class="reveal" data-i18n="ds.s13.p1">Wenn Sie sich für einen Newsletter, Produktinformationen oder werbliche Kommunikation anmelden, verarbeiten wir Ihre Kontaktdaten zum Versand entsprechender Informationen. Sie können Ihre Einwilligung jederzeit mit Wirkung für die Zukunft widerrufen.</p>
+      <p class="reveal" data-i18n="ds.s13.p2">Sofern wir Bestandskunden per E-Mail über ähnliche eigene Leistungen informieren, erfolgt dies nur im Rahmen der jeweils anwendbaren gesetzlichen Vorgaben.</p>
 
-      <h2 class="reveal">14. Zahlungs- und Abrechnungsdaten</h2>
-      <p class="reveal">Bei kostenpflichtigen Leistungen verarbeiten wir Daten, die für Angebotserstellung, Vertragsschluss, Abrechnung, Zahlungsabwicklung und Buchhaltung erforderlich sind, etwa Name, Unternehmen, Rechnungsadresse, E-Mail-Adresse, Zahlungsdaten, Vertragsdaten, Tarifinformationen, Nutzungsdaten sowie Steuer-, VAT- oder Umsatzsteuerdaten.</p>
-      <p class="reveal">Für die Zahlungsabwicklung nutzen wir den Zahlungsdienstleister Stripe. Anbieter ist Stripe Payments Europe, Limited, 1 Grand Canal Street Lower, Grand Canal Dock, Dublin, Irland, sowie je nach Region weitere Unternehmen der Stripe-Gruppe.</p>
-      <p class="reveal">Wenn Sie eine Zahlung über Stripe vornehmen, werden die für die Zahlungsabwicklung erforderlichen Daten an Stripe übermittelt. Dazu können insbesondere Name, E-Mail-Adresse, Rechnungsadresse, Zahlungsinformationen, Transaktionsdaten, IP-Adresse sowie weitere technische Daten gehören. Stripe verarbeitet diese Daten zur Zahlungsabwicklung, Betrugsprävention, Einhaltung gesetzlicher Verpflichtungen und zur Bereitstellung seiner Zahlungsdienste. Für die Verarbeitung durch Stripe gelten ergänzend die Datenschutzbestimmungen von Stripe.</p>
-      <p class="reveal">Die Verarbeitung erfolgt zur Erfüllung des Vertrags, zur Durchführung der Zahlungsabwicklung, zur Erfüllung gesetzlicher Pflichten sowie auf Grundlage unseres berechtigten Interesses an einer sicheren und effizienten Zahlungsabwicklung.</p>
+      <h2 class="reveal" data-i18n="ds.s14.h">14. Zahlungs- und Abrechnungsdaten</h2>
+      <p class="reveal" data-i18n="ds.s14.p1">Bei kostenpflichtigen Leistungen verarbeiten wir Daten, die für Angebotserstellung, Vertragsschluss, Abrechnung, Zahlungsabwicklung und Buchhaltung erforderlich sind, etwa Name, Unternehmen, Rechnungsadresse, E-Mail-Adresse, Zahlungsdaten, Vertragsdaten, Tarifinformationen, Nutzungsdaten sowie Steuer-, VAT- oder Umsatzsteuerdaten.</p>
+      <p class="reveal" data-i18n="ds.s14.p2">Für die Zahlungsabwicklung nutzen wir den Zahlungsdienstleister Stripe. Anbieter ist Stripe Payments Europe, Limited, 1 Grand Canal Street Lower, Grand Canal Dock, Dublin, Irland, sowie je nach Region weitere Unternehmen der Stripe-Gruppe.</p>
+      <p class="reveal" data-i18n="ds.s14.p3">Wenn Sie eine Zahlung über Stripe vornehmen, werden die für die Zahlungsabwicklung erforderlichen Daten an Stripe übermittelt. Dazu können insbesondere Name, E-Mail-Adresse, Rechnungsadresse, Zahlungsinformationen, Transaktionsdaten, IP-Adresse sowie weitere technische Daten gehören. Stripe verarbeitet diese Daten zur Zahlungsabwicklung, Betrugsprävention, Einhaltung gesetzlicher Verpflichtungen und zur Bereitstellung seiner Zahlungsdienste. Für die Verarbeitung durch Stripe gelten ergänzend die Datenschutzbestimmungen von Stripe.</p>
+      <p class="reveal" data-i18n="ds.s14.p4">Die Verarbeitung erfolgt zur Erfüllung des Vertrags, zur Durchführung der Zahlungsabwicklung, zur Erfüllung gesetzlicher Pflichten sowie auf Grundlage unseres berechtigten Interesses an einer sicheren und effizienten Zahlungsabwicklung.</p>
 
-      <h2 class="reveal">15. Empfänger personenbezogener Daten</h2>
-      <p class="reveal">Personenbezogene Daten können an Dienstleister, technische Anbieter oder Geschäftspartner weitergegeben werden, soweit dies zur Bereitstellung unserer Leistungen erforderlich ist. Dazu können gehören: Hostinganbieter, IT-Dienstleister, Telefonieanbieter, KI-Infrastruktur-Anbieter, Automatisierungstools, CRM- und Kalenderanbieter, E-Mail- und Kommunikationsdienste, Zahlungsdienstleister (insbesondere Stripe), Buchhaltung und Steuerberatung, Rechtsberatung, Social-Media-Plattformen sowie Analyse- und Marketinganbieter.</p>
-      <p class="reveal">Eine Weitergabe erfolgt nur, soweit dies erforderlich, rechtlich zulässig oder vom Kunden beauftragt ist. Soweit Dienstleister personenbezogene Daten in unserem Auftrag verarbeiten, schließen wir geeignete Vereinbarungen zur Auftragsverarbeitung oder vergleichbare Datenschutzvereinbarungen ab, soweit gesetzlich erforderlich.</p>
+      <h2 class="reveal" data-i18n="ds.s15.h">15. Empfänger personenbezogener Daten</h2>
+      <p class="reveal" data-i18n="ds.s15.p1">Personenbezogene Daten können an Dienstleister, technische Anbieter oder Geschäftspartner weitergegeben werden, soweit dies zur Bereitstellung unserer Leistungen erforderlich ist. Dazu können gehören: Hostinganbieter, IT-Dienstleister, Telefonieanbieter, KI-Infrastruktur-Anbieter, Automatisierungstools, CRM- und Kalenderanbieter, E-Mail- und Kommunikationsdienste, Zahlungsdienstleister (insbesondere Stripe), Buchhaltung und Steuerberatung, Rechtsberatung, Social-Media-Plattformen sowie Analyse- und Marketinganbieter.</p>
+      <p class="reveal" data-i18n="ds.s15.p2">Eine Weitergabe erfolgt nur, soweit dies erforderlich, rechtlich zulässig oder vom Kunden beauftragt ist. Soweit Dienstleister personenbezogene Daten in unserem Auftrag verarbeiten, schließen wir geeignete Vereinbarungen zur Auftragsverarbeitung oder vergleichbare Datenschutzvereinbarungen ab, soweit gesetzlich erforderlich.</p>
 
-      <h2 class="reveal">16. Internationale Datenübermittlung</h2>
-      <p class="reveal">AIDEN ist in den Vereinigten Arabischen Emiraten ansässig und bietet Leistungen für Kunden im DACH-Markt und in den UAE an. Im Rahmen der Leistungserbringung kann es zu einer Übermittlung personenbezogener Daten in Länder außerhalb der Europäischen Union, des Europäischen Wirtschaftsraums oder der Schweiz kommen — insbesondere die UAE, die USA oder andere Länder, in denen eingesetzte Dienstleister, technische Anbieter oder Infrastrukturpartner ansässig sind.</p>
-      <p class="reveal">Soweit die DSGVO Anwendung findet, erfolgen internationale Datenübermittlungen nur auf Grundlage geeigneter Schutzmaßnahmen, zum Beispiel Angemessenheitsbeschlüssen, Standardvertragsklauseln, vertraglichen Datenschutzvereinbarungen, technischen Sicherheitsmaßnahmen oder einer Einwilligung, soweit erforderlich.</p>
+      <h2 class="reveal" data-i18n="ds.s16.h">16. Internationale Datenübermittlung</h2>
+      <p class="reveal" data-i18n="ds.s16.p1">AIDEN ist in den Vereinigten Arabischen Emiraten ansässig und bietet Leistungen für Kunden im DACH-Markt und in den UAE an. Im Rahmen der Leistungserbringung kann es zu einer Übermittlung personenbezogener Daten in Länder außerhalb der Europäischen Union, des Europäischen Wirtschaftsraums oder der Schweiz kommen — insbesondere die UAE, die USA oder andere Länder, in denen eingesetzte Dienstleister, technische Anbieter oder Infrastrukturpartner ansässig sind.</p>
+      <p class="reveal" data-i18n="ds.s16.p2">Soweit die DSGVO Anwendung findet, erfolgen internationale Datenübermittlungen nur auf Grundlage geeigneter Schutzmaßnahmen, zum Beispiel Angemessenheitsbeschlüssen, Standardvertragsklauseln, vertraglichen Datenschutzvereinbarungen, technischen Sicherheitsmaßnahmen oder einer Einwilligung, soweit erforderlich.</p>
 
-      <h2 class="reveal">17. Speicherdauer</h2>
-      <p class="reveal">Wir speichern personenbezogene Daten nur so lange, wie dies für die jeweiligen Zwecke erforderlich ist. Eine längere Speicherung kann erfolgen, wenn gesetzliche Aufbewahrungspflichten bestehen, Ansprüche geltend gemacht, ausgeübt oder verteidigt werden müssen oder berechtigte Geschäftsinteressen bestehen. Typische Speicherfristen betreffen insbesondere Vertrags- und Rechnungsdaten, steuerliche und buchhalterische Unterlagen, Support- und Kommunikationsdaten, technische Protokolldaten, Projektdokumentation sowie Nachweise über Einwilligungen.</p>
-      <p class="reveal">Nach Ablauf der jeweiligen Speicherfrist werden Daten gelöscht oder anonymisiert, sofern keine weitere rechtliche Grundlage für die Speicherung besteht.</p>
+      <h2 class="reveal" data-i18n="ds.s17.h">17. Speicherdauer</h2>
+      <p class="reveal" data-i18n="ds.s17.p1">Wir speichern personenbezogene Daten nur so lange, wie dies für die jeweiligen Zwecke erforderlich ist. Eine längere Speicherung kann erfolgen, wenn gesetzliche Aufbewahrungspflichten bestehen, Ansprüche geltend gemacht, ausgeübt oder verteidigt werden müssen oder berechtigte Geschäftsinteressen bestehen. Typische Speicherfristen betreffen insbesondere Vertrags- und Rechnungsdaten, steuerliche und buchhalterische Unterlagen, Support- und Kommunikationsdaten, technische Protokolldaten, Projektdokumentation sowie Nachweise über Einwilligungen.</p>
+      <p class="reveal" data-i18n="ds.s17.p2">Nach Ablauf der jeweiligen Speicherfrist werden Daten gelöscht oder anonymisiert, sofern keine weitere rechtliche Grundlage für die Speicherung besteht.</p>
 
-      <h2 class="reveal">18. Datensicherheit</h2>
-      <p class="reveal">Wir treffen angemessene technische und organisatorische Maßnahmen, um personenbezogene Daten vor Verlust, Missbrauch, unbefugtem Zugriff, Veränderung oder Offenlegung zu schützen. Dazu können gehören: Zugriffsbeschränkungen, Passwortschutz, Verschlüsselung (soweit angemessen), sichere Übertragungswege, Rollen- und Rechtekonzepte, Protokollierung, regelmäßige technische Überprüfung, sorgfältige Auswahl von Dienstleistern sowie Vertraulichkeitsverpflichtungen.</p>
-      <p class="reveal">Trotz aller Schutzmaßnahmen kann keine vollständig risikofreie Datenübertragung über das Internet garantiert werden.</p>
+      <h2 class="reveal" data-i18n="ds.s18.h">18. Datensicherheit</h2>
+      <p class="reveal" data-i18n="ds.s18.p1">Wir treffen angemessene technische und organisatorische Maßnahmen, um personenbezogene Daten vor Verlust, Missbrauch, unbefugtem Zugriff, Veränderung oder Offenlegung zu schützen. Dazu können gehören: Zugriffsbeschränkungen, Passwortschutz, Verschlüsselung (soweit angemessen), sichere Übertragungswege, Rollen- und Rechtekonzepte, Protokollierung, regelmäßige technische Überprüfung, sorgfältige Auswahl von Dienstleistern sowie Vertraulichkeitsverpflichtungen.</p>
+      <p class="reveal" data-i18n="ds.s18.p2">Trotz aller Schutzmaßnahmen kann keine vollständig risikofreie Datenübertragung über das Internet garantiert werden.</p>
 
-      <h2 class="reveal">19. Rechte betroffener Personen</h2>
-      <p class="reveal">Soweit die DSGVO oder vergleichbare Datenschutzgesetze Anwendung finden, haben betroffene Personen je nach Rechtslage insbesondere folgende Rechte:</p>
+      <h2 class="reveal" data-i18n="ds.s19.h">19. Rechte betroffener Personen</h2>
+      <p class="reveal" data-i18n="ds.s19.p1">Soweit die DSGVO oder vergleichbare Datenschutzgesetze Anwendung finden, haben betroffene Personen je nach Rechtslage insbesondere folgende Rechte:</p>
       <ul class="reveal">
-        <li>Recht auf Auskunft</li>
-        <li>Recht auf Berichtigung</li>
-        <li>Recht auf Löschung</li>
-        <li>Recht auf Einschränkung der Verarbeitung</li>
-        <li>Recht auf Datenübertragbarkeit</li>
-        <li>Recht auf Widerspruch gegen bestimmte Verarbeitungen</li>
-        <li>Recht auf Widerruf einer Einwilligung</li>
-        <li>Recht auf Beschwerde bei einer zuständigen Datenschutzaufsichtsbehörde</li>
+        <li data-i18n="ds.s19.l1">Recht auf Auskunft</li>
+        <li data-i18n="ds.s19.l2">Recht auf Berichtigung</li>
+        <li data-i18n="ds.s19.l3">Recht auf Löschung</li>
+        <li data-i18n="ds.s19.l4">Recht auf Einschränkung der Verarbeitung</li>
+        <li data-i18n="ds.s19.l5">Recht auf Datenübertragbarkeit</li>
+        <li data-i18n="ds.s19.l6">Recht auf Widerspruch gegen bestimmte Verarbeitungen</li>
+        <li data-i18n="ds.s19.l7">Recht auf Widerruf einer Einwilligung</li>
+        <li data-i18n="ds.s19.l8">Recht auf Beschwerde bei einer zuständigen Datenschutzaufsichtsbehörde</li>
       </ul>
-      <p class="reveal">Zur Ausübung Ihrer Rechte können Sie uns jederzeit unter <a href="mailto:info@aiden.ae">info@aiden.ae</a> kontaktieren.</p>
+      <p class="reveal" data-i18n="ds.s19.p2">Zur Ausübung Ihrer Rechte können Sie uns jederzeit unter <a href="mailto:info@aiden.ae">info@aiden.ae</a> kontaktieren.</p>
 
-      <h2 class="reveal">20. Widerruf von Einwilligungen</h2>
-      <p class="reveal">Wenn eine Verarbeitung auf Ihrer Einwilligung beruht, können Sie diese Einwilligung jederzeit mit Wirkung für die Zukunft widerrufen. Die Rechtmäßigkeit der Verarbeitung bis zum Zeitpunkt des Widerrufs bleibt unberührt.</p>
+      <h2 class="reveal" data-i18n="ds.s20.h">20. Widerruf von Einwilligungen</h2>
+      <p class="reveal" data-i18n="ds.s20.p1">Wenn eine Verarbeitung auf Ihrer Einwilligung beruht, können Sie diese Einwilligung jederzeit mit Wirkung für die Zukunft widerrufen. Die Rechtmäßigkeit der Verarbeitung bis zum Zeitpunkt des Widerrufs bleibt unberührt.</p>
 
-      <h2 class="reveal">21. Widerspruch gegen Direktwerbung</h2>
-      <p class="reveal">Sie können der Verarbeitung Ihrer personenbezogenen Daten für Zwecke der Direktwerbung jederzeit widersprechen. Nach einem Widerspruch werden wir Ihre personenbezogenen Daten nicht mehr für Direktwerbung verwenden.</p>
+      <h2 class="reveal" data-i18n="ds.s21.h">21. Widerspruch gegen Direktwerbung</h2>
+      <p class="reveal" data-i18n="ds.s21.p1">Sie können der Verarbeitung Ihrer personenbezogenen Daten für Zwecke der Direktwerbung jederzeit widersprechen. Nach einem Widerspruch werden wir Ihre personenbezogenen Daten nicht mehr für Direktwerbung verwenden.</p>
 
-      <h2 class="reveal">22. Datenverarbeitung im Auftrag unserer Kunden</h2>
-      <p class="reveal">Bei bestimmten Leistungen verarbeitet AIDEN personenbezogene Daten nicht als eigener Verantwortlicher, sondern im Auftrag des jeweiligen Kunden. Dies kann insbesondere bei Voice Agents, Social Media Agents, CRM-Anbindungen, Supportprozessen oder individuellen Automatisierungen der Fall sein.</p>
-      <p class="reveal">In diesen Fällen entscheidet der Kunde über Zweck und Mittel der Verarbeitung. AIDEN verarbeitet die Daten nach den Weisungen des Kunden. Soweit erforderlich, wird hierfür eine separate Vereinbarung zur Auftragsverarbeitung oder eine vergleichbare Vereinbarung geschlossen.</p>
+      <h2 class="reveal" data-i18n="ds.s22.h">22. Datenverarbeitung im Auftrag unserer Kunden</h2>
+      <p class="reveal" data-i18n="ds.s22.p1">Bei bestimmten Leistungen verarbeitet AIDEN personenbezogene Daten nicht als eigener Verantwortlicher, sondern im Auftrag des jeweiligen Kunden. Dies kann insbesondere bei Voice Agents, Social Media Agents, CRM-Anbindungen, Supportprozessen oder individuellen Automatisierungen der Fall sein.</p>
+      <p class="reveal" data-i18n="ds.s22.p2">In diesen Fällen entscheidet der Kunde über Zweck und Mittel der Verarbeitung. AIDEN verarbeitet die Daten nach den Weisungen des Kunden. Soweit erforderlich, wird hierfür eine separate Vereinbarung zur Auftragsverarbeitung oder eine vergleichbare Vereinbarung geschlossen.</p>
 
-      <h2 class="reveal">23. Verantwortung des Kunden</h2>
-      <p class="reveal">Der Kunde ist dafür verantwortlich, dass die durch ihn bereitgestellten Daten rechtmäßig erhoben, verarbeitet und an AIDEN übermittelt werden dürfen. Der Kunde ist außerdem dafür verantwortlich, betroffene Personen — insbesondere eigene Kunden, Anrufer, Mitarbeiter oder Interessenten — über den Einsatz von KI-Systemen, Datenverarbeitung, Telefonieprozesse, Aufzeichnungen oder Automatisierungen zu informieren, soweit dies gesetzlich erforderlich ist.</p>
+      <h2 class="reveal" data-i18n="ds.s23.h">23. Verantwortung des Kunden</h2>
+      <p class="reveal" data-i18n="ds.s23.p1">Der Kunde ist dafür verantwortlich, dass die durch ihn bereitgestellten Daten rechtmäßig erhoben, verarbeitet und an AIDEN übermittelt werden dürfen. Der Kunde ist außerdem dafür verantwortlich, betroffene Personen — insbesondere eigene Kunden, Anrufer, Mitarbeiter oder Interessenten — über den Einsatz von KI-Systemen, Datenverarbeitung, Telefonieprozesse, Aufzeichnungen oder Automatisierungen zu informieren, soweit dies gesetzlich erforderlich ist.</p>
 
-      <h2 class="reveal">24. Änderungen dieser Datenschutzerklärung</h2>
-      <p class="reveal">Wir können diese Datenschutzerklärung anpassen, wenn sich unsere Leistungen, eingesetzte Technologien, rechtliche Anforderungen oder interne Prozesse ändern. Die jeweils aktuelle Fassung ist auf unserer Website abrufbar.</p>
+      <h2 class="reveal" data-i18n="ds.s24.h">24. Änderungen dieser Datenschutzerklärung</h2>
+      <p class="reveal" data-i18n="ds.s24.p1">Wir können diese Datenschutzerklärung anpassen, wenn sich unsere Leistungen, eingesetzte Technologien, rechtliche Anforderungen oder interne Prozesse ändern. Die jeweils aktuelle Fassung ist auf unserer Website abrufbar.</p>
 
-      <h2 class="reveal">25. Kontakt für Datenschutzanfragen</h2>
-      <p class="reveal">Bei Fragen zur Verarbeitung personenbezogener Daten oder zur Ausübung Ihrer Rechte kontaktieren Sie uns bitte unter:</p>
+      <h2 class="reveal" data-i18n="ds.s25.h">25. Kontakt für Datenschutzanfragen</h2>
+      <p class="reveal" data-i18n="ds.s25.p1">Bei Fragen zur Verarbeitung personenbezogener Daten oder zur Ausübung Ihrer Rechte kontaktieren Sie uns bitte unter:</p>
       <div class="legal-address reveal">
         <p><strong>AIDEN.AE</strong> · Dr. Irena Schindler<br>
         Dubai Branch Building, Al Mankhool Area, Bur Dubai<br>
         Makani No.: 28511194466, Dubai, United Arab Emirates<br>
-        E-Mail: <a href="mailto:info@aiden.ae">info@aiden.ae</a> · Telefon: <a href="tel:+971561155278">+971 56 115 5278</a></p>
+        <span data-i18n="ds.contact.email">E-Mail</span>: <a href="mailto:info@aiden.ae">info@aiden.ae</a> · <span data-i18n="ds.contact.phone">Telefon</span>: <a href="tel:+971561155278">+971 56 115 5278</a></p>
       </div>
 
     </div>
@@ -729,33 +725,33 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
         <span class="cf-brand-tagline">AIO – ALL IN ONE</span>
       </div>
       <p class="cf-legal-name">Artificial Intelligence Developing Services LLC</p>
-      <p class="cf-tag">KI-Agenten, die Ihr Unternehmen wirklich entlasten — Voice Agent, Social Media Agent und individuelle KI-Automatisierung.</p>
+      <p class="cf-tag" data-i18n="leg.footer.tag">KI-Agenten, die Ihr Unternehmen wirklich entlasten — Voice Agent, Social Media Agent und individuelle KI-Automatisierung.</p>
     </div>
     <div class="cf-cols">
       <div class="cf-col">
-        <h5>Produkte</h5>
-        <a href="index.html#voice">Voice Agent</a>
-        <a href="social-media-agent.html">Social Media Agent</a>
-        <a href="index.html#pricing">Preise</a>
+        <h5 data-i18n="leg.footer.col1.h">Produkte</h5>
+        <a href="index.html#voice" data-i18n="leg.footer.voice">Voice Agent</a>
+        <a href="social-media-agent.html" data-i18n="leg.footer.social">Social Media Agent</a>
+        <a href="index.html#pricing" data-i18n="leg.footer.pricing">Preise</a>
       </div>
       <div class="cf-col">
-        <h5>Unternehmen</h5>
-        <a href="index.html#ueber-uns">Über uns</a>
-        <a href="index.html#stimmen">Kunden</a>
-        <a href="index.html#kontakt">Kontakt</a>
+        <h5 data-i18n="leg.footer.col2.h">Unternehmen</h5>
+        <a href="index.html#ueber-uns" data-i18n="leg.footer.about">Über uns</a>
+        <a href="index.html#stimmen" data-i18n="leg.footer.customers">Kunden</a>
+        <a href="index.html#kontakt" data-i18n="leg.footer.contact">Kontakt</a>
       </div>
       <div class="cf-col">
-        <h5>Rechtliches</h5>
-        <a href="impressum.html">Impressum</a>
-        <a href="datenschutz.html">Datenschutz</a>
-        <a href="agb.html">AGB</a>
-        <a href="widerrufsrecht.html">Widerrufsrecht</a>
+        <h5 data-i18n="leg.footer.col3.h">Rechtliches</h5>
+        <a href="impressum.html" data-i18n="leg.footer.imprint">Impressum</a>
+        <a href="datenschutz.html" data-i18n="leg.footer.privacy">Datenschutz</a>
+        <a href="agb.html" data-i18n="leg.footer.terms">AGB</a>
+        <a href="widerrufsrecht.html" data-i18n="leg.footer.withdrawal">Widerrufsrecht</a>
       </div>
     </div>
   </div>
   <div class="cf-word">AIDEN</div>
   <div class="cf-bottom">
-    <p>© 2026 AIDEN. Alle Rechte vorbehalten.</p>
+    <p data-i18n="leg.footer.copyright">© 2026 AIDEN. Alle Rechte vorbehalten.</p>
     <div style="display:flex;gap:18px;">
       <a href="mailto:info@aiden.ae">info@aiden.ae</a>
       <a href="tel:+971561155278">+971 56 115 5278</a>
@@ -1039,7 +1035,45 @@ document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
   });
 })();
 
+// Language switcher — German (default, from HTML) <-> English/Arabic (from dictionary)
+(function(){
+const AIDEN_DS_I18N_EN = {"leg.announce.text":"Currently accepting new clients &mdash; free first consultation","leg.announce.cta":"book now","leg.nav.portal":"Customer Portal","leg.nav.voice":"Voice Agents","leg.nav.social":"Social Media Agent","leg.nav.refs":"References","leg.nav.cta":"Voice Agent<br>test now","leg.nav.cta.mobile":"Voice Agent","leg.back":"Back to homepage","leg.footer.tag":"AI agents that truly take work off your hands — Voice Agent, Social Media Agent and custom AI automation.","leg.footer.col1.h":"Products","leg.footer.voice":"Voice Agent","leg.footer.social":"Social Media Agent","leg.footer.pricing":"Pricing","leg.footer.col2.h":"Company","leg.footer.about":"About us","leg.footer.customers":"Customers","leg.footer.contact":"Contact","leg.footer.col3.h":"Legal","leg.footer.imprint":"Imprint","leg.footer.privacy":"Privacy Policy","leg.footer.terms":"Terms","leg.footer.withdrawal":"Right of Withdrawal","leg.footer.copyright":"&copy; 2026 AIDEN. All rights reserved.","ds.eyebrow":"Legal Information","ds.h1":"Privacy Policy","ds.lead":"Protecting personal data is important to us. This privacy policy informs you about which personal data we process in connection with our website, our AI agents, our digital services, and communication with prospects and customers.","ds.asof":"Last updated","ds.contact.email":"Email","ds.contact.phone":"Phone","ds.s1.rep":"Represented by","ds.s1.legalname":"Legal company name","ds.s1.license":"License number","ds.s1.authority":"Registration authority","ds.intro":"This privacy policy applies to the AIDEN.AE website and the services offered through it, in particular AI Voice Agents, AI Social Media Agents, and custom AI automations.","ds.s1.h":"1. Controller","ds.s1.p1":"The controller responsible for data processing is:","ds.s2.h":"2. General information on data processing","ds.s2.p1":"We process personal data only to the extent necessary for operating our website, communicating with prospects and customers, providing our services, performing contracts, ensuring technical security, billing, or fulfilling legal obligations.","ds.s2.p2":"Personal data is any information relating to an identified or identifiable natural person. This may include, for example, name, company, email address, phone number, IP address, communication content, call data, usage data, or technical information.","ds.s2.p3":"Our services are aimed primarily at businesses, sole traders, practices, service providers, organizations, and commercial customers in the DACH market as well as in the United Arab Emirates.","ds.s3.h":"3. Legal bases for processing","ds.s3.p1":"Insofar as the EU General Data Protection Regulation applies, we process personal data in particular on the basis of the following legal bases:","ds.s3.l1":"Art. 6(1)(a) GDPR, where consent has been given","ds.s3.l2":"Art. 6(1)(b) GDPR, where processing is necessary for the performance of a contract or to take steps prior to entering into a contract","ds.s3.l3":"Art. 6(1)(c) GDPR, where we are legally obliged to carry out the processing","ds.s3.l4":"Art. 6(1)(f) GDPR, where processing is necessary to safeguard legitimate interests","ds.s3.p2":"For customers and users in the United Arab Emirates, personal data is processed in accordance with the applicable UAE data protection provisions, in particular the UAE Personal Data Protection Law, insofar as it applies.","ds.s4.h":"4. Data collected when visiting the website","ds.s4.p1":"When you visit our website, technical data may be processed automatically. This includes in particular:","ds.s4.l1":"IP address","ds.s4.l2":"date and time of access","ds.s4.l3":"pages accessed","ds.s4.l4":"browser type and version","ds.s4.l5":"operating system used","ds.s4.l6":"referrer URL","ds.s4.l7":"hostname of the accessing device","ds.s4.l8":"technical log data","ds.s4.p2":"This data is processed to technically provide the website, ensure security and stability, analyze errors, and prevent misuse.","ds.s5.h":"5. Contacting us","ds.s5.p1":"If you contact us by email, phone, contact form, booking tool, chat, or other means of communication, we process the data you provide. This may include: name, company, email address, phone number, your inquiry, message text, appointment preferences, technical communication data.","ds.s5.p2":"This processing serves to handle your inquiry, prepare a quote, take pre-contractual steps, or communicate within the scope of an existing customer relationship.","ds.s6.h":"6. Appointment booking and consultations","ds.s6.p1":"If you book an appointment with us, personal data required for scheduling may be processed, such as name, company, email address, phone number, requested appointment time, subject of the call, meeting link, and calendar data.","ds.s6.p2":"Where third-party providers are used for appointment booking, video conferencing, or calendar integration, the respective provider's privacy policy applies in addition.","ds.s7.h":"7. Use of our AI Voice Agents","ds.s7.p1":"When using an AIDEN AI Voice Agent, personal data arising during a phone call or voice-based communication may be processed, such as phone number, name and company (if given), the caller's request, call content, appointment preferences, callback requests, service or support information, technical connection data, and transcripts or summaries, if enabled.","ds.s7.p2":"This processing serves to answer calls, capture requests, provide information, prepare appointments, record callback requests, qualify leads, or support customer service processes.","ds.s7.p3":"Where calls are recorded or transcribed, this is done only in accordance with the applicable legal requirements. The respective customer is responsible for properly informing callers and obtaining consent where required.","ds.s7.p4":"AIDEN Voice Agents are not intended for emergency calls, medical emergency decisions, or safety-critical communication.","ds.s8.h":"8. Use of our AI Social Media Agents","ds.s8.p1":"When using an AIDEN AI Social Media Agent, personal data required for content creation, scheduling, approval, publishing, analysis, or communication may be processed, such as company information, contact details, brand materials, social media profiles, content, images, texts and campaign data, approvals and comments, performance data, and messages or reactions, where connected.","ds.s8.p2":"The customer remains responsible for reviewing and approving content, in particular where personal data, customer images, employee data, health data, sensitive information, or third-party content are used.","ds.s9.h":"9. Custom AI automations","ds.s9.p1":"Depending on the project, custom AI automations may process various types of data, such as customer data, leads, communication data, calendar data, CRM data, support requests, email content, process data, documents, knowledge bases, and internal company information.","ds.s9.p2":"The exact scope of processing results from the respective project, quote, contract, or technical configuration. Where AIDEN processes personal data on behalf of a customer, a separate data processing agreement or comparable data protection agreement may be required.","ds.s10.h":"10. AI systems and the EU AI Act","ds.s10.p1":"AIDEN's AI products are developed, configured, and operated with the aim of complying with the requirements of the EU AI Act, insofar as these apply to the respective service, market, and specific purpose of use. AIDEN pays particular attention to:","ds.s10.l1":"transparency in the use of AI","ds.s10.l2":"traceable system purposes","ds.s10.l3":"clear roles between provider, customer, and user","ds.s10.l4":"human review and approval, where required","ds.s10.l5":"protection of personal data","ds.s10.l6":"prevention of unlawful or abusive use","ds.s10.l7":"technical and organizational security measures","ds.s10.l8":"documentation of relevant data flows and processes","ds.s10.p2":"Where users interact directly with an AI system, this is made transparently and understandably recognizable, insofar as legally required.","ds.s10.p3":"AI-generated content may contain errors or inaccuracies. Customers are therefore required to review AI-generated content before external use, particularly on legal, medical, financial, regulated, or sensitive topics.","ds.s11.h":"11. Cookies and similar technologies","ds.s11.p1":"Our website may use cookies or similar technologies. Cookies are small text files stored on the end device. They may be necessary to technically provide the website, save settings, ensure security, analyze usage behavior, or support marketing measures.","ds.s11.p2":"We distinguish in particular between technically necessary cookies, functional cookies, analytics cookies, and marketing cookies. Technically necessary cookies may be used without consent, insofar as they are necessary for operating the website. Analytics and marketing cookies are only used where consent has been given, insofar as legally required.","ds.s11.p3":"Details on the cookies used, their duration, and providers should be presented in a separate cookie banner or cookie overview.","ds.s12.h":"12. Analytics and marketing tools","ds.s12.p1":"Insofar as analytics or marketing tools are used on our website, this serves to improve the website, evaluate reach, optimize campaigns, or target prospects. Possible providers may include, for example, web analytics, tracking, advertising, or social media platforms.","ds.s12.p2":"The specific use of such tools takes place only within the scope of the applicable legal requirements and, where necessary, on the basis of consent.","ds.s13.h":"13. Newsletter and promotional communication","ds.s13.p1":"If you sign up for a newsletter, product information, or promotional communication, we process your contact data to send the relevant information. You may withdraw your consent at any time with effect for the future.","ds.s13.p2":"Where we inform existing customers by email about similar services of our own, this is done only within the scope of the applicable legal requirements.","ds.s14.h":"14. Payment and billing data","ds.s14.p1":"For paid services, we process data required for preparing quotes, concluding contracts, billing, payment processing, and accounting, such as name, company, billing address, email address, payment data, contract data, tariff information, usage data, and tax or VAT data.","ds.s14.p2":"We use the payment service provider Stripe for payment processing. The provider is Stripe Payments Europe, Limited, 1 Grand Canal Street Lower, Grand Canal Dock, Dublin, Ireland, as well as other companies of the Stripe group depending on region.","ds.s14.p3":"If you make a payment via Stripe, the data required for payment processing is transmitted to Stripe. This may include in particular name, email address, billing address, payment information, transaction data, IP address, and other technical data. Stripe processes this data for payment processing, fraud prevention, compliance with legal obligations, and to provide its payment services. Stripe's privacy policy applies in addition to processing carried out by Stripe.","ds.s14.p4":"This processing takes place to perform the contract, carry out payment processing, fulfill legal obligations, and on the basis of our legitimate interest in secure and efficient payment processing.","ds.s15.h":"15. Recipients of personal data","ds.s15.p1":"Personal data may be disclosed to service providers, technical providers, or business partners, insofar as this is necessary to provide our services. This may include: hosting providers, IT service providers, telephony providers, AI infrastructure providers, automation tools, CRM and calendar providers, email and communication services, payment service providers (in particular Stripe), accounting and tax advisory services, legal advice, social media platforms, and analytics and marketing providers.","ds.s15.p2":"Disclosure takes place only where necessary, legally permitted, or instructed by the customer. Insofar as service providers process personal data on our behalf, we conclude appropriate data processing agreements or comparable data protection agreements, where legally required.","ds.s16.h":"16. International data transfers","ds.s16.p1":"AIDEN is based in the United Arab Emirates and provides services to customers in the DACH market and in the UAE. In the course of providing our services, personal data may be transferred to countries outside the European Union, the European Economic Area, or Switzerland — in particular the UAE, the USA, or other countries where service providers, technical providers, or infrastructure partners used by us are based.","ds.s16.p2":"Insofar as the GDPR applies, international data transfers take place only on the basis of suitable safeguards, for example adequacy decisions, standard contractual clauses, contractual data protection agreements, technical security measures, or consent, where required.","ds.s17.h":"17. Retention period","ds.s17.p1":"We store personal data only for as long as necessary for the respective purposes. Longer storage may take place where statutory retention obligations exist, claims need to be asserted, exercised, or defended, or legitimate business interests exist. Typical retention periods concern in particular contract and invoice data, tax and accounting records, support and communication data, technical log data, project documentation, and evidence of consents.","ds.s17.p2":"After the respective retention period has expired, data is deleted or anonymized, unless a further legal basis for storage exists.","ds.s18.h":"18. Data security","ds.s18.p1":"We take appropriate technical and organizational measures to protect personal data against loss, misuse, unauthorized access, alteration, or disclosure. This may include: access restrictions, password protection, encryption (where appropriate), secure transmission channels, role and permission concepts, logging, regular technical review, careful selection of service providers, and confidentiality obligations.","ds.s18.p2":"Despite all protective measures, fully risk-free data transmission over the internet cannot be guaranteed.","ds.s19.h":"19. Rights of data subjects","ds.s19.p1":"Insofar as the GDPR or comparable data protection laws apply, data subjects have, depending on the legal situation, in particular the following rights:","ds.s19.l1":"right of access","ds.s19.l2":"right to rectification","ds.s19.l3":"right to erasure","ds.s19.l4":"right to restriction of processing","ds.s19.l5":"right to data portability","ds.s19.l6":"right to object to certain processing","ds.s19.l7":"right to withdraw consent","ds.s19.l8":"right to lodge a complaint with a competent data protection supervisory authority","ds.s19.p2":"To exercise your rights, you may contact us at any time at <a href=\"mailto:info@aiden.ae\">info@aiden.ae</a>.","ds.s20.h":"20. Withdrawal of consent","ds.s20.p1":"Where processing is based on your consent, you may withdraw this consent at any time with effect for the future. The lawfulness of processing carried out prior to the withdrawal remains unaffected.","ds.s21.h":"21. Objection to direct marketing","ds.s21.p1":"You may object to the processing of your personal data for direct marketing purposes at any time. After an objection, we will no longer use your personal data for direct marketing.","ds.s22.h":"22. Data processing on behalf of our customers","ds.s22.p1":"For certain services, AIDEN processes personal data not as its own controller but on behalf of the respective customer. This may in particular be the case for Voice Agents, Social Media Agents, CRM integrations, support processes, or custom automations.","ds.s22.p2":"In these cases, the customer decides on the purpose and means of processing. AIDEN processes the data according to the customer's instructions. Where necessary, a separate data processing agreement or comparable agreement is concluded for this purpose.","ds.s23.h":"23. Customer's responsibility","ds.s23.p1":"The customer is responsible for ensuring that the data they provide may be lawfully collected, processed, and transmitted to AIDEN. The customer is also responsible for informing data subjects — in particular their own customers, callers, employees, or prospects — about the use of AI systems, data processing, telephony processes, recordings, or automations, insofar as this is legally required.","ds.s24.h":"24. Changes to this privacy policy","ds.s24.p1":"We may amend this privacy policy where our services, technologies used, legal requirements, or internal processes change. The current version is available on our website.","ds.s25.h":"25. Contact for data protection inquiries","ds.s25.p1":"If you have questions about the processing of personal data or about exercising your rights, please contact us at:"};
 
+const AIDEN_DS_I18N_AR = {"leg.announce.text":"نستقبل حاليًا عملاء جدد &mdash; استشارة أولى مجانية","leg.announce.cta":"احجز الآن","leg.nav.portal":"بوابة العملاء","leg.nav.voice":"الوكلاء الصوتيون","leg.nav.social":"وكيل وسائل التواصل الاجتماعي","leg.nav.refs":"آراء العملاء","leg.nav.cta":"جرّب<br>الوكيل الصوتي","leg.nav.cta.mobile":"الوكيل الصوتي","leg.back":"العودة إلى الصفحة الرئيسية","leg.footer.tag":"وكلاء ذكاء اصطناعي يخففون العبء عن عملك فعليًا — الوكيل الصوتي، وكيل وسائل التواصل الاجتماعي وأتمتة ذكاء اصطناعي مخصصة.","leg.footer.col1.h":"المنتجات","leg.footer.voice":"الوكيل الصوتي","leg.footer.social":"وكيل وسائل التواصل الاجتماعي","leg.footer.pricing":"الأسعار","leg.footer.col2.h":"الشركة","leg.footer.about":"من نحن","leg.footer.customers":"العملاء","leg.footer.contact":"تواصل معنا","leg.footer.col3.h":"قانوني","leg.footer.imprint":"بيانات الناشر","leg.footer.privacy":"سياسة الخصوصية","leg.footer.terms":"الشروط والأحكام","leg.footer.withdrawal":"حق الانسحاب","leg.footer.copyright":"&copy; 2026 AIDEN. جميع الحقوق محفوظة.","ds.eyebrow":"معلومات قانونية","ds.h1":"سياسة الخصوصية","ds.lead":"حماية البيانات الشخصية أمر مهم بالنسبة لنا. توضح لك سياسة الخصوصية هذه البيانات الشخصية التي نعالجها فيما يتعلق بموقعنا الإلكتروني ووكلاء الذكاء الاصطناعي لدينا وخدماتنا الرقمية والتواصل مع العملاء المحتملين والحاليين.","ds.asof":"آخر تحديث","ds.contact.email":"البريد الإلكتروني","ds.contact.phone":"الهاتف","ds.s1.rep":"يمثلها","ds.s1.legalname":"الاسم القانوني للشركة","ds.s1.license":"رقم الترخيص","ds.s1.authority":"جهة التسجيل","ds.intro":"تسري سياسة الخصوصية هذه على موقع AIDEN.AE وعلى الخدمات المقدمة من خلاله، وخاصةً الوكلاء الصوتيون بالذكاء الاصطناعي ووكلاء وسائل التواصل الاجتماعي بالذكاء الاصطناعي وأتمتة الذكاء الاصطناعي المخصصة.","ds.s1.h":"1. الجهة المسؤولة","ds.s1.p1":"الجهة المسؤولة عن معالجة البيانات هي:","ds.s2.h":"2. معلومات عامة حول معالجة البيانات","ds.s2.p1":"نعالج البيانات الشخصية فقط بالقدر اللازم لتشغيل موقعنا الإلكتروني، والتواصل مع العملاء المحتملين والحاليين، وتقديم خدماتنا، وتنفيذ العقود، وضمان الأمان التقني، والفوترة، أو الوفاء بالالتزامات القانونية.","ds.s2.p2":"البيانات الشخصية هي أي معلومات تتعلق بشخص طبيعي محدد الهوية أو قابل للتحديد. قد تشمل على سبيل المثال الاسم والشركة والبريد الإلكتروني ورقم الهاتف وعنوان IP ومحتوى الاتصالات وبيانات المكالمات وبيانات الاستخدام أو المعلومات التقنية.","ds.s2.p3":"تستهدف خدماتنا بشكل أساسي الشركات وأصحاب الأعمال الفردية والعيادات ومزوّدي الخدمات والمنظمات والعملاء التجاريين في السوق الألمانية النمساوية السويسرية (DACH) وكذلك في دولة الإمارات العربية المتحدة.","ds.s3.h":"3. الأسس القانونية للمعالجة","ds.s3.p1":"بقدر ما تسري اللائحة العامة لحماية البيانات للاتحاد الأوروبي، نعالج البيانات الشخصية استنادًا بشكل خاص إلى الأسس القانونية التالية:","ds.s3.l1":"المادة 6(1)(أ) من اللائحة العامة لحماية البيانات، عند وجود موافقة","ds.s3.l2":"المادة 6(1)(ب) من اللائحة العامة لحماية البيانات، عندما تكون المعالجة ضرورية لتنفيذ عقد أو لاتخاذ إجراءات سابقة للتعاقد","ds.s3.l3":"المادة 6(1)(ج) من اللائحة العامة لحماية البيانات، عندما نكون ملزمين قانونًا بالمعالجة","ds.s3.l4":"المادة 6(1)(و) من اللائحة العامة لحماية البيانات، عندما تكون المعالجة ضرورية لحماية مصالح مشروعة","ds.s3.p2":"بالنسبة للعملاء والمستخدمين في دولة الإمارات العربية المتحدة، تتم معالجة البيانات الشخصية وفقًا لأحكام حماية البيانات المعمول بها في الإمارات، وخاصةً قانون حماية البيانات الشخصية الإماراتي، بقدر سريانه.","ds.s4.h":"4. البيانات التي تُجمع عند زيارة الموقع","ds.s4.p1":"عند زيارة موقعنا الإلكتروني، قد تُعالج بيانات تقنية تلقائيًا. وتشمل هذه البيانات على وجه الخصوص:","ds.s4.l1":"عنوان IP","ds.s4.l2":"تاريخ ووقت الوصول","ds.s4.l3":"الصفحات التي تم الوصول إليها","ds.s4.l4":"نوع المتصفح وإصداره","ds.s4.l5":"نظام التشغيل المستخدم","ds.s4.l6":"رابط الإحالة (Referrer URL)","ds.s4.l7":"اسم المضيف للجهاز الذي تم الوصول منه","ds.s4.l8":"بيانات السجلات التقنية","ds.s4.p2":"تُعالج هذه البيانات لتوفير الموقع تقنيًا وضمان الأمان والاستقرار وتحليل الأخطاء ومنع الاستخدام المسيء.","ds.s5.h":"5. التواصل معنا","ds.s5.p1":"عند تواصلك معنا عبر البريد الإلكتروني أو الهاتف أو نموذج الاتصال أو أداة الحجز أو الدردشة أو وسائل تواصل أخرى، نعالج البيانات التي تقدمها. قد تشمل هذه البيانات: الاسم والشركة والبريد الإلكتروني ورقم الهاتف واستفسارك ونص الرسالة وتفضيلات الموعد وبيانات الاتصال التقنية.","ds.s5.p2":"تتم هذه المعالجة لمعالجة استفسارك، وإعداد عرض سعر، واتخاذ إجراءات سابقة للتعاقد، أو للتواصل ضمن نطاق علاقة عميل قائمة.","ds.s6.h":"6. حجز المواعيد والاستشارات","ds.s6.p1":"عند حجز موعد معنا، قد تُعالج البيانات الشخصية اللازمة لتحديد الموعد، مثل الاسم والشركة والبريد الإلكتروني ورقم الهاتف والموعد المطلوب وموضوع المكالمة ورابط الاجتماع وبيانات التقويم.","ds.s6.p2":"في حال استخدام مزوّدين خارجيين لحجز المواعيد أو مؤتمرات الفيديو أو تكامل التقويم، تسري بالإضافة إلى ذلك سياسة الخصوصية الخاصة بكل مزوّد.","ds.s7.h":"7. استخدام الوكلاء الصوتيين بالذكاء الاصطناعي","ds.s7.p1":"عند استخدام وكيل صوتي بالذكاء الاصطناعي من AIDEN، قد تُعالج البيانات الشخصية الناشئة أثناء مكالمة هاتفية أو تواصل صوتي، مثل رقم الهاتف والاسم والشركة (إن ذُكرت) وطلب المتصل ومحتوى المكالمة وتفضيلات الموعد وطلبات معاودة الاتصال ومعلومات الخدمة أو الدعم وبيانات الاتصال التقنية والنصوص المكتوبة أو الملخصات، إن كانت مفعّلة.","ds.s7.p2":"تهدف هذه المعالجة إلى الرد على المكالمات، وتسجيل الطلبات، وتقديم المعلومات، وتحضير المواعيد، وتسجيل طلبات معاودة الاتصال، وتأهيل العملاء المحتملين، أو دعم عمليات خدمة العملاء.","ds.s7.p3":"في حال تسجيل المكالمات أو كتابتها نصيًا، يتم ذلك فقط وفقًا للمتطلبات القانونية المعمول بها. يتحمل العميل المعني مسؤولية إبلاغ المتصلين بشكل صحيح والحصول على الموافقات عند الحاجة.","ds.s7.p4":"لا يُقصد باستخدام الوكلاء الصوتيين من AIDEN حالات الطوارئ أو القرارات الطبية العاجلة أو الاتصالات ذات الأهمية الأمنية الحرجة.","ds.s8.h":"8. استخدام وكلاء وسائل التواصل الاجتماعي بالذكاء الاصطناعي","ds.s8.p1":"عند استخدام وكيل وسائل التواصل الاجتماعي بالذكاء الاصطناعي من AIDEN، قد تُعالج البيانات الشخصية اللازمة لإنشاء المحتوى وتخطيطه واعتماده ونشره وتحليله أو التواصل بشأنه، مثل معلومات الشركة وبيانات جهة الاتصال ومواد العلامة التجارية وملفات وسائل التواصل الاجتماعي والمحتوى والصور والنصوص وبيانات الحملات والموافقات والتعليقات وبيانات الأداء والرسائل أو التفاعلات، عند ربطها.","ds.s8.p2":"يظل العميل مسؤولاً عن مراجعة المحتوى واعتماده، خاصة عند استخدام بيانات شخصية أو صور عملاء أو بيانات موظفين أو بيانات صحية أو معلومات حساسة أو محتوى تابع لأطراف ثالثة.","ds.s9.h":"9. أتمتة الذكاء الاصطناعي المخصصة","ds.s9.p1":"حسب المشروع، قد تُعالج أتمتة الذكاء الاصطناعي المخصصة أنواعًا مختلفة من البيانات، مثل بيانات العملاء والعملاء المحتملين وبيانات الاتصال وبيانات التقويم وبيانات CRM وطلبات الدعم ومحتوى البريد الإلكتروني وبيانات العمليات والمستندات وقواعد المعرفة والمعلومات الداخلية للشركة.","ds.s9.p2":"يُحدَّد النطاق الدقيق للمعالجة وفقًا للمشروع أو العرض أو العقد أو الإعداد التقني المعني. في حال معالجة AIDEN لبيانات شخصية نيابة عن عميل، قد يلزم إبرام اتفاقية منفصلة لمعالجة البيانات أو اتفاقية حماية بيانات مماثلة.","ds.s10.h":"10. أنظمة الذكاء الاصطناعي وقانون الذكاء الاصطناعي للاتحاد الأوروبي (EU AI Act)","ds.s10.p1":"تُطوَّر منتجات الذكاء الاصطناعي من AIDEN وتُعدّ وتُشغَّل بهدف الامتثال لمتطلبات قانون الذكاء الاصطناعي للاتحاد الأوروبي، بقدر سريانها على الخدمة والسوق والغرض المحدد من الاستخدام. تولي AIDEN اهتمامًا خاصًا بما يلي:","ds.s10.l1":"الشفافية في استخدام الذكاء الاصطناعي","ds.s10.l2":"أغراض نظام قابلة للتتبع","ds.s10.l3":"أدوار واضحة بين المزوّد والعميل والمستخدم","ds.s10.l4":"المراجعة والاعتماد البشري عند الحاجة","ds.s10.l5":"حماية البيانات الشخصية","ds.s10.l6":"منع الاستخدام غير القانوني أو المسيء","ds.s10.l7":"تدابير أمنية تقنية وتنظيمية","ds.s10.l8":"توثيق تدفقات البيانات والعمليات ذات الصلة","ds.s10.p2":"عندما يتفاعل المستخدمون مباشرة مع نظام ذكاء اصطناعي، يُجعل ذلك واضحًا ومفهومًا بشفافية، بقدر ما يقتضيه القانون.","ds.s10.p3":"قد يحتوي المحتوى المُولَّد بالذكاء الاصطناعي على أخطاء أو عدم دقة. لذلك يتعين على العملاء مراجعة المحتوى المُولَّد بالذكاء الاصطناعي قبل استخدامه خارجيًا، خاصة في المواضيع القانونية أو الطبية أو المالية أو الخاضعة للتنظيم أو الحساسة.","ds.s11.h":"11. ملفات تعريف الارتباط (الكوكيز) والتقنيات المماثلة","ds.s11.p1":"قد يستخدم موقعنا الإلكتروني ملفات تعريف الارتباط أو تقنيات مماثلة. ملفات تعريف الارتباط هي ملفات نصية صغيرة تُخزَّن على الجهاز الطرفي. قد تكون ضرورية لتوفير الموقع تقنيًا، وحفظ الإعدادات، وضمان الأمان، وتحليل سلوك الاستخدام، أو دعم إجراءات التسويق.","ds.s11.p2":"نميّز على وجه الخصوص بين ملفات تعريف الارتباط الضرورية تقنيًا والوظيفية وملفات تحليل الأداء وملفات التسويق. يمكن استخدام ملفات تعريف الارتباط الضرورية تقنيًا دون موافقة، بقدر لزومها لتشغيل الموقع. تُستخدم ملفات تحليل الأداء والتسويق فقط عند وجود موافقة، بقدر ما يقتضيه القانون.","ds.s11.p3":"ينبغي عرض تفاصيل ملفات تعريف الارتباط المستخدمة ومددها ومزوّديها في شريط كوكيز منفصل أو نظرة عامة مخصصة.","ds.s12.h":"12. أدوات التحليل والتسويق","ds.s12.p1":"بقدر استخدام أدوات تحليل أو تسويق على موقعنا الإلكتروني، فإن ذلك يهدف إلى تحسين الموقع وتقييم مدى الوصول وتحسين الحملات أو استهداف العملاء المحتملين. قد تشمل الجهات المزوّدة المحتملة على سبيل المثال منصات تحليل الويب أو التتبع أو الإعلانات أو وسائل التواصل الاجتماعي.","ds.s12.p2":"يتم الاستخدام الفعلي لهذه الأدوات فقط ضمن نطاق المتطلبات القانونية المعمول بها، وعند الحاجة، بناءً على موافقة.","ds.s13.h":"13. النشرة الإخبارية والتواصل الترويجي","ds.s13.p1":"عند التسجيل للحصول على نشرة إخبارية أو معلومات عن المنتجات أو تواصل ترويجي، نعالج بيانات الاتصال الخاصة بك لإرسال المعلومات ذات الصلة. يمكنك سحب موافقتك في أي وقت بأثر مستقبلي.","ds.s13.p2":"في حال إبلاغنا للعملاء الحاليين عبر البريد الإلكتروني بخدمات مماثلة خاصة بنا، فإن ذلك يتم فقط ضمن نطاق المتطلبات القانونية المعمول بها.","ds.s14.h":"14. بيانات الدفع والفوترة","ds.s14.p1":"بالنسبة للخدمات المدفوعة، نعالج البيانات اللازمة لإعداد العروض وإبرام العقود والفوترة ومعالجة المدفوعات والمحاسبة، مثل الاسم والشركة وعنوان الفوترة والبريد الإلكتروني وبيانات الدفع وبيانات العقد ومعلومات التعرفة وبيانات الاستخدام وبيانات الضرائب أو ضريبة القيمة المضافة.","ds.s14.p2":"نستخدم مزوّد خدمات الدفع Stripe لمعالجة المدفوعات. المزوّد هو Stripe Payments Europe, Limited، 1 Grand Canal Street Lower، Grand Canal Dock، دبلن، أيرلندا، بالإضافة إلى شركات أخرى تابعة لمجموعة Stripe حسب المنطقة.","ds.s14.p3":"عند إجراء دفعة عبر Stripe، تُنقل البيانات اللازمة لمعالجة الدفع إلى Stripe. قد تشمل هذه البيانات على وجه الخصوص الاسم والبريد الإلكتروني وعنوان الفوترة ومعلومات الدفع وبيانات المعاملات وعنوان IP وبيانات تقنية أخرى. تعالج Stripe هذه البيانات لمعالجة المدفوعات ومنع الاحتيال والامتثال للالتزامات القانونية وتقديم خدمات الدفع الخاصة بها. تسري سياسة خصوصية Stripe بالإضافة إلى ذلك على المعالجة التي تقوم بها Stripe.","ds.s14.p4":"تتم هذه المعالجة لتنفيذ العقد، وإجراء معالجة الدفع، والوفاء بالالتزامات القانونية، وبناءً على مصلحتنا المشروعة في معالجة دفع آمنة وفعالة.","ds.s15.h":"15. متلقّو البيانات الشخصية","ds.s15.p1":"قد تُنقل البيانات الشخصية إلى مزوّدي خدمات أو مزوّدين تقنيين أو شركاء أعمال، بقدر ما يلزم ذلك لتقديم خدماتنا. قد يشمل ذلك: مزوّدي الاستضافة ومزوّدي خدمات تقنية المعلومات ومزوّدي الاتصالات الهاتفية ومزوّدي البنية التحتية للذكاء الاصطناعي وأدوات الأتمتة ومزوّدي CRM والتقويم وخدمات البريد الإلكتروني والتواصل ومزوّدي خدمات الدفع (وخاصة Stripe) والمحاسبة والاستشارات الضريبية والاستشارات القانونية ومنصات وسائل التواصل الاجتماعي ومزوّدي التحليل والتسويق.","ds.s15.p2":"لا يتم النقل إلا بقدر الضرورة أو الجواز القانوني أو بتكليف من العميل. بقدر معالجة مزوّدي الخدمات للبيانات الشخصية نيابةً عنا، نبرم اتفاقيات مناسبة لمعالجة البيانات أو اتفاقيات حماية بيانات مماثلة، بقدر ما يقتضيه القانون.","ds.s16.h":"16. نقل البيانات الدولي","ds.s16.p1":"تتخذ AIDEN من دولة الإمارات العربية المتحدة مقرًا لها وتقدم خدمات لعملاء في السوق الألمانية النمساوية السويسرية (DACH) وفي الإمارات. في سياق تقديم الخدمات، قد تُنقل البيانات الشخصية إلى دول خارج الاتحاد الأوروبي أو المنطقة الاقتصادية الأوروبية أو سويسرا — وخاصة الإمارات أو الولايات المتحدة الأمريكية أو دول أخرى يقيم فيها مزوّدو الخدمات أو المزوّدون التقنيون أو شركاء البنية التحتية المستخدَمون.","ds.s16.p2":"بقدر سريان اللائحة العامة لحماية البيانات، لا يتم نقل البيانات الدولي إلا بناءً على ضمانات مناسبة، مثل قرارات الملاءمة أو البنود التعاقدية القياسية أو اتفاقيات حماية البيانات التعاقدية أو التدابير الأمنية التقنية أو الموافقة، عند الحاجة.","ds.s17.h":"17. مدة التخزين","ds.s17.p1":"نخزّن البيانات الشخصية فقط طالما كان ذلك ضروريًا للأغراض المعنية. يمكن أن يحدث تخزين أطول عند وجود التزامات قانونية بالاحتفاظ بالبيانات، أو ضرورة تأكيد مطالبات أو ممارستها أو الدفاع عنها، أو وجود مصالح تجارية مشروعة. تتعلق فترات التخزين النموذجية بشكل خاص ببيانات العقود والفواتير والمستندات الضريبية والمحاسبية وبيانات الدعم والتواصل وبيانات السجلات التقنية وتوثيق المشاريع وأدلة الموافقات.","ds.s17.p2":"بعد انتهاء فترة التخزين المعنية، تُحذف البيانات أو تُجهّل ما لم يوجد أساس قانوني آخر للتخزين.","ds.s18.h":"18. أمان البيانات","ds.s18.p1":"نتخذ تدابير تقنية وتنظيمية مناسبة لحماية البيانات الشخصية من الفقدان أو سوء الاستخدام أو الوصول غير المصرح به أو التعديل أو الإفصاح. قد يشمل ذلك: قيود الوصول وحماية كلمة المرور والتشفير (عند الاقتضاء) وقنوات نقل آمنة ومفاهيم الأدوار والصلاحيات والتسجيل والمراجعة التقنية المنتظمة والاختيار الدقيق لمزوّدي الخدمات والتزامات السرية.","ds.s18.p2":"على الرغم من جميع التدابير الوقائية، لا يمكن ضمان نقل بيانات خالٍ تمامًا من المخاطر عبر الإنترنت.","ds.s19.h":"19. حقوق أصحاب البيانات","ds.s19.p1":"بقدر سريان اللائحة العامة لحماية البيانات أو قوانين حماية بيانات مماثلة، يتمتع أصحاب البيانات، حسب الوضع القانوني، بالحقوق التالية على وجه الخصوص:","ds.s19.l1":"الحق في الوصول إلى البيانات","ds.s19.l2":"الحق في التصحيح","ds.s19.l3":"الحق في المحو","ds.s19.l4":"الحق في تقييد المعالجة","ds.s19.l5":"الحق في نقل البيانات","ds.s19.l6":"الحق في الاعتراض على معالجات معينة","ds.s19.l7":"الحق في سحب الموافقة","ds.s19.l8":"الحق في تقديم شكوى لدى سلطة إشراف مختصة بحماية البيانات","ds.s19.p2":"لممارسة حقوقك، يمكنك التواصل معنا في أي وقت عبر <a href=\"mailto:info@aiden.ae\">info@aiden.ae</a>.","ds.s20.h":"20. سحب الموافقات","ds.s20.p1":"إذا كانت المعالجة تستند إلى موافقتك، يمكنك سحب هذه الموافقة في أي وقت بأثر مستقبلي. لا تتأثر مشروعية المعالجة التي تمت حتى وقت السحب.","ds.s21.h":"21. الاعتراض على التسويق المباشر","ds.s21.p1":"يمكنك الاعتراض على معالجة بياناتك الشخصية لأغراض التسويق المباشر في أي وقت. بعد الاعتراض، لن نستخدم بياناتك الشخصية بعد الآن للتسويق المباشر.","ds.s22.h":"22. معالجة البيانات نيابة عن عملائنا","ds.s22.p1":"بالنسبة لبعض الخدمات، لا تعالج AIDEN البيانات الشخصية كجهة مسؤولة خاصة بها، بل نيابة عن العميل المعني. قد ينطبق ذلك بشكل خاص على الوكلاء الصوتيين ووكلاء وسائل التواصل الاجتماعي وتكاملات CRM وعمليات الدعم أو الأتمتة المخصصة.","ds.s22.p2":"في هذه الحالات، يقرر العميل غرض ووسائل المعالجة. تعالج AIDEN البيانات وفقًا لتعليمات العميل. عند الحاجة، تُبرم اتفاقية منفصلة لمعالجة البيانات أو اتفاقية مماثلة لهذا الغرض.","ds.s23.h":"23. مسؤولية العميل","ds.s23.p1":"يتحمل العميل مسؤولية التأكد من أن البيانات التي يقدمها يمكن جمعها ومعالجتها ونقلها إلى AIDEN بشكل قانوني. كما يتحمل العميل مسؤولية إبلاغ أصحاب البيانات — وخاصة عملائه الخاصين أو المتصلين أو الموظفين أو العملاء المحتملين — باستخدام أنظمة الذكاء الاصطناعي، ومعالجة البيانات، وعمليات الاتصال الهاتفي، والتسجيلات، أو الأتمتة، بقدر ما يقتضيه القانون.","ds.s24.h":"24. التغييرات على سياسة الخصوصية هذه","ds.s24.p1":"يجوز لنا تعديل سياسة الخصوصية هذه في حال تغيير خدماتنا أو التقنيات المستخدمة أو المتطلبات القانونية أو العمليات الداخلية. النسخة الحالية متاحة دائمًا على موقعنا الإلكتروني.","ds.s25.h":"25. التواصل بخصوص استفسارات حماية البيانات","ds.s25.p1":"لأي أسئلة حول معالجة البيانات الشخصية أو ممارسة حقوقك، يرجى التواصل معنا عبر:"};
+
+  const els = document.querySelectorAll('[data-i18n]');
+  const originalDE = new Map();
+  els.forEach(el => originalDE.set(el, el.innerHTML));
+
+  const DICTS = { en: AIDEN_DS_I18N_EN, ar: AIDEN_DS_I18N_AR };
+
+  function applyLanguage(lang){
+    const dict = DICTS[lang];
+    els.forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if(dict && dict[key] !== undefined){
+        el.innerHTML = dict[key];
+      } else {
+        el.innerHTML = originalDE.get(el);
+      }
+    });
+    document.documentElement.lang = lang;
+    document.body.classList.toggle('is-rtl', lang === 'ar');
+    document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+    try { localStorage.setItem('aiden-lang', lang); } catch(e){}
+  }
+
+  document.querySelectorAll('.lang-btn').forEach(btn=>{
+    btn.addEventListener('click', ()=> applyLanguage(btn.dataset.lang));
+  });
+
+  let initial = 'de';
+  try {
+    const saved = localStorage.getItem('aiden-lang');
+    if(saved === 'en' || saved === 'de' || saved === 'ar') initial = saved;
+  } catch(e){}
+  if(initial !== 'de') applyLanguage(initial);
+})();
 </script>
 </body>
 </html>
