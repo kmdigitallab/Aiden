@@ -105,20 +105,13 @@ body.has-announce nav.site{top:54px;}
 @media(max-width:640px){.announce{font-size:.7rem;padding:0 38px 0 12px;}.announce span.announce-text{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;}}
 
 /* ── nav ── */
-nav.site{position:fixed;top:14px;left:calc(14px + env(safe-area-inset-left, 0px));right:calc(14px + env(safe-area-inset-right, 0px));z-index:300;height:72px;display:flex;align-items:center;background:rgba(255,255,255,.55);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border:1px solid transparent;border-radius:22px;box-shadow:0 8px 32px rgba(14,14,16,.08),inset 0 1px 0 rgba(255,255,255,.6);transition:background .3s,box-shadow .3s,border-color .3s,top .4s ease;}
+nav.site{position:fixed;top:14px;left:calc(14px + env(safe-area-inset-left, 0px));right:calc(14px + env(safe-area-inset-right, 0px));z-index:300;height:72px;display:flex;align-items:center;background:rgba(255,255,255,.55);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border:1px solid rgba(204,163,0,.3);border-radius:22px;box-shadow:0 8px 32px rgba(14,14,16,.08),inset 0 1px 0 rgba(255,255,255,.6);transition:background .3s,box-shadow .3s,border-color .3s,top .4s ease;}
 nav.site.scrolled{background:rgba(255,255,255,.75);box-shadow:0 12px 40px rgba(14,14,16,.12),inset 0 1px 0 rgba(255,255,255,.7);}
-nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;padding:1.5px;background:conic-gradient(from var(--na,0deg),rgba(204,163,0,.35),var(--gold) 30%,var(--gold-light) 50%,var(--gold) 70%,rgba(204,163,0,.35) 100%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:navOrbit 4s linear infinite;pointer-events:none;}
-@keyframes navOrbit{to{--na:360deg;}}
-@property --na{syntax:'<angle>';inherits:false;initial-value:0deg;}
 .nav-inner{max-width:1180px;margin:0 auto;padding:0 26px;width:100%;display:flex;align-items:center;justify-content:space-between;}
 .nav-right{display:flex;align-items:center;gap:.5rem;order:5;}
 @media(max-width:640px){
   nav.site{top:10px;left:10px;right:10px;height:64px;border-radius:18px;}
-  /* Rotierender Rand ist auf mobilen Geräten (echtes iOS Safari) beim Scrollen
-     sichtbar ruckelig — deaktiviert. Blur bewusst leichter (8px statt 20px) und
-     mit höherer Deckkraft, um GPU-Last zu senken, aber Transparenz zu behalten. */
   nav.site,nav.site.scrolled{background:rgba(255,255,255,.82);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);}
-  nav.site::before{display:none;}
 }
 .brand{display:flex;align-items:center;gap:.6rem;order:1;}
 .brand-logo{height:26px;width:auto;display:block;}
@@ -230,20 +223,13 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
 @keyframes haloPulse{0%,100%{opacity:.85;transform:translate(-50%,-50%) scale(1);}50%{opacity:1;transform:translate(-50%,-50%) scale(1.035);}}
 .node-label{position:absolute;transform:translate(-50%,-50%);z-index:1;display:flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:50%;background:rgba(255,218,71,.08);border:1px solid rgba(255,218,71,.18);}
 .node-label svg{color:var(--gold-light);flex-shrink:0;width:26px;height:26px;}
-.hub-pill{position:absolute;left:52%;top:2%;right:auto;transform:translateX(-50%);width:128px;height:48px;border-radius:100px;background:#000000;border:1px solid var(--line-on-ink);display:flex;align-items:center;justify-content:center;box-shadow:0 20px 50px rgba(0,0,0,.4);}
-.hub-pill::before{content:'';position:absolute;inset:-1px;border-radius:100px;padding:1px;background:conic-gradient(from var(--a,0deg),transparent 0 60%,var(--gold-light),transparent 75%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:hubSpin 4s linear infinite;}
-@keyframes hubSpin{to{--a:360deg;}}
 @media(max-width:640px){
   /* Kreis war auf schmalen Screens mit fixer Mindesthöhe (340px) unproportional
      groß und wirkte leer — deutlich verkleinert. */
   .beams-wrap{height:clamp(220px,64vw,300px);}
   .node-label{width:40px;height:40px;}
   .node-label svg{width:20px;height:20px;}
-  .hub-pill{width:100px;height:38px;}
-  .hub-pill span{font-size:.85rem;}
 }
-@property --a{syntax:'<angle>';inherits:false;initial-value:0deg;}
-.hub-pill span{position:relative;font-family:"Iowan Old Style",Georgia,serif;font-style:italic;font-size:1rem;background:linear-gradient(90deg,#fff,var(--gold-light));-webkit-background-clip:text;background-clip:text;color:transparent;}
 .hero .lead{max-width:600px;margin:1.5rem 0 2.3rem;}
 .hero-cta{display:flex;gap:.7rem;flex-wrap:wrap;margin-bottom:2rem;}
 .hero-cta .btn{padding:.78rem 1.4rem;font-size:.82rem;}
@@ -502,8 +488,8 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
 
 <div class="announce" id="announceBar">
   <span class="announce-dot"></span>
-  <span class="announce-text">Aktuell nehmen wir neue Kunden auf &mdash; kostenloses Erstgespräch</span>
-  <a class="announce-link" href="https://calendar.app.google/LK3hdLKQ6pLztv4b8" target="_blank" rel="noopener">jetzt sichern</a>
+  <span class="announce-text" data-i18n="leg.announce.text">Aktuell nehmen wir neue Kunden auf &mdash; kostenloses Erstgespräch</span>
+  <a class="announce-link" data-i18n="leg.announce.cta" href="https://calendar.app.google/LK3hdLKQ6pLztv4b8" target="_blank" rel="noopener">jetzt sichern</a>
   <button class="announce-close" id="announceClose" aria-label="Schließen">
     <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
   </button>
@@ -516,42 +502,52 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
       <span class="brand-tagline">AIO – ALL IN ONE</span>
     </a>
     <div class="nav-links">
-      <a href="kundenportal.html">Kundenportal</a>
-      <a href="index.html#voice">Voice Agents</a>
-      <a href="social-media-agent.html">Social Media Agent</a>
-      <a href="index.html#stimmen">Referenzen</a>
+      <a href="kundenportal.html" data-i18n="leg.nav.portal">Kundenportal</a>
+      <a href="index.html#voice" data-i18n="leg.nav.voice">Voice Agents</a>
+      <a href="social-media-agent.html" data-i18n="leg.nav.social">Social Media Agent</a>
+      <a href="index.html#stimmen" data-i18n="leg.nav.refs">Referenzen</a>
     </div>
     <div class="nav-right">
       <a href="index.html#pricing" class="btn btn-gold btn-phone">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-        <span class="cta-full">Voice Agent<br>testen</span>
-        <span class="cta-short">Voice Agent</span>
+        <span class="cta-full" data-i18n="leg.nav.cta">Voice Agent<br>testen</span>
+        <span class="cta-short" data-i18n="leg.nav.cta.mobile">Voice Agent</span>
       </a>
+      <div class="lang-switch" id="langSwitch" role="group" aria-label="Sprache wählen">
+        <button type="button" class="lang-btn active" data-lang="de">DE</button>
+        <button type="button" class="lang-btn" data-lang="en">EN</button>
+        <button type="button" class="lang-btn" data-lang="ar">AR</button>
+      </div>
       <button type="button" class="nav-burger" id="navBurger" aria-expanded="false" aria-controls="mobileMenu" aria-label="Menü öffnen">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
       </button>
     </div>
   </div>
   <div class="mobile-menu" id="mobileMenu">
-    <a href="kundenportal.html">Kundenportal</a>
-    <a href="index.html#voice">Voice Agents</a>
-    <a href="social-media-agent.html">Social Media Agent</a>
-    <a href="index.html#stimmen">Referenzen</a>
-    <a href="index.html#pricing" class="btn btn-gold mobile-menu-cta">Voice Agent</a>
+    <a href="kundenportal.html" data-i18n="leg.nav.portal">Kundenportal</a>
+    <a href="index.html#voice" data-i18n="leg.nav.voice">Voice Agents</a>
+    <a href="social-media-agent.html" data-i18n="leg.nav.social">Social Media Agent</a>
+    <a href="index.html#stimmen" data-i18n="leg.nav.refs">Referenzen</a>
+    <a href="index.html#pricing" class="btn btn-gold mobile-menu-cta" data-i18n="leg.nav.cta.mobile">Voice Agent</a>
+    <div class="lang-switch mobile-menu-lang" role="group" aria-label="Sprache wählen">
+      <button type="button" class="lang-btn active" data-lang="de">DE</button>
+      <button type="button" class="lang-btn" data-lang="en">EN</button>
+      <button type="button" class="lang-btn" data-lang="ar">AR</button>
+    </div>
   </div>
 </nav>
 
 
 <div class="content" id="content">
-  
+
   <header class="legal-hero" id="top">
     <div class="legal-wrap">
-      <div class="eyebrow reveal" style="color:var(--gold-light);">Rechtliche Informationen</div>
-      <h1 class="h-lg serif reveal">Impressum</h1>
-      <p class="lead reveal" style="color:var(--muted-on-ink);">Angaben gemäß § 5 DDG.</p>
+      <div class="eyebrow reveal" style="color:var(--gold-light);" data-i18n="imp.eyebrow">Rechtliche Informationen</div>
+      <h1 class="h-lg serif reveal" data-i18n="imp.h1">Impressum</h1>
+      <p class="lead reveal" style="color:var(--muted-on-ink);" data-i18n="imp.lead">Angaben gemäß § 5 DDG.</p>
       <a href="index.html" class="legal-back reveal">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-        Zurück zur Startseite
+        <span data-i18n="leg.back">Zurück zur Startseite</span>
       </a>
     </div>
   </header>
@@ -567,43 +563,43 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
         Dubai, United Arab Emirates</p>
       </div>
 
-      <h2 class="reveal">Kontakt</h2>
-      <p class="reveal">E-Mail: <a href="mailto:info@aiden.ae">info@aiden.ae</a><br>
-      Telefon: <a href="tel:+971561155278">+971 56 115 5278</a></p>
+      <h2 class="reveal" data-i18n="imp.contact.h">Kontakt</h2>
+      <p class="reveal"><span data-i18n="imp.contact.email">E-Mail</span>: <a href="mailto:info@aiden.ae">info@aiden.ae</a><br>
+      <span data-i18n="imp.contact.phone">Telefon</span>: <a href="tel:+971561155278">+971 56 115 5278</a></p>
 
-      <h2 class="reveal">Vertreten durch</h2>
+      <h2 class="reveal" data-i18n="imp.rep.h">Vertreten durch</h2>
       <p class="reveal">Dr. Irena Schindler</p>
 
-      <h2 class="reveal">Verantwortlich für den Inhalt</h2>
+      <h2 class="reveal" data-i18n="imp.responsible.h">Verantwortlich für den Inhalt</h2>
       <p class="reveal">Dr. Irena Schindler<br>
       AIDEN.AE, Dubai Branch Building, Al Mankhool Area, Bur Dubai, Makani No.: 28511194466, Dubai, United Arab Emirates</p>
 
-      <h2 class="reveal">Unternehmensangaben</h2>
+      <h2 class="reveal" data-i18n="imp.company.h">Unternehmensangaben</h2>
       <ul class="reveal">
-        <li>Rechtlicher Firmenname: AIDEN AIO Artificial Intelligence Developing Services L.L.C.</li>
-        <li>Handels-/Lizenznummer: 1493367</li>
-        <li>Registrierungsbehörde: Government of Dubai</li>
+        <li><span data-i18n="imp.company.l1">Rechtlicher Firmenname</span>: AIDEN AIO Artificial Intelligence Developing Services L.L.C.</li>
+        <li><span data-i18n="imp.company.l2">Handels-/Lizenznummer</span>: 1493367</li>
+        <li><span data-i18n="imp.company.l3">Registrierungsbehörde</span>: Government of Dubai</li>
       </ul>
 
-      <h2 class="reveal">Haftung für Inhalte</h2>
-      <p class="reveal">Die Inhalte dieser Website wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte übernehmen wir jedoch keine Gewähr.</p>
-      <p class="reveal">Als Anbieter eigener Inhalte sind wir nach den allgemeinen gesetzlichen Vorschriften für diese Inhalte verantwortlich. Eine Verpflichtung zur Überwachung übermittelter oder gespeicherter fremder Informationen besteht jedoch nur im Rahmen der jeweils anwendbaren gesetzlichen Bestimmungen.</p>
+      <h2 class="reveal" data-i18n="imp.content.h">Haftung für Inhalte</h2>
+      <p class="reveal" data-i18n="imp.content.p1">Die Inhalte dieser Website wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte übernehmen wir jedoch keine Gewähr.</p>
+      <p class="reveal" data-i18n="imp.content.p2">Als Anbieter eigener Inhalte sind wir nach den allgemeinen gesetzlichen Vorschriften für diese Inhalte verantwortlich. Eine Verpflichtung zur Überwachung übermittelter oder gespeicherter fremder Informationen besteht jedoch nur im Rahmen der jeweils anwendbaren gesetzlichen Bestimmungen.</p>
 
-      <h2 class="reveal">Haftung für externe Links</h2>
-      <p class="reveal">Diese Website kann Links zu externen Websites Dritter enthalten. Auf deren Inhalte haben wir keinen Einfluss. Deshalb übernehmen wir für diese fremden Inhalte keine Gewähr.</p>
-      <p class="reveal">Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich. Zum Zeitpunkt der Verlinkung wurden die externen Seiten auf mögliche Rechtsverstöße überprüft. Rechtswidrige Inhalte waren zu diesem Zeitpunkt nicht erkennbar.</p>
-      <p class="reveal">Bei Bekanntwerden von Rechtsverletzungen werden wir entsprechende Links umgehend entfernen.</p>
+      <h2 class="reveal" data-i18n="imp.links.h">Haftung für externe Links</h2>
+      <p class="reveal" data-i18n="imp.links.p1">Diese Website kann Links zu externen Websites Dritter enthalten. Auf deren Inhalte haben wir keinen Einfluss. Deshalb übernehmen wir für diese fremden Inhalte keine Gewähr.</p>
+      <p class="reveal" data-i18n="imp.links.p2">Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich. Zum Zeitpunkt der Verlinkung wurden die externen Seiten auf mögliche Rechtsverstöße überprüft. Rechtswidrige Inhalte waren zu diesem Zeitpunkt nicht erkennbar.</p>
+      <p class="reveal" data-i18n="imp.links.p3">Bei Bekanntwerden von Rechtsverletzungen werden wir entsprechende Links umgehend entfernen.</p>
 
-      <h2 class="reveal">Urheberrecht</h2>
-      <p class="reveal">Die auf dieser Website veröffentlichten Inhalte, Texte, Bilder, Grafiken, Designs, Konzepte und sonstigen Materialien unterliegen dem jeweiligen Urheberrecht und anderen Schutzrechten.</p>
-      <p class="reveal">Eine Vervielfältigung, Bearbeitung, Verbreitung oder sonstige Nutzung außerhalb der gesetzlich zulässigen Grenzen bedarf der vorherigen schriftlichen Zustimmung des jeweiligen Rechteinhabers.</p>
-      <p class="reveal">Soweit Inhalte auf dieser Website nicht von AIDEN.AE erstellt wurden, werden die Rechte Dritter beachtet und entsprechende Inhalte gekennzeichnet.</p>
+      <h2 class="reveal" data-i18n="imp.copyright.h">Urheberrecht</h2>
+      <p class="reveal" data-i18n="imp.copyright.p1">Die auf dieser Website veröffentlichten Inhalte, Texte, Bilder, Grafiken, Designs, Konzepte und sonstigen Materialien unterliegen dem jeweiligen Urheberrecht und anderen Schutzrechten.</p>
+      <p class="reveal" data-i18n="imp.copyright.p2">Eine Vervielfältigung, Bearbeitung, Verbreitung oder sonstige Nutzung außerhalb der gesetzlich zulässigen Grenzen bedarf der vorherigen schriftlichen Zustimmung des jeweiligen Rechteinhabers.</p>
+      <p class="reveal" data-i18n="imp.copyright.p3">Soweit Inhalte auf dieser Website nicht von AIDEN.AE erstellt wurden, werden die Rechte Dritter beachtet und entsprechende Inhalte gekennzeichnet.</p>
 
-      <h2 class="reveal">Streitbeilegung</h2>
-      <p class="reveal">Wir sind nicht verpflichtet und nicht bereit, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen, sofern keine zwingende gesetzliche Verpflichtung besteht.</p>
+      <h2 class="reveal" data-i18n="imp.dispute.h">Streitbeilegung</h2>
+      <p class="reveal" data-i18n="imp.dispute.p">Wir sind nicht verpflichtet und nicht bereit, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen, sofern keine zwingende gesetzliche Verpflichtung besteht.</p>
 
-      <h2 class="reveal">Hinweis</h2>
-      <p class="reveal">AIDEN.AE bietet KI-gestützte Lösungen für Unternehmen im DACH-Markt sowie in den Vereinigten Arabischen Emiraten an. Für rechtliche Fragen, Datenschutzanfragen oder Anfragen zu unseren Leistungen kontaktieren Sie uns bitte über die oben angegebenen Kontaktdaten.</p>
+      <h2 class="reveal" data-i18n="imp.note.h">Hinweis</h2>
+      <p class="reveal" data-i18n="imp.note.p">AIDEN.AE bietet KI-gestützte Lösungen für Unternehmen im DACH-Markt sowie in den Vereinigten Arabischen Emiraten an. Für rechtliche Fragen, Datenschutzanfragen oder Anfragen zu unseren Leistungen kontaktieren Sie uns bitte über die oben angegebenen Kontaktdaten.</p>
 
     </div>
   </section>
@@ -620,33 +616,33 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
         <span class="cf-brand-tagline">AIO – ALL IN ONE</span>
       </div>
       <p class="cf-legal-name">Artificial Intelligence Developing Services LLC</p>
-      <p class="cf-tag">KI-Agenten, die Ihr Unternehmen wirklich entlasten — Voice Agent, Social Media Agent und individuelle KI-Automatisierung.</p>
+      <p class="cf-tag" data-i18n="leg.footer.tag">KI-Agenten, die Ihr Unternehmen wirklich entlasten — Voice Agent, Social Media Agent und individuelle KI-Automatisierung.</p>
     </div>
     <div class="cf-cols">
       <div class="cf-col">
-        <h5>Produkte</h5>
-        <a href="index.html#voice">Voice Agent</a>
-        <a href="social-media-agent.html">Social Media Agent</a>
-        <a href="index.html#pricing">Preise</a>
+        <h5 data-i18n="leg.footer.col1.h">Produkte</h5>
+        <a href="index.html#voice" data-i18n="leg.footer.voice">Voice Agent</a>
+        <a href="social-media-agent.html" data-i18n="leg.footer.social">Social Media Agent</a>
+        <a href="index.html#pricing" data-i18n="leg.footer.pricing">Preise</a>
       </div>
       <div class="cf-col">
-        <h5>Unternehmen</h5>
-        <a href="index.html#ueber-uns">Über uns</a>
-        <a href="index.html#stimmen">Kunden</a>
-        <a href="index.html#kontakt">Kontakt</a>
+        <h5 data-i18n="leg.footer.col2.h">Unternehmen</h5>
+        <a href="index.html#ueber-uns" data-i18n="leg.footer.about">Über uns</a>
+        <a href="index.html#stimmen" data-i18n="leg.footer.customers">Kunden</a>
+        <a href="index.html#kontakt" data-i18n="leg.footer.contact">Kontakt</a>
       </div>
       <div class="cf-col">
-        <h5>Rechtliches</h5>
-        <a href="impressum.html">Impressum</a>
-        <a href="datenschutz.html">Datenschutz</a>
-        <a href="agb.html">AGB</a>
-        <a href="widerrufsrecht.html">Widerrufsrecht</a>
+        <h5 data-i18n="leg.footer.col3.h">Rechtliches</h5>
+        <a href="impressum.html" data-i18n="leg.footer.imprint">Impressum</a>
+        <a href="datenschutz.html" data-i18n="leg.footer.privacy">Datenschutz</a>
+        <a href="agb.html" data-i18n="leg.footer.terms">AGB</a>
+        <a href="widerrufsrecht.html" data-i18n="leg.footer.withdrawal">Widerrufsrecht</a>
       </div>
     </div>
   </div>
   <div class="cf-word">AIDEN</div>
   <div class="cf-bottom">
-    <p>© 2026 AIDEN. Alle Rechte vorbehalten.</p>
+    <p data-i18n="leg.footer.copyright">© 2026 AIDEN. Alle Rechte vorbehalten.</p>
     <div style="display:flex;gap:18px;">
       <a href="mailto:info@aiden.ae">info@aiden.ae</a>
       <a href="tel:+971561155278">+971 56 115 5278</a>
@@ -930,7 +926,45 @@ document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
   });
 })();
 
+// Language switcher — German (default, from HTML) <-> English/Arabic (from dictionary)
+(function(){
+const AIDEN_LEG_I18N_EN = {"leg.announce.text":"Currently accepting new clients &mdash; free first consultation","leg.announce.cta":"book now","leg.nav.portal":"Customer Portal","leg.nav.voice":"Voice Agents","leg.nav.social":"Social Media Agent","leg.nav.refs":"References","leg.nav.cta":"Voice Agent<br>test now","leg.nav.cta.mobile":"Voice Agent","leg.back":"Back to homepage","leg.footer.tag":"AI agents that truly take work off your hands — Voice Agent, Social Media Agent and custom AI automation.","leg.footer.col1.h":"Products","leg.footer.voice":"Voice Agent","leg.footer.social":"Social Media Agent","leg.footer.pricing":"Pricing","leg.footer.col2.h":"Company","leg.footer.about":"About us","leg.footer.customers":"Customers","leg.footer.contact":"Contact","leg.footer.col3.h":"Legal","leg.footer.imprint":"Imprint","leg.footer.privacy":"Privacy Policy","leg.footer.terms":"Terms","leg.footer.withdrawal":"Right of Withdrawal","leg.footer.copyright":"&copy; 2026 AIDEN. All rights reserved.","imp.eyebrow":"Legal Information","imp.h1":"Imprint","imp.lead":"Information pursuant to Sec. 5 DDG.","imp.contact.h":"Contact","imp.contact.email":"Email","imp.contact.phone":"Phone","imp.rep.h":"Represented by","imp.responsible.h":"Responsible for content","imp.company.h":"Company details","imp.company.l1":"Legal company name","imp.company.l2":"Trade/license number","imp.company.l3":"Registration authority","imp.content.h":"Liability for content","imp.content.p1":"The content of this website has been created with the greatest care. However, we assume no liability for the accuracy, completeness or timeliness of the content.","imp.content.p2":"As a provider of our own content, we are responsible for this content in accordance with general statutory provisions. However, we are only obliged to monitor transmitted or stored third-party information to the extent required by the applicable statutory provisions.","imp.links.h":"Liability for external links","imp.links.p1":"This website may contain links to external third-party websites. We have no influence on their content. We therefore assume no liability for this external content.","imp.links.p2":"The respective provider or operator of the linked pages is always responsible for their content. At the time of linking, the external pages were checked for possible legal violations. No unlawful content was identifiable at that time.","imp.links.p3":"If we become aware of any legal violations, we will remove such links immediately.","imp.copyright.h":"Copyright","imp.copyright.p1":"The content, texts, images, graphics, designs, concepts and other materials published on this website are subject to the respective copyright and other protective rights.","imp.copyright.p2":"Any duplication, editing, distribution or other use beyond the limits permitted by law requires the prior written consent of the respective rights holder.","imp.copyright.p3":"Insofar as content on this website was not created by AIDEN.AE, the rights of third parties are respected and such content is marked accordingly.","imp.dispute.h":"Dispute resolution","imp.dispute.p":"We are neither obliged nor willing to participate in dispute resolution proceedings before a consumer arbitration board, unless there is a mandatory legal obligation to do so.","imp.note.h":"Note","imp.note.p":"AIDEN.AE offers AI-powered solutions for businesses in the DACH market as well as in the United Arab Emirates. For legal questions, data protection inquiries or questions about our services, please contact us using the contact details given above."};
 
+const AIDEN_LEG_I18N_AR = {"leg.announce.text":"نستقبل حاليًا عملاء جدد &mdash; استشارة أولى مجانية","leg.announce.cta":"احجز الآن","leg.nav.portal":"بوابة العملاء","leg.nav.voice":"الوكلاء الصوتيون","leg.nav.social":"وكيل وسائل التواصل الاجتماعي","leg.nav.refs":"آراء العملاء","leg.nav.cta":"جرّب<br>الوكيل الصوتي","leg.nav.cta.mobile":"الوكيل الصوتي","leg.back":"العودة إلى الصفحة الرئيسية","leg.footer.tag":"وكلاء ذكاء اصطناعي يخففون العبء عن عملك فعليًا — الوكيل الصوتي، وكيل وسائل التواصل الاجتماعي وأتمتة ذكاء اصطناعي مخصصة.","leg.footer.col1.h":"المنتجات","leg.footer.voice":"الوكيل الصوتي","leg.footer.social":"وكيل وسائل التواصل الاجتماعي","leg.footer.pricing":"الأسعار","leg.footer.col2.h":"الشركة","leg.footer.about":"من نحن","leg.footer.customers":"العملاء","leg.footer.contact":"تواصل معنا","leg.footer.col3.h":"قانوني","leg.footer.imprint":"بيانات الناشر","leg.footer.privacy":"سياسة الخصوصية","leg.footer.terms":"الشروط والأحكام","leg.footer.withdrawal":"حق الانسحاب","leg.footer.copyright":"&copy; 2026 AIDEN. جميع الحقوق محفوظة.","imp.eyebrow":"معلومات قانونية","imp.h1":"بيانات الناشر","imp.lead":"بيانات وفقًا للمادة 5 من قانون الوسائط الرقمية الألماني (DDG).","imp.contact.h":"التواصل","imp.contact.email":"البريد الإلكتروني","imp.contact.phone":"الهاتف","imp.rep.h":"يمثلها","imp.responsible.h":"المسؤول عن المحتوى","imp.company.h":"بيانات الشركة","imp.company.l1":"الاسم القانوني للشركة","imp.company.l2":"رقم السجل التجاري/الترخيص","imp.company.l3":"جهة التسجيل","imp.content.h":"المسؤولية عن المحتوى","imp.content.p1":"تم إعداد محتوى هذا الموقع بأقصى درجات العناية. ومع ذلك، لا نتحمل أي مسؤولية عن دقة المحتوى أو اكتماله أو حداثته.","imp.content.p2":"بصفتنا مزوّدين لمحتوانا الخاص، نتحمل المسؤولية عن هذا المحتوى وفقًا للأحكام القانونية العامة. ومع ذلك، لا يوجد التزام برصد المعلومات المنقولة أو المخزنة من أطراف ثالثة إلا في الحدود التي تقتضيها الأحكام القانونية السارية.","imp.links.h":"المسؤولية عن الروابط الخارجية","imp.links.p1":"قد يحتوي هذا الموقع على روابط لمواقع خارجية تابعة لأطراف ثالثة. ليس لدينا أي تأثير على محتوى هذه المواقع. لذلك لا نتحمل أي مسؤولية عن هذا المحتوى الخارجي.","imp.links.p2":"يتحمل مزوّد أو مشغّل الصفحات المرتبطة دائمًا المسؤولية عن محتواها. تم فحص الصفحات الخارجية وقت الربط بحثًا عن أي مخالفات قانونية محتملة. لم تكن هناك أي محتويات مخالفة للقانون واضحة في ذلك الوقت.","imp.links.p3":"عند علمنا بأي مخالفات قانونية، سنقوم بإزالة هذه الروابط فورًا.","imp.copyright.h":"حقوق النشر","imp.copyright.p1":"يخضع المحتوى والنصوص والصور والرسومات والتصاميم والمفاهيم والمواد الأخرى المنشورة على هذا الموقع لحقوق النشر وحقوق الحماية الأخرى ذات الصلة.","imp.copyright.p2":"يتطلب أي نسخ أو تعديل أو توزيع أو استخدام آخر يتجاوز الحدود المسموح بها قانونًا موافقة خطية مسبقة من صاحب الحقوق المعني.","imp.copyright.p3":"في حال عدم إنشاء محتوى هذا الموقع بواسطة AIDEN.AE، تُحترم حقوق الأطراف الثالثة ويُشار إلى هذا المحتوى وفقًا لذلك.","imp.dispute.h":"تسوية المنازعات","imp.dispute.p":"نحن غير ملزمين وغير مستعدين للمشاركة في إجراءات تسوية المنازعات أمام هيئة تحكيم المستهلكين، ما لم يوجد التزام قانوني إلزامي بذلك.","imp.note.h":"ملاحظة","imp.note.p":"تقدم AIDEN.AE حلولاً مدعومة بالذكاء الاصطناعي للشركات في السوق الألمانية النمساوية السويسرية (DACH) وكذلك في دولة الإمارات العربية المتحدة. للأسئلة القانونية أو استفسارات حماية البيانات أو الأسئلة المتعلقة بخدماتنا، يرجى التواصل معنا عبر بيانات الاتصال الموضحة أعلاه."};
+
+  const els = document.querySelectorAll('[data-i18n]');
+  const originalDE = new Map();
+  els.forEach(el => originalDE.set(el, el.innerHTML));
+
+  const DICTS = { en: AIDEN_LEG_I18N_EN, ar: AIDEN_LEG_I18N_AR };
+
+  function applyLanguage(lang){
+    const dict = DICTS[lang];
+    els.forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if(dict && dict[key] !== undefined){
+        el.innerHTML = dict[key];
+      } else {
+        el.innerHTML = originalDE.get(el);
+      }
+    });
+    document.documentElement.lang = lang;
+    document.body.classList.toggle('is-rtl', lang === 'ar');
+    document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+    try { localStorage.setItem('aiden-lang', lang); } catch(e){}
+  }
+
+  document.querySelectorAll('.lang-btn').forEach(btn=>{
+    btn.addEventListener('click', ()=> applyLanguage(btn.dataset.lang));
+  });
+
+  let initial = 'de';
+  try {
+    const saved = localStorage.getItem('aiden-lang');
+    if(saved === 'en' || saved === 'de' || saved === 'ar') initial = saved;
+  } catch(e){}
+  if(initial !== 'de') applyLanguage(initial);
+})();
 </script>
 </body>
 </html>
