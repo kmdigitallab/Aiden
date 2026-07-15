@@ -58,6 +58,7 @@ h1{font-size:clamp(1.7rem,4vw,2.3rem);font-weight:600;letter-spacing:-.01em;marg
 .order-name{font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted-on-ink);margin-bottom:.5rem;}
 .order-price{font-family:"Iowan Old Style",Georgia,serif;font-style:italic;font-size:2.6rem;color:#fff;}
 .order-price .unit{font-family:inherit;font-style:normal;font-size:1rem;color:var(--muted-on-ink);}
+.order-term{font-size:.78rem;color:var(--muted-on-ink);letter-spacing:.02em;margin-top:.35rem;}
 .order-was{font-size:.85rem;color:var(--muted-on-ink);text-decoration:line-through;margin-top:.3rem;}
 .order-save{font-size:.85rem;color:var(--gold-light);font-weight:600;margin-top:.3rem;}
 .order-body{padding:1.8rem 2.2rem 2.2rem;}
@@ -111,6 +112,7 @@ h1{font-size:clamp(1.7rem,4vw,2.3rem);font-weight:600;letter-spacing:-.01em;marg
         <div class="order-tag" id="orderTag" style="display:none;"></div>
         <div class="order-name" id="orderName">Lädt…</div>
         <div class="order-price serif" id="orderPrice"></div>
+        <div class="order-term" id="orderTerm"></div>
         <div class="order-was mono" id="orderWas"></div>
         <div class="order-save" id="orderSave"></div>
       </div>
@@ -145,6 +147,7 @@ const PLANS = {
   basic: {
     name: 'Einsteiger · Basic',
     price: '69&nbsp;€', unit: '&nbsp;/ Monat',
+    term: 'Jahresabo · 12 Monate Laufzeit',
     was: '98&nbsp;€ / Monat', save: 'Sie sparen 240&nbsp;€ im 1. Jahr',
     bestfor: 'Am besten für: Einzelunternehmer & Praxisstart',
     extra: 'Zusatzminute 0,39&nbsp;€',
@@ -154,6 +157,7 @@ const PLANS = {
   comfort: {
     name: 'Comfort', tag: 'Beliebtester Plan',
     price: '129&nbsp;€', unit: '&nbsp;/ Monat',
+    term: 'Jahresabo · 12 Monate Laufzeit',
     was: '189&nbsp;€ / Monat', save: 'Sie sparen 720&nbsp;€ im 1. Jahr',
     bestfor: 'Am besten für: wachsende Teams mit mehreren Kanälen',
     extra: 'Zusatzminute 0,32&nbsp;€',
@@ -163,6 +167,7 @@ const PLANS = {
   premium: {
     name: 'Für größere Unternehmen · Premium',
     price: '249&nbsp;€', unit: '&nbsp;/ Monat',
+    term: 'Jahresabo · 12 Monate Laufzeit',
     was: '399&nbsp;€ / Monat', save: 'Sie sparen 1.800&nbsp;€ im 1. Jahr',
     bestfor: 'Am besten für: größere Unternehmen mit hohem Anrufvolumen',
     extra: 'Zusatzminute 0,28&nbsp;€',
@@ -186,6 +191,7 @@ const plan = PLANS[params.get('plan')] || PLANS.comfort;
 document.getElementById('pageTitle').textContent = plan.name;
 document.getElementById('orderName').textContent = plan.name;
 document.getElementById('orderPrice').innerHTML = plan.price + '<span class="unit">' + plan.unit + '</span>';
+document.getElementById('orderTerm').textContent = plan.term || '';
 document.getElementById('orderWas').innerHTML = plan.was;
 document.getElementById('orderSave').innerHTML = plan.save;
 document.getElementById('orderBestfor').textContent = plan.bestfor;
