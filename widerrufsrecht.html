@@ -105,20 +105,13 @@ body.has-announce nav.site{top:54px;}
 @media(max-width:640px){.announce{font-size:.7rem;padding:0 38px 0 12px;}.announce span.announce-text{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;}}
 
 /* ── nav ── */
-nav.site{position:fixed;top:14px;left:calc(14px + env(safe-area-inset-left, 0px));right:calc(14px + env(safe-area-inset-right, 0px));z-index:300;height:72px;display:flex;align-items:center;background:rgba(255,255,255,.55);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border:1px solid transparent;border-radius:22px;box-shadow:0 8px 32px rgba(14,14,16,.08),inset 0 1px 0 rgba(255,255,255,.6);transition:background .3s,box-shadow .3s,border-color .3s,top .4s ease;}
+nav.site{position:fixed;top:14px;left:calc(14px + env(safe-area-inset-left, 0px));right:calc(14px + env(safe-area-inset-right, 0px));z-index:300;height:72px;display:flex;align-items:center;background:rgba(255,255,255,.55);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border:1px solid rgba(204,163,0,.3);border-radius:22px;box-shadow:0 8px 32px rgba(14,14,16,.08),inset 0 1px 0 rgba(255,255,255,.6);transition:background .3s,box-shadow .3s,border-color .3s,top .4s ease;}
 nav.site.scrolled{background:rgba(255,255,255,.75);box-shadow:0 12px 40px rgba(14,14,16,.12),inset 0 1px 0 rgba(255,255,255,.7);}
-nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;padding:1.5px;background:conic-gradient(from var(--na,0deg),rgba(204,163,0,.35),var(--gold) 30%,var(--gold-light) 50%,var(--gold) 70%,rgba(204,163,0,.35) 100%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:navOrbit 4s linear infinite;pointer-events:none;}
-@keyframes navOrbit{to{--na:360deg;}}
-@property --na{syntax:'<angle>';inherits:false;initial-value:0deg;}
 .nav-inner{max-width:1180px;margin:0 auto;padding:0 26px;width:100%;display:flex;align-items:center;justify-content:space-between;}
 .nav-right{display:flex;align-items:center;gap:.5rem;order:5;}
 @media(max-width:640px){
   nav.site{top:10px;left:10px;right:10px;height:64px;border-radius:18px;}
-  /* Rotierender Rand ist auf mobilen Geräten (echtes iOS Safari) beim Scrollen
-     sichtbar ruckelig — deaktiviert. Blur bewusst leichter (8px statt 20px) und
-     mit höherer Deckkraft, um GPU-Last zu senken, aber Transparenz zu behalten. */
   nav.site,nav.site.scrolled{background:rgba(255,255,255,.82);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);}
-  nav.site::before{display:none;}
 }
 .brand{display:flex;align-items:center;gap:.6rem;order:1;}
 .brand-logo{height:26px;width:auto;display:block;}
@@ -230,20 +223,13 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
 @keyframes haloPulse{0%,100%{opacity:.85;transform:translate(-50%,-50%) scale(1);}50%{opacity:1;transform:translate(-50%,-50%) scale(1.035);}}
 .node-label{position:absolute;transform:translate(-50%,-50%);z-index:1;display:flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:50%;background:rgba(255,218,71,.08);border:1px solid rgba(255,218,71,.18);}
 .node-label svg{color:var(--gold-light);flex-shrink:0;width:26px;height:26px;}
-.hub-pill{position:absolute;left:52%;top:2%;right:auto;transform:translateX(-50%);width:128px;height:48px;border-radius:100px;background:#000000;border:1px solid var(--line-on-ink);display:flex;align-items:center;justify-content:center;box-shadow:0 20px 50px rgba(0,0,0,.4);}
-.hub-pill::before{content:'';position:absolute;inset:-1px;border-radius:100px;padding:1px;background:conic-gradient(from var(--a,0deg),transparent 0 60%,var(--gold-light),transparent 75%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:hubSpin 4s linear infinite;}
-@keyframes hubSpin{to{--a:360deg;}}
 @media(max-width:640px){
   /* Kreis war auf schmalen Screens mit fixer Mindesthöhe (340px) unproportional
      groß und wirkte leer — deutlich verkleinert. */
   .beams-wrap{height:clamp(220px,64vw,300px);}
   .node-label{width:40px;height:40px;}
   .node-label svg{width:20px;height:20px;}
-  .hub-pill{width:100px;height:38px;}
-  .hub-pill span{font-size:.85rem;}
 }
-@property --a{syntax:'<angle>';inherits:false;initial-value:0deg;}
-.hub-pill span{position:relative;font-family:"Iowan Old Style",Georgia,serif;font-style:italic;font-size:1rem;background:linear-gradient(90deg,#fff,var(--gold-light));-webkit-background-clip:text;background-clip:text;color:transparent;}
 .hero .lead{max-width:600px;margin:1.5rem 0 2.3rem;}
 .hero-cta{display:flex;gap:.7rem;flex-wrap:wrap;margin-bottom:2rem;}
 .hero-cta .btn{padding:.78rem 1.4rem;font-size:.82rem;}
@@ -502,8 +488,8 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
 
 <div class="announce" id="announceBar">
   <span class="announce-dot"></span>
-  <span class="announce-text">Aktuell nehmen wir neue Kunden auf &mdash; kostenloses Erstgespräch</span>
-  <a class="announce-link" href="https://calendar.app.google/LK3hdLKQ6pLztv4b8" target="_blank" rel="noopener">jetzt sichern</a>
+  <span class="announce-text" data-i18n="leg.announce.text">Aktuell nehmen wir neue Kunden auf &mdash; kostenloses Erstgespräch</span>
+  <a class="announce-link" data-i18n="leg.announce.cta" href="https://calendar.app.google/LK3hdLKQ6pLztv4b8" target="_blank" rel="noopener">jetzt sichern</a>
   <button class="announce-close" id="announceClose" aria-label="Schließen">
     <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
   </button>
@@ -516,42 +502,52 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
       <span class="brand-tagline">AIO – ALL IN ONE</span>
     </a>
     <div class="nav-links">
-      <a href="kundenportal.html">Kundenportal</a>
-      <a href="index.html#voice">Voice Agents</a>
-      <a href="social-media-agent.html">Social Media Agent</a>
-      <a href="index.html#stimmen">Referenzen</a>
+      <a href="kundenportal.html" data-i18n="leg.nav.portal">Kundenportal</a>
+      <a href="index.html#voice" data-i18n="leg.nav.voice">Voice Agents</a>
+      <a href="social-media-agent.html" data-i18n="leg.nav.social">Social Media Agent</a>
+      <a href="index.html#stimmen" data-i18n="leg.nav.refs">Referenzen</a>
     </div>
     <div class="nav-right">
       <a href="index.html#pricing" class="btn btn-gold btn-phone">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-        <span class="cta-full">Voice Agent<br>testen</span>
-        <span class="cta-short">Voice Agent</span>
+        <span class="cta-full" data-i18n="leg.nav.cta">Voice Agent<br>testen</span>
+        <span class="cta-short" data-i18n="leg.nav.cta.mobile">Voice Agent</span>
       </a>
+      <div class="lang-switch" id="langSwitch" role="group" aria-label="Sprache wählen">
+        <button type="button" class="lang-btn active" data-lang="de">DE</button>
+        <button type="button" class="lang-btn" data-lang="en">EN</button>
+        <button type="button" class="lang-btn" data-lang="ar">AR</button>
+      </div>
       <button type="button" class="nav-burger" id="navBurger" aria-expanded="false" aria-controls="mobileMenu" aria-label="Menü öffnen">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
       </button>
     </div>
   </div>
   <div class="mobile-menu" id="mobileMenu">
-    <a href="kundenportal.html">Kundenportal</a>
-    <a href="index.html#voice">Voice Agents</a>
-    <a href="social-media-agent.html">Social Media Agent</a>
-    <a href="index.html#stimmen">Referenzen</a>
-    <a href="index.html#pricing" class="btn btn-gold mobile-menu-cta">Voice Agent</a>
+    <a href="kundenportal.html" data-i18n="leg.nav.portal">Kundenportal</a>
+    <a href="index.html#voice" data-i18n="leg.nav.voice">Voice Agents</a>
+    <a href="social-media-agent.html" data-i18n="leg.nav.social">Social Media Agent</a>
+    <a href="index.html#stimmen" data-i18n="leg.nav.refs">Referenzen</a>
+    <a href="index.html#pricing" class="btn btn-gold mobile-menu-cta" data-i18n="leg.nav.cta.mobile">Voice Agent</a>
+    <div class="lang-switch mobile-menu-lang" role="group" aria-label="Sprache wählen">
+      <button type="button" class="lang-btn active" data-lang="de">DE</button>
+      <button type="button" class="lang-btn" data-lang="en">EN</button>
+      <button type="button" class="lang-btn" data-lang="ar">AR</button>
+    </div>
   </div>
 </nav>
 
 
 <div class="content" id="content">
-  
+
   <header class="legal-hero" id="top">
     <div class="legal-wrap">
-      <div class="eyebrow reveal" style="color:var(--gold-light);">Rechtliche Informationen</div>
-      <h1 class="h-lg serif reveal">Widerrufsrecht</h1>
-      <p class="lead reveal" style="color:var(--muted-on-ink);">Widerrufsbelehrung für Verbraucher.</p>
+      <div class="eyebrow reveal" style="color:var(--gold-light);" data-i18n="wid.eyebrow">Rechtliche Informationen</div>
+      <h1 class="h-lg serif reveal" data-i18n="wid.h1">Widerrufsrecht</h1>
+      <p class="lead reveal" style="color:var(--muted-on-ink);" data-i18n="wid.lead">Widerrufsbelehrung für Verbraucher.</p>
       <a href="index.html" class="legal-back reveal">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-        Zurück zur Startseite
+        <span data-i18n="leg.back">Zurück zur Startseite</span>
       </a>
     </div>
   </header>
@@ -559,63 +555,63 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
   <section class="legal-body">
     <div class="legal-wrap">
 
-      <h2 class="reveal">Widerrufsrecht</h2>
-      <p class="reveal">Wenn Sie Verbraucher sind, haben Sie das Recht, binnen 14 Tagen ohne Angabe von Gründen diesen Vertrag zu widerrufen.</p>
-      <p class="reveal">Verbraucher ist jede natürliche Person, die ein Rechtsgeschäft zu Zwecken abschließt, die überwiegend weder ihrer gewerblichen noch ihrer selbstständigen beruflichen Tätigkeit zugerechnet werden können.</p>
-      <p class="reveal">Die Widerrufsfrist beträgt 14 Tage ab dem Tag des Vertragsschlusses.</p>
-      <p class="reveal">Um Ihr Widerrufsrecht auszuüben, müssen Sie uns mittels einer eindeutigen Erklärung über Ihren Entschluss informieren, diesen Vertrag zu widerrufen. Bitte richten Sie den Widerruf an:</p>
+      <h2 class="reveal" data-i18n="wid.s1.h">Widerrufsrecht</h2>
+      <p class="reveal" data-i18n="wid.s1.p1">Wenn Sie Verbraucher sind, haben Sie das Recht, binnen 14 Tagen ohne Angabe von Gründen diesen Vertrag zu widerrufen.</p>
+      <p class="reveal" data-i18n="wid.s1.p2">Verbraucher ist jede natürliche Person, die ein Rechtsgeschäft zu Zwecken abschließt, die überwiegend weder ihrer gewerblichen noch ihrer selbstständigen beruflichen Tätigkeit zugerechnet werden können.</p>
+      <p class="reveal" data-i18n="wid.s1.p3">Die Widerrufsfrist beträgt 14 Tage ab dem Tag des Vertragsschlusses.</p>
+      <p class="reveal" data-i18n="wid.s1.p4">Um Ihr Widerrufsrecht auszuüben, müssen Sie uns mittels einer eindeutigen Erklärung über Ihren Entschluss informieren, diesen Vertrag zu widerrufen. Bitte richten Sie den Widerruf an:</p>
 
       <div class="legal-address reveal">
         <p><strong>AIDEN.AE</strong> · Dr. Irena Schindler<br>
         Dubai Branch Building, Al Mankhool Area, Bur Dubai<br>
         Makani No.: 28511194466, Dubai, United Arab Emirates<br>
-        E-Mail: <a href="mailto:info@aiden.ae">info@aiden.ae</a> · Telefon: <a href="tel:+971561155278">+971 56 115 5278</a></p>
+        <span data-i18n="wid.contact.email">E-Mail</span>: <a href="mailto:info@aiden.ae">info@aiden.ae</a> · <span data-i18n="wid.contact.phone">Telefon</span>: <a href="tel:+971561155278">+971 56 115 5278</a></p>
       </div>
 
-      <p class="reveal">Sie können dafür das untenstehende Muster-Widerrufsformular verwenden. Die Nutzung dieses Formulars ist jedoch nicht vorgeschrieben.</p>
-      <p class="reveal">Zur Wahrung der Widerrufsfrist reicht es aus, dass Sie die Mitteilung über die Ausübung Ihres Widerrufsrechts vor Ablauf der Widerrufsfrist absenden.</p>
+      <p class="reveal" data-i18n="wid.s1.p5">Sie können dafür das untenstehende Muster-Widerrufsformular verwenden. Die Nutzung dieses Formulars ist jedoch nicht vorgeschrieben.</p>
+      <p class="reveal" data-i18n="wid.s1.p6">Zur Wahrung der Widerrufsfrist reicht es aus, dass Sie die Mitteilung über die Ausübung Ihres Widerrufsrechts vor Ablauf der Widerrufsfrist absenden.</p>
 
-      <h2 class="reveal">Folgen des Widerrufs</h2>
-      <p class="reveal">Wenn Sie diesen Vertrag widerrufen, erstatten wir Ihnen alle Zahlungen, die wir von Ihnen erhalten haben, spätestens binnen 14 Tagen ab dem Tag, an dem die Mitteilung über Ihren Widerruf bei uns eingegangen ist.</p>
-      <p class="reveal">Für die Rückzahlung verwenden wir dasselbe Zahlungsmittel, das Sie bei der ursprünglichen Transaktion eingesetzt haben, es sei denn, mit Ihnen wurde ausdrücklich etwas anderes vereinbart. In keinem Fall werden Ihnen wegen dieser Rückzahlung zusätzliche Entgelte berechnet.</p>
+      <h2 class="reveal" data-i18n="wid.s2.h">Folgen des Widerrufs</h2>
+      <p class="reveal" data-i18n="wid.s2.p1">Wenn Sie diesen Vertrag widerrufen, erstatten wir Ihnen alle Zahlungen, die wir von Ihnen erhalten haben, spätestens binnen 14 Tagen ab dem Tag, an dem die Mitteilung über Ihren Widerruf bei uns eingegangen ist.</p>
+      <p class="reveal" data-i18n="wid.s2.p2">Für die Rückzahlung verwenden wir dasselbe Zahlungsmittel, das Sie bei der ursprünglichen Transaktion eingesetzt haben, es sei denn, mit Ihnen wurde ausdrücklich etwas anderes vereinbart. In keinem Fall werden Ihnen wegen dieser Rückzahlung zusätzliche Entgelte berechnet.</p>
 
-      <h2 class="reveal">Beginn der Leistung vor Ablauf der Widerrufsfrist</h2>
-      <p class="reveal">Wenn Sie ausdrücklich verlangen, dass wir bereits während der Widerrufsfrist mit der Einrichtung, Bereitstellung oder Ausführung unserer digitalen Dienstleistung beginnen, können wir mit der Leistung vor Ablauf der 14-tägigen Widerrufsfrist starten.</p>
-      <p class="reveal">Haben Sie verlangt, dass die Dienstleistung während der Widerrufsfrist beginnen soll, so haben Sie uns im Falle eines Widerrufs einen angemessenen Betrag zu zahlen. Dieser Betrag entspricht dem Anteil der bis zu dem Zeitpunkt, zu dem Sie uns über die Ausübung des Widerrufsrechts informieren, bereits erbrachten Leistungen im Vergleich zum Gesamtumfang der vertraglich vereinbarten Leistungen.</p>
+      <h2 class="reveal" data-i18n="wid.s3.h">Beginn der Leistung vor Ablauf der Widerrufsfrist</h2>
+      <p class="reveal" data-i18n="wid.s3.p1">Wenn Sie ausdrücklich verlangen, dass wir bereits während der Widerrufsfrist mit der Einrichtung, Bereitstellung oder Ausführung unserer digitalen Dienstleistung beginnen, können wir mit der Leistung vor Ablauf der 14-tägigen Widerrufsfrist starten.</p>
+      <p class="reveal" data-i18n="wid.s3.p2">Haben Sie verlangt, dass die Dienstleistung während der Widerrufsfrist beginnen soll, so haben Sie uns im Falle eines Widerrufs einen angemessenen Betrag zu zahlen. Dieser Betrag entspricht dem Anteil der bis zu dem Zeitpunkt, zu dem Sie uns über die Ausübung des Widerrufsrechts informieren, bereits erbrachten Leistungen im Vergleich zum Gesamtumfang der vertraglich vereinbarten Leistungen.</p>
 
-      <h2 class="reveal">Vorzeitiges Erlöschen des Widerrufsrechts</h2>
-      <p class="reveal">Bei digitalen Dienstleistungen oder digitalen Inhalten kann das Widerrufsrecht vorzeitig erlöschen, wenn:</p>
+      <h2 class="reveal" data-i18n="wid.s4.h">Vorzeitiges Erlöschen des Widerrufsrechts</h2>
+      <p class="reveal" data-i18n="wid.s4.p1">Bei digitalen Dienstleistungen oder digitalen Inhalten kann das Widerrufsrecht vorzeitig erlöschen, wenn:</p>
       <ul class="reveal">
-        <li>Sie ausdrücklich zugestimmt haben, dass AIDEN vor Ablauf der Widerrufsfrist mit der Ausführung des Vertrags beginnt,</li>
-        <li>Sie bestätigt haben, dass Sie wissen, dass Sie durch diese Zustimmung mit Beginn der Vertragsausführung Ihr Widerrufsrecht verlieren können, und</li>
-        <li>AIDEN Ihnen eine entsprechende Bestätigung auf einem dauerhaften Datenträger zur Verfügung gestellt hat, soweit dies gesetzlich erforderlich ist.</li>
+        <li data-i18n="wid.s4.l1">Sie ausdrücklich zugestimmt haben, dass AIDEN vor Ablauf der Widerrufsfrist mit der Ausführung des Vertrags beginnt,</li>
+        <li data-i18n="wid.s4.l2">Sie bestätigt haben, dass Sie wissen, dass Sie durch diese Zustimmung mit Beginn der Vertragsausführung Ihr Widerrufsrecht verlieren können, und</li>
+        <li data-i18n="wid.s4.l3">AIDEN Ihnen eine entsprechende Bestätigung auf einem dauerhaften Datenträger zur Verfügung gestellt hat, soweit dies gesetzlich erforderlich ist.</li>
       </ul>
-      <p class="reveal">Dies betrifft insbesondere individuell eingerichtete KI-Agenten, aktivierte digitale Dienste, sofort nutzbare Softwareleistungen, angebundene Voice Agents, Social Media Agents, Automatisierungen oder andere digitale Leistungen, deren Ausführung auf Ihren Wunsch sofort beginnt.</p>
+      <p class="reveal" data-i18n="wid.s4.p2">Dies betrifft insbesondere individuell eingerichtete KI-Agenten, aktivierte digitale Dienste, sofort nutzbare Softwareleistungen, angebundene Voice Agents, Social Media Agents, Automatisierungen oder andere digitale Leistungen, deren Ausführung auf Ihren Wunsch sofort beginnt.</p>
 
-      <h2 class="reveal">Kein gesetzliches Widerrufsrecht für Unternehmer</h2>
-      <p class="reveal">Das gesetzliche Widerrufsrecht gilt grundsätzlich nur für Verbraucher. Wenn Sie als Unternehmer, Selbstständiger, Freiberufler, Praxis, Agentur, Organisation oder gewerblicher Kunde handeln, besteht kein gesetzliches Widerrufsrecht, sofern nicht ausdrücklich etwas anderes vereinbart wurde.</p>
-      <p class="reveal">Für Geschäftskunden gelten die im jeweiligen Angebot, Tarif, Vertrag oder in den <a href="agb.html">AGB</a> vereinbarten Laufzeiten, Kündigungsfristen und Zahlungsbedingungen.</p>
+      <h2 class="reveal" data-i18n="wid.s5.h">Kein gesetzliches Widerrufsrecht für Unternehmer</h2>
+      <p class="reveal" data-i18n="wid.s5.p1">Das gesetzliche Widerrufsrecht gilt grundsätzlich nur für Verbraucher. Wenn Sie als Unternehmer, Selbstständiger, Freiberufler, Praxis, Agentur, Organisation oder gewerblicher Kunde handeln, besteht kein gesetzliches Widerrufsrecht, sofern nicht ausdrücklich etwas anderes vereinbart wurde.</p>
+      <p class="reveal" data-i18n="wid.s5.p2">Für Geschäftskunden gelten die im jeweiligen Angebot, Tarif, Vertrag oder in den <a href="agb.html">AGB</a> vereinbarten Laufzeiten, Kündigungsfristen und Zahlungsbedingungen.</p>
 
-      <h2 class="reveal">Muster-Widerrufsformular</h2>
-      <p class="reveal">Wenn Sie den Vertrag widerrufen möchten, können Sie dieses Formular ausfüllen und per E-Mail an <a href="mailto:info@aiden.ae">info@aiden.ae</a> senden.</p>
+      <h2 class="reveal" data-i18n="wid.s6.h">Muster-Widerrufsformular</h2>
+      <p class="reveal" data-i18n="wid.s6.p1">Wenn Sie den Vertrag widerrufen möchten, können Sie dieses Formular ausfüllen und per E-Mail an <a href="mailto:info@aiden.ae">info@aiden.ae</a> senden.</p>
 
       <div class="legal-address reveal">
-        <p><strong>An:</strong><br>
+        <p><strong data-i18n="wid.s6.to">An:</strong><br>
         AIDEN.AE · Dr. Irena Schindler<br>
         Dubai Branch Building, Al Mankhool Area, Bur Dubai<br>
         Makani No.: 28511194466, Dubai, United Arab Emirates<br>
-        E-Mail: <a href="mailto:info@aiden.ae">info@aiden.ae</a></p>
+        <span data-i18n="wid.contact.email">E-Mail</span>: <a href="mailto:info@aiden.ae">info@aiden.ae</a></p>
       </div>
 
-      <p class="reveal">Hiermit widerrufe ich den von mir abgeschlossenen Vertrag über die folgende Dienstleistung:</p>
+      <p class="reveal" data-i18n="wid.s6.p2">Hiermit widerrufe ich den von mir abgeschlossenen Vertrag über die folgende Dienstleistung:</p>
       <ul class="reveal">
-        <li>Bestellt am: _______________</li>
-        <li>Name des Kunden: _______________</li>
-        <li>Adresse des Kunden: _______________</li>
-        <li>E-Mail-Adresse des Kunden: _______________</li>
-        <li>Datum: _______________</li>
+        <li><span data-i18n="wid.s6.f1">Bestellt am</span>: _______________</li>
+        <li><span data-i18n="wid.s6.f2">Name des Kunden</span>: _______________</li>
+        <li><span data-i18n="wid.s6.f3">Adresse des Kunden</span>: _______________</li>
+        <li><span data-i18n="wid.s6.f4">E-Mail-Adresse des Kunden</span>: _______________</li>
+        <li><span data-i18n="wid.s6.f5">Datum</span>: _______________</li>
       </ul>
-      <p class="reveal">Unterschrift des Kunden, nur bei Mitteilung auf Papier.</p>
+      <p class="reveal" data-i18n="wid.s6.p3">Unterschrift des Kunden, nur bei Mitteilung auf Papier.</p>
 
     </div>
   </section>
@@ -632,33 +628,33 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
         <span class="cf-brand-tagline">AIO – ALL IN ONE</span>
       </div>
       <p class="cf-legal-name">Artificial Intelligence Developing Services LLC</p>
-      <p class="cf-tag">KI-Agenten, die Ihr Unternehmen wirklich entlasten — Voice Agent, Social Media Agent und individuelle KI-Automatisierung.</p>
+      <p class="cf-tag" data-i18n="leg.footer.tag">KI-Agenten, die Ihr Unternehmen wirklich entlasten — Voice Agent, Social Media Agent und individuelle KI-Automatisierung.</p>
     </div>
     <div class="cf-cols">
       <div class="cf-col">
-        <h5>Produkte</h5>
-        <a href="index.html#voice">Voice Agent</a>
-        <a href="social-media-agent.html">Social Media Agent</a>
-        <a href="index.html#pricing">Preise</a>
+        <h5 data-i18n="leg.footer.col1.h">Produkte</h5>
+        <a href="index.html#voice" data-i18n="leg.footer.voice">Voice Agent</a>
+        <a href="social-media-agent.html" data-i18n="leg.footer.social">Social Media Agent</a>
+        <a href="index.html#pricing" data-i18n="leg.footer.pricing">Preise</a>
       </div>
       <div class="cf-col">
-        <h5>Unternehmen</h5>
-        <a href="index.html#ueber-uns">Über uns</a>
-        <a href="index.html#stimmen">Kunden</a>
-        <a href="index.html#kontakt">Kontakt</a>
+        <h5 data-i18n="leg.footer.col2.h">Unternehmen</h5>
+        <a href="index.html#ueber-uns" data-i18n="leg.footer.about">Über uns</a>
+        <a href="index.html#stimmen" data-i18n="leg.footer.customers">Kunden</a>
+        <a href="index.html#kontakt" data-i18n="leg.footer.contact">Kontakt</a>
       </div>
       <div class="cf-col">
-        <h5>Rechtliches</h5>
-        <a href="impressum.html">Impressum</a>
-        <a href="datenschutz.html">Datenschutz</a>
-        <a href="agb.html">AGB</a>
-        <a href="widerrufsrecht.html">Widerrufsrecht</a>
+        <h5 data-i18n="leg.footer.col3.h">Rechtliches</h5>
+        <a href="impressum.html" data-i18n="leg.footer.imprint">Impressum</a>
+        <a href="datenschutz.html" data-i18n="leg.footer.privacy">Datenschutz</a>
+        <a href="agb.html" data-i18n="leg.footer.terms">AGB</a>
+        <a href="widerrufsrecht.html" data-i18n="leg.footer.withdrawal">Widerrufsrecht</a>
       </div>
     </div>
   </div>
   <div class="cf-word">AIDEN</div>
   <div class="cf-bottom">
-    <p>© 2026 AIDEN. Alle Rechte vorbehalten.</p>
+    <p data-i18n="leg.footer.copyright">© 2026 AIDEN. Alle Rechte vorbehalten.</p>
     <div style="display:flex;gap:18px;">
       <a href="mailto:info@aiden.ae">info@aiden.ae</a>
       <a href="tel:+971561155278">+971 56 115 5278</a>
@@ -942,6 +938,46 @@ document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
   });
 })();
 
+
+// Language switcher — German (default, from HTML) <-> English/Arabic (from dictionary)
+(function(){
+const AIDEN_WID_I18N_EN = {"leg.announce.text": "Currently accepting new clients &mdash; free first consultation", "leg.announce.cta": "book now", "leg.nav.portal": "Customer Portal", "leg.nav.voice": "Voice Agents", "leg.nav.social": "Social Media Agent", "leg.nav.refs": "References", "leg.nav.cta": "Voice Agent<br>test now", "leg.nav.cta.mobile": "Voice Agent", "leg.back": "Back to homepage", "leg.footer.tag": "AI agents that truly take work off your hands — Voice Agent, Social Media Agent and custom AI automation.", "leg.footer.col1.h": "Products", "leg.footer.voice": "Voice Agent", "leg.footer.social": "Social Media Agent", "leg.footer.pricing": "Pricing", "leg.footer.col2.h": "Company", "leg.footer.about": "About us", "leg.footer.customers": "Customers", "leg.footer.contact": "Contact", "leg.footer.col3.h": "Legal", "leg.footer.imprint": "Imprint", "leg.footer.privacy": "Privacy Policy", "leg.footer.terms": "Terms", "leg.footer.withdrawal": "Right of Withdrawal", "leg.footer.copyright": "&copy; 2026 AIDEN. All rights reserved.", "wid.eyebrow": "Legal Information", "wid.h1": "Right of Withdrawal", "wid.lead": "Withdrawal instructions for consumers.", "wid.s1.h": "Right of Withdrawal", "wid.s1.p1": "If you are a consumer, you have the right to withdraw from this contract within 14 days without giving any reason.", "wid.s1.p2": "A consumer is any natural person who enters into a legal transaction for purposes that are predominantly outside their trade, business, or profession.", "wid.s1.p3": "The withdrawal period is 14 days from the day the contract was concluded.", "wid.s1.p4": "To exercise your right of withdrawal, you must inform us of your decision to withdraw from this contract by means of a clear statement. Please send the withdrawal notice to:", "wid.s1.p5": "You may use the sample withdrawal form below for this purpose, although its use is not mandatory.", "wid.s1.p6": "To meet the withdrawal deadline, it is sufficient for you to send your notice of withdrawal before the withdrawal period expires.", "wid.s2.h": "Effects of Withdrawal", "wid.s2.p1": "If you withdraw from this contract, we will reimburse all payments we have received from you no later than 14 days from the day on which we received notice of your withdrawal.", "wid.s2.p2": "For this reimbursement, we will use the same means of payment you used for the original transaction, unless expressly agreed otherwise with you. Under no circumstances will you be charged any fees for this reimbursement.", "wid.s3.h": "Commencement of Performance Before the End of the Withdrawal Period", "wid.s3.p1": "If you expressly request that we begin setting up, providing, or performing our digital service already during the withdrawal period, we may begin performance before the 14-day withdrawal period expires.", "wid.s3.p2": "If you have requested that the service begin during the withdrawal period, you must pay us a reasonable amount in the event of withdrawal. This amount corresponds to the proportion of services already provided up to the point at which you inform us of the exercise of the right of withdrawal, compared to the total scope of the services agreed in the contract.", "wid.s4.h": "Early Expiry of the Right of Withdrawal", "wid.s4.p1": "For digital services or digital content, the right of withdrawal may expire early if:", "wid.s4.l1": "you have expressly agreed that AIDEN begins performance of the contract before the withdrawal period expires,", "wid.s4.l2": "you have confirmed that you are aware that, by giving this consent, you lose your right of withdrawal once performance of the contract begins, and", "wid.s4.l3": "AIDEN has provided you with a corresponding confirmation on a durable medium, insofar as this is legally required.", "wid.s4.p2": "This applies in particular to individually configured AI agents, activated digital services, immediately usable software services, connected Voice Agents, Social Media Agents, automations, or other digital services whose performance begins immediately at your request.", "wid.s5.h": "No Statutory Right of Withdrawal for Business Customers", "wid.s5.p1": "The statutory right of withdrawal generally applies only to consumers. If you act as an entrepreneur, self-employed person, freelancer, practice, agency, organization, or business customer, no statutory right of withdrawal exists unless expressly agreed otherwise.", "wid.s5.p2": "For business customers, the terms, cancellation periods, and payment conditions agreed in the respective offer, plan, contract, or in the <a href=\"agb.html\">Terms and Conditions</a> apply.", "wid.s6.h": "Sample Withdrawal Form", "wid.s6.p1": "If you wish to withdraw from the contract, you may complete this form and send it by email to <a href=\"mailto:info@aiden.ae\">info@aiden.ae</a>.", "wid.s6.to": "To:", "wid.s6.p2": "I/we hereby give notice that I/we withdraw from my/our contract for the provision of the following service:", "wid.s6.f1": "Ordered on", "wid.s6.f2": "Name of customer", "wid.s6.f3": "Address of customer", "wid.s6.f4": "Email address of customer", "wid.s6.f5": "Date", "wid.s6.p3": "Signature of customer, only in the case of notification on paper.", "wid.contact.email": "Email", "wid.contact.phone": "Phone"};
+
+const AIDEN_WID_I18N_AR = {"leg.announce.text": "نستقبل حاليًا عملاء جدد &mdash; استشارة أولى مجانية", "leg.announce.cta": "احجز الآن", "leg.nav.portal": "بوابة العملاء", "leg.nav.voice": "الوكلاء الصوتيون", "leg.nav.social": "وكيل وسائل التواصل الاجتماعي", "leg.nav.refs": "آراء العملاء", "leg.nav.cta": "جرّب<br>الوكيل الصوتي", "leg.nav.cta.mobile": "الوكيل الصوتي", "leg.back": "العودة إلى الصفحة الرئيسية", "leg.footer.tag": "وكلاء ذكاء اصطناعي يخففون العبء عن عملك فعليًا — الوكيل الصوتي، وكيل وسائل التواصل الاجتماعي وأتمتة ذكاء اصطناعي مخصصة.", "leg.footer.col1.h": "المنتجات", "leg.footer.voice": "الوكيل الصوتي", "leg.footer.social": "وكيل وسائل التواصل الاجتماعي", "leg.footer.pricing": "الأسعار", "leg.footer.col2.h": "الشركة", "leg.footer.about": "من نحن", "leg.footer.customers": "العملاء", "leg.footer.contact": "تواصل معنا", "leg.footer.col3.h": "قانوني", "leg.footer.imprint": "بيانات الناشر", "leg.footer.privacy": "سياسة الخصوصية", "leg.footer.terms": "الشروط والأحكام", "leg.footer.withdrawal": "حق الانسحاب", "leg.footer.copyright": "&copy; 2026 AIDEN. جميع الحقوق محفوظة.", "wid.eyebrow": "معلومات قانونية", "wid.h1": "حق الانسحاب", "wid.lead": "تعليمات الانسحاب للمستهلكين.", "wid.s1.h": "حق الانسحاب", "wid.s1.p1": "إذا كنت مستهلكًا، يحق لك الانسحاب من هذا العقد خلال 14 يومًا دون إبداء أي أسباب.", "wid.s1.p2": "المستهلك هو أي شخص طبيعي يبرم تصرفًا قانونيًا لأغراض لا تندرج بشكل أساسي ضمن نشاطه التجاري أو المهني المستقل.", "wid.s1.p3": "تبلغ مدة الانسحاب 14 يومًا اعتبارًا من يوم إبرام العقد.", "wid.s1.p4": "لممارسة حقك في الانسحاب، يجب عليك إبلاغنا بقرارك الانسحاب من هذا العقد من خلال تصريح واضح. يُرجى إرسال إشعار الانسحاب إلى:", "wid.s1.p5": "يمكنك استخدام نموذج الانسحاب النموذجي أدناه لهذا الغرض، إلا أن استخدامه ليس إلزاميًا.", "wid.s1.p6": "للحفاظ على مهلة الانسحاب، يكفي إرسال إشعار ممارسة حقك في الانسحاب قبل انتهاء مهلة الانسحاب.", "wid.s2.h": "نتائج الانسحاب", "wid.s2.p1": "إذا انسحبت من هذا العقد، فسنعيد إليك جميع المدفوعات التي تلقيناها منك في موعد أقصاه 14 يومًا من اليوم الذي وصلنا فيه إشعار انسحابك.", "wid.s2.p2": "لهذا السداد، سنستخدم وسيلة الدفع نفسها التي استخدمتها في المعاملة الأصلية، ما لم يُتفق معك صراحةً على خلاف ذلك. لن يتم بأي حال من الأحوال تحصيل أي رسوم إضافية منك بسبب هذا السداد.", "wid.s3.h": "بدء تنفيذ الخدمة قبل انتهاء مهلة الانسحاب", "wid.s3.p1": "إذا طلبت صراحةً أن نبدأ بالفعل خلال مهلة الانسحاب في إعداد أو توفير أو تنفيذ خدمتنا الرقمية، فيجوز لنا بدء التنفيذ قبل انتهاء مهلة الانسحاب البالغة 14 يومًا.", "wid.s3.p2": "إذا طلبت أن تبدأ الخدمة خلال مهلة الانسحاب، فعليك أن تدفع لنا في حال الانسحاب مبلغًا مناسبًا. يتوافق هذا المبلغ مع نسبة الخدمات التي تم تقديمها بالفعل حتى اللحظة التي تُبلغنا فيها بممارسة حق الانسحاب، مقارنةً بالنطاق الكامل للخدمات المتفق عليها تعاقديًا.", "wid.s4.h": "الانتهاء المبكر لحق الانسحاب", "wid.s4.p1": "بالنسبة للخدمات الرقمية أو المحتوى الرقمي، يجوز أن ينتهي حق الانسحاب مبكرًا إذا:", "wid.s4.l1": "وافقت صراحةً على أن تبدأ AIDEN في تنفيذ العقد قبل انتهاء مهلة الانسحاب،", "wid.s4.l2": "أكدت أنك تدرك أنك بهذه الموافقة تفقد حقك في الانسحاب بمجرد بدء تنفيذ العقد، و", "wid.s4.l3": "قدمت لك AIDEN تأكيدًا مقابلًا على وسيط دائم، بقدر ما يقتضيه القانون.", "wid.s4.p2": "ينطبق هذا بشكل خاص على وكلاء الذكاء الاصطناعي المُهيّئين بشكل فردي، والخدمات الرقمية المُفعّلة، وخدمات البرمجيات الجاهزة للاستخدام الفوري، والوكلاء الصوتيين ووكلاء وسائل التواصل الاجتماعي المتصلين، والأتمتة، أو الخدمات الرقمية الأخرى التي يبدأ تنفيذها فورًا بناءً على طلبك.", "wid.s5.h": "لا يوجد حق قانوني في الانسحاب لعملاء الأعمال", "wid.s5.p1": "ينطبق حق الانسحاب القانوني بشكل عام على المستهلكين فقط. إذا كنت تتصرف كصاحب عمل أو مستقل أو صاحب مهنة حرة أو عيادة أو وكالة أو منظمة أو عميل تجاري، فلا يوجد حق قانوني في الانسحاب ما لم يُتفق صراحةً على خلاف ذلك.", "wid.s5.p2": "بالنسبة لعملاء الأعمال، تسري مدد العقد ومهل الإلغاء وشروط الدفع المتفق عليها في العرض أو الخطة أو العقد المعني أو في <a href=\"agb.html\">الشروط والأحكام</a>.", "wid.s6.h": "نموذج الانسحاب النموذجي", "wid.s6.p1": "إذا كنت ترغب في الانسحاب من العقد، يمكنك تعبئة هذا النموذج وإرساله عبر البريد الإلكتروني إلى <a href=\"mailto:info@aiden.ae\">info@aiden.ae</a>.", "wid.s6.to": "إلى:", "wid.s6.p2": "أُعلن بموجب هذا انسحابي من العقد الذي أبرمته بشأن الخدمة التالية:", "wid.s6.f1": "تاريخ الطلب", "wid.s6.f2": "اسم العميل", "wid.s6.f3": "عنوان العميل", "wid.s6.f4": "البريد الإلكتروني للعميل", "wid.s6.f5": "التاريخ", "wid.s6.p3": "توقيع العميل، فقط في حال الإشعار الورقي.", "wid.contact.email": "البريد الإلكتروني", "wid.contact.phone": "الهاتف"};
+
+  const els = document.querySelectorAll('[data-i18n]');
+  const originalDE = new Map();
+  els.forEach(el => originalDE.set(el, el.innerHTML));
+
+  const DICTS = { en: AIDEN_WID_I18N_EN, ar: AIDEN_WID_I18N_AR };
+
+  function applyLanguage(lang){
+    const dict = DICTS[lang];
+    els.forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if(dict && dict[key] !== undefined){
+        el.innerHTML = dict[key];
+      } else {
+        el.innerHTML = originalDE.get(el);
+      }
+    });
+    document.documentElement.lang = lang;
+    document.body.classList.toggle('is-rtl', lang === 'ar');
+    document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+    try { localStorage.setItem('aiden-lang', lang); } catch(e){}
+  }
+
+  document.querySelectorAll('.lang-btn').forEach(btn=>{
+    btn.addEventListener('click', ()=> applyLanguage(btn.dataset.lang));
+  });
+
+  let initial = 'de';
+  try {
+    const saved = localStorage.getItem('aiden-lang');
+    if(saved === 'en' || saved === 'de' || saved === 'ar') initial = saved;
+  } catch(e){}
+  if(initial !== 'de') applyLanguage(initial);
+})();
 
 </script>
 </body>
