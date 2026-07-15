@@ -269,7 +269,6 @@ nav.site.scrolled{background:rgba(255,255,255,.75);box-shadow:0 12px 40px rgba(1
 .trust-bar-label{text-align:center;font-size:.74rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:1.6rem;}
 .trust-track-wrap{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);}
 .trust-track{display:flex;align-items:center;gap:clamp(2.4rem,5vw,4rem);width:max-content;animation:trustScroll 26s linear infinite;}
-.trust-track:hover{animation-play-state:paused;}
 .trust-track span{font-family:"Iowan Old Style",Georgia,serif;font-style:italic;font-size:1.15rem;color:var(--muted);opacity:.65;white-space:nowrap;transition:opacity .25s ease,color .25s ease;}
 .trust-track span:hover{opacity:1;color:var(--gold-text);}
 @keyframes trustScroll{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
@@ -421,7 +420,6 @@ nav.site.scrolled{background:rgba(255,255,255,.75);box-shadow:0 12px 40px rgba(1
 /* ── testimonials ── */
 .tst-track-wrap{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent);mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent);}
 .tst-track{display:flex;align-items:stretch;gap:1.2rem;width:max-content;animation:tstScroll 46s linear infinite;}
-.tst-track:hover{animation-play-state:paused;}
 @keyframes tstScroll{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
 @media(prefers-reduced-motion:reduce){.tst-track{animation:none;}}
 .tst-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:2.2rem;width:min(360px,82vw);flex-shrink:0;transition:transform .4s cubic-bezier(.22,.9,.24,1),box-shadow .4s ease,border-color .3s ease;}
@@ -623,8 +621,8 @@ nav.site.scrolled{background:rgba(255,255,255,.75);box-shadow:0 12px 40px rgba(1
     </div>
     <div class="trust-track-wrap reveal" style="transition-delay:.05s">
       <div class="trust-track">
-        <span>OpenAI</span><span>WhatsApp</span><span>Telegram</span><span>Google Calendar</span><span>Microsoft 365</span><span>Meta</span><span>ElevenLabs</span><span>Higgsfield</span><span>n8n</span><span>Vapi</span><span>Twilio</span>
-        <span>OpenAI</span><span>WhatsApp</span><span>Telegram</span><span>Google Calendar</span><span>Microsoft 365</span><span>Meta</span><span>ElevenLabs</span><span>Higgsfield</span><span>n8n</span><span>Vapi</span><span>Twilio</span>
+        <span>OpenAI</span><span>WhatsApp</span><span>Telegram</span><span>Google Calendar</span><span>Microsoft 365</span><span>Meta</span><span>ElevenLabs</span><span>n8n</span><span>Vapi</span>
+        <span>OpenAI</span><span>WhatsApp</span><span>Telegram</span><span>Google Calendar</span><span>Microsoft 365</span><span>Meta</span><span>ElevenLabs</span><span>n8n</span><span>Vapi</span>
       </div>
     </div>
   </section>
