@@ -113,20 +113,13 @@ body.has-announce nav.site{top:54px;}
 @media(max-width:640px){.announce{font-size:.7rem;padding:0 38px 0 12px;}.announce span.announce-text{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;}}
 
 /* ── nav ── */
-nav.site{position:fixed;top:14px;left:calc(14px + env(safe-area-inset-left, 0px));right:calc(14px + env(safe-area-inset-right, 0px));z-index:300;height:72px;display:flex;align-items:center;background:rgba(255,255,255,.55);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border:1px solid transparent;border-radius:22px;box-shadow:0 8px 32px rgba(14,14,16,.08),inset 0 1px 0 rgba(255,255,255,.6);transition:background .3s,box-shadow .3s,border-color .3s,top .4s ease;}
+nav.site{position:fixed;top:14px;left:calc(14px + env(safe-area-inset-left, 0px));right:calc(14px + env(safe-area-inset-right, 0px));z-index:300;height:72px;display:flex;align-items:center;background:rgba(255,255,255,.55);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border:1px solid rgba(204,163,0,.3);border-radius:22px;box-shadow:0 8px 32px rgba(14,14,16,.08),inset 0 1px 0 rgba(255,255,255,.6);transition:background .3s,box-shadow .3s,border-color .3s,top .4s ease;}
 nav.site.scrolled{background:rgba(255,255,255,.75);box-shadow:0 12px 40px rgba(14,14,16,.12),inset 0 1px 0 rgba(255,255,255,.7);}
-nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;padding:1.5px;background:conic-gradient(from var(--na,0deg),rgba(204,163,0,.35),var(--gold) 30%,var(--gold-light) 50%,var(--gold) 70%,rgba(204,163,0,.35) 100%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:navOrbit 4s linear infinite;pointer-events:none;}
-@keyframes navOrbit{to{--na:360deg;}}
-@property --na{syntax:'<angle>';inherits:false;initial-value:0deg;}
 .nav-inner{max-width:1180px;margin:0 auto;padding:0 26px;width:100%;display:flex;align-items:center;justify-content:space-between;}
 .nav-right{display:flex;align-items:center;gap:.5rem;order:5;}
 @media(max-width:640px){
   nav.site{top:10px;left:10px;right:10px;height:64px;border-radius:18px;}
-  /* Rotierender Rand ist auf mobilen Geräten (echtes iOS Safari) beim Scrollen
-     sichtbar ruckelig — deaktiviert. Blur bewusst leichter (8px statt 20px) und
-     mit höherer Deckkraft, um GPU-Last zu senken, aber Transparenz zu behalten. */
   nav.site,nav.site.scrolled{background:rgba(255,255,255,.82);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);}
-  nav.site::before{display:none;}
 }
 .brand{display:flex;align-items:center;gap:.6rem;order:1;}
 .brand-logo{height:26px;width:auto;display:block;}
@@ -226,11 +219,6 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
 @keyframes haloPulse{0%,100%{opacity:.85;transform:translate(-50%,-50%) scale(1);}50%{opacity:1;transform:translate(-50%,-50%) scale(1.035);}}
 .node-label{position:absolute;transform:translate(-50%,-50%);z-index:1;display:flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:50%;background:rgba(255,218,71,.08);border:1px solid rgba(255,218,71,.18);}
 .node-label svg{color:var(--gold-light);flex-shrink:0;width:26px;height:26px;}
-.hub-pill{position:absolute;left:52%;top:2%;right:auto;transform:translateX(-50%);width:128px;height:48px;border-radius:100px;background:#000000;border:1px solid var(--line-on-ink);display:flex;align-items:center;justify-content:center;box-shadow:0 20px 50px rgba(0,0,0,.4);}
-.hub-pill::before{content:'';position:absolute;inset:-1px;border-radius:100px;padding:1px;background:conic-gradient(from var(--a,0deg),transparent 0 60%,var(--gold-light),transparent 75%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:hubSpin 4s linear infinite;}
-@keyframes hubSpin{to{--a:360deg;}}
-@property --a{syntax:'<angle>';inherits:false;initial-value:0deg;}
-.hub-pill span{position:relative;font-family:"Iowan Old Style",Georgia,serif;font-style:italic;font-size:1rem;background:linear-gradient(90deg,#fff,var(--gold-light));-webkit-background-clip:text;background-clip:text;color:transparent;}
 .hero .lead{max-width:600px;margin:1.5rem 0 2.3rem;}
 .hero-cta{display:flex;gap:.7rem;flex-wrap:wrap;margin-bottom:2rem;}
 .hero-cta .btn{padding:.78rem 1.4rem;font-size:.82rem;}
@@ -486,8 +474,8 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
 
 <div class="announce" id="announceBar">
   <span class="announce-dot"></span>
-  <span class="announce-text">Aktuell nehmen wir neue Kunden auf &mdash; kostenloses Erstgespräch</span>
-  <a class="announce-link" href="https://calendar.app.google/2BvVXQzGPBfZ66F98" target="_blank" rel="noopener">jetzt sichern</a>
+  <span class="announce-text" data-i18n="sma.announce.text">Aktuell nehmen wir neue Kunden auf &mdash; kostenloses Erstgespräch</span>
+  <a class="announce-link" data-i18n="sma.announce.cta" href="https://calendar.app.google/2BvVXQzGPBfZ66F98" target="_blank" rel="noopener">jetzt sichern</a>
   <button class="announce-close" id="announceClose" aria-label="Schließen">
     <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
   </button>
@@ -500,28 +488,38 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
       <span class="brand-tagline">AIO – ALL IN ONE</span>
     </a>
     <div class="nav-links">
-      <a href="kundenportal.html">Kundenportal</a>
-      <a href="index.html#voice">Voice Agents</a>
-      <a href="#top">Social Media Agent</a>
-      <a href="index.html#stimmen">Referenzen</a>
+      <a href="kundenportal.html" data-i18n="sma.nav.portal">Kundenportal</a>
+      <a href="index.html#voice" data-i18n="sma.nav.voice">Voice Agents</a>
+      <a href="#top" data-i18n="sma.nav.social">Social Media Agent</a>
+      <a href="index.html#stimmen" data-i18n="sma.nav.refs">Referenzen</a>
     </div>
     <div class="nav-right">
       <a href="https://calendar.app.google/2BvVXQzGPBfZ66F98" target="_blank" rel="noopener" class="btn btn-gold btn-phone">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><path d="M9.5 15.5l1.5 1.5 3-3"/></svg>
-        <span class="cta-full">Termin<br>buchen</span>
-        <span class="cta-short">Termin</span>
+        <span class="cta-full" data-i18n="sma.nav.cta">Termin<br>buchen</span>
+        <span class="cta-short" data-i18n="sma.nav.cta.mobile">Termin</span>
       </a>
+      <div class="lang-switch" id="langSwitch" role="group" aria-label="Sprache wählen">
+        <button type="button" class="lang-btn active" data-lang="de">DE</button>
+        <button type="button" class="lang-btn" data-lang="en">EN</button>
+        <button type="button" class="lang-btn" data-lang="ar">AR</button>
+      </div>
       <button type="button" class="nav-burger" id="navBurger" aria-expanded="false" aria-controls="mobileMenu" aria-label="Menü öffnen">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
       </button>
     </div>
   </div>
   <div class="mobile-menu" id="mobileMenu">
-    <a href="kundenportal.html">Kundenportal</a>
-    <a href="index.html#voice">Voice Agents</a>
-    <a href="#top">Social Media Agent</a>
-    <a href="index.html#stimmen">Referenzen</a>
-    <a href="https://calendar.app.google/2BvVXQzGPBfZ66F98" target="_blank" rel="noopener" class="btn btn-gold mobile-menu-cta">Termin buchen</a>
+    <a href="kundenportal.html" data-i18n="sma.nav.portal">Kundenportal</a>
+    <a href="index.html#voice" data-i18n="sma.nav.voice">Voice Agents</a>
+    <a href="#top" data-i18n="sma.nav.social">Social Media Agent</a>
+    <a href="index.html#stimmen" data-i18n="sma.nav.refs">Referenzen</a>
+    <a href="https://calendar.app.google/2BvVXQzGPBfZ66F98" target="_blank" rel="noopener" class="btn btn-gold mobile-menu-cta" data-i18n="sma.nav.cta.mobile2">Termin buchen</a>
+    <div class="lang-switch mobile-menu-lang" role="group" aria-label="Sprache wählen">
+      <button type="button" class="lang-btn active" data-lang="de">DE</button>
+      <button type="button" class="lang-btn" data-lang="en">EN</button>
+      <button type="button" class="lang-btn" data-lang="ar">AR</button>
+    </div>
   </div>
 </nav>
 
@@ -539,31 +537,31 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
         <div class="hero-rating reveal">
           <a href="tel:+971561155278" style="display:flex;align-items:center;gap:.5rem;color:var(--muted-on-ink);font-size:.8rem;">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            Sprich direkt mit Experten
+            <span data-i18n="sma.hero.rating">Sprich direkt mit Experten</span>
           </a>
         </div>
-        <div class="eyebrow reveal">Social Media Agent</div>
-        <h1 class="h-xl serif reveal" style="transition-delay:.05s">Social Media war noch nie <em>so einfach</em>.</h1>
-        <p class="lead reveal sub-hero-lead" style="transition-delay:.1s">Der AIDEN Social Media Agent unterstützt bei <span class="hl">Recherche, Planung, Texten, Bildideen, Hashtags</span> und Veröffentlichungsvorbereitung — damit Ihr Unternehmen regelmäßig sichtbar bleibt, ohne dass Social Media im Tagesgeschäft untergeht.</p>
+        <div class="eyebrow reveal" data-i18n="sma.hero.eyebrow">Social Media Agent</div>
+        <h1 class="h-xl serif reveal" style="transition-delay:.05s" data-i18n="sma.hero.h1">Social Media war noch nie <em>so einfach</em>.</h1>
+        <p class="lead reveal sub-hero-lead" style="transition-delay:.1s" data-i18n="sma.hero.lead">Der AIDEN Social Media Agent unterstützt bei <span class="hl">Recherche, Planung, Texten, Bildideen, Hashtags</span> und Veröffentlichungsvorbereitung — damit Ihr Unternehmen regelmäßig sichtbar bleibt, ohne dass Social Media im Tagesgeschäft untergeht.</p>
         <div class="hero-cta reveal" style="transition-delay:.15s">
-          <a href="https://calendar.app.google/2BvVXQzGPBfZ66F98" target="_blank" rel="noopener" class="btn btn-gold">Info-Termin buchen</a>
-          <a href="index.html" class="btn btn-outline">Zurück zur Startseite</a>
+          <a href="https://calendar.app.google/2BvVXQzGPBfZ66F98" target="_blank" rel="noopener" class="btn btn-gold" data-i18n="sma.hero.cta1">Info-Termin buchen</a>
+          <a href="index.html" class="btn btn-outline" data-i18n="sma.hero.cta2">Zurück zur Startseite</a>
         </div>
         <div class="badges reveal" style="transition-delay:.2s">
-          <div class="badge badge-gold">In der EU gehostet</div>
-          <div class="badge badge-gold">DSGVO-konform</div>
-          <div class="badge badge-gold">EU-AI-Act-konform</div>
+          <div class="badge badge-gold" data-i18n="sma.badge1">In der EU gehostet</div>
+          <div class="badge badge-gold" data-i18n="sma.badge2">DSGVO-konform</div>
+          <div class="badge badge-gold" data-i18n="sma.badge3">EU-AI-Act-konform</div>
         </div>
       </div>
 
       <div class="hero-quotes reveal" style="transition-delay:.1s">
         <div class="quote-card">
-          <p>"Es gibt ein Leben vor und nach dem Social Media Agent. Regelmäßiger Content und Posts sind jetzt selbstverständlich!"</p>
-          <span>Jochen Timme — Unternehmer</span>
+          <p data-i18n="sma.q1.quote">„Es gibt ein Leben vor und nach dem Social Media Agent. Regelmäßiger Content und Posts sind jetzt selbstverständlich!"</p>
+          <span><span data-i18n="sma.q1.name">Jochen Timme</span> — <span data-i18n="sma.q1.role">Unternehmer</span></span>
         </div>
         <div class="quote-card">
-          <p>"Wir können uns nun professionelles Social Media leisten — zum hervorragenden Preis!"</p>
-          <span>Brüder Schwing — Limes Metzgerei</span>
+          <p data-i18n="sma.q2.quote">„Wir können uns nun professionelles Social Media leisten — zum hervorragenden Preis!"</p>
+          <span><span data-i18n="sma.q2.name">Brüder Schwing</span> — <span data-i18n="sma.q2.role">Limes Metzgerei</span></span>
         </div>
       </div>
     </div>
@@ -573,40 +571,40 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
   <section id="funktionen" class="ov-section">
     <div class="wrap">
       <div class="ov-head">
-        <div class="eyebrow reveal">Social Media endlich mit Überblick</div>
-        <h2 class="h-lg serif reveal">Content, der wirklich passt — ohne täglichen Stress.</h2>
-        <p class="lead reveal" style="margin-top:1rem;">Der AIDEN Social Media Agent nimmt Ihnen die Arbeit ab: <span class="hl">regelmäßig hochwertige Inhalte</span>, die wirklich passen — ohne ständige Recherche, Planung und Veröffentlichung.</p>
+        <div class="eyebrow reveal" data-i18n="sma.ov.eyebrow">Social Media endlich mit Überblick</div>
+        <h2 class="h-lg serif reveal" data-i18n="sma.ov.h2">Content, der wirklich passt — ohne täglichen Stress.</h2>
+        <p class="lead reveal" style="margin-top:1rem;" data-i18n="sma.ov.lead">Der AIDEN Social Media Agent nimmt Ihnen die Arbeit ab: <span class="hl">regelmäßig hochwertige Inhalte</span>, die wirklich passen — ohne ständige Recherche, Planung und Veröffentlichung.</p>
       </div>
       <div class="ov-grid">
         <div class="ov-card reveal">
           <div class="ov-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/></svg></div>
-          <h3>Fundierte Themenrecherche</h3>
-          <p>Unser Agent findet relevante Themen, Trends und Inhalte, die perfekt zu Ihrer Zielgruppe und Branche passen. <span class="hl">Kein beliebiges Posten</span>, sondern echter Mehrwert.</p>
+          <h3 data-i18n="sma.ov.c1.h">Fundierte Themenrecherche</h3>
+          <p data-i18n="sma.ov.c1.p">Unser Agent findet relevante Themen, Trends und Inhalte, die perfekt zu Ihrer Zielgruppe und Branche passen. <span class="hl">Kein beliebiges Posten</span>, sondern echter Mehrwert.</p>
         </div>
         <div class="ov-card reveal" style="transition-delay:.05s">
           <div class="ov-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9M16.5 3.5a2.12 2.12 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
-          <h3>Markenkonforme Inhalte</h3>
-          <p>Texte und Bildideen, die Ihre Marke widerspiegeln. <span class="hl">Professionell und natürlich</span> — passend zu Ihrer Tonalität, ohne nach KI zu wirken.</p>
+          <h3 data-i18n="sma.ov.c2.h">Markenkonforme Inhalte</h3>
+          <p data-i18n="sma.ov.c2.p">Texte und Bildideen, die Ihre Marke widerspiegeln. <span class="hl">Professionell und natürlich</span> — passend zu Ihrer Tonalität, ohne nach KI zu wirken.</p>
         </div>
         <div class="ov-card reveal" style="transition-delay:.1s">
           <div class="ov-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 6.5c-1.6-1.1-4-1.6-6.5-1.1v13c2.5-.5 4.9 0 6.5 1.1 1.6-1.1 4-1.6 6.5-1.1v-13c-2.5-.5-4.9 0-6.5 1.1z"/><path d="M12 6.5v13"/></svg></div>
-          <h3>Personalisierte Wissensbasis</h3>
-          <p>Alle Infos über Ihr Unternehmen, Ihre Werte und Angebote sind hinterlegt. So entstehen Inhalte, die <span class="hl">wirklich zu Ihnen passen</span> und Ihre Expertise unterstreichen.</p>
+          <h3 data-i18n="sma.ov.c3.h">Personalisierte Wissensbasis</h3>
+          <p data-i18n="sma.ov.c3.p">Alle Infos über Ihr Unternehmen, Ihre Werte und Angebote sind hinterlegt. So entstehen Inhalte, die <span class="hl">wirklich zu Ihnen passen</span> und Ihre Expertise unterstreichen.</p>
         </div>
         <div class="ov-card reveal">
           <div class="ov-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
-          <h3>Zielgerichtete Strategie</h3>
-          <p>Ob Sichtbarkeit, Neukunden oder Expertenstatus — der Agent arbeitet <span class="hl">strategisch</span> und orientiert sich immer an Ihren definierten Zielen und Zielgruppen.</p>
+          <h3 data-i18n="sma.ov.c4.h">Zielgerichtete Strategie</h3>
+          <p data-i18n="sma.ov.c4.p">Ob Sichtbarkeit, Neukunden oder Expertenstatus — der Agent arbeitet <span class="hl">strategisch</span> und orientiert sich immer an Ihren definierten Zielen und Zielgruppen.</p>
         </div>
         <div class="ov-card reveal" style="transition-delay:.05s">
           <div class="ov-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="14" width="4" height="7" rx="1"/><rect x="10" y="9" width="4" height="12" rx="1"/><rect x="17" y="4" width="4" height="17" rx="1"/></svg></div>
-          <h3>Performance-Analyse</h3>
-          <p>Welche Beiträge funktionieren? Welche Themen erzielen Reaktionen? Unser Agent analysiert die Performance und liefert <span class="hl">wertvolle Einblicke</span> für Ihren Erfolg.</p>
+          <h3 data-i18n="sma.ov.c5.h">Performance-Analyse</h3>
+          <p data-i18n="sma.ov.c5.p">Welche Beiträge funktionieren? Welche Themen erzielen Reaktionen? Unser Agent analysiert die Performance und liefert <span class="hl">wertvolle Einblicke</span> für Ihren Erfolg.</p>
         </div>
         <div class="ov-card reveal" style="transition-delay:.1s">
           <div class="ov-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4 20-7z"/></svg></div>
-          <h3>Automatisierte Veröffentlichung</h3>
-          <p>Inhalte vorbereiten, planen und auf Wunsch <span class="hl">automatisch veröffentlichen</span> lassen. So sind Sie immer präsent, ohne selbst aktiv werden zu müssen.</p>
+          <h3 data-i18n="sma.ov.c6.h">Automatisierte Veröffentlichung</h3>
+          <p data-i18n="sma.ov.c6.p">Inhalte vorbereiten, planen und auf Wunsch <span class="hl">automatisch veröffentlichen</span> lassen. So sind Sie immer präsent, ohne selbst aktiv werden zu müssen.</p>
         </div>
       </div>
     </div>
@@ -615,32 +613,32 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
   <!-- INDUSTRIES -->
   <section class="ind-section" id="branchen">
     <div class="wrap">
-      <div class="eyebrow reveal">Für Dein Business gemacht</div>
-      <h2 class="h-lg serif reveal" style="max-width:640px;margin-bottom:2.6rem;">Egal ob Praxis, Handwerksbetrieb, Produktionsbetrieb oder Selfstorage-Anbieter.</h2>
+      <div class="eyebrow reveal" data-i18n="sma.ind.eyebrow">Für Dein Business gemacht</div>
+      <h2 class="h-lg serif reveal" style="max-width:640px;margin-bottom:2.6rem;" data-i18n="sma.ind.h2">Egal ob Praxis, Handwerksbetrieb, Produktionsbetrieb oder Selfstorage-Anbieter.</h2>
 
       <div class="ind-tabs reveal">
-        <button class="ind-tab active" data-tab="craft-sma">Handwerksbetriebe</button>
-        <button class="ind-tab" data-tab="health-sma">Arztpraxen &amp; Gesundheit</button>
-        <button class="ind-tab" data-tab="production-sma">Produktionsbetrieb</button>
-        <button class="ind-tab" data-tab="storage-sma">Selfstorage-Anbieter</button>
+        <button class="ind-tab active" data-tab="craft-sma" data-i18n="sma.ind.tab1">Handwerksbetriebe</button>
+        <button class="ind-tab" data-tab="health-sma" data-i18n="sma.ind.tab2">Arztpraxen &amp; Gesundheit</button>
+        <button class="ind-tab" data-tab="production-sma" data-i18n="sma.ind.tab3">Produktionsbetrieb</button>
+        <button class="ind-tab" data-tab="storage-sma" data-i18n="sma.ind.tab4">Selfstorage-Anbieter</button>
       </div>
 
       <div class="ind-panel active" id="craft-sma">
         <div>
-          <h3 class="serif">Mehr Aufträge sichtbar machen — ohne mehr Marketingaufwand</h3>
-          <p>Mit dem Social Media Agent wird aus Baustellen, Projekten und Kundenarbeiten regelmäßig professioneller Content — <span class="hl">ohne dass der Betrieb selbst viel Zeit investieren muss.</span></p>
+          <h3 class="serif" data-i18n="sma.ind.p1.h">Mehr Aufträge sichtbar machen — ohne mehr Marketingaufwand</h3>
+          <p data-i18n="sma.ind.p1.p">Mit dem Social Media Agent wird aus Baustellen, Projekten und Kundenarbeiten regelmäßig professioneller Content — <span class="hl">ohne dass der Betrieb selbst viel Zeit investieren muss.</span></p>
           <ul class="ind-list">
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Mehr Sichtbarkeit für Leistungen und Referenzen</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Weniger Aufwand im Tagesgeschäft</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Besserer Vertrauensaufbau bei Neukunden</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Professioneller Auftritt auf Instagram, Facebook, LinkedIn &amp; Co</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span data-i18n="sma.ind.p1.l1">Mehr Sichtbarkeit für Leistungen und Referenzen</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span data-i18n="sma.ind.p1.l2">Weniger Aufwand im Tagesgeschäft</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span data-i18n="sma.ind.p1.l3">Besserer Vertrauensaufbau bei Neukunden</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span data-i18n="sma.ind.p1.l4">Professioneller Auftritt auf Instagram, Facebook, LinkedIn &amp; Co</span></li>
           </ul>
         </div>
         <div class="ind-visual">
-          <div class="lbl">Ergebnis</div>
-          <div class="stat serif">Mehr Sichtbarkeit</div>
+          <div class="lbl" data-i18n="sma.ind.result">Ergebnis</div>
+          <div class="stat serif" data-i18n="sma.ind.p1.stat">Mehr Sichtbarkeit</div>
           <div class="ind-quote">
-            <p>"Wir gewinnen mehr Sichtbarkeit, zeigen unsere Arbeit professionell und müssen uns nicht ständig selbst um Social Media kümmern. Genau so muss es im Handwerk funktionieren."</p>
+            <p data-i18n="sma.ind.p1.quote">„Wir gewinnen mehr Sichtbarkeit, zeigen unsere Arbeit professionell und müssen uns nicht ständig selbst um Social Media kümmern. Genau so muss es im Handwerk funktionieren."</p>
             <span>Helmut K.</span>
           </div>
         </div>
@@ -648,20 +646,20 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
 
       <div class="ind-panel" id="health-sma">
         <div>
-          <h3 class="serif">Vertrauen aufbauen, bevor der erste Termin gebucht wird</h3>
-          <p>Der Social Media Agent hilft Praxen, <span class="hl">regelmäßig verständliche, vertrauensvolle</span> und fachlich passende Inhalte zu veröffentlichen.</p>
+          <h3 class="serif" data-i18n="sma.ind.p2.h">Vertrauen aufbauen, bevor der erste Termin gebucht wird</h3>
+          <p data-i18n="sma.ind.p2.p">Der Social Media Agent hilft Praxen, <span class="hl">regelmäßig verständliche, vertrauensvolle</span> und fachlich passende Inhalte zu veröffentlichen.</p>
           <ul class="ind-list">
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Mehr Vertrauen bei Patientinnen und Patienten</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Weniger wiederkehrende Fragen &amp; professioneller Expertenstatus</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Entlastung des Teams, keine Beiträge in Eigenregie</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Planung ganzer Wochen oder Monate im Voraus</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span data-i18n="sma.ind.p2.l1">Mehr Vertrauen bei Patientinnen und Patienten</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span data-i18n="sma.ind.p2.l2">Weniger wiederkehrende Fragen &amp; professioneller Expertenstatus</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span data-i18n="sma.ind.p2.l3">Entlastung des Teams, keine Beiträge in Eigenregie</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span data-i18n="sma.ind.p2.l4">Planung ganzer Wochen oder Monate im Voraus</span></li>
           </ul>
         </div>
         <div class="ind-visual">
-          <div class="lbl">Ergebnis</div>
-          <div class="stat serif">Mehr Vertrauen</div>
+          <div class="lbl" data-i18n="sma.ind.result">Ergebnis</div>
+          <div class="stat serif" data-i18n="sma.ind.p2.stat">Mehr Vertrauen</div>
           <div class="ind-quote">
-            <p>"Endlich regelmäßige Sichtbarkeit für unsere Praxis — ohne dass unser Team zusätzlich belastet wird."</p>
+            <p data-i18n="sma.ind.p2.quote">„Endlich regelmäßige Sichtbarkeit für unsere Praxis — ohne dass unser Team zusätzlich belastet wird."</p>
             <span>Dr. Conrad</span>
           </div>
         </div>
@@ -669,20 +667,20 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
 
       <div class="ind-panel" id="production-sma">
         <div>
-          <h3 class="serif">Wenn Produktion läuft, darf Kommunikation nicht stehen bleiben.</h3>
-          <p>In Produktionsbetrieben zählt jede Minute. Während Maschinen laufen, Projekte umgesetzt und Kunden betreut werden, bleiben <span class="hl">Social Media, Rückrufe und Bewerberfragen</span> oft liegen.</p>
+          <h3 class="serif" data-i18n="sma.ind.p3.h">Wenn Produktion läuft, darf Kommunikation nicht stehen bleiben.</h3>
+          <p data-i18n="sma.ind.p3.p">In Produktionsbetrieben zählt jede Minute. Während Maschinen laufen, Projekte umgesetzt und Kunden betreut werden, bleiben <span class="hl">Social Media, Rückrufe und Bewerberfragen</span> oft liegen.</p>
           <ul class="ind-list">
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Regelmäßige Inhalte aus Projekten, Produkten und Einblicken</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Bessere Sichtbarkeit für Kunden, Partner und Bewerber</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Anrufannahme und Vorqualifizierung von Kundenanfragen</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Moderne Außendarstellung ohne eigene Marketingabteilung</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span data-i18n="sma.ind.p3.l1">Regelmäßige Inhalte aus Projekten, Produkten und Einblicken</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span data-i18n="sma.ind.p3.l2">Bessere Sichtbarkeit für Kunden, Partner und Bewerber</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span data-i18n="sma.ind.p3.l3">Anrufannahme und Vorqualifizierung von Kundenanfragen</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span data-i18n="sma.ind.p3.l4">Moderne Außendarstellung ohne eigene Marketingabteilung</span></li>
           </ul>
         </div>
         <div class="ind-visual">
-          <div class="lbl">Ergebnis</div>
-          <div class="stat serif">Kommunikation läuft mit</div>
+          <div class="lbl" data-i18n="sma.ind.result">Ergebnis</div>
+          <div class="stat serif" data-i18n="sma.ind.p3.stat">Kommunikation läuft mit</div>
           <div class="ind-quote">
-            <p>"Wir hatten nicht das Problem, dass wir zu wenig zu erzählen hatten. Wir hatten nur keine Zeit, es sichtbar zu machen. Mit AIDEN läuft Kommunikation jetzt mit — ohne die Produktion zu stören."</p>
+            <p data-i18n="sma.ind.p3.quote">„Wir hatten nicht das Problem, dass wir zu wenig zu erzählen hatten. Wir hatten nur keine Zeit, es sichtbar zu machen. Mit AIDEN läuft Kommunikation jetzt mit — ohne die Produktion zu stören."</p>
             <span>Geschäftsführer L. Erber</span>
           </div>
         </div>
@@ -690,19 +688,19 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
 
       <div class="ind-panel" id="storage-sma">
         <div>
-          <h3 class="serif">Wenn Kunden Lagerraum suchen, zählt schnelle Reaktion.</h3>
-          <p>Welche Lagergröße brauche ich? Was kostet ein Abteil? Gibt es freie Flächen? Gleichzeitig müssen <span class="hl">Vertrauen, Sichtbarkeit und einfache Buchungswege</span> aufgebaut werden.</p>
+          <h3 class="serif" data-i18n="sma.ind.p4.h">Wenn Kunden Lagerraum suchen, zählt schnelle Reaktion.</h3>
+          <p data-i18n="sma.ind.p4.p">Welche Lagergröße brauche ich? Was kostet ein Abteil? Gibt es freie Flächen? Gleichzeitig müssen <span class="hl">Vertrauen, Sichtbarkeit und einfache Buchungswege</span> aufgebaut werden.</p>
           <ul class="ind-list">
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Regelmäßige Inhalte aus Projekten, Produkten und Einblicken</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Einfache Content-Erstellung per WhatsApp oder Telegram</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Mehr Kontinuität statt spontaner Einzelaktionen</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span data-i18n="sma.ind.p4.l1">Regelmäßige Inhalte aus Projekten, Produkten und Einblicken</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span data-i18n="sma.ind.p4.l2">Einfache Content-Erstellung per WhatsApp oder Telegram</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span data-i18n="sma.ind.p4.l3">Mehr Kontinuität statt spontaner Einzelaktionen</span></li>
           </ul>
         </div>
         <div class="ind-visual">
-          <div class="lbl">Ergebnis</div>
-          <div class="stat serif">Schnelle Orientierung</div>
+          <div class="lbl" data-i18n="sma.ind.result">Ergebnis</div>
+          <div class="stat serif" data-i18n="sma.ind.p4.stat">Schnelle Orientierung</div>
           <div class="ind-quote">
-            <p>"Unsere Kunden brauchen oft keine lange Beratung, sondern schnelle Orientierung. Der KI-Agent hilft genau dabei — sofort, freundlich und zuverlässig."</p>
+            <p data-i18n="sma.ind.p4.quote">„Unsere Kunden brauchen oft keine lange Beratung, sondern schnelle Orientierung. Der KI-Agent hilft genau dabei — sofort, freundlich und zuverlässig."</p>
             <span>Geschäftsführer M. Berger</span>
           </div>
         </div>
@@ -713,18 +711,18 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
   <!-- PROCESS -->
   <section id="ablauf">
     <div class="wrap">
-      <div class="eyebrow reveal" style="justify-content:center;text-align:center;display:flex;">Wie es funktioniert</div>
-      <h2 class="h-lg serif reveal" style="max-width:640px;margin:0 auto 1rem;text-align:center;">Der Einstieg mit Ihrem AIDEN Social Media Agent ist einfacher, als Sie denken.</h2>
-      <p class="lead reveal" style="max-width:560px;margin:0 auto 2.8rem;text-align:center;">Wir begleiten Sie Schritt für Schritt zu mehr Sichtbarkeit und Entlastung.</p>
+      <div class="eyebrow reveal" style="justify-content:center;text-align:center;display:flex;" data-i18n="sma.proc.eyebrow">Wie es funktioniert</div>
+      <h2 class="h-lg serif reveal" style="max-width:640px;margin:0 auto 1rem;text-align:center;" data-i18n="sma.proc.h2">Der Einstieg mit Ihrem AIDEN Social Media Agent ist einfacher, als Sie denken.</h2>
+      <p class="lead reveal" style="max-width:560px;margin:0 auto 2.8rem;text-align:center;" data-i18n="sma.proc.lead">Wir begleiten Sie Schritt für Schritt zu mehr Sichtbarkeit und Entlastung.</p>
 
       <div class="process-card reveal">
-        <div class="path-step"><span class="n serif">1</span><div><h4>Kostenloser Termin</h4><p>30 Minuten für Ihr Social Media: Wir zeigen Ihnen, wie der Agent arbeitet, und finden gemeinsam heraus, ob er zu Ihrem Unternehmen passt. Uns ist <span class="hl">Transparenz</span> wichtig.</p></div></div>
-        <div class="path-step"><span class="n serif">2</span><div><h4>Onboarding-Termin vereinbaren</h4><p>Der Agent lernt Ihr Unternehmen kennen — Angebote, Sprache, Zielgruppen und Marke, wie ein <span class="hl">zusätzlicher Social-Media-Mitarbeiter</span>.</p></div></div>
-        <div class="path-step"><span class="n serif">3</span><div><h4>Individuelle Einrichtung</h4><p>Ihr Agent wird mit allen wichtigen Informationen ausgestattet — Unternehmensdaten, Leistungen, Tonalität, Bildsprache. Das passiert für Sie <span class="hl">im Hintergrund</span>.</p></div></div>
-        <div class="path-step"><span class="n serif">4</span><div><h4>Übergabe des Agents</h4><p>Ihr neuer Mitarbeiter ist da — von der Themenrecherche über Content-Ideen und Bilderstellung bis hin zu <span class="hl">Analyse und automatischem Posten</span>.</p></div></div>
-        <div class="path-step"><span class="n serif">5</span><div><h4>Und das war's schon!</h4><p>Sie gewinnen mehr Überblick, sparen Zeit und werden mit professionell recherchierten Inhalten sichtbar — <span class="hl">ohne jeden Beitrag selbst planen zu müssen</span>.</p></div></div>
+        <div class="path-step"><span class="n serif">1</span><div><h4 data-i18n="sma.proc.s1.h">Kostenloser Termin</h4><p data-i18n="sma.proc.s1.p">30 Minuten für Ihr Social Media: Wir zeigen Ihnen, wie der Agent arbeitet, und finden gemeinsam heraus, ob er zu Ihrem Unternehmen passt. Uns ist <span class="hl">Transparenz</span> wichtig.</p></div></div>
+        <div class="path-step"><span class="n serif">2</span><div><h4 data-i18n="sma.proc.s2.h">Onboarding-Termin vereinbaren</h4><p data-i18n="sma.proc.s2.p">Der Agent lernt Ihr Unternehmen kennen — Angebote, Sprache, Zielgruppen und Marke, wie ein <span class="hl">zusätzlicher Social-Media-Mitarbeiter</span>.</p></div></div>
+        <div class="path-step"><span class="n serif">3</span><div><h4 data-i18n="sma.proc.s3.h">Individuelle Einrichtung</h4><p data-i18n="sma.proc.s3.p">Ihr Agent wird mit allen wichtigen Informationen ausgestattet — Unternehmensdaten, Leistungen, Tonalität, Bildsprache. Das passiert für Sie <span class="hl">im Hintergrund</span>.</p></div></div>
+        <div class="path-step"><span class="n serif">4</span><div><h4 data-i18n="sma.proc.s4.h">Übergabe des Agents</h4><p data-i18n="sma.proc.s4.p">Ihr neuer Mitarbeiter ist da — von der Themenrecherche über Content-Ideen und Bilderstellung bis hin zu <span class="hl">Analyse und automatischem Posten</span>.</p></div></div>
+        <div class="path-step"><span class="n serif">5</span><div><h4 data-i18n="sma.proc.s5.h">Und das war's schon!</h4><p data-i18n="sma.proc.s5.p">Sie gewinnen mehr Überblick, sparen Zeit und werden mit professionell recherchierten Inhalten sichtbar — <span class="hl">ohne jeden Beitrag selbst planen zu müssen</span>.</p></div></div>
         <div class="path-payoff" style="text-align:center;padding-top:1.6rem;">
-          <a href="https://calendar.app.google/2BvVXQzGPBfZ66F98" target="_blank" rel="noopener" class="btn btn-gold" style="margin-top:.6rem;white-space:normal;text-align:center;">Jetzt kostenlosen Termin buchen</a>
+          <a href="https://calendar.app.google/2BvVXQzGPBfZ66F98" target="_blank" rel="noopener" class="btn btn-gold" style="margin-top:.6rem;white-space:normal;text-align:center;" data-i18n="sma.proc.cta">Jetzt kostenlosen Termin buchen</a>
         </div>
       </div>
     </div>
@@ -733,17 +731,17 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
   <!-- FINAL CTA -->
   <section class="final-cta" id="kontakt">
     <div class="wrap">
-      <div class="eyebrow" style="justify-content:center;color:var(--gold-light);">Endlich regelmäßig sichtbar</div>
-      <h2 class="h-lg serif">Mit Inhalten, die wirklich <em>zu Ihrer Marke</em> passen.</h2>
-      <p class="lead">Mehr Überblick, weniger Aufwand, professioneller Auftritt — Social Media, das im Tagesgeschäft nicht mehr untergeht.</p>
+      <div class="eyebrow" style="justify-content:center;color:var(--gold-light);" data-i18n="sma.final.eyebrow">Endlich regelmäßig sichtbar</div>
+      <h2 class="h-lg serif" data-i18n="sma.final.h2">Mit Inhalten, die wirklich <em>zu Ihrer Marke</em> passen.</h2>
+      <p class="lead" data-i18n="sma.final.lead">Mehr Überblick, weniger Aufwand, professioneller Auftritt — Social Media, das im Tagesgeschäft nicht mehr untergeht.</p>
       <div class="hero-cta" style="justify-content:center;">
-        <a href="https://calendar.app.google/2BvVXQzGPBfZ66F98" target="_blank" rel="noopener" class="btn btn-gold">Info-Termin buchen</a>
-        <a href="index.html#pricing" class="btn btn-outline">Voice Agent Preise ansehen</a>
+        <a href="https://calendar.app.google/2BvVXQzGPBfZ66F98" target="_blank" rel="noopener" class="btn btn-gold" data-i18n="sma.final.cta1">Info-Termin buchen</a>
+        <a href="index.html#pricing" class="btn btn-outline" data-i18n="sma.final.cta2">Voice Agent Preise ansehen</a>
       </div>
       <div class="final-list">
-        <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span>Markenkonforme Inhalte</span></span>
-        <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span>Fundierte Themenrecherche</span></span>
-        <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span>Automatisierte Veröffentlichung</span></span>
+        <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span data-i18n="sma.final.l1">Markenkonforme Inhalte</span></span>
+        <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span data-i18n="sma.final.l2">Fundierte Themenrecherche</span></span>
+        <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span data-i18n="sma.final.l3">Automatisierte Veröffentlichung</span></span>
       </div>
     </div>
   </section>
@@ -759,33 +757,33 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
       <div class="cf-logo">
         <img src="images/aiden-logo-white.png" alt="AIDEN" class="brand-logo cf-brand-logo" width="600" height="153">
       </div>
-      <p class="cf-tag">KI-Agenten, die Ihr Unternehmen wirklich entlasten — Voice Agent, Social Media Agent und individuelle KI-Automatisierung.</p>
+      <p class="cf-tag" data-i18n="sma.footer.tag">KI-Agenten, die Ihr Unternehmen wirklich entlasten — Voice Agent, Social Media Agent und individuelle KI-Automatisierung.</p>
     </div>
     <div class="cf-cols">
       <div class="cf-col">
-        <h5>Produkte</h5>
-        <a href="index.html#voice">Voice Agent</a>
-        <a href="#top">Social Media Agent</a>
-        <a href="index.html#pricing">Preise</a>
+        <h5 data-i18n="sma.footer.col1.h">Produkte</h5>
+        <a href="index.html#voice" data-i18n="sma.footer.voice">Voice Agent</a>
+        <a href="#top" data-i18n="sma.footer.social">Social Media Agent</a>
+        <a href="index.html#pricing" data-i18n="sma.footer.pricing">Preise</a>
       </div>
       <div class="cf-col">
-        <h5>Unternehmen</h5>
-        <a href="index.html#ueber-uns">Über uns</a>
-        <a href="index.html#stimmen">Kunden</a>
-        <a href="index.html#kontakt">Kontakt</a>
+        <h5 data-i18n="sma.footer.col2.h">Unternehmen</h5>
+        <a href="index.html#ueber-uns" data-i18n="sma.footer.about">Über uns</a>
+        <a href="index.html#stimmen" data-i18n="sma.footer.customers">Kunden</a>
+        <a href="index.html#kontakt" data-i18n="sma.footer.contact">Kontakt</a>
       </div>
       <div class="cf-col">
-        <h5>Rechtliches</h5>
-        <a href="impressum.html">Impressum</a>
-        <a href="datenschutz.html">Datenschutz</a>
-        <a href="agb.html">AGB</a>
-        <a href="widerrufsrecht.html">Widerrufsrecht</a>
+        <h5 data-i18n="sma.footer.col3.h">Rechtliches</h5>
+        <a href="impressum.html" data-i18n="sma.footer.imprint">Impressum</a>
+        <a href="datenschutz.html" data-i18n="sma.footer.privacy">Datenschutz</a>
+        <a href="agb.html" data-i18n="sma.footer.terms">AGB</a>
+        <a href="widerrufsrecht.html" data-i18n="sma.footer.withdrawal">Widerrufsrecht</a>
       </div>
     </div>
   </div>
   <div class="cf-word">AIDEN</div>
   <div class="cf-bottom">
-    <p>© 2026 AIDEN. Alle Rechte vorbehalten.</p>
+    <p data-i18n="sma.footer.copyright">© 2026 AIDEN. Alle Rechte vorbehalten.</p>
     <div style="display:flex;gap:18px;">
       <a href="mailto:info@aiden.ae">info@aiden.ae</a>
       <a href="tel:+971561155278">+971 56 115 5278</a>
@@ -1053,6 +1051,45 @@ document.querySelectorAll('.ind-tab').forEach(tab=>{
   });
 })();
 
+// Language switcher — German (default, from HTML) <-> English/Arabic (from dictionary)
+(function(){
+const AIDEN_SMA_I18N_EN = {"sma.announce.text":"Currently accepting new clients &mdash; free first consultation","sma.announce.cta":"book now","sma.nav.portal":"Customer Portal","sma.nav.voice":"Voice Agents","sma.nav.social":"Social Media Agent","sma.nav.refs":"References","sma.nav.cta":"Book<br>appointment","sma.nav.cta.mobile":"Appointment","sma.nav.cta.mobile2":"Book appointment","sma.hero.rating":"Talk directly to an expert","sma.hero.eyebrow":"Social Media Agent","sma.hero.h1":"Social media has never been <em>this easy</em>.","sma.hero.lead":"The AIDEN Social Media Agent helps with <span class=\"hl\">research, planning, copywriting, image ideas, hashtags</span> and publishing prep — so your business stays consistently visible without social media getting lost in the daily grind.","sma.hero.cta1":"Book an info call","sma.hero.cta2":"Back to homepage","sma.badge1":"Hosted in the EU","sma.badge2":"GDPR-compliant","sma.badge3":"EU AI Act-compliant","sma.q1.quote":"„There's a life before and after the Social Media Agent. Regular content and posts are now just a given!\"","sma.q1.name":"Jochen Timme","sma.q1.role":"Entrepreneur","sma.q2.quote":"„We can now afford professional social media — at a great price!\"","sma.q2.name":"Brüder Schwing","sma.q2.role":"Limes Metzgerei","sma.ov.eyebrow":"Social media, finally under control","sma.ov.h2":"Content that actually fits — without the daily stress.","sma.ov.lead":"The AIDEN Social Media Agent takes the work off your hands: <span class=\"hl\">consistently high-quality content</span> that actually fits — without constant research, planning and publishing.","sma.ov.c1.h":"Thorough topic research","sma.ov.c1.p":"Our agent finds relevant topics, trends and content that perfectly match your audience and industry. <span class=\"hl\">No random posting</span> — real value instead.","sma.ov.c2.h":"On-brand content","sma.ov.c2.p":"Copy and image ideas that reflect your brand. <span class=\"hl\">Professional and natural</span> — matched to your tone of voice, without feeling like AI.","sma.ov.c3.h":"A personalized knowledge base","sma.ov.c3.p":"All the information about your business, values and offerings is on file. That's how content emerges that <span class=\"hl\">truly fits you</span> and highlights your expertise.","sma.ov.c4.h":"Goal-driven strategy","sma.ov.c4.p":"Whether visibility, new customers or expert status — the agent works <span class=\"hl\">strategically</span> and always stays aligned with your defined goals and audiences.","sma.ov.c5.h":"Performance analysis","sma.ov.c5.p":"Which posts work? Which topics get engagement? Our agent analyzes performance and delivers <span class=\"hl\">valuable insights</span> for your success.","sma.ov.c6.h":"Automated publishing","sma.ov.c6.p":"Prepare content, schedule it, and have it <span class=\"hl\">published automatically</span> if you like. So you're always present without lifting a finger.","sma.ind.eyebrow":"Built for your business","sma.ind.h2":"Whether you run a practice, a trade business, a production company or a self-storage provider.","sma.ind.tab1":"Trade Businesses","sma.ind.tab2":"Medical Practices &amp; Health","sma.ind.tab3":"Production Companies","sma.ind.tab4":"Self-Storage Providers","sma.ind.result":"Result","sma.ind.p1.h":"Make more jobs visible — without more marketing effort","sma.ind.p1.p":"With the Social Media Agent, job sites, projects and client work regularly turn into professional content — <span class=\"hl\">without the business itself needing to invest much time.</span>","sma.ind.p1.l1":"More visibility for services and references","sma.ind.p1.l2":"Less effort in day-to-day operations","sma.ind.p1.l3":"Better trust-building with new customers","sma.ind.p1.l4":"A professional presence on Instagram, Facebook, LinkedIn &amp; co.","sma.ind.p1.stat":"More visibility","sma.ind.p1.quote":"„We're gaining more visibility, presenting our work professionally, and no longer have to handle social media ourselves all the time. That's exactly how it should work in the trades.\"","sma.ind.p2.h":"Building trust before the first appointment is even booked","sma.ind.p2.p":"The Social Media Agent helps practices publish <span class=\"hl\">regular, understandable, trustworthy</span> content that fits their field.","sma.ind.p2.l1":"More trust from patients","sma.ind.p2.l2":"Fewer recurring questions &amp; a more professional expert status","sma.ind.p2.l3":"Relief for the team — no posts to handle in-house","sma.ind.p2.l4":"Planning whole weeks or months ahead","sma.ind.p2.stat":"More trust","sma.ind.p2.quote":"„Finally regular visibility for our practice — without putting extra strain on our team.\"","sma.ind.p3.h":"When production is running, communication can't stand still.","sma.ind.p3.p":"In production companies, every minute counts. While machines run, projects get delivered and customers are looked after, <span class=\"hl\">social media, callbacks and applicant questions</span> often get left behind.","sma.ind.p3.l1":"Regular content from projects, products and behind-the-scenes insights","sma.ind.p3.l2":"Better visibility for customers, partners and applicants","sma.ind.p3.l3":"Call answering and pre-qualification of customer inquiries","sma.ind.p3.l4":"A modern public image without your own marketing department","sma.ind.p3.stat":"Communication keeps up","sma.ind.p3.quote":"„Our problem was never having too little to talk about — we just never had time to make it visible. With AIDEN, communication now keeps up, without disrupting production.\"","sma.ind.p4.h":"When customers are looking for storage space, fast response matters.","sma.ind.p4.p":"What size unit do I need? What does a unit cost? Are there free units? At the same time, <span class=\"hl\">trust, visibility and easy booking</span> all need to be built.","sma.ind.p4.l1":"Regular content from projects, products and behind-the-scenes insights","sma.ind.p4.l2":"Easy content creation via WhatsApp or Telegram","sma.ind.p4.l3":"More consistency instead of one-off spontaneous posts","sma.ind.p4.stat":"Fast orientation","sma.ind.p4.quote":"„Our customers often don't need a long consultation, just fast orientation. The AI agent helps with exactly that — instantly, friendly and reliable.\"","sma.proc.eyebrow":"How it works","sma.proc.h2":"Getting started with your AIDEN Social Media Agent is easier than you think.","sma.proc.lead":"We guide you step by step toward more visibility and less workload.","sma.proc.s1.h":"Free consultation","sma.proc.s1.p":"30 minutes for your social media: we show you how the agent works and figure out together whether it's a fit for your business. <span class=\"hl\">Transparency</span> matters to us.","sma.proc.s2.h":"Schedule an onboarding session","sma.proc.s2.p":"The agent gets to know your business — offerings, tone of voice, audiences and brand, like an <span class=\"hl\">additional social media team member</span>.","sma.proc.s3.h":"Custom setup","sma.proc.s3.p":"Your agent is equipped with all the important information — company data, services, tone of voice, visual style. This happens <span class=\"hl\">in the background</span> for you.","sma.proc.s4.h":"Handover of your agent","sma.proc.s4.p":"Your new team member is ready — from topic research through content ideas and image creation to <span class=\"hl\">analysis and automatic posting</span>.","sma.proc.s5.h":"And that's it!","sma.proc.s5.p":"You gain more overview, save time, and become visible with professionally researched content — <span class=\"hl\">without having to plan every post yourself</span>.","sma.proc.cta":"Book your free consultation now","sma.final.eyebrow":"Finally, consistent visibility","sma.final.h2":"With content that truly <em>fits your brand</em>.","sma.final.lead":"More overview, less effort, a professional presence — social media that no longer gets lost in the daily grind.","sma.final.cta1":"Book an info call","sma.final.cta2":"See Voice Agent pricing","sma.final.l1":"On-brand content","sma.final.l2":"Thorough topic research","sma.final.l3":"Automated publishing","sma.footer.tag":"AI agents that truly take work off your hands — Voice Agent, Social Media Agent and custom AI automation.","sma.footer.col1.h":"Products","sma.footer.voice":"Voice Agent","sma.footer.social":"Social Media Agent","sma.footer.pricing":"Pricing","sma.footer.col2.h":"Company","sma.footer.about":"About us","sma.footer.customers":"Customers","sma.footer.contact":"Contact","sma.footer.col3.h":"Legal","sma.footer.imprint":"Imprint","sma.footer.privacy":"Privacy Policy","sma.footer.terms":"Terms","sma.footer.withdrawal":"Right of Withdrawal","sma.footer.copyright":"&copy; 2026 AIDEN. All rights reserved."};
+
+const AIDEN_SMA_I18N_AR = {"sma.announce.text":"نستقبل حاليًا عملاء جدد &mdash; استشارة أولى مجانية","sma.announce.cta":"احجز الآن","sma.nav.portal":"بوابة العملاء","sma.nav.voice":"الوكلاء الصوتيون","sma.nav.social":"وكيل وسائل التواصل الاجتماعي","sma.nav.refs":"آراء العملاء","sma.nav.cta":"احجز<br>موعدًا","sma.nav.cta.mobile":"موعد","sma.nav.cta.mobile2":"احجز موعدًا","sma.hero.rating":"تحدث مباشرة مع خبير","sma.hero.eyebrow":"وكيل وسائل التواصل الاجتماعي","sma.hero.h1":"لم تكن وسائل التواصل الاجتماعي <em>بهذه السهولة</em> من قبل.","sma.hero.lead":"يساعد وكيل وسائل التواصل الاجتماعي من AIDEN في <span class=\"hl\">البحث والتخطيط وكتابة النصوص وأفكار الصور والهاشتاغات</span> والتحضير للنشر — ليبقى عملك مرئيًا باستمرار دون أن تضيع وسائل التواصل الاجتماعي في زحمة العمل اليومي.","sma.hero.cta1":"احجز مكالمة تعريفية","sma.hero.cta2":"العودة إلى الصفحة الرئيسية","sma.badge1":"استضافة في الاتحاد الأوروبي","sma.badge2":"متوافق مع GDPR","sma.badge3":"متوافق مع EU AI Act","sma.q1.quote":"«هناك حياة قبل وكيل وسائل التواصل الاجتماعي وحياة بعده. المحتوى والمنشورات المنتظمة أصبحت الآن أمرًا بديهيًا!»","sma.q1.name":"Jochen Timme","sma.q1.role":"صاحب عمل","sma.q2.quote":"«أصبح بإمكاننا الآن تحمل تكلفة وسائل تواصل اجتماعي احترافية — بسعر ممتاز!»","sma.q2.name":"Brüder Schwing","sma.q2.role":"Limes Metzgerei","sma.ov.eyebrow":"وسائل التواصل الاجتماعي أخيرًا تحت السيطرة","sma.ov.h2":"محتوى يناسبك فعلاً — دون ضغط يومي.","sma.ov.lead":"يتولى وكيل وسائل التواصل الاجتماعي من AIDEN العمل نيابة عنك: <span class=\"hl\">محتوى عالي الجودة بانتظام</span> يناسبك فعلاً — دون بحث وتخطيط ونشر مستمر.","sma.ov.c1.h":"بحث معمق عن المواضيع","sma.ov.c1.p":"يجد وكيلنا مواضيع واتجاهات ومحتوى مناسبًا تمامًا لجمهورك ومجال عملك. <span class=\"hl\">لا نشر عشوائي</span>، بل قيمة حقيقية.","sma.ov.c2.h":"محتوى يعكس علامتك التجارية","sma.ov.c2.p":"نصوص وأفكار صور تعكس علامتك التجارية. <span class=\"hl\">احترافية وطبيعية</span> — تناسب أسلوبك، دون أن تبدو كأنها من ذكاء اصطناعي.","sma.ov.c3.h":"قاعدة معرفية مخصصة","sma.ov.c3.p":"جميع المعلومات عن عملك وقيمك وعروضك مسجّلة لدينا. هكذا ينشأ محتوى <span class=\"hl\">يناسبك فعلاً</span> ويبرز خبرتك.","sma.ov.c4.h":"استراتيجية موجهة نحو الهدف","sma.ov.c4.p":"سواء كان الهدف الظهور أو عملاء جدد أو مكانة الخبير — يعمل الوكيل <span class=\"hl\">بشكل استراتيجي</span> ويظل دائمًا متوافقًا مع أهدافك وجمهورك المحدد.","sma.ov.c5.h":"تحليل الأداء","sma.ov.c5.p":"أي المنشورات تنجح؟ أي المواضيع تحقق تفاعلاً؟ يحلل وكيلنا الأداء ويقدم <span class=\"hl\">رؤى قيّمة</span> لنجاحك.","sma.ov.c6.h":"نشر آلي","sma.ov.c6.p":"إعداد المحتوى وجدولته، وعند الرغبة <span class=\"hl\">نشره تلقائيًا</span>. لتكون حاضرًا دائمًا دون أي مجهود إضافي.","sma.ind.eyebrow":"مصمم لعملك","sma.ind.h2":"سواء كنت تدير عيادة أو شركة حرفية أو منشأة إنتاج أو مزوّد تخزين ذاتي.","sma.ind.tab1":"الشركات الحرفية","sma.ind.tab2":"العيادات الطبية والصحة","sma.ind.tab3":"منشآت الإنتاج","sma.ind.tab4":"مزوّدو التخزين الذاتي","sma.ind.result":"النتيجة","sma.ind.p1.h":"إبراز المزيد من الأعمال — دون جهد تسويقي إضافي","sma.ind.p1.p":"مع وكيل وسائل التواصل الاجتماعي، تتحول مواقع العمل والمشاريع وأعمال العملاء بانتظام إلى محتوى احترافي — <span class=\"hl\">دون أن يستثمر العمل نفسه الكثير من الوقت.</span>","sma.ind.p1.l1":"مزيد من الظهور للخدمات والمراجع","sma.ind.p1.l2":"جهد أقل في العمل اليومي","sma.ind.p1.l3":"بناء ثقة أفضل مع العملاء الجدد","sma.ind.p1.l4":"حضور احترافي على إنستغرام وفيسبوك ولينكد إن وغيرها","sma.ind.p1.stat":"مزيد من الظهور","sma.ind.p1.quote":"«نكسب مزيدًا من الظهور، ونعرض عملنا باحترافية، ولم نعد بحاجة للاهتمام بوسائل التواصل الاجتماعي بأنفسنا باستمرار. هكذا يجب أن يعمل الأمر في الحرف اليدوية.»","sma.ind.p2.h":"بناء الثقة قبل حجز الموعد الأول","sma.ind.p2.p":"يساعد وكيل وسائل التواصل الاجتماعي العيادات على نشر محتوى <span class=\"hl\">منتظم وواضح وموثوق</span> يناسب مجالها.","sma.ind.p2.l1":"مزيد من ثقة المرضى","sma.ind.p2.l2":"أسئلة متكررة أقل ومكانة خبير احترافية أكبر","sma.ind.p2.l3":"تخفيف العبء عن الفريق — لا حاجة لإعداد المنشورات داخليًا","sma.ind.p2.l4":"تخطيط أسابيع أو أشهر كاملة مسبقًا","sma.ind.p2.stat":"مزيد من الثقة","sma.ind.p2.quote":"«أخيرًا ظهور منتظم لعيادتنا — دون إثقال فريقنا بعبء إضافي.»","sma.ind.p3.h":"عندما يستمر الإنتاج، لا يجب أن يتوقف التواصل.","sma.ind.p3.p":"في منشآت الإنتاج، كل دقيقة تُحسب. بينما تعمل الآلات وتُنجز المشاريع ويُهتم بالعملاء، غالبًا ما تُهمل <span class=\"hl\">وسائل التواصل الاجتماعي والمكالمات المرتدة وأسئلة المتقدمين</span>.","sma.ind.p3.l1":"محتوى منتظم من المشاريع والمنتجات ولمحات من الكواليس","sma.ind.p3.l2":"ظهور أفضل للعملاء والشركاء والمتقدمين","sma.ind.p3.l3":"الرد على المكالمات والتأهيل المسبق لاستفسارات العملاء","sma.ind.p3.l4":"صورة عامة عصرية دون قسم تسويق خاص","sma.ind.p3.stat":"التواصل يواكب الإنتاج","sma.ind.p3.quote":"«لم تكن مشكلتنا أننا لا نملك ما نقوله، بل أنه لم يكن لدينا وقت لإظهاره. مع AIDEN، يواكب التواصل الآن العمل دون تعطيل الإنتاج.»","sma.ind.p4.h":"عندما يبحث العملاء عن مساحة تخزين، تهم سرعة الاستجابة.","sma.ind.p4.p":"ما حجم الوحدة التي أحتاجها؟ كم تكلفة الوحدة؟ هل توجد وحدات شاغرة؟ في الوقت نفسه يجب بناء <span class=\"hl\">الثقة والظهور وسهولة الحجز</span>.","sma.ind.p4.l1":"محتوى منتظم من المشاريع والمنتجات ولمحات من الكواليس","sma.ind.p4.l2":"إنشاء محتوى سهل عبر واتساب أو تيليجرام","sma.ind.p4.l3":"استمرارية أكبر بدلاً من منشورات عفوية متفرقة","sma.ind.p4.stat":"توجيه سريع","sma.ind.p4.quote":"«غالبًا ما لا يحتاج عملاؤنا إلى استشارة طويلة، بل إلى توجيه سريع. يساعد وكيل الذكاء الاصطناعي في ذلك تحديدًا — فورًا، وبود، وبموثوقية.»","sma.proc.eyebrow":"كيف يعمل الأمر","sma.proc.h2":"البدء مع وكيل وسائل التواصل الاجتماعي من AIDEN أسهل مما تعتقد.","sma.proc.lead":"نرافقك خطوة بخطوة نحو مزيد من الظهور وتخفيف العبء.","sma.proc.s1.h":"استشارة مجانية","sma.proc.s1.p":"30 دقيقة لوسائل التواصل الاجتماعي الخاصة بك: نوضح لك كيف يعمل الوكيل ونكتشف معًا ما إذا كان يناسب عملك. <span class=\"hl\">الشفافية</span> مهمة بالنسبة لنا.","sma.proc.s2.h":"تحديد موعد الإعداد الأولي","sma.proc.s2.p":"يتعرف الوكيل على عملك — العروض والأسلوب والجمهور والعلامة التجارية، مثل <span class=\"hl\">عضو إضافي في فريق وسائل التواصل الاجتماعي</span>.","sma.proc.s3.h":"إعداد مخصص","sma.proc.s3.p":"يُزوَّد وكيلك بجميع المعلومات المهمة — بيانات الشركة والخدمات والأسلوب واللغة البصرية. يحدث هذا <span class=\"hl\">في الخلفية</span> نيابة عنك.","sma.proc.s4.h":"تسليم الوكيل","sma.proc.s4.p":"عضو فريقك الجديد جاهز — من بحث المواضيع مرورًا بأفكار المحتوى وإنشاء الصور وصولًا إلى <span class=\"hl\">التحليل والنشر التلقائي</span>.","sma.proc.s5.h":"وهذا كل شيء!","sma.proc.s5.p":"تكسب مزيدًا من التنظيم، وتوفر الوقت، وتصبح مرئيًا بمحتوى مُعد باحترافية — <span class=\"hl\">دون الحاجة لتخطيط كل منشور بنفسك</span>.","sma.proc.cta":"احجز استشارتك المجانية الآن","sma.final.eyebrow":"ظهور منتظم أخيرًا","sma.final.h2":"بمحتوى يناسب <em>علامتك التجارية</em> فعلاً.","sma.final.lead":"تنظيم أكبر، جهد أقل، حضور احترافي — وسائل تواصل اجتماعي لا تضيع بعد الآن في زحمة العمل اليومي.","sma.final.cta1":"احجز مكالمة تعريفية","sma.final.cta2":"عرض أسعار الوكيل الصوتي","sma.final.l1":"محتوى يعكس علامتك التجارية","sma.final.l2":"بحث معمق عن المواضيع","sma.final.l3":"نشر آلي","sma.footer.tag":"وكلاء ذكاء اصطناعي يخففون العبء عن عملك فعليًا — الوكيل الصوتي، وكيل وسائل التواصل الاجتماعي وأتمتة ذكاء اصطناعي مخصصة.","sma.footer.col1.h":"المنتجات","sma.footer.voice":"الوكيل الصوتي","sma.footer.social":"وكيل وسائل التواصل الاجتماعي","sma.footer.pricing":"الأسعار","sma.footer.col2.h":"الشركة","sma.footer.about":"من نحن","sma.footer.customers":"العملاء","sma.footer.contact":"تواصل معنا","sma.footer.col3.h":"قانوني","sma.footer.imprint":"بيانات الناشر","sma.footer.privacy":"سياسة الخصوصية","sma.footer.terms":"الشروط والأحكام","sma.footer.withdrawal":"حق الانسحاب","sma.footer.copyright":"&copy; 2026 AIDEN. جميع الحقوق محفوظة."};
+
+  const els = document.querySelectorAll('[data-i18n]');
+  const originalDE = new Map();
+  els.forEach(el => originalDE.set(el, el.innerHTML));
+
+  const DICTS = { en: AIDEN_SMA_I18N_EN, ar: AIDEN_SMA_I18N_AR };
+
+  function applyLanguage(lang){
+    const dict = DICTS[lang];
+    els.forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if(dict && dict[key] !== undefined){
+        el.innerHTML = dict[key];
+      } else {
+        el.innerHTML = originalDE.get(el);
+      }
+    });
+    document.documentElement.lang = lang;
+    document.body.classList.toggle('is-rtl', lang === 'ar');
+    document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+    try { localStorage.setItem('aiden-lang', lang); } catch(e){}
+  }
+
+  document.querySelectorAll('.lang-btn').forEach(btn=>{
+    btn.addEventListener('click', ()=> applyLanguage(btn.dataset.lang));
+  });
+
+  let initial = 'de';
+  try {
+    const saved = localStorage.getItem('aiden-lang');
+    if(saved === 'en' || saved === 'de' || saved === 'ar') initial = saved;
+  } catch(e){}
+  if(initial !== 'de') applyLanguage(initial);
+})();
 </script>
 </body>
 </html>
