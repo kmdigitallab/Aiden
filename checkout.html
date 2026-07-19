@@ -35,6 +35,11 @@ body{
 img{max-width:100%;display:block;}
 a{color:inherit;text-decoration:none;}
 .wrap{max-width:640px;margin:0 auto;padding:0 24px;}
+body.is-rtl{font-family:"Segoe UI","Tahoma","Geeza Pro","Noto Sans Arabic",-apple-system,Arial,sans-serif;}
+body.is-rtl .eyebrow,body.is-rtl .lead,body.is-rtl .order-name,body.is-rtl .order-bestfor,
+body.is-rtl .order-was,body.is-rtl .order-save,body.is-rtl .order-extra,body.is-rtl .secure-note{direction:rtl;text-align:right;}
+body.is-rtl .order-feats li{direction:rtl;text-align:right;}
+body.is-rtl .back-link,body.is-rtl .trust-row{direction:rtl;}
 
 /* nav */
 nav.site{position:sticky;top:0;z-index:50;height:72px;display:flex;align-items:center;background:rgba(255,255,255,.85);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border-bottom:1px solid var(--line);}
@@ -94,7 +99,7 @@ h1{font-size:clamp(1.7rem,4vw,2.3rem);font-weight:600;letter-spacing:-.01em;marg
     <a href="index.html" class="brand">
       <img src="images/aiden-logo.png" alt="AIDEN" class="brand-logo" width="562" height="133">
     </a>
-    <a href="index.html#pricing" class="back-link">
+    <a href="index.html#pricing" class="back-link" id="backLink">
       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
       Zurück zu den Tarifen
     </a>
@@ -103,9 +108,9 @@ h1{font-size:clamp(1.7rem,4vw,2.3rem);font-weight:600;letter-spacing:-.01em;marg
 
 <main>
   <div class="wrap">
-    <div class="eyebrow">Bestellübersicht</div>
+    <div class="eyebrow" id="eyebrow">Bestellübersicht</div>
     <h1 id="pageTitle">Ihr Tarif</h1>
-    <p class="lead">Prüfen Sie Ihre Auswahl — die eigentliche Zahlung wickeln wir über unseren zertifizierten Zahlungsdienstleister Stripe ab, damit Ihre Daten jederzeit sicher sind.</p>
+    <p class="lead" id="leadText">Prüfen Sie Ihre Auswahl — die eigentliche Zahlung wickeln wir über unseren zertifizierten Zahlungsdienstleister Stripe ab, damit Ihre Daten jederzeit sicher sind.</p>
 
     <div class="order-card" id="orderCard">
       <div class="order-head">
@@ -124,18 +129,18 @@ h1{font-size:clamp(1.7rem,4vw,2.3rem);font-weight:600;letter-spacing:-.01em;marg
     </div>
 
     <div class="trust-row">
-      <div class="trust-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>In der EU gehostet</div>
-      <div class="trust-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>DSGVO-konform</div>
-      <div class="trust-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6l8-4z"/></svg>Zahlung via Stripe</div>
+      <div class="trust-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg><span id="trust1">In der EU gehostet</span></div>
+      <div class="trust-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span id="trust2">DSGVO-konform</span></div>
+      <div class="trust-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6l8-4z"/></svg><span id="trust3">Zahlung via Stripe</span></div>
     </div>
 
     <a href="#" id="payButton" target="_blank" rel="noopener" class="btn btn-gold">
-      Jetzt sicher bezahlen
+      <span id="payButtonText">Jetzt sicher bezahlen</span>
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
     </a>
     <p class="secure-note">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-      Sie werden zur verschlüsselten Bezahlseite unseres Zahlungsdienstleisters Stripe weitergeleitet.
+      <span id="secureNote">Sie werden zur verschlüsselten Bezahlseite unseres Zahlungsdienstleisters Stripe weitergeleitet.</span>
     </p>
   </div>
 </main>
@@ -170,44 +175,60 @@ const CURRENCY = {
 
 const PLANS = {
   basic: {
-    name: 'Einsteiger · Basic',
-    term: 'Jahresabo · 12 Monate Laufzeit',
-    bestfor: 'Am besten für: Einzelunternehmer & Praxisstart',
-    feats: ['100 Freiminuten','1 KI-Assistent','24/7 Telefonannahme','WhatsApp & Telegram Integration','API-Zugang','Perfekte Einrichtung','Terminbuchung & Kalender','Priorität-Support & Wissensdatenbank'],
+    de: { name: 'Einsteiger · Basic', term: 'Jahresabo · 12 Monate Laufzeit', bestfor: 'Am besten für: Einzelunternehmer & Praxisstart', feats: ['100 Freiminuten','1 KI-Assistent','24/7 Telefonannahme','WhatsApp & Telegram Integration','API-Zugang','Perfekte Einrichtung','Terminbuchung & Kalender','Priorität-Support & Wissensdatenbank'] },
+    en: { name: 'Starter · Basic', term: 'Annual plan &middot; 12-month term', bestfor: 'Best for: sole traders & practice launches', feats: ['100 free minutes','1 AI assistant','24/7 call answering','WhatsApp & Telegram integration','API access','Perfect setup','Appointment booking & calendar','Priority support & knowledge base'] },
+    ar: { name: 'المبتدئ · أساسي', term: 'اشتراك سنوي &middot; مدة 12 شهرًا', bestfor: 'الأنسب لـ: أصحاب الأعمال الفردية وبدء العيادات', feats: ['100 دقيقة مجانية','مساعد ذكاء اصطناعي واحد','الرد على المكالمات على مدار الساعة','تكامل واتساب وتيليجرام','وصول إلى API','إعداد مثالي','حجز المواعيد وتكامل التقويم','دعم ذو أولوية وقاعدة معرفية'] },
     url: 'https://buy.stripe.com/7sY3cw0webOEdM17Pw9sk01'
   },
   comfort: {
-    name: 'Comfort', tag: 'Beliebtester Plan',
-    term: 'Jahresabo · 12 Monate Laufzeit',
-    bestfor: 'Am besten für: wachsende Teams mit mehreren Kanälen',
-    feats: ['200 Freiminuten','1 KI-Assistent','24/7 Telefonannahme','WhatsApp & Telegram Integration','API-Zugang','Perfekte Einrichtung','Terminbuchung & Kalender','Priorität-Support & Wissensdatenbank'],
+    de: { name: 'Comfort', tag: 'Beliebtester Plan', term: 'Jahresabo · 12 Monate Laufzeit', bestfor: 'Am besten für: wachsende Teams mit mehreren Kanälen', feats: ['200 Freiminuten','1 KI-Assistent','24/7 Telefonannahme','WhatsApp & Telegram Integration','API-Zugang','Perfekte Einrichtung','Terminbuchung & Kalender','Priorität-Support & Wissensdatenbank'] },
+    en: { name: 'Comfort', tag: 'Most Popular Plan', term: 'Annual plan &middot; 12-month term', bestfor: 'Best for: growing teams with multiple channels', feats: ['200 free minutes','1 AI assistant','24/7 call answering','WhatsApp & Telegram integration','API access','Perfect setup','Appointment booking & calendar','Priority support & knowledge base'] },
+    ar: { name: 'كومفورت', tag: 'الباقة الأكثر شيوعًا', term: 'اشتراك سنوي &middot; مدة 12 شهرًا', bestfor: 'الأنسب لـ: الفرق النامية بعدة قنوات', feats: ['200 دقيقة مجانية','مساعد ذكاء اصطناعي واحد','الرد على المكالمات على مدار الساعة','تكامل واتساب وتيليجرام','وصول إلى API','إعداد مثالي','حجز المواعيد وتكامل التقويم','دعم ذو أولوية وقاعدة معرفية'] },
     url: 'https://buy.stripe.com/dRm9AUgvc3i8cHX2vc9sk07'
   },
   premium: {
-    name: 'Für größere Unternehmen · Premium',
-    term: 'Jahresabo · 12 Monate Laufzeit',
-    bestfor: 'Am besten für: größere Unternehmen mit hohem Anrufvolumen',
-    feats: ['600 Freiminuten','3 KI-Assistenten','24/7 Telefonannahme','WhatsApp & Telegram Integration','API-Zugang','Perfekte Einrichtung','Terminbuchung & Kalender','Alle Funktionen inklusive'],
+    de: { name: 'Für größere Unternehmen · Premium', term: 'Jahresabo · 12 Monate Laufzeit', bestfor: 'Am besten für: größere Unternehmen mit hohem Anrufvolumen', feats: ['600 Freiminuten','3 KI-Assistenten','24/7 Telefonannahme','WhatsApp & Telegram Integration','API-Zugang','Perfekte Einrichtung','Terminbuchung & Kalender','Alle Funktionen inklusive'] },
+    en: { name: 'For larger businesses · Premium', term: 'Annual plan &middot; 12-month term', bestfor: 'Best for: larger businesses with high call volume', feats: ['600 free minutes','3 AI assistants','24/7 call answering','WhatsApp & Telegram integration','API access','Perfect setup','Appointment booking & calendar','All features included'] },
+    ar: { name: 'للشركات الكبيرة · بريميوم', term: 'اشتراك سنوي &middot; مدة 12 شهرًا', bestfor: 'الأنسب لـ: الشركات الكبيرة ذات حجم المكالمات المرتفع', feats: ['600 دقيقة مجانية','3 مساعدين ذكاء اصطناعي','الرد على المكالمات على مدار الساعة','تكامل واتساب وتيليجرام','وصول إلى API','إعداد مثالي','حجز المواعيد وتكامل التقويم','جميع الميزات مشمولة'] },
     url: 'https://buy.stripe.com/bJeaEYbaS8Cs0Zfd9Q9sk05'
   },
   smart: {
-    name: 'Smarte Lösung',
-    bestfor: 'Am besten für: planungssichere Budgets ohne laufende Kosten',
-    feats: ['800 Freiminuten','3 KI-Assistenten','24/7 Telefonannahme','WhatsApp & Telegram Integration','API-Zugang','Perfekte Einrichtung','Terminbuchung & Kalender','Alle Funktionen inklusive'],
+    de: { name: 'Smarte Lösung', bestfor: 'Am besten für: planungssichere Budgets ohne laufende Kosten', feats: ['800 Freiminuten','3 KI-Assistenten','24/7 Telefonannahme','WhatsApp & Telegram Integration','API-Zugang','Perfekte Einrichtung','Terminbuchung & Kalender','Alle Funktionen inklusive'] },
+    en: { name: 'Smart Solution', bestfor: 'Best for: predictable budgets with no ongoing costs', feats: ['800 free minutes','3 AI assistants','24/7 call answering','WhatsApp & Telegram integration','API access','Perfect setup','Appointment booking & calendar','All features included'] },
+    ar: { name: 'الحل الذكي', bestfor: 'الأنسب لـ: ميزانيات قابلة للتخطيط بلا تكاليف مستمرة', feats: ['800 دقيقة مجانية','3 مساعدين ذكاء اصطناعي','الرد على المكالمات على مدار الساعة','تكامل واتساب وتيليجرام','وصول إلى API','إعداد مثالي','حجز المواعيد وتكامل التقويم','جميع الميزات مشمولة'] },
     url: 'https://buy.stripe.com/28E28sfr82e48rH0n49sk03'
   }
 };
 
+const UI_TEXT = {
+  de: { backLink: 'Zurück zu den Tarifen', eyebrow: 'Bestellübersicht', lead: 'Prüfen Sie Ihre Auswahl — die eigentliche Zahlung wickeln wir über unseren zertifizierten Zahlungsdienstleister Stripe ab, damit Ihre Daten jederzeit sicher sind.', trust1: 'In der EU gehostet', trust2: 'DSGVO-konform', trust3: 'Zahlung via Stripe', payButton: 'Jetzt sicher bezahlen', secureNote: 'Sie werden zur verschlüsselten Bezahlseite unseres Zahlungsdienstleisters Stripe weitergeleitet.' },
+  en: { backLink: 'Back to plans', eyebrow: 'Order Summary', lead: 'Review your selection — the actual payment is handled by our certified payment provider Stripe, so your data stays secure at all times.', trust1: 'Hosted in the EU', trust2: 'GDPR-compliant', trust3: 'Payment via Stripe', payButton: 'Pay securely now', secureNote: 'You will be redirected to the encrypted payment page of our payment provider Stripe.' },
+  ar: { backLink: 'العودة إلى الباقات', eyebrow: 'ملخص الطلب', lead: 'راجع اختيارك — تتم عملية الدفع الفعلية عبر مزوّد الدفع المعتمد Stripe، لضمان أمان بياناتك في جميع الأوقات.', trust1: 'استضافة في الاتحاد الأوروبي', trust2: 'متوافق مع GDPR', trust3: 'الدفع عبر Stripe', payButton: 'ادفع الآن بأمان', secureNote: 'سيتم تحويلك إلى صفحة الدفع المشفّرة الخاصة بمزوّد الدفع Stripe.' }
+};
+
 const params = new URLSearchParams(location.search);
 const planKey = PLANS[params.get('plan')] ? params.get('plan') : 'comfort';
-const plan = PLANS[planKey];
 
 let lang = 'de';
 try {
   const saved = localStorage.getItem('aiden-lang');
   if (saved === 'en' || saved === 'de' || saved === 'ar') lang = saved;
 } catch (e) {}
+
+const plan = PLANS[planKey][lang];
 const currency = CURRENCY[planKey][lang];
+const ui = UI_TEXT[lang];
+
+document.documentElement.lang = lang;
+document.body.classList.toggle('is-rtl', lang === 'ar');
+document.getElementById('backLink').lastChild.textContent = ' ' + ui.backLink;
+document.getElementById('eyebrow').textContent = ui.eyebrow;
+document.getElementById('leadText').textContent = ui.lead;
+document.getElementById('trust1').textContent = ui.trust1;
+document.getElementById('trust2').textContent = ui.trust2;
+document.getElementById('trust3').textContent = ui.trust3;
+document.getElementById('payButtonText').textContent = ui.payButton;
+document.getElementById('secureNote').textContent = ui.secureNote;
 
 document.getElementById('pageTitle').textContent = plan.name;
 document.getElementById('orderName').textContent = plan.name;
@@ -218,7 +239,7 @@ document.getElementById('orderSave').innerHTML = currency.save;
 document.getElementById('orderBestfor').textContent = plan.bestfor;
 document.getElementById('orderExtra').innerHTML = currency.extra;
 document.getElementById('orderFeats').innerHTML = plan.feats.map(f => '<li>' + CHECK + '<span>' + f + '</span></li>').join('');
-document.getElementById('payButton').href = plan.url;
+document.getElementById('payButton').href = PLANS[planKey].url;
 if (plan.tag) {
   const tagEl = document.getElementById('orderTag');
   tagEl.textContent = plan.tag;
