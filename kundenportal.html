@@ -32,6 +32,11 @@ body{
 img{max-width:100%;display:block;}
 a{color:inherit;text-decoration:none;}
 .wrap{max-width:560px;margin:0 auto;padding:0 24px;}
+body.is-rtl{font-family:"Segoe UI","Tahoma","Geeza Pro","Noto Sans Arabic",-apple-system,Arial,sans-serif;}
+body.is-rtl .eyebrow,body.is-rtl .lead,body.is-rtl .secure-note{direction:rtl;}
+body.is-rtl .portal-list{text-align:right;}
+body.is-rtl .portal-list li{direction:rtl;text-align:right;}
+body.is-rtl .back-link{direction:rtl;}
 
 nav.site{position:sticky;top:0;z-index:50;height:72px;display:flex;align-items:center;background:rgba(255,255,255,.85);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border-bottom:1px solid var(--line);}
 .nav-inner{max-width:1180px;margin:0 auto;padding:0 26px;width:100%;display:flex;align-items:center;justify-content:space-between;}
@@ -65,9 +70,9 @@ h1{font-size:clamp(1.6rem,4vw,2.1rem);font-weight:600;letter-spacing:-.01em;marg
     <a href="index.html" class="brand">
       <img src="images/aiden-logo.png" alt="AIDEN" class="brand-logo" width="562" height="133">
     </a>
-    <a href="index.html" class="back-link">
+    <a href="index.html" class="back-link" id="backLink">
       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-      Zur Startseite
+      <span id="backLinkText">Zur Startseite</span>
     </a>
   </div>
 </nav>
@@ -78,25 +83,52 @@ h1{font-size:clamp(1.6rem,4vw,2.1rem);font-weight:600;letter-spacing:-.01em;marg
       <div class="portal-icon">
         <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 4v5"/></svg>
       </div>
-      <div class="eyebrow">Kundenportal</div>
-      <h1>Ihr AIDEN Kundenportal</h1>
-      <p class="lead">Verwalten Sie Ihren Tarif, Zahlungsmethoden und Rechnungen an einem Ort.</p>
+      <div class="eyebrow" id="eyebrow">Kundenportal</div>
+      <h1 id="pageH1">Ihr AIDEN Kundenportal</h1>
+      <p class="lead" id="leadText">Verwalten Sie Ihren Tarif, Zahlungsmethoden und Rechnungen an einem Ort.</p>
       <ul class="portal-list">
-        <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Rechnungen einsehen &amp; herunterladen</li>
-        <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Zahlungsmethode aktualisieren</li>
-        <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Tarif wechseln oder kündigen</li>
+        <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span id="listItem1">Rechnungen einsehen &amp; herunterladen</span></li>
+        <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span id="listItem2">Zahlungsmethode aktualisieren</span></li>
+        <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span id="listItem3">Tarif wechseln oder kündigen</span></li>
       </ul>
       <a href="https://billing.stripe.com/p/login/bJe00k6UCaKA8rH6Ls9sk00" target="_blank" rel="noopener" class="btn btn-gold">
-        Zum Kundenportal
+        <span id="ctaText">Zum Kundenportal</span>
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </a>
       <p class="secure-note">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-        Sicher verwaltet über unseren Zahlungsdienstleister Stripe.
+        <span id="secureNote">Sicher verwaltet über unseren Zahlungsdienstleister Stripe.</span>
       </p>
     </div>
   </div>
 </main>
 
+<script>
+const UI_TEXT = {
+  de: { title: 'Kundenportal — AIDEN', backLink: 'Zur Startseite', eyebrow: 'Kundenportal', h1: 'Ihr AIDEN Kundenportal', lead: 'Verwalten Sie Ihren Tarif, Zahlungsmethoden und Rechnungen an einem Ort.', l1: 'Rechnungen einsehen &amp; herunterladen', l2: 'Zahlungsmethode aktualisieren', l3: 'Tarif wechseln oder kündigen', cta: 'Zum Kundenportal', secureNote: 'Sicher verwaltet über unseren Zahlungsdienstleister Stripe.' },
+  en: { title: 'Customer Portal — AIDEN', backLink: 'Back to homepage', eyebrow: 'Customer Portal', h1: 'Your AIDEN Customer Portal', lead: 'Manage your plan, payment methods, and invoices in one place.', l1: 'View &amp; download invoices', l2: 'Update payment method', l3: 'Change or cancel plan', cta: 'Go to Customer Portal', secureNote: 'Securely managed through our payment provider Stripe.' },
+  ar: { title: 'بوابة العملاء — AIDEN', backLink: 'العودة إلى الصفحة الرئيسية', eyebrow: 'بوابة العملاء', h1: 'بوابة عملاء AIDEN الخاصة بك', lead: 'أدر باقتك وطرق الدفع والفواتير في مكان واحد.', l1: 'عرض الفواتير وتنزيلها', l2: 'تحديث طريقة الدفع', l3: 'تغيير الباقة أو إلغاؤها', cta: 'الانتقال إلى بوابة العملاء', secureNote: 'تتم الإدارة بأمان عبر مزوّد الدفع Stripe.' }
+};
+
+let lang = 'de';
+try {
+  const saved = localStorage.getItem('aiden-lang');
+  if (saved === 'en' || saved === 'de' || saved === 'ar') lang = saved;
+} catch (e) {}
+const ui = UI_TEXT[lang];
+
+document.documentElement.lang = lang;
+document.body.classList.toggle('is-rtl', lang === 'ar');
+document.title = ui.title;
+document.getElementById('backLinkText').textContent = ui.backLink;
+document.getElementById('eyebrow').textContent = ui.eyebrow;
+document.getElementById('pageH1').textContent = ui.h1;
+document.getElementById('leadText').textContent = ui.lead;
+document.getElementById('listItem1').innerHTML = ui.l1;
+document.getElementById('listItem2').innerHTML = ui.l2;
+document.getElementById('listItem3').innerHTML = ui.l3;
+document.getElementById('ctaText').textContent = ui.cta;
+document.getElementById('secureNote').textContent = ui.secureNote;
+</script>
 </body>
 </html>
