@@ -143,59 +143,80 @@ h1{font-size:clamp(1.7rem,4vw,2.3rem);font-weight:600;letter-spacing:-.01em;marg
 <script>
 const CHECK = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>';
 
+// Currency shown follows the site-wide language choice: DE=EUR, EN=USD, AR=AED.
+// Amounts are pre-converted and rounded up so no language ever shows a cheaper price.
+const CURRENCY = {
+  basic: {
+    de: { price: '69&nbsp;€', unit: '&nbsp;/ Monat', was: '98&nbsp;€ / Monat', save: 'Sie sparen 240&nbsp;€ im 1. Jahr', extra: 'Zusatzminute 0,39&nbsp;€' },
+    en: { price: '$75', unit: '&nbsp;/ month', was: '$110 / month', save: 'You save $260 in year 1', extra: 'Extra minute $0.45' },
+    ar: { price: '280 درهم', unit: '&nbsp;/ شهريًا', was: '400 درهم / شهريًا', save: 'توفّر 960 درهم في السنة الأولى', extra: 'الدقيقة الإضافية 1.60 درهم' }
+  },
+  comfort: {
+    de: { price: '129&nbsp;€', unit: '&nbsp;/ Monat', was: '189&nbsp;€ / Monat', save: 'Sie sparen 720&nbsp;€ im 1. Jahr', extra: 'Zusatzminute 0,32&nbsp;€' },
+    en: { price: '$140', unit: '&nbsp;/ month', was: '$210 / month', save: 'You save $780 in year 1', extra: 'Extra minute $0.40' },
+    ar: { price: '520 درهم', unit: '&nbsp;/ شهريًا', was: '760 درهم / شهريًا', save: 'توفّر 2,860 درهم في السنة الأولى', extra: 'الدقيقة الإضافية 1.30 درهم' }
+  },
+  premium: {
+    de: { price: '249&nbsp;€', unit: '&nbsp;/ Monat', was: '399&nbsp;€ / Monat', save: 'Sie sparen 1.800&nbsp;€ im 1. Jahr', extra: 'Zusatzminute 0,28&nbsp;€' },
+    en: { price: '$275', unit: '&nbsp;/ month', was: '$435 / month', save: 'You save $1,950 in year 1', extra: 'Extra minute $0.35' },
+    ar: { price: '1,000 درهم', unit: '&nbsp;/ شهريًا', was: '1,590 درهم / شهريًا', save: 'توفّر 7,150 درهم في السنة الأولى', extra: 'الدقيقة الإضافية 1.15 درهم' }
+  },
+  smart: {
+    de: { price: '2.349&nbsp;€', unit: '&nbsp;einmalig', was: '4.536&nbsp;€ einmalig', save: 'Sie sparen 2.187&nbsp;€ Einführungspreis', extra: 'Einmalzahlung, kein Abo' },
+    en: { price: '$2,550', unit: '&nbsp;one-time', was: '$4,900 one-time', save: 'You save $2,400 introductory price', extra: 'One-time payment, no subscription' },
+    ar: { price: '9,350 درهم', unit: '&nbsp;دفعة واحدة', was: '18,050 درهم دفعة واحدة', save: 'توفّر 8,700 درهم سعر إطلاق تمهيدي', extra: 'دفعة واحدة، بلا اشتراك' }
+  }
+};
+
 const PLANS = {
   basic: {
     name: 'Einsteiger · Basic',
-    price: '69&nbsp;€', unit: '&nbsp;/ Monat',
     term: 'Jahresabo · 12 Monate Laufzeit',
-    was: '98&nbsp;€ / Monat', save: 'Sie sparen 240&nbsp;€ im 1. Jahr',
     bestfor: 'Am besten für: Einzelunternehmer & Praxisstart',
-    extra: 'Zusatzminute 0,39&nbsp;€',
     feats: ['100 Freiminuten','1 KI-Assistent','24/7 Telefonannahme','WhatsApp & Telegram Integration','API-Zugang','Perfekte Einrichtung','Terminbuchung & Kalender','Priorität-Support & Wissensdatenbank'],
     url: 'https://buy.stripe.com/7sY3cw0webOEdM17Pw9sk01'
   },
   comfort: {
     name: 'Comfort', tag: 'Beliebtester Plan',
-    price: '129&nbsp;€', unit: '&nbsp;/ Monat',
     term: 'Jahresabo · 12 Monate Laufzeit',
-    was: '189&nbsp;€ / Monat', save: 'Sie sparen 720&nbsp;€ im 1. Jahr',
     bestfor: 'Am besten für: wachsende Teams mit mehreren Kanälen',
-    extra: 'Zusatzminute 0,32&nbsp;€',
     feats: ['200 Freiminuten','1 KI-Assistent','24/7 Telefonannahme','WhatsApp & Telegram Integration','API-Zugang','Perfekte Einrichtung','Terminbuchung & Kalender','Priorität-Support & Wissensdatenbank'],
     url: 'https://buy.stripe.com/dRm9AUgvc3i8cHX2vc9sk07'
   },
   premium: {
     name: 'Für größere Unternehmen · Premium',
-    price: '249&nbsp;€', unit: '&nbsp;/ Monat',
     term: 'Jahresabo · 12 Monate Laufzeit',
-    was: '399&nbsp;€ / Monat', save: 'Sie sparen 1.800&nbsp;€ im 1. Jahr',
     bestfor: 'Am besten für: größere Unternehmen mit hohem Anrufvolumen',
-    extra: 'Zusatzminute 0,28&nbsp;€',
     feats: ['600 Freiminuten','3 KI-Assistenten','24/7 Telefonannahme','WhatsApp & Telegram Integration','API-Zugang','Perfekte Einrichtung','Terminbuchung & Kalender','Alle Funktionen inklusive'],
     url: 'https://buy.stripe.com/bJeaEYbaS8Cs0Zfd9Q9sk05'
   },
   smart: {
     name: 'Smarte Lösung',
-    price: '2.349&nbsp;€', unit: '&nbsp;einmalig',
-    was: '4.536&nbsp;€ einmalig', save: 'Sie sparen 2.187&nbsp;€ Einführungspreis',
     bestfor: 'Am besten für: planungssichere Budgets ohne laufende Kosten',
-    extra: 'Einmalzahlung, kein Abo',
     feats: ['800 Freiminuten','3 KI-Assistenten','24/7 Telefonannahme','WhatsApp & Telegram Integration','API-Zugang','Perfekte Einrichtung','Terminbuchung & Kalender','Alle Funktionen inklusive'],
     url: 'https://buy.stripe.com/28E28sfr82e48rH0n49sk03'
   }
 };
 
 const params = new URLSearchParams(location.search);
-const plan = PLANS[params.get('plan')] || PLANS.comfort;
+const planKey = PLANS[params.get('plan')] ? params.get('plan') : 'comfort';
+const plan = PLANS[planKey];
+
+let lang = 'de';
+try {
+  const saved = localStorage.getItem('aiden-lang');
+  if (saved === 'en' || saved === 'de' || saved === 'ar') lang = saved;
+} catch (e) {}
+const currency = CURRENCY[planKey][lang];
 
 document.getElementById('pageTitle').textContent = plan.name;
 document.getElementById('orderName').textContent = plan.name;
-document.getElementById('orderPrice').innerHTML = plan.price + '<span class="unit">' + plan.unit + '</span>';
+document.getElementById('orderPrice').innerHTML = currency.price + '<span class="unit">' + currency.unit + '</span>';
 document.getElementById('orderTerm').textContent = plan.term || '';
-document.getElementById('orderWas').innerHTML = plan.was;
-document.getElementById('orderSave').innerHTML = plan.save;
+document.getElementById('orderWas').innerHTML = currency.was;
+document.getElementById('orderSave').innerHTML = currency.save;
 document.getElementById('orderBestfor').textContent = plan.bestfor;
-document.getElementById('orderExtra').innerHTML = plan.extra;
+document.getElementById('orderExtra').innerHTML = currency.extra;
 document.getElementById('orderFeats').innerHTML = plan.feats.map(f => '<li>' + CHECK + '<span>' + f + '</span></li>').join('');
 document.getElementById('payButton').href = plan.url;
 if (plan.tag) {
